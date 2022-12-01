@@ -1,0 +1,175 @@
+				OUTPUT (STDOUT)
+
+#1		PRINCIPAL OUTPUT FUNCTIONS
+
+#4	putchar()
+Parameter :
+par0 => An integer that represents a character;
+=> It returns an unsigned int number that is the
+written character (as integer);
+
+putchar.c : 1// 
+#include <stdio.h>
+
+unsigned char main(void){
+
+    /*
+        putchar(32); // As printf(" ");
+    */
+    unsigned int rest;
+    for(unsigned char c = 32; c < 127; c++){
+        printf("=================\n");
+        rest = putchar(c); // Returns an unsigned int number that is the written character (as integer)
+        printf("\n%d\n", rest);
+    } // Under 32 there are special characters
+    putchar(10); // As printf("\n");
+
+    return 0;
+}
+ 1//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/4.0_IO/EXAMPLE$ gcc putchar.c -o prog && ./prog 
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+=================
+ 
+32
+=================
+!
+33
+=================
+"
+34
+ 2//
+
+#4	printf()
+
+#5 Formats code :
+3# %c 3# => For one single characteur;
+3# %d 3# => For an integer;
+6# %*d 6# => First '*' is the minimal length;
+3# %f 3# => For a float;
+6# %*.*f 6# => First '*' is the minimal length and second '*' is the number
+of digits after the dot;
+3# %s 3# => For a chain of characters;
+6# %*.*s 6# => First '*' is the minimal length and second '*' is the number
+of printed characters of the string;
+0# + 0# => Force to write a plus is the value is positive;
+0# - 0# => Put the empty spaces on the right otherwise on the left;
+0# 0 0# => Replace the empty spaces with zeros;
+0# * 0# => Make the value of a variable, parameters of a format code;
+0# # 0# => Avoid to delete useless zeros (for floats);
+#2 printf("[%+-*.*f]\n", minimal_length, number_of_digits_after_dot, fnbr);
+
+print.c : 2// 
+#include <stdio.h>
+
+void separate(void){
+    printf("====================\n");
+    return;
+}
+
+void mark_number_of_characters(unsigned int nbr){
+    printf("%d characters written in stdout\n", nbr);
+    return;
+}
+
+unsigned char main(unsigned argc, unsigned char **argv){
+
+    printf("Salut comment ça va ?\n");
+    printf("%s\n", "Yolo !!");
+
+    separate();
+
+    // printf() returns the number of printed characters
+    unsigned int nbr = 14, nbr_of_written_characters;
+    nbr_of_written_characters = printf("==> %d <==\n", nbr);
+    mark_number_of_characters(nbr_of_written_characters);
+    signed int nbr2 = - (signed int) nbr;
+    mark_number_of_characters(printf("%d, %d\n", nbr, nbr2));
+
+    // Tests with integers
+    separate();
+    nbr = 12345;
+    unsigned char minimal_length = 7;
+
+    /* '*' permits to integrate variable values in the format code */
+
+    // Force to write spaces on the left
+    printf("[%7d] vs [%d]\n", nbr, nbr); // Same 0
+    printf("[%*d] vs [%d]\n", minimal_length, nbr, nbr); // Same 0
+
+     mark_number_of_characters(nbr_of_written_characters);
+    signed int nbr2 = - (signed int) nbr;
+    mark_number_of_characters(printf("%d, %d\n", nbr, nbr2));
+   // Force to write spaces on the right
+    printf("[%-7d] vs [%d]\n", nbr, nbr); // Same 1
+    printf("[%*d] vs [%d]\n", -minimal_length, nbr, nbr); // Same 1
+    printf("[%-*d] vs [%d]\n", minimal_length, nbr, nbr); // Same 1
+    printf("[%+-7d] vs [%d]\n", nbr, nbr); // Same 1
+
+    // Force to write plus
+    printf("[%+7d] vs [%d]\n", nbr, nbr); // Same 2
+    printf("[%+*d] vs [%d]\n", minimal_length, nbr, nbr); // Same 2
+
+    // Change the empty spaces
+    separate();
+    printf("{%+*d}\n", 30, 14);
+    printf("{%+0*d}\n", 30, 14);
+    separate();
+
+    // Tests with floats
+    float fnbr = 1234.5678; minimal_length = 20;
+    unsigned char number_of_digits_after_dot = 2;
+    printf("%f\n", fnbr);
+
+    printf("[%20.2f]\n", fnbr);
+    printf("[%20f]\n", fnbr);
+    printf("[%.2f]\n", fnbr);
+    separate();
+
+    printf("[%20.8f]\n", fnbr);
+    printf("[%-20.2f]\n", fnbr);
+    printf("[%+-20.2f]\n", fnbr);
+    printf("[%+-*.*f]\n", minimal_length, number_of_digits_after_dot, fnbr);
+
+    float test = 14;
+    printf("====> %#f\n", test);
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/4.0_IO/EXAMPLE$ gcc print.c -o prog && ./prog 
+Salut comment ça va ?
+Yolo !!
+====================
+==> 14 <==
+11 characters written in stdout
+14, -14
+8 characters written in stdout
+====================
+[  12345] vs [12345]
+[  12345] vs [12345]
+[12345  ] vs [12345]
+[12345  ] vs [12345]
+[12345  ] vs [12345]
+[+12345 ] vs [12345]
+[ +12345] vs [12345]
+[ +12345] vs [12345]
+====================
+{                           +14}
+{+00000000000000000000000000014}
+====================
+1234.567749
+[             1234.57]
+[         1234.567749]
+[1234.57]
+====================
+[       1234.56774902]
+[1234.57             ]
+[+1234.57            ]
+[+1234.57            ]
+====> 14.000000
+ 2//

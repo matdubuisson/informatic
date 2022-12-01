@@ -1,0 +1,158 @@
+Script 113
+				PTHREAD
+
+This is for executing two functions in an even time.
+
+For compilating an important option :
+gcc doc.c -o program -lpthread
+
+LIBRARY :
+#include <pthread.h>
+
+		PTHREAD_T
+This is the key for creating a new thread.
+Syntax :
+pthread_t myNewThread;
+
+		PTHREAD_CREATE()
+This function incrementes a function into
+the thread already defined. This executes
+too the thread.
+PARAMETER :
+par0 = The address of the thread given by PTHREAD_T;
+par1 = The ATTR;
+par2 = Just the 3# name 3# of the function;
+par3 = This is the address of a structur for passing the data;
+Syntax :
+pthread_create(&myNewThread, NULL, myFunctionName, NULL);
+
+==================================================
+		DETACHED THREAD
+	PTHREAD_ATTR_T
+This type of declarer permits to create a variable
+for being the argument ATTR.
+
+	PTHREAD_ATTR_INIT()
+This function inits the variable of type of ATTR.
+PARAMETER :
+par0 ==> Address of the variable.
+
+	PTHREAD_ATTR_SETDETACHSTATE()
+This function adds the property to the ATTR variable.
+This property is the reserved variable :
+#3 PTHREAD_CREATE_DETACHED
+PARAMETER :
+par0 ==> Address of the variable ATTR;
+par1 ==> The key : PTHREAD_CREATE_DETACHED;
+
+	PTHREAD_ATTR_DESTROY()
+This function cans free the malloced memory
+of the ATTR variable.
+PARAMETER :
+par0 ==> Address of ATTR variable.
+
+By example :
+pthread_attr_t myAttr;
+pthread_attr_init(&myAttr);
+pthread_attr_setdetachstate(&myAttr, PTHREAD_CREATE_DETACHED);
+pthread_create(&fct, &myAttr, aff, &myStruct);
+pthread_join(fct, 0);
+pthread_attr_destroy(&myAttr);
+==================================================
+		PASSING AN ARGUMENT TO A THREAD FUNCTION
+This is the fourty paramter of the function #1 pthread_create()
+and this parameter takes the address of the structur.
+Info the function a create a structur on the event architectur
+who pointtes to the #1 arg (void *arg);
+By example :
+Into the last function :
+struct architectur myStruct;
+pthread_create(...., ...., ...., &myStruct);
+Into the next function :
+(void *arg)
+struct architectur *newStruct = arg;
+/* newStruct equals myStruct; */
+
+==================================================
+
+		PTHREAD_JOIN()
+This function permits to join the different threads at
+the function main for that the coding after the
+PTHREAD_JOIN()'s wait the end of the PTHREAD_JOIN()'s.
+PARAMETER :
+par0 = The PTHREAD_T contained into a variable.
+par1 = NULL;
+Syntax :
+pthread_join(myNewThread, NULL);
+
+		PTHREAD_EXIT()
+This is the function for that the function quittes
+the thread and lettes the place at the rest of the
+coding after this thread :
+PARAMETER :
+par0 = 0 or 1;
+Syntax :
+pthread_exit(0);
+
+		EXAMPLE
+This example workes only on Linux Debian !!
+File.c :4# 
+#include <stdio.h>
+#include <pthread.h>
+#include <stdlib.h>
+
+void *fct0(void *arg){
+  for(int e = 0; e < 10; e++){
+    system("sleep 1");
+    puts("0000000000000000000000000000000000000");
+  }
+  pthread_exit(0);
+}
+void *fct1(void *arg){
+  for(int e = 0; e < 10; e++){
+    system("sleep 1");
+    puts("1111111111111111111111111111111111111");
+  }
+  pthread_exit(0);
+}
+
+
+int main(void){
+
+pthread_t th0;
+pthread_t th1;
+
+pthread_create(&th0, 0, fct0, 0);
+pthread_create(&th1, 0, fct1, 0);
+
+pthread_join(th0, 0);
+pthread_join(th1, 0);
+
+return 0;
+}
+
+ 4#
+Into the console :2# 
+racteurleader@racteurleader:~/runPC/Codage/C$ sudo gcc test.c -o test -lpthread
+racteurleader@racteurleader:~/runPC/Codage/C$ ./test 
+1111111111111111111111111111111111111
+0000000000000000000000000000000000000
+1111111111111111111111111111111111111
+0000000000000000000000000000000000000
+1111111111111111111111111111111111111
+0000000000000000000000000000000000000
+1111111111111111111111111111111111111
+0000000000000000000000000000000000000
+1111111111111111111111111111111111111
+0000000000000000000000000000000000000
+1111111111111111111111111111111111111
+0000000000000000000000000000000000000
+1111111111111111111111111111111111111
+0000000000000000000000000000000000000
+1111111111111111111111111111111111111
+0000000000000000000000000000000000000
+1111111111111111111111111111111111111
+0000000000000000000000000000000000000
+1111111111111111111111111111111111111
+0000000000000000000000000000000000000
+ 2#

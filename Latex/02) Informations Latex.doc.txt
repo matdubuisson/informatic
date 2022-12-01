@@ -1,0 +1,11 @@
+				INFORMATIONS
+
+#3	\title{} and \maketitle
+This gives a title to the document.pdf.
+The second command permits to write the title.
+
+#3	\author{}
+It takes the name of the author.
+
+#3	\date{}
+This gives a date to the document.

@@ -1,0 +1,140 @@
+Script 47
+				BINARY TREE
+
+This is an important and basoc methode in informatic the BINARY TREE. It's a tree
+who has some brenches who has other brenches but BINARY for saying minimal 0 and
+maximal 2 brenches by nodes.
+
+By example :
+
+znew0.c :
+#include <stdio.h>
+#include <stdlib.h>
+#include "zhead.h"
+//gcc *.c -o test
+int main(void){
+    memoryTree myTree = createTreeByNode(createTreeByNode(createTree(16), createTree(14), 15), createTree(3), 22);
+    myTree = createTreeByNode(myTree, createTree(4), 6);
+        /*createTreeByNode; createTree;*/
+    showTree(myTree);
+    showNumberOfElements(myTree);
+    clearTree(myTree);
+
+    return 0;
+}
+
+====================================================
+
+znew1.c :
+#include <stdio.h>
+#include <stdlib.h>
+#include "zhead.h"
+
+memoryTree createTree(int newNumber){
+    memoryTree newTree;
+    newTree = malloc(sizeof(*newTree));
+    newTree->myInt = newNumber;
+    newTree->right = 0;
+    newTree->left = 0;
+    newTree->parent = 0;
+    printf("A new element has been created !!\n");
+    return newTree;
+}
+void clearTree(memoryTree myTree){
+    if(myTree == NULL){
+        return;
+    }
+    printf("A old element has been deleted !! [ %d ]\n", myTree->myInt);
+        clearTree(myTree->right);
+        clearTree(myTree->left);
+        free(myTree);
+}
+memoryTree createTreeByNode(memoryTree RIGHT, memoryTree LEFT, int intNew){
+    memoryTree newTree = createTree(intNew);
+    newTree->left = LEFT;
+    newTree->right = RIGHT;
+    if(RIGHT != 0){
+        RIGHT->parent = newTree;
+    }
+    if(LEFT != 0){
+        LEFT->parent = newTree;
+    }
+    return newTree;
+}
+void showTree(memoryTree myTree){
+    if(myTree == 0){
+        return;
+    }
+    
+    if(myTree->parent != 0){
+        printf("[ %d ] parent of [ %d ]\n", (myTree->parent)->myInt, myTree->myInt);
+    }
+    if(myTree->parent == 0){
+    printf("Summit [ %d ]\n", myTree->myInt);
+    }
+    showTree(myTree->right);
+    showTree(myTree->left);
+}
+void showLength(memoryTree myTree, int *length){
+    if(myTree == 0){
+        return;
+    }
+    *length += 1;
+    showLength(myTree->right, length);
+    showLength(myTree->left, length);
+}
+void showNumberOfElements(memoryTree myTree){
+int length = 0;
+    showLength(myTree, &length);
+printf("The size is [ %d ]\n", length);
+}
+
+====================================================
+
+zhead.h :
+#ifndef ZHEAD_H
+#define ZHEAD_H
+
+typedef struct tree{
+    int myInt;
+    struct tree *right;
+    struct tree *left;
+    struct tree *parent;
+}tree, *memoryTree;
+
+memoryTree createTree(int newNumber);
+void clearTree(memoryTree myTree);
+memoryTree createTreeByNode(memoryTree RIGHT, memoryTree LEFT, int intNew);
+void showTree(memoryTree myTree);
+void showNumberOfElements(memoryTree myTree);
+
+#endif
+
+====================================================
+
+Into CMD :
+C:\Users\ASUS\Desktop\zLearNC>gcc *.c -o test
+
+C:\Users\ASUS\Desktop\zLearNC>test
+A new element has been created !!
+A new element has been created !!
+A new element has been created !!
+A new element has been created !!
+A new element has been created !!
+A new element has been created !!
+A new element has been created !!
+Summit [ 6 ]
+[ 6 ] parent of [ 22 ]
+[ 22 ] parent of [ 15 ]
+[ 15 ] parent of [ 16 ]
+[ 15 ] parent of [ 14 ]
+[ 22 ] parent of [ 3 ]
+[ 6 ] parent of [ 4 ]
+The size is [ 7 ]
+A old element has been deleted !! [ 6 ]
+A old element has been deleted !! [ 22 ]
+A old element has been deleted !! [ 15 ]
+A old element has been deleted !! [ 16 ]
+A old element has been deleted !! [ 14 ]
+A old element has been deleted !! [ 3 ]
+A old element has been deleted !! [ 4 ]

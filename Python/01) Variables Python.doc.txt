@@ -1,0 +1,76 @@
+				VARIABLES
+
+#1	DECLARATION
+
+In Python making a variable is really simple because I need to writte
+just variable's name and equals the value.
+By example : 2# 
+var0 = 4;
+__newVar__ = "Salut";
+yolo = 15;
+ 2#
+
+#1	LOCAL AND GLOBAL VARIABLE
+
+All things used in the global environment can use a global variable but
+this global variable has to be declared before !!
+The functions can read the global variables also that declared before.
+But pay attention to this because it's only the reading.
+Ex : 2# 
+print(var) # Returns an error
+var = 4
+def readVar():
+  return var
+print(var, readVar())
+ 2#
+
+#3	global
+This prefix is used inside a function and it permits to allow the function
+to write the variable.
+
+Cool exemple : 2# 
+lobal_var = 14
+
+def giveALocalVariableWithSameNameThanAGlobalVariable():
+  # global Global_var # If it does it, it's an error !! Pay attention to this thing !!
+  # Warning a local variable inside a function cans have the same name then a globale
+  # variable whereas the global variable isn't called by the prefix 'global'
+  Global_var = -3738
+  return Global_var
+
+def getGlobalVar():
+  return Global_var # The function without the term global can read a global variable
+
+def setGlobalVar(n):
+  global Global_var # This prefix permits to write the variable
+  Global_var = n
+
+print("Get Global_var from global", Global_var)
+print("Get Global_var from local of getGlobalVar", Global_var)
+setGlobalVar(int(input("Set a value to Global_var by local of setGlobalVar : ")))
+print("Get Global_var from local of getGlobalVar", Global_var)
+print("Get Global_var from global", Global_var)
+print(giveALocalVariableWithSameNameThanAGlobalVariable())
+ 2#
+
+#1	CONVERSION
+
+These are four functions for giving a type of value at a variable.
+
+#4	int(), str(), bool() and float()
+
+1# int()   1# ===> For receiving an intiager number so a whole number.
+1# str()   1# ===> For receiving a string.
+1# bool()  1# ===> For receiving a booleen.
+1# float() 1# ===> For receiving a floater number.
+
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Python/new$ cat test.py 
+#coding:utf-8
+var0 = 4
+var1 = var0
+var0 = 6
+print(str(var0) + " " + str(var1))
+racteur@racteurleader:~/runPC/Codage/Python/new$ python3.8 test.py 
+6 4
+ 2#

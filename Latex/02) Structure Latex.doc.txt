@@ -1,0 +1,19 @@
+				STRUCTURE
+
+#3	\chapter{}
+#0 It isn't available with the class article.
+This function creates a chapter.
+Parameters :
+par0 => Name of chapter;
+
+#3	\section{} and \subsection{} and \subsubsection{}
+These three functions permit to create some precised sections as :
+section
+  subsection
+    subsubsection
+...
+Parameters :
+par0 => Name of the section;
+
+#3	\part{}
+This function creates a part of a document.

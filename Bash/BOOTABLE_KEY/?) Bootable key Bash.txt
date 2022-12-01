@@ -1,0 +1,83 @@
+Script 124
+				BOOTABLE KEY
+
+		LINUX TO LINUX
+
+https://www.numetopia.fr/comment-creer-une-cle-usb-bootable-sous-ubuntu/
+
+(View mount and umount.)
+
+		lsblk
+This command permits to identify the different device.
+This a little like #2 sudo fdisk -l
+
+		dd
+This is the command for bootable a key.
+#1 For bootable a key, the devide must be umount.
+Parameters :
+if=/wayOfFile/image.iso #4 Iso image.
+of=/dev/sdb (example) #4 Connection to the key.
+#0 /dev/zero ==> For reset the usb !!
+bs=4M (example) #4 Size of the block.
+status=progress #4 For viewing the work as far.
+
+		sync
+Obligates the buffers to empty itselves on the key.
+
+By example : 1// 
+racteurleader@racteurleader:~$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+loop0    7:0    0 242,6M  1 loop /snap/chromium/1421
+loop1    7:1    0 118,4M  1 loop /snap/chromium/1424
+loop2    7:2    0  97,9M  1 loop /snap/core/10444
+loop3    7:3    0 818,2M  1 loop /snap/android-studio/97
+loop4    7:4    0 818,2M  1 loop /snap/android-studio/98
+loop5    7:5    0  97,9M  1 loop /snap/core/10577
+loop6    7:6    0  55,4M  1 loop /snap/core18/1932
+loop7    7:7    0  55,4M  1 loop /snap/core18/1944
+loop8    7:8    0  61,6M  1 loop /snap/core20/875
+loop9    7:9    0  61,6M  1 loop /snap/core20/904
+loop10   7:10   0  57,4M  1 loop /snap/discord/115
+loop11   7:11   0  59,5M  1 loop /snap/discord/119
+loop12   7:12   0 162,9M  1 loop /snap/gnome-3-28-1804/145
+loop13   7:13   0  64,4M  1 loop /snap/gtk-common-themes/1513
+loop14   7:14   0  64,8M  1 loop /snap/gtk-common-themes/1514
+loop15   7:15   0   173M  1 loop /snap/spotify/43
+loop16   7:16   0  31,1M  1 loop /snap/snapd/10238
+loop17   7:17   0 169,3M  1 loop /snap/spotify/42
+loop18   7:18   0 161,4M  1 loop /snap/gnome-3-28-1804/128
+loop19   7:19   0  31,1M  1 loop /snap/snapd/10492
+loop20   7:20   0  16,3M  1 loop /snap/ubuntu-budgie-welcome/247
+loop21   7:21   0  17,6M  1 loop /snap/ubuntu-budgie-welcome/254
+loop22   7:22   0 234,4M  1 loop /snap/zoom-client/124
+loop23   7:23   0 233,8M  1 loop /snap/zoom-client/125
+sda      8:0    0 931,5G  0 disk 
+├─sda1   8:1    0   512M  0 part /boot/efi
+└─sda2   8:2    0   931G  0 part /
+sdb      8:16   1   7,5G  0 disk 
+└─sdb1   8:17   1   7,5G  0 part 
+
+#1 ========================================================
+#0 Attention, here I write just sdb and not sdb1 or sdb2 !!
+#1 ========================================================
+
+racteurleader@racteurleader:~$ sudo dd if=/home/racteurleader/Doc/Distribution/ubuntu-20.04.1-desktop-amd64.iso of=/dev/sdb bs=4M status=progress && sync
+2772434944 bytes (2,8 GB, 2,6 GiB) copied, 178 s, 15,6 MB/s
+664+0 records in
+664+0 records out
+2785017856 bytes (2,8 GB, 2,6 GiB) copied, 214,729 s, 13,0 MB/s
+racteurleader@racteurleader:~$ 
+  1//
+
+		LINUX TO WINDOWS
+
+                mkusb-nox
+
+PPA :
+sudo add-apt-repository ppa:mkusb/ppa
+
+Installation :
+sudo apt-get install mkusb mkusb-nox
+
+Utilisation :
+sudo mkusb-nox WinIso.iso

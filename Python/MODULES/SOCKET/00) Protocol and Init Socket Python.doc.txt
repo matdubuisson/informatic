@@ -1,0 +1,117 @@
+				SOCKET
+
+#2 To view : https://docs.python.org/3/library/socket.html
+
+The used library is : #5 import socket
+
+
+#1 Constants :
+0# 
+socket.AF_UNIX
+socket.AF_INET
+socket.AF_INET6
+
+socket.SOCK_STREAM
+socket.SOCK_DGRAM
+socket.SOCK_RAW
+socket.SOCK_RDM
+socket.SOCK_SEQPACKET
+ 0#
+
+#1 ========================================================
+#1 ===================    [ SERVER ]    ===================
+#1 ========================================================
+
+#4		socket()
+This functions creates and configures the server.
+This function requires only 2 parameters but
+it cans have four parameters :
+par0 => Ex : socket.AF_INET
+par1 => Ex : socket.SOCK_STREAM
+par2 => ?
+par3 => ?
+
+The function returns one result with is the
+socket of the server so :
+Ex :
+mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+#4		bind()
+This function permits to include the ip and the port
+in the server and it asks a tuple with two value :
+A string and an integer number. This function is inside
+the socket to start.
+Ex :
+CONGIF = ("127.0.0.1", 1614)
+mySocket.bind(CONFIG)
+#0 It's not "socket" mut "mySocket" here !!
+
+#4		listen()
+This function permtis to define the number of clients
+who can be connected to the server.
+Ex :
+mySocket.listen(4) # Four users can use the server in the
+                   # same time !!
+
+#4		accept()
+This function asks no parameters but it returns two
+results so it means two variables. The function is
+also included in the socket.
+Ex :
+connectionWithClient, addressOfClient = mySocket.accept()
+#0 It's not "socket" but "mySocket" here !!
+
+#4		close()		#6 ( Like os.close() )
+This function permits to close the socket so closing
+the server.
+Ex :
+socket.close(mySocket)
+
+#1 ========================================================                     
+#1 ===================    [ CLIENT ]    ===================
+#1 ========================================================
+
+#4		socket()
+Same thing like the server.
+Ex :
+socketOfServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+#4		connect()
+This function playes the same work than [ bind() ] for
+the server. This doens't return results but it takes
+a tuple with a string and an integer number.
+Ex :
+CONFIG = ("127.0.0.1", 1614)
+socketOfServer.connect(CONFIG)
+#0 It's not "socket" mut "socketOfServer" here !!
+
+#1 ========================================================
+#1 ==============    [ SERVER / CLIENT ]    ===============
+#1 ========================================================
+
+#4		send()		#6 with encode()
+This function takes in parameters the encoded data.
+This is a special function who takes the bytes of
+a data thanks to the function [ encode() ].
+#0 This function cans not work with UDP socket !!
+Ex :
+data = "Yolo !!"
+mySocket.send(data.encode())
+
+#0 The function is included in the socket.
+
+#4		recv()		#6 with decode()
+This functions takes one parameters who is the size
+of the data in bites.
+This function workes with [ send() ] and asks as
+parameter the byte size of the data to receive.
+The function returns a byte data who has to be
+decoded with [ decode() ].
+#0 This function cans not work with UDP socket !!
+Ex :
+# 1024 is the size of a simple chain of character.
+byteData = socketOfServer.recv(1024)
+data = byteData.decode()
+print(data) # so : data = "Yolo !!"
+
+#0 The function is included in the socket.

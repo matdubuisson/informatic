@@ -1,0 +1,57 @@
+				GENERIC CLASS
+
+Keyword :
+3# this 3# => Refers to the attributes of the instance (non-static variables);
+3# <> 3# => To design the variable attribute types;
+
+Syntax of a generic class : 5# 
+class Name<specifiedTypes>{
+    // Definitions of the different attributes according to the specifiedTypes
+    Name(/* Arguments according to the specified types */){
+        // Makes attributes with the key word this
+    }
+}
+ 5#
+
+GenericClass : 2// 
+class Pair{
+    String name;
+    int age;
+    public Pair(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+}
+
+class ImprovedPair<LeftType, RightType>{
+    LeftType left;
+    RightType right;
+    public ImprovedPair(LeftType leftData, RightType rightData){
+        this.left = leftData;
+        this.right = rightData;
+    }
+}
+
+public class GenericClass{
+    public static void main(String[] args){
+        Pair p = new Pair("Racteur", 19);
+        System.out.println(p.name + " " + p.age);
+        // p = new Pair(16, 14); => Rejected at the compilation !!
+        ImprovedPair<Integer, Integer> ip0 = new ImprovedPair<Integer, Integer>(16, 14);
+        System.out.println(ip0.left + " " + ip0.right);
+        ImprovedPair<String, String> ip1 = new ImprovedPair<String, String>("Yolo !!", "Joe");
+        System.out.println(ip1.left + " " + ip1.right);
+        ImprovedPair<Integer, Character> ip2 = new ImprovedPair<Integer, Character>(30, '!');
+        System.out.println(ip2.left + " " + ip2.right);
+    }
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_10$ javac GenericClass.java 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_10$ java GenericClass 
+Racteur 19
+16 14
+Yolo !! Joe
+30 !
+ 2#

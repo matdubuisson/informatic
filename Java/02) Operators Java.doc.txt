@@ -1,0 +1,366 @@
+					OPERATORS
+
+#1		UNARY OPERATORS
+
+List :
+3# i++, i-- 3# => Postfix incrementation;
+3# ++i, --i 3# => Prefix incrementation;
+
+UnaryOperators.java : 2// 
+public class UnaryOperators{
+    static final int limit = 3;
+    public static void main(String[] args){
+        // Unary operators :
+        int i, j;
+        for(i = j = limit; i >= 0; i--, --j){
+            System.out.println("i : "+ i +"\nj : " + j);
+        }
+        i = j = 0;
+        int test;
+        test = i++; // Postfix
+        System.out.println("Has old value of i : " + test);
+        test = ++j; // Prefix
+        System.out.println("Has new value of j : " + test);
+        System.out.println("i : " + i + "\nj : " + j);
+ 
+        i = 0;
+        test = +i;
+        System.out.println("Test : " + test + "\ni : " + i);
+    }
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ javac UnaryOperators.java 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ java UnaryOperators 
+i : 3
+j : 3
+i : 2
+j : 2
+i : 1
+j : 1
+i : 0
+j : 0
+Has old value of i : 0
+Has new value of j : 1
+i : 1
+j : 1
+Test : 0
+i : 0
+ 2#
+
+#1		ARITHMETIC OPERATORS
+
+List :
+3# + 3# => Addition;
+3# - 3# => Subtraction;
+3# * 3# => Multiplication;
+3# / 3# => Division;
+3# % 3# => Modulo;
+
+ArithmeticOperators.java : 2// 
+public class ArithmeticOperators{                                                    
+    static final int limit = 3;                                                      
+    public static void main(String[] args){                                          
+        // Arithmetic operators :                                                    
+        int a = 10;                                                                  
+        System.out.println(a + 4);                                                   
+        System.out.println(a - 4);                                                   
+        System.out.println(a * limit);                                               
+        System.out.println(a / limit);                                               
+        System.out.println("Division : " + (int) a / limit + " Rest : " + a % limit);
+    }                                                                                
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ javac ArithmeticOperators.java && java ArithmeticOperators 
+14
+6
+30
+3
+Division : 3 Rest : 1
+ 2#
+
+#1		CONDITIONAL OPERATORS
+
+List :
+3# == 3# => Equality;
+3# != 3# => Non-equality;
+3# <  3# => Inferiority;
+3# <= 3# => Inferiority or equality;
+3# >  3# => Superiority;
+3# >= 3# => Superiority or equality;
+3# instanceof 3# => Check if is intance of a class object;
+
+ConditionalOperators.java : 2// 
+public class ConditionalOperators{
+    public static void main(String[] args){
+        // Conditional operators :
+        System.out.println(4 == 4);
+        System.out.println(4 == 3);
+        System.out.println(4 != 4);
+        System.out.println(4 != 3);
+        System.out.println(4 <= 4);
+        System.out.println(4 <= 3);
+        System.out.println(4 >= 4);
+        System.out.println(4 >= 3);
+        System.out.println(4 > 3);
+        System.out.println(4 < 3);
+    }
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ javac ConditionalOperators.java 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ java ConditionalOperators 
+true
+false
+false
+true
+true
+false
+true
+true
+true
+false
+ 2#
+
+#1		LOGICAL OPERATORS
+
+List :
+3# !  3# => NOT logical;
+3# && 3# => AND logical;
+3# || 3# => OR logical;
+
+LogicalOperators.java : 2// 
+public class LogicalOperators{    
+    public static void main(String[] args){            
+        // Conditional operators :
+        System.out.println(!true);
+        System.out.println(!!true);                    
+        System.out.println(true || false);             
+        System.out.println(false || false);            
+        System.out.println(true && false);             
+        System.out.println(true && true);              
+        System.out.println(!false && true);            
+        System.out.println(!false || false);           
+        System.out.println("===============");         
+        /*
+        Not permitted in Java, in C it's possible !!
+        int test = 14;            
+        System.out.println(!test);
+        System.out.println(!test);
+        */
+    }   
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ java LogicalOperators 
+false
+true
+true
+false
+false
+true
+true
+true
+===============
+ 2#
+
+#1		BINARY OPERATORS
+
+List :
+3# & 3# => Bitwise AND;
+3# | 3# => Bitwise OR;
+3# ^ 3# => Bitwise XOR;
+3# ~ 3# => Bitwise NOT;
+3# >> 3# => Bitwise right-shift;
+3# << 3# => Bitwise left-shift;
+3# >>> 3# => ?(Not in C, proper to Java);
+
+BinaryOperators.java : 2// 
+public class BinaryOperators{             
+    public static void main(String[] args){                           
+        // Binary operators :             
+        System.out.println((1 & 1) + " " + (1 & 0) + " " + (0 & 1) + " " + (0 & 0));
+        System.out.println((1 | 1) + " " + (1 | 0) + " " + (0 | 1) + " " + (0 | 0));
+        System.out.println((1 ^ 1) + " " + (1 ^ 0) + " " + (0 ^ 1) + " " + (0 ^ 0));
+                                          
+        // 0001 << 1 = 0010           0001 << 3 = 1000                
+        System.out.println((1 << 1) + " " + (1 << 3));                
+        // 0010 >> 1 = 0001           1000 >> 3 = 0001                
+        System.out.println((2 >> 1) + " " + (8 >> 3));                
+        // ~ 00001000 = 11110111 = 1 + 2 + 4 + 16 + 32 + 64 - 128 = -9
+        byte bnbr = 8; // Reverse all bits
+        System.out.println((~ 8));        
+    }                                     
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ javac BinaryOperators.java && java BinaryOperators 
+1 0 0 0
+1 1 1 0
+0 1 1 0
+2 8
+1 1
+-9
+ 2#
+
+#1		ASSIGNMENT OPERATORS
+
+List :
+3# =  3# => Affectation of value;
+3# += -= *= /= %= 3# => Arithmetic affectation;
+3# &= |= ^= >>= <<= >>>= 3# => Binary affectation;
+
+#1		TERNARY OPERATORS
+
+3# ? 3# => IF;
+3# : 3# => ELSE;
+
+TernaryOperators.java : 2// 
+public class TernaryOperators{
+    public static String answer(String msg){
+        return msg.compareTo("test") == 0 ? "This is a test !!" : msg.compareTo("retest") == 0 ? "This is a new test !!" : "This isn't a test !!";
+    }          
+               
+    public static void main(String[] args){ 
+        // Ternary operators :
+        int test = 1;
+        test = test == 1 ? 0 : 2;
+        System.out.println(test);
+        test = test == 1 ? 0 : 5;
+        System.out.println(test);
+               
+        System.out.println(answer("test")); 
+        System.out.println(answer("retest"));                       
+        System.out.println(answer("yolo")); 
+   }           
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ javac TernaryOperators.java 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ java TernaryOperators 
+0
+5
+This is a test !!
+This is a new test !!
+This isn't a test !!
+ 2#
+
+#1		CASTING OPERATORS
+
+#0 For objects : Can cast from parent to child pointer but cannot cast from child to parent;
+
+Operator :
+3# (newType) pointer 3# => This operator changes the type of pointer in "newType";
+
+CastingOperators : 2// 
+class Parent{
+    public void parentYolo(){
+        System.out.println("Yolo from parent !!");
+    }
+    public void test(){
+        System.out.println("!! TEST OF PARENT !!");
+    }
+}
+
+class Child extends Parent{
+    public void childYolo(){
+        System.out.println("Yolo from child !!");
+    }
+    @Override
+    public void test(){
+        System.out.println("!! RETEST OF CHILD !!");
+    }
+}
+
+public class CastingOperators{
+    public static void main(String[] args){
+        // Changes data types
+        int value = (int) ' ';
+        char chr = (char) 33;
+        System.out.println(value + " " + chr);
+        // Casting for objects
+        {
+            Child c = new Child();
+            c.parentYolo();
+            c.childYolo();
+            c.test();
+        }
+        System.out.println("===================");
+        {
+            Parent p = new Child();
+            p.parentYolo();
+            // p.childYolo(); // => Not allowed because typed of Parent
+            p.test();
+            Child c = (Child) p;
+            c.parentYolo();
+            c.childYolo(); // But allowed after Child casting
+            c.test();
+        }
+    }
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ javac CastingOperators.java 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ java CastingOperators 
+32 !
+Yolo from parent !!
+Yolo from child !!
+!! RETEST OF CHILD !!
+===================
+Yolo from parent !!
+!! RETEST OF CHILD !!
+Yolo from parent !!
+Yolo from child !!
+!! RETEST OF CHILD !!
+ 2#
+
+#1		SCOPE OPERATORS
+
+Operator :
+3# {} 3# => Inside the brackets it's a new scope area;
+
+ScopeOperators : 2// 
+public class ScopeOperators{
+    public static void main(String[] args){
+        int a = 14;
+        System.out.println(a);
+        {
+            int b = 16;
+            //int a; => ERROR
+            System.out.println(b);
+            a += b;
+            System.out.println(a);
+        }
+        {
+            int b = 30;
+            //int a; => ERROR
+            System.out.println(b);
+            {
+                int c = 16;
+                System.out.println(a + b + c);
+                //int a; => ERROR
+            }
+        }
+        //System.out.println(b); => ERROR
+        //System.out.println(c); => ERROR
+    }
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ javac ScopeOperators.java 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_02$ java ScopeOperators 
+14
+16
+30
+30
+76
+ 2#

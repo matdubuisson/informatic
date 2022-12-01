@@ -1,0 +1,8 @@
+Script 119
+				TIME
+
+Library : #include <unistd.h>
+
+		USLEEP()
+Parameter :
+par0 ==> Time intinger where 1 second = 1000000;

@@ -1,0 +1,3 @@
+				INSTALLATION
+
+It's a default module of python so no need to process at some installations :-) !!

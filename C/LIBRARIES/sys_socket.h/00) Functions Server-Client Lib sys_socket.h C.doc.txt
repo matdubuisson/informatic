@@ -1,0 +1,87 @@
+				SERVER
+
+#0 Principal library : <sys/socket.h>
+
+#1		COMMON FUNTIONS
+
+#4	socket()
+This function permits to create a socket returned in shape of file descriptor;
+Parameters :
+par0 => 
+par1 => 
+par2 => 
+
+#5	struct sockaddr_in
+
+This structure permits to set a targeted address, type of connection, ip and port;
+Needs : inet_addr() and htons() from libraries #0 <arpa/inet.h> and <netinet/in.h>
+
+Small example : 2# 
+struct sockaddr_in address;
+address.sin_family = AF_INET;
+address.sin_addr.s_addr = inet_addr(_IP);
+address.sin_port = htons(_PORT);
+ 2#
+
+#4	close()
+#0 <unistd.h>
+This function closes the file descriptor;
+
+#4	shutdown()
+This function permits to close all waiting send() and recv();
+Parameters :
+par0 => The socket fd;
+par1 => Closing flag;
+Flags :
+3# SHUT_RDWR 3# => Shutdown reading and writing;
+3# SHUT_RD 3# => Shutdown only reading;
+3# SHUT_WR 3# => Shutdown only writing;
+
+#4	recv()
+This function permits to receive a message from a distant peer;
+Parameters :
+par0 => Distant peer socket fd;
+par1 => Buffer address (first character);
+par2 => Size of buffer;
+par3 => Flag;
+
+#4	send()
+This function permits to send a message to a distant peer;
+Parameters :
+par0 => Distant peer socket fd;
+par1 => Buffer address (first character);
+par2 => Size of buffer;
+par3 => Flag;
+
+#1		SERVER FUNCTIONS
+
+#4	bind()
+This function binds the server socket with the targeted address;
+Parameters :
+par0 => Server socket fd;
+par1 => A casting (struct sockaddr*) of sockaddr_in instance address;
+par2 => Size of sockaddr_in instance;
+
+#4	listen()
+This function starts the listening of the server;
+Parameters :
+par0 => Server socket fd;
+par1 => Maximal count of listened clients;
+
+#4	accept()
+Need to have created before a 'struct sockaddr_in client_address;';
+This function accepts a new client and returns its socket fd;
+Parameters :
+par0 => Server socket fd;
+par1 => A casting (struct sockaddr*) of client_address address;
+par2 => A casting (socklen_t *) of a variable address. This variable
+contains the size of client_address;
+
+#1		CLIENT FUNCTIONS
+
+#4	connect
+This function permtis to establish the connection with a server;
+Parameters :
+par0 => Socket fd;
+par1 => A casting (struct sockaddr*) of sockaddr_in instance address;
+par2 => Size of sockaddr_in instance;

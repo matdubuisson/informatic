@@ -1,0 +1,77 @@
+				PRICIPAL TAGS
+
+#1		FOR HEAD ABOUT TEXT
+
+#0	<title></title>
+This tag permits to write a title for the web page.
+
+#0	<meta charset="utf-8">
+This solo tag defines the font type of the page.
+Parameters :
+5# charset="" 5# :
+3# utf-8 3#
+5# name="" 5# :
+3# description 3# => Write a small description of the page;
+3# keywords 3# => Key words for the research with the navigator;
+3# author 3# => Write the author of the page;
+5# content="" 5# : #0 Associed with name !!
+=> Small personalised description;
+
+For example in info.html : 2# 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="This is an example for my personal notes !!">
+    <meta name="author" content="Anonymous">
+    <meta name="keywords" content="site, pourri, null">
+  </head>
+  <body>
+  <p> Yolo !! </p>
+  </body>
+</html>
+ 2#
+
+#1		FOR BODY ABOUT TEXT
+
+#5	Change style of the tags
+The parameter style permits to draw differently the tags.
+For example it's : #2 <p style="color:blue;background-color:yellow"> TEXT </p>
+In fact between the dashes, it's CSS code for the style.
+See the part of notes dedied to the CSS language !!
+
+#0	<p></p>
+This tag permits to write text on the web. It can take many properties !!
+
+#0	<h1></h1> unti <h5></h5>
+These tags create sections :
+<h1> => First level;
+<h2> => Second level;
+<...> => ....;
+
+#5	Special tags :
+3# <br> 3# => Write "\n";
+3# <b></b> or <strong>  3# => Bolt text;
+3# <i></i> or <em> 3# => Italic text;
+3# <sub></sub> 3# => Make the take as hint;
+3# <sup></sup> 3# => Make text as exponant;
+3# <mark></mark> 3# => Underline the text;
+
+For example in text.html : 2# 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> A single title !! Yolo !! </title>
+  </head>
+
+  <body>
+    <p>Test<sup> A sentence !!</sup> RETEST <b> Hey salut !! </b> Test <i> Yolo !! </i></p>
+    <p>TEST<sub>abcdef</sub></p>
+    <p><mark>Underlined sentence !!</mark></p>
+
+    <h0>Section 0</h0>
+    <p>test</p>
+
+  </body>
+</html>
+ 2#

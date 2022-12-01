@@ -1,0 +1,123 @@
+				MODIFICATION
+
+#1		COPYING
+
+#4	strcpy(<chr0>, <chr1>)
+
+Copies the contain of chr1 in chr0 and returns the address of chr0.
+
+#4	strcpy(<chr0>, <chr1>, <size>)
+
+Same thing but it doesn't pass the limit 'size'.
+
+strcpy.c : 2// 
+#include <stdio.h>
+#include <string.h>
+
+#define size 40
+#define show printf("%s <=> %s\n%ld <=> %ld\n", str0, str1, strlen(str0), strlen(str1))
+
+void init(unsigned char *str){
+    static unsigned int i;
+    for(i = 0; i < size - 1; i++){
+        *(str + i) = 33; // '!'
+    }
+    *(str + i) = 0; // Important !!
+    return;
+}
+
+unsigned int main(void){
+
+    unsigned char str0[size];
+    unsigned char str1[size];
+
+    init(str0); init(str1);
+    show;
+
+    strcpy(str0, "Racteur");
+    show;
+    strcpy(str1, str0);
+    show;
+    strcpy(str0, "Computer Science is so cool !!");
+    show;
+
+    unsigned char str2[size - 10];
+    // Versus strcpy(), strncpy() can avoid the overtaking of copying
+    strncpy(str2, str0, sizeof(unsigned char) * (size - 10));
+    show;
+    printf("==> %*s\n", size - 10, str2);
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/6_STRING/EXAMPLE$ ./prog 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! <=> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+39 <=> 39
+Racteur <=> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+7 <=> 39
+Racteur <=> Racteur
+7 <=> 7
+Computer Science is so cool !! <=> Racteur
+30 <=> 7
+Computer Science is so cool !! <=> Racteur
+30 <=> 7
+==> Computer Science is so cool !!
+ 2//
+
+#1		CONCATING
+
+#4	strcat(<chr0>, <chr1>)
+
+Adds the contain of chr1 in the end of chr0.
+
+#4	strncat(<chr0>, <chr1>, <size>)
+
+Same thing and doesn't pass the limit 'size'.
+
+strcat.c : 2// 
+#include <stdio.h>
+#include <string.h>
+
+#define size 100
+#define show printf("=> %s\n=> %s\n=> %s\n", str0, str1, str2);
+
+unsigned int main(void){
+
+    unsigned char str0[size];
+    unsigned char str1[size];
+    unsigned char str2[size];
+
+    strncpy(str0, "Bonsoir ", sizeof(unsigned char) * size);
+    strncpy(str1, "Racteur ", sizeof(unsigned char) * size);
+    strncpy(str2, "==> ", sizeof(unsigned char) * size);
+    show
+
+    strcat(str2, str0);
+    strcat(str2, str1);
+    show
+
+    strcat(str0, strcat(str0, str2));
+    //strcat(str0, strcat(str0, str0)); // Produce : Segmentation fault (core dumped)
+    show
+
+    // So there is a way to avoid the memory overtaking
+    strncat(str0, strncat(str0, str0, sizeof(unsigned char) * size), sizeof(unsigned char) * size); // Does nothing because it overtakes the limit
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/6_STRING/EXAMPLE$ gcc strcat.c -o prog && ./prog 
+=> Bonsoir 
+=> Racteur 
+=> ==> 
+=> Bonsoir 
+=> Racteur 
+=> ==> Bonsoir Racteur 
+=> Bonsoir ==> Bonsoir Racteur Bonsoir ==> Bonsoir Racteur 
+=> Racteur 
+=> ==> Bonsoir Racteur
+ 2//

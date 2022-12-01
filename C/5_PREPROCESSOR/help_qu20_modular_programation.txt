@@ -1,0 +1,32 @@
+Que20 — Aujourd’hui à 16:54
+Fout la définition dans ton .h et tu verras que ton warning disparaitra
+le compilateur là ne te dit pas qu'il y a une erreur mais en gros que tu utilises une fonction dont il ne trouve pas la déclaration
+mais c'est un warning, pas une erreur de compilation
+Racteur — Aujourd’hui à 16:55
+A ok merci, mais donc si j'ai bien compris :
+Si mon compilateur n'est pas informé il peut quand même compiler mais il y a un risque de problèmes. Donc la bonne pratique est de toujours de mettre le "mode d'emploi" dans le header informant le compilateur au cas où.
+Que20 — Aujourd’hui à 16:55
+Par contre comme dit, il y a une option qui permet de dire "considère un warning comme une erreur"
+Et dans ce cas là ça sera bloquant
+Racteur — Aujourd’hui à 16:55
+A je vais l'utiliser
+Ca m'évitera les bétises
+Que20 — Aujourd’hui à 16:56
+Disons qu'il sera incapable de te dire "ouais attention là ce paramètre là tu demandes une string et là tu passes un int"
+parce qu'il se réfère à la définition
+Racteur — Aujourd’hui à 16:56
+A ok c'est pour ça, donc si je mets n'importe quoi comme paramètre le programme va bugger et je ne pourrais pas savoir pourquoi
+Que20 — Aujourd’hui à 16:57
+Il ne va pas bugger mais il va te dire "tu passes pas le bon type"
+Sauf que pour savoir quel type tu passes, c'est la définition de la fonction qui le permet
+Mais ça provoque un warning, pas une erreur de compilation (du moins si la fonction existe)
+Racteur — Aujourd’hui à 16:57
+Ok, alors c'est vraiment une information pour les erreurs
+Ok je commence à comprendre
+Que20 — Aujourd’hui à 16:58
+Les arguments, la valeur de retour etc
+C'est un mode d'emploi quoi
+(pour le compilateur)
+Racteur — Aujourd’hui à 16:58
+A ok super merci
+Et dernière chose, avec le header on compile toujours sous la forme : gcc *.c -o prog

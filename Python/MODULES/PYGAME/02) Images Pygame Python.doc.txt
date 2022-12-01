@@ -1,0 +1,23 @@
+				IMAGES
+
+#0 It needs a flip()
+#0 window_config = display.set_mode((400, 400), RESIZABLE)
+
+#1		IMAGE
+#5	image
+This is the key for the images.
+
+#4	image.load()
+This function permits to load an image and returns
+a new surface so a config in a variable.
+So :
+#0 image_config = image.load("img.jpg")
+
+#4	image_config.convert()
+This function permits to convert the format of pixels.
+
+#4	window_config.blit()
+This function permits to affich an image.
+Parameters :
+par0 => image_config
+par1 => position : [ x, y ]

@@ -1,0 +1,44 @@
+				ARITHMETIC OPERATOR
+
+#1		ARITHMETIC OPERATORS
+#2	The operators
+There are five operators :
+3# + 3# => Addition
+3# - 3# => Soustraction
+3# * 3# => Multiplication
+3# / 3# => Division
+3# % 3# => Modulo so returns the rest of an integer division
+
+#2	Priority
+The operators of multiplication and division have the priority on
+the addition and the soustraction. Else the compilator reads the
+lines from the left to the right.
+Ex : 1// 
+2 * 4 + 5; // = (2 * 4) + 5 = 5 + 4 * 2
+2 * 5 / 6; // = (2 * 5) / 6
+5 - 4 - 3 + 6; // = ((5 - 4) - 3) + 6
+ 1//
+
+#2	Unary operation
+This permits to get the value of a variable of the opposite.
+Ex : 1// 
+int e = 4, a;
+a = +e; // same thing than : a = e;
+a = -e;
+ 1//
+
+#2
+
+#1		EXPOSANT
+For writing an exposant in C, it needs to write a letter [ e or E ] next to
+the number of the left and on the right of the number to put the power of the
+exposant. By example :
+2e10 = 2^10
+4E-11 = 4^-11
+
+There is an other letter that attaches the power on the right... It's the
+letter [ f ]. In fact, this permirts to change the power number in #1 float
+at the place of 1# double 1# so it takes less of memory but it loses a
+few of precision. Ex :
+2e10f = 2^10
+4E-11f = 4^-11

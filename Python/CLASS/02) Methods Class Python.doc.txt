@@ -1,0 +1,119 @@
+				METHODS
+
+The methods can be public or private thanks to the same manner than the  
+attributs. It consists to add 0# __ 0# in front of the name of the 
+method.
+
+#1		METHODS OF INSTANCE
+
+These methods are the different methods of an instance of a class.
+This is simple to declare a method. In fact, a method is a kind of
+function that always takes a first parameter, the object self.
+So a method has always a minimal parameter as [ def name(self) ].
+When it calls the method it does it [ instance.method() ] that is
+as [ method(instance) ] but Python does it automatically.
+
+Else a function cans have different arguments, if I do :
+instance.method(14, "name", args, ...)
+It's as :
+method(instance, 14, "name", args, ...)
+
+The private methods can be only called inside the class (by other
+methods in the class).
+
+For example : 2# 
+class BankAccount:
+  __id = 0
+  def __init__(self, name="Anonymous", money=0, code="00000000"):
+    self.name = name
+    self.__money = money
+    self.__code = code
+    self.__id = Test.__id
+    Test.__id += 1
+
+  def __get_code(self):
+    return self.code
+
+  def add_money(self, count=0):
+    self.__money += count
+
+  def take_money(self, count=0, code=None):
+    if code != None:
+      if code == self.__get_code() and self.__money >= count:
+        self.__money -= count
+        return count
+    return "Bad password !!"
+
+  def print_money(self, code=None):
+    if code == self.__get_code():
+      print(self.__money)
+    else:
+      print("The code is wrong for {0}...".format(self.name))
+
+linux = BankAccount("Linux", 140000, "Nunux")
+
+windows = BankAccount("Windows", 1000000, "Microsoft")
+
+try:
+  linux.__get_code()
+except:
+  print("You cansn't tap into the code of linux !!")
+
+linux.print_money("Nunux")
+linux.add_money(123634)
+linux.print_money("Nunux")
+
+windows.print_money("?!")
+
+print(linux.take_money(30000, "Nunux"))
+print(linux.take_money(30000, "abcdefg"))
+ 2#
+
+Into the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/CLASS/EXAMPLE$ python3 methods.py 
+You cansn't tap into the code of linux !!
+140000
+263634
+The code is wrong for Windows...
+30000
+Bad password !!
+ 2//
+
+#1		METHODS OF CLASS
+
+The principe is the same :
+The method of the class takes a default first parameter that is the class itself
+and it is declared as a normal method. By convention the first parameter is called
+0# cls 0#.
+
+There is just one important difference. The class method needs to have a special
+token above to be defined : 0# @classmethod 0#
+
+For example : 2# 
+class Test:
+  msg = "Yolo !!"
+  @classmethod
+  def print_message_from_class(cls):
+    print("From class :", cls.msg)
+
+  def print_message_from_instance(self):
+    print("From instance :", Test.msg)
+
+Test.print_message_from_class()
+
+instance = Test()
+instance.print_message_from_instance()
+
+try:
+  Test.print_message_from_instance()
+  instance.print_message_from_class()
+except:
+  print("It isn't allowed to do it !!")
+ 2#
+
+Into the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/CLASS/EXAMPLE$ python3 methods2.py 
+From class : Yolo !!
+From instance : Yolo !!
+It isn't allowed to do it !!
+ 2//

@@ -1,0 +1,24 @@
+				TEXT
+
+#3	\section{} and \subsection{}
+These commands permits to create some named sections.
+A section cans contain text and subsections.
+Their parameter is the name of the section.
+
+#3	\label{}
+This creates an area of text (it is invisble on the document)
+that permits to contain somethings.
+Its argument is the name of this label.
+
+#3	\ref{}
+This references to an object. The parameter is the name of
+the object.
+
+#3	\pageref{}
+This references to a page. The parameter is the name of
+the page.
+
+#3	\textcolor{}
+#0 Package : xcolor
+This function colors a line of text and takes in parameter an
+english colour.

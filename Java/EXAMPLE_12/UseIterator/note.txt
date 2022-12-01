@@ -1,0 +1,11 @@
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_12/UseIterator$ jar cvfe UseIterator.jar UseIterator UseIterator.class 
+added manifest
+adding: UseIterator.class(in = 984) (out= 613)(deflated 37%)
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_12/UseIterator$ java -jar UseIterator.jar 
+Starting....
+Joe
+Racteur
+Bob Lenon
+Ibisibou
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_12/UseIterator$ nano UseIterator.jar 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_12/UseIterator$ touch note.txt

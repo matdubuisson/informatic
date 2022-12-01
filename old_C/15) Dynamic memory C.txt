@@ -1,0 +1,208 @@
+Script 41
+
+				DYNAMIC MEMORY
+
+=================================================
+
+				<STDLIB.H>
+
+		SIZEOF()
+
+A simple function who calculs the value in octet from a declarer like INT.
+By example :
+sizeof(int); /* = A number who says the octets number. */
+
+------------------------------------------------------
+
+		MALLOC() AND FREE()
+
+This function MALLOC() permits to attribute a octet place at an array who
+takes a values during the execution of the program. After MALLOC I need to
+use the function FREE() who fixes the place, this function lies after tis
+MALLOC() and this takes only array's sticker (=Etiquette.).
+
+new1.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+    
+    int numberPlayer;
+    int *arrayPlayer;
+    
+    printf("How many are there players into the list ? ");
+    scanf("%d", &numberPlayer);
+    arrayPlayer = malloc(sizeof(int) * numberPlayer);
+    free(arrayPlayer);
+    
+    if(numberPlayer >= 0){
+    int a;
+    for(a = 0; a < numberPlayer; a++){
+        arrayPlayer[a] = a * -1;
+        printf("Player[%d] has the place : %d \n", a, arrayPlayer[a]);
+    }
+    for(a = 0; a < numberPlayer; a++){
+        printf("[%d] ", arrayPlayer[a]);
+    }
+    }
+    
+    return 0;
+}
+
+Into CMD :
+
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+How many are there players into the list ? 15
+Player[0] has the place : 0
+Player[1] has the place : -1
+Player[2] has the place : -2
+Player[3] has the place : -3
+Player[4] has the place : -4
+Player[5] has the place : -5
+Player[6] has the place : -6
+Player[7] has the place : -7
+Player[8] has the place : -8
+Player[9] has the place : -9
+Player[10] has the place : -10
+Player[11] has the place : -11
+Player[12] has the place : -12
+Player[13] has the place : -13
+Player[14] has the place : -14
+[0] [-1] [-2] [-3] [-4] [-5] [-6] [-7] [-8] [-9] [-10] [-11] [-12] [-13] [-14]
+
+FREE() is used for saying that the dynamic array is not still employed.
+------------------------------------------------------
+
+		CALLOC() (WITHOUT FREE() !!)
+
+This command permits to initialize some memory places at 0 when I can make
+malloc() without defining the values. For not having some new memory places
+who the default value (0) or a value already defined.
+
+new1.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+    
+    int numberPlayer;
+    int *arrayPlayer;
+    
+    printf("How many are there players into the list ? ");
+    scanf("%d", &numberPlayer);
+    arrayPlayer = calloc(numberPlayer , sizeof(int));
+    
+    if(numberPlayer >= 0){
+    int a;
+    for(a = 0; a < numberPlayer; a++){
+        printf("[%d] ", arrayPlayer[a]);
+    }
+    }
+    
+    return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+How many are there players into the list ? 7
+[9780896] [9776744] [0] [0] [0] [0] [0]
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+How many are there players into the list ? 5
+[0] [0] [0] [0] [0]
+C:\Users\ASUS\Desktop\learnC>test
+How many are there players into the list ? 84
+[0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0]
+[0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0]
+[0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0]
+[0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0]
+[0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0]
+[0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0] [0]
+
+------------------------------------------------------
+
+		REALLOC()
+
+This function permits to redefine a malloc() who has a free() of
+being realloc in the memory for changing the place and the values
+in the even malloc.
+
+new1.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+void chooseNumber(int *newNumberPlayer){
+    printf("How many are there players into the list ? ");
+    scanf("%d", &(*newNumberPlayer));
+}
+
+int main(void){
+    
+    int numberPlayer;
+    int *arrayPlayer;
+
+    chooseNumber(&numberPlayer);
+
+    arrayPlayer = malloc(sizeof(int) * numberPlayer);
+    free(arrayPlayer);
+    
+    if(numberPlayer >= 0){
+    int a;
+    for(a = 0; a < numberPlayer; a++){
+        arrayPlayer[a] = a * -1;
+        printf("Player[%d] has the place : %d \n", a, arrayPlayer[a]);
+    }
+    for(a = 0; a < numberPlayer; a++){
+        printf("[%d] ", arrayPlayer[a]);
+    }
+    }
+    
+    printf("\n=============================\n");
+    realloc(arrayPlayer, numberPlayer * sizeof(int));
+    
+    chooseNumber(&numberPlayer);
+    
+    if(numberPlayer >= 0){
+    int a;
+    for(a = 0; a < numberPlayer; a++){
+        arrayPlayer[a] = a * -1;
+        printf("Player[%d] has the place : %d \n", a, arrayPlayer[a]);
+    }
+    for(a = 0; a < numberPlayer; a++){
+        printf("[%d] ", arrayPlayer[a]);
+    }
+    }
+    
+    return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+How many are there players into the list ? 4
+Player[0] has the place : 0
+Player[1] has the place : -1
+Player[2] has the place : -2
+Player[3] has the place : -3
+[0] [-1] [-2] [-3]
+=============================
+How many are there players into the list ? 10
+Player[0] has the place : 0
+Player[1] has the place : -1
+Player[2] has the place : -2
+Player[3] has the place : -3
+Player[4] has the place : -4
+Player[5] has the place : -5
+Player[6] has the place : -6
+Player[7] has the place : -7
+Player[8] has the place : -8
+Player[9] has the place : -9
+[0] [-1] [-2] [-3] [-4] [-5] [-6] [-7] [-8] [-9]
+
+=================================================

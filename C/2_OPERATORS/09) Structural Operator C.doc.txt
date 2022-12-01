@@ -1,0 +1,40 @@
+				STRUCTURAL
+
+#1		STRUCTURAL OPERATOR
+#2	Operators
+There are two operators :
+3# .  3# => It permits to access to a data of a structure;
+3# -> 3# => It permits the same action than the previous
+operator but it's for a pointer on a structure;
+
+By example :
+
+structuralOperator.c : 2// 
+#include <stdio.h>
+
+struct lotOfDatas{
+  unsigned char ue;
+  signed char e;
+};
+
+void printStructure(void *myStruct){
+  struct lotOfDatas *pointer = myStruct;
+  printf("E = %d; UE = %d\n", pointer->e, pointer->ue);
+  // Use the "->" as it's a pointer on the structure
+}
+
+int main(void){
+  struct lotOfDatas ld;
+  ld.e = -128; // Use the "." as it's point directly on the structure
+  ld.ue = 255;
+
+  printStructure(&ld);
+
+  return 0;
+}
+ 2//
+
+Into the console : 2# 
+racteur@racteurleader:~/Documents/informatic/C/OPERATOR/EXAMPLE$ gcc structuralOperator.c -o prog && ./prog 
+E = -128; UE = 255
+ 2#

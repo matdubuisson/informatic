@@ -1,0 +1,38 @@
+				IDS
+
+#5	Syntax of an id in CSS
+The declarer is a '#'.
+Syntax : 5# 
+#name{
+    /* Contain */
+}
+ 5#
+
+#3	id=""
+This attribute gives an id to an element.
+An element can have ONLY ONE SINGLE id !!
+
+ids.html : 0# 
+<!DOCTYPE html>                                                           
+<html>                                                                    
+<head>                                                                    
+    <meta charset="utf-8">                                                
+    <meta name="author" content="Racteur">                                
+</head>                                                                   
+<body>                                                                    
+    <style>                                                               
+        #acolor{                                                          
+            color:blue;                                                   
+        }                                                                 
+        #bcolor{                                                          
+            text-align:center;                                            
+            background-color:yellow;                                      
+        }                                                                 
+    </style>                                                              
+                                                                          
+    <p id="acolor">TEST acolor</p>                                        
+    <!-- The next line isn't permitted, an element can have only one id !! -->
+    <p id="acolor bcolor">TEST acolor with bcolor</p>                     
+</body>                                                                   
+</html>
+ 0#

@@ -1,0 +1,87 @@
+				CONDITION
+
+#1		OPERATORS
+
+#3	Options
+Syntax : [ -option val ]
+-n => If the variable isn't empty;
+-d => If the chain of characters is the name of a folder;
+-f => If it's the name of a file;
+-e => If it's the name of a file or a folder;
+-x => If the file is accessible in execution;
+-w => If the file is accessible in writing;
+-r => If the file is accessible in reading;
+-N => If there is a modification in the last access to the file;
+-s => If the file isn't empty;
+
+#3	==
+[ val0 == val1 ]
+
+#3	!=
+[ val0 != val1 ]
+
+#3	> <
+[ val0 > val1 ]
+#0 BUT NOT <= and >= !!
+
+#1		NORMAL CONDITION
+#5		(NOT FOR STRINGS)
+
+#3	if, then and fi
+This is the method to make a condition.
+#0 Paying attention the spaces between each words !!
+Syntax :
+if [ cond ] ; then
+  coding
+fi
+
+#0 I can use && and || !!
+
+Syntax :
+if [ cond0 ] && [ cond1 ] ; then
+  coding
+fi
+if [ cond2 ] || [ cond3 ] ; then
+  coding
+fi
+
+#3	case, in and esac
+Syntax :
+case $var in
+  val0) coding;;
+  val1) coding;;
+  *) defaultCoding;;
+esac
+
+By example : 2# 
+#!/bin/bash
+
+read -p "Multiply by 10 of : " nbr
+value=$((nbr*10))
+
+if [ value == 100 ]
+then
+  echo "Your number is 10 !!"
+fi
+if [ value != 100 ]
+then
+  echo "The number $value isn't 10 !!"
+fi
+
+read -p "Press enter to finish the process..."
+ 2#
+
+#1		CONDITION WITH STRING
+
+The manner is the same but it needs two couples of brackets at the place of a single.
+Ex : 2# 
+read -p "What is the hello word ?" str
+if [[ $str == "salut" ]]
+then
+  echo "It's salut !!"
+fi
+if [[ $str != "salut" ]]
+then 
+  echo "It isn't salut !!"
+fi
+ 2#

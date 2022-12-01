@@ -1,0 +1,89 @@
+Script 37
+
+				PREPROCESSOR #
+
+It's the preprogram who is executed before the rest like by example :
+#include <stdio.h>
+
+		#DEFINE
+
+This variable cans define a constant in the early of the program :
+
+Doc.c :
+
+#include <stdio.h>
+#define yep 14
+#define affich(var) printf("%d", var);
+
+int main(void){
+    int yolo;
+    yolo = yep;
+    affich(yolo)
+return 0;
+}
+
+Into CMD :
+14
+
+For eviting the buckles by the research between documents :
+
+There is : A.h and E.h
+
+A.h :
+#include "E.h";
+
+E.h :
+#include "A.h";
+
+This phenomen is a buckle because when A include E, E include a
+new A, but this new A has to include a new E, and ....
+
+A.h :
+#ifndef "E.h"
+#define "E.h"
+
+#endif
+
+E.h :
+#include "A.h";
+
+---------------------------------------------
+
+DEFINE cans change a text by an other also.
+
+By example in Doc.c :
+
+#include <stdio.h>
+
+#defined yolo printf
+
+int main(void){
+yolo("SALUT !!");
+return 0;
+}
+
+In CMD :
+SALUT !!
+
+=================================================================
+
+A few contants who can be affiched by PRINTF with %s for the characters.
+Constants :
+__TIME__
+__LINE __ or __LINE__
+__DATE__
+__FILE__
+
+Doc.c :
+
+#include <stdio.h>
+
+#defined yolo printf
+
+int main(void){
+yolo("%s", __FILE__);
+return 0;
+}
+
+Into CMD :
+Doc.c

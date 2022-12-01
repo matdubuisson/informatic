@@ -1,0 +1,111 @@
+				ENCAPSULATION
+
+The ENCAPSULATION permits to run the datas of an attributs from an
+objects by some properties with the function [ property() ].
+
+#4	property()
+This function is present in a class and it permits to give roles to
+the four others. So the function askes some function names :
+the first is the getter, the second the getter, the third the
+deleter and the last the informater.
+This new function cans take four parameters order by :
+#5 property(<getter> , <setter> , <deleter> , <informater>);
+Syntax : 1// 
+class myClass:
+  def __init__(self, var):
+    self.attribut = var;
+  def getFCT(self):
+    return self._attribut;
+  def setFCT(self, newVar):
+    self._attribut = newVar;
+  def delFCT(self):
+    del self._attribut;
+  def infoFCT(self):
+    print(str(self._attribut) + " ===> This is the attribut !!");
+  attribut = property(getFCT, setFCT, delFCT, infoFCT);
+ 1//
+
+Function OPTION :
+1# <getter>     1# ===> Gets the original info;
+
+1# <setter>     1# ===> Changes the info and gets the new result;
+
+1# <deleter>    1# ===> Deletes the info;
+#3	del
+This small prefix permits to delete a declaration.
+Ex :
+array = [1, 3, -14]
+del array
+print(array) # This cans not work !!
+
+1# <informater> 1# ===> Gives a description about the attributes;
+
+0# WARNING 0# : Into the function OPTION I need to use the underscore
+[ _ ] for pointing an attribut !! So [ self._attribut ];
+
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Python/new/EXAMPLE$ cat encapsulation_with_class.py 
+#coding:utf-8
+
+class human:
+  def __init__(self, nbr):
+    self.value = int(nbr)
+  def getter(self):
+    return self.value
+  def setter(self, newNbr):
+    self.value = int(newNbr)
+  def deleter(self):
+    del self.value
+  def informer(self):
+    print("This program is useless with the only data : " + str(self.value))
+
+Joe = human(14)
+print(Joe.getter())
+Joe.setter(16)
+print(Joe.getter())
+Joe.informer()
+Joe.deleter()
+try:
+  print(Joe.getter())
+except:
+  print("The value of Joe is deleted !!")
+
+print("\n====================================\n")
+
+class human2:
+  def __init__(self, nbr):
+    self.value = int(nbr)
+  def getter(self):
+    return self._value
+  def setter(self, newNbr):
+    self._value = int(newNbr)
+  def deleter(self):
+    del self._value
+  def informer(self):
+    print("This program is useless with the only data : " + str(self._value))
+  value = property(getter, setter, deleter, informer)
+
+Joe2 = human2(14)
+print(Joe2.getter())
+Joe2.setter(16)
+print(Joe2.getter())
+Joe2.informer()
+Joe2.deleter()
+try:
+  print(Joe2.getter())
+except:
+  print("The value of Joe2 is deleted !!")
+
+racteur@racteurleader:~/runPC/Codage/Python/new/EXAMPLE$ python3.8 encapsulation_with_class.py 
+14
+16
+This program is useless with the only data : 16
+The value of Joe is deleted !!
+
+====================================
+
+14
+16
+This program is useless with the only data : 16
+The value of Joe2 is deleted !!
+ 2#

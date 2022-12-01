@@ -1,0 +1,36 @@
+				IP CONFIGURATIONS
+
+#1              SERVER CONFIGURATIONS
+
+https://www.malekal.com/commandes-ip-utiles-pour-configurer-les-interfaces-reseau-sur-l>
+
+#3      ip
+There is the command [ ip ] for running the routage
+and networkd about the ips.
+
+PARAMETERS :
+5# ip addr 5# ==> This parameter gives the list of the addresses
+of the computer;
+5# ip route 5# ==> This parameter gives the list of the routages;
+5# ip link 5# ==> It permits to get the list of the different linkers
+of the computer. Ex (lo, enp2s0, wlp3s0);
+
+#0 These three syntaxs can take a seconde parameter.
+#0 By default it's [ show ] that gives informations.
+
+5# ip parameter show 5# ==> Show the list and the same thing than :
+[ ip parameter ];
+5# ip parameter add 5# ==> This permits to add an ip;
+5# ip parameter del 5# ==> This permits to delete an ip;
+#0 The syntax of the ip is : ip/format so by example 127.0.0.1/24.
+
+#0 wlp3s0 is a connector. Here it's for the wifi connection.
+5# ip parameters dev wlp3s0 5# ==> This permits to give a new
+configuration to a linker;
+
+#0 The statut cans be up (activation) or down (desactivation).
+5# ip parameters set wlp3s0 statut 5# ==> Active or desactive a connector;
+  5# up   5# ==> For starting the connector;
+  #2 ip link set wlp3s0 up
+  5# down 5# ==> For stoping the connector;
+  #2 ip link set wlp3s0 down

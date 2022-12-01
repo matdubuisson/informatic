@@ -1,0 +1,139 @@
+#1		CONDITIONNAL INSTRUCTIONS
+
+#5	if else
+
+#2	Description
+3# if(boolean) instruction   3# => Receives the value of a boolean
+and executes its code block if the boolean isn't null;
+3# else instruction          3# => Executes its block of code if the
+last if of its own block hasn't worked as the boolean has been null;
+
+For example :
+
+ifAndElse.c : 2// 
+#include <stdio.h>
+
+int main(void){
+
+  printf("What is your favorite character ? \n");
+  char c = 4;
+  if((c = getchar()) == 48) printf("You have written zero !!\n");
+  else if(c == 49) printf("You have written one !!\n");
+  else printf("You have written something else...\n");
+
+  if((c = getchar()) == '\n'){
+    printf("The second character is the changer of line !!\n");
+  }
+  else if(1){
+    // Never executed. This else depends of the last if()
+    // Normally it executes the next if()
+  }
+  else{
+    // Never executed. This else depends on the last if()
+    // so the if() from the last else if()
+  }
+
+  /* =================================================== */
+
+  printf("What is your favorite number ?\n");
+  unsigned int nbr;
+  scanf("%d", &nbr);
+
+  if(nbr >= 100){
+    printf("Your number has three characters !!\n");
+  }
+  else if(nbr < 10){
+    printf("Your number has only one character !!\n");
+  }
+  else{
+    printf("Your number has two characters !!\n");
+  }
+
+  return 0;
+}
+ 2//
+
+Into the console : 2# 
+racteur@racteurleader:~/Documents/informatic/C/INSTRUCTION/EXAMPLE$ ./prog 
+What is your favorite character ? 
+f
+You have written something else...
+The second character is the changer of line !!
+What is your favorite number ?
+40
+Your number has two characters !!
+racteur@racteurleader:~/Documents/informatic/C/INSTRUCTION/EXAMPLE$ ./prog 
+What is your favorite character ? 
+1  
+You have written one !!
+The second character is the changer of line !!
+What is your favorite number ?
+150
+Your number has three characters !!
+racteur@racteurleader:~/Documents/informatic/C/INSTRUCTION/EXAMPLE$ ./prog 
+What is your favorite character ? 
+0
+You have written zero !!
+The second character is the changer of line !!
+What is your favorite number ?
+4
+Your number has only one character !!
+ 2#
+
+#5	switch, case, default, break
+
+#2	Description
+3# switch(data){ instructions } 3# => Checks several conditions as if 
+and else and executes the appropriate blocks of instructions;
+==> 3# case test_data: 3# => Executes the following instructions
+if the data equals the test_data. The syntax is similar to python;
+==> 3# default: 3# => Same principe but the condition is always 
+validated;  
+====> 3# break 3# => Stops the execution of the switch;
+
+switch.c : 2// 
+#include <stdio.h>
+
+unsigned char main(unsigned char argc, unsigned char **argv){
+
+    unsigned int value;
+    printf("Choose your value : ");
+    scanf("%d", &value);
+
+    switch(value){
+        case 0:
+            printf("It is 0 !!\n");
+            break;
+        case 1:
+            printf("It is 1 !! Warning, without break it executes the next case (or default)\n");
+        case 2:
+            printf("It is 2 !!\n");
+            break;
+        case -4000:
+            printf("Not possible !!\n");
+            break;
+        default:
+            printf("Either it's 1 or it isn't in [0, 1, 2] !!\n");
+            break;
+    }
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@racteurleader:~/Documents/informatic/C/3_INSTRUCTIONS/EXAMPLE$ gcc switch.c -o prog
+racteur@racteurleader:~/Documents/informatic/C/3_INSTRUCTIONS/EXAMPLE$ ./prog 
+Choose your value : 0
+It is 0 !!
+racteur@racteurleader:~/Documents/informatic/C/3_INSTRUCTIONS/EXAMPLE$ ./prog 
+Choose your value : 1
+It is 1 !! Warning, without break it executes the next case (or default)
+It is 2 !!
+racteur@racteurleader:~/Documents/informatic/C/3_INSTRUCTIONS/EXAMPLE$ ./prog 
+Choose your value : 2
+It is 2 !!
+racteur@racteurleader:~/Documents/informatic/C/3_INSTRUCTIONS/EXAMPLE$ ./prog 
+Choose your value : 4
+Either it's 1 or it isn't in [0, 1, 2] !!
+ 2//

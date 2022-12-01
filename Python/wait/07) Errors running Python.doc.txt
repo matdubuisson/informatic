@@ -1,0 +1,30 @@
+				ERRORS RUNNING
+
+#1		Running the different error and testing of coding
+
+#3	try, except, else, finally
+
+These prefixs permits to test a coding and if the code returns an errors
+some other codings are activated according to the errors.
+Syntax : 2# 
+try:
+  codingInTest;
+except:
+  codingExecutedByAllError;
+except typeOfError:
+  codingExecutedByTypeOfError;
+else:
+  codingExecutedIfThereIsNotError;
+finally:
+  codingExecutedInTheTwoCase;
+ 2#
+
+#5	Kinds of error
+
+1# ValueError 1#
+1# NameError 1#
+1# TypeError 1#
+1# ZeroDivisionError 1#
+1# OSError 1#
+1# AssertionError 1#
+1# AttributeError 1#

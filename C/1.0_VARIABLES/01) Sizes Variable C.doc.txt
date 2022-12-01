@@ -1,0 +1,48 @@
+				SIZES
+
+#1		SHORT OR LONG
+3# short 3# => This is the short size and the default size;
+(No parameters about size) => This is the normal size;
+Ex : [ int e; ] = [ short int e; ]
+3# long  3# => This is the long size;
+Ex : 2# 
+for(short int e = 0; e <= 15; e++){}
+ 2#
+
+#1		TYPES OF BASE
+3# char 3# => -127 to 127;
+3# int 3# => -32767 to 32767;
+3# float 3# => 10^-37 to 10^37
+3# double 3# => 10^-37 to 10^37 => More numbers behind the do
+
+#1		IN BRIEF
+Type of data       | bytes in memory
+_____________________________
+char               | 1
+signed char        | 1
+unsigned char      | 1
+_____________________________
+int                | 4
+signed int         | 4
+unsigned int       | 4
+_____________________________
+short              | 2
+signed short       | 2
+unsigned short     | 2
+_____________________________
+short int          | 2
+signed short int   | 2
+unsigned short int | 2
+_____________________________
+long               | 8
+signed long        | 8
+unsigned long      | 8
+_____________________________
+long int           | 8
+signed long int    | 8
+unsigned long int  | 8
+_____________________________
+float              | 4
+_____________________________
+double             | 8
+long double        | 10

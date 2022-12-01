@@ -1,0 +1,27 @@
+				GETTING INFORMATIONS ABOUT SERVERS
+
+#1              SERVER INFORMATIONS
+
+#3      ping
+This command permits to check the liason
+between my computer and the server.
+By example : 2# 
+ping google.com
+ 2#
+
+#3      wget
+For instaling a file by a internet link.
+By example : 2# 
+wget https://program.extension
+ 2#
+
+#3      host
+This command converts a domain name in IP adress.
+By example : 2# 
+racteur@Racteur:~$ host web-bab.com
+web-bab.com has address 146.88.236.172
+web-bab.com mail is handled by 0 web-bab.com ;
+ 2#
+
+#3      whois
+Gives plenty of informations by a internet link.

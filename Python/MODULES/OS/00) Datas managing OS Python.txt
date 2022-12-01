@@ -1,0 +1,12 @@
+				DATAS MANAGING WITH OS
+
+#3				LINUX
+
+#1		MOVING IN THE MEMORY
+
+#4	os.listdir()
+This function returns a list of all the names of the different datas (files, directories,
+links, ...) of the current path.
+
+#4	os.chdir()
+This function permits to set a new current path with its address given in parameter.

@@ -1,0 +1,355 @@
+				CLASS AND METHODS
+
+#1		RECALL ABOUT RIGTHS
+
+#3      private, protected, (default) and public
+
+#0 KEYWORD         | CLASS         | PACKAGE       | SUBCLASS (this pkg)   | SUBCLASS (other pkg)  | WORLD
+#2 =================================================================================================================
+#1 public          | V             | V             | V                     | V                     | V
+#2 ----------------|---------------|---------------|-----------------------|-----------------------|----------------
+#1 protected       | V             | V             | V                     | V                     | X
+#2 ----------------|---------------|---------------|-----------------------|-----------------------|----------------
+#1 (default)       | V             | V             | V                     | X                     | X
+#2 ----------------|---------------|---------------|-----------------------|-----------------------|----------------
+#1 private         | V             | X             | X                     | X                     | X
+#2 ----------------|---------------|---------------|-----------------------|-----------------------|----------------
+
+====================================================================================================================
+
+#1		FIRST AND PRINCIPAL CLASS
+
+Technically, the first principal class of project should need to be public.
+The program automatically starts the main method of this principal class.
+This class needs to have the same name of the file.java.
+
+#1		ORGANIZATION IN A FILE
+
+A file in Java can contain several class but only one can have the name
+of the file. It's only the principal class who could be imported by on
+other program even if a file.java contains several class definitions.
+
+#1		INNER CLASS
+
+In Java, it's possible to define a inner class in an other class.
+
+#1		ANONYMOUS CLASS
+
+An anonymous class is a special class created on the moment to be
+directrly instancied. It's done from an interface :
+2# 
+interface Test{
+    public void test();
+}
+
+public class Main{
+    public Test getTest(){
+        return new Test(){
+            @Override
+            public void test(){
+                System.out.println("Test !!");
+            }
+        }
+    }
+}
+
+ 2#
+
+#1		CLASS RIGHTS
+
+Private : Available only inside the class self.
+Default : Available for all classes present in the same file.
+Protected : Available for all classes present in the same file
+and for external classes that extends of the class where this
+protected thing is defined.
+Need keyword 3# extends 3# in the signature of the subclass.
+Public : Available for all locations (internal and external).
+
+#1		OVERRIDE AN ATTRIBUTE OR A METHOD (OR A INNER CLASS)
+
+It's possible that a subclass redefines a parent-method (or attribute or class).
+For that, it needs to extend the parent class, add 3# @Override 3# above the
+redefined class and rewrite the signature. Then it can redfine the method.
+The keyword 3# super 3# permits to access to the parent-methods (if the redefined
+method needs to use the parent-method).
+
+#1		!! EXAMPLE !!
+
+TestClass.java : 2// 
+import myLib.*;
+
+// All class inherits of the public things of MyMath
+// All extended class on MyMath inherits of protected things
+// All class defined in the same file of the class MyMath
+// inherits of its default and protected things
+// All private things are reserved for inside MyMath class
+
+// TestClass is a subclass of MyMath
+// It inherits of all protected attributes and methods
+public class TestClass extends MyMath{
+    // The first class has always the same name than the file
+    public static void main(String[] args){
+        Pack p = new Pack("Racteur", 19);
+        System.out.println(p.toString());
+        Pack p2 = new Pack("Racteur", 19);
+        Pack p3 = new Pack("Joe", 4);
+        System.out.println(p.equals(p2) + " " + p.equals(p3));
+        Pack.printNumberOfPacks();
+
+        System.out.println(TestClass.area(2.2));
+        System.out.println(MyMath.area(2.2));
+
+        System.out.println((new TestClass()).add(14, 16));
+        System.out.println((new MyMath()).add(14, 16));
+
+        System.out.println("Strange : " + MyMath.useStrange(14));
+    }
+
+    // How to modify an existant parent-method with @Override and super keywords
+    @Override
+    public int add(int a, int b){
+        return super.add(a, b) + 1;
+    }
+
+    public static int test(){
+        class Local{
+            public static int retest(){
+                return 14;
+            }
+        };
+        return Local.retest() + 2;
+    }
+}
+
+class Test{
+    public static void ProduceError(){
+        MyMath m = new MyMath();
+        // It raises compilation error :
+        // System.out.println("From Test : " + m.area(4.4));
+        // System.out.println(MyMath.area(2.2));
+    }
+}
+
+// It works :
+class Test2 extends MyMath{
+    public static void ProduceError(){
+        MyMath m = new MyMath();
+        System.out.println("From Test : " + m.area(4.4));
+        System.out.println(MyMath.area(2.2));
+    }
+}
+ 2//
+
+myLib/MyMath.java : 3// 
+package myLib;
+
+class Constants{
+    static double PI = 3.14;
+    protected static int strange(int a){
+        return MyMath.add2(a, (int) a / 2) - MyMath.add3((int) a / 3, a * 4);
+    }
+}
+
+public class MyMath{
+    // Can define class inside other class
+    private class AccessConstants{
+        public static double getPI(){
+            return Constants.PI;
+        }
+    }
+
+    /* // Can't override if it doesn't extend
+    @Override
+    public static int strange(int a){
+        return super.strange(a + 16);
+    }
+    */
+
+    public static int useStrange(int a){
+        return Constants.strange(a);
+    }
+
+    public int add(int a, int b){
+        return a + b;
+    }
+
+    static int add2(int a, int b){
+        return a + b;
+    }
+
+    protected static int add3(int a, int b){
+        return a + b;
+    }
+
+    protected static double area(double r){
+        return AccessConstants.getPI() * r * r;
+    }
+}
+ 3//
+
+myLib/Pack.java : 1// 
+package myLib;
+
+public class Pack{
+    private static int number_of_packs = 0;
+
+    public static void printNumberOfPacks(){
+        System.out.println("There are " + number_of_packs + " created packs !!");
+    }
+
+    private int id;
+    public String name;
+    public int age;
+
+    public Pack(String name, int age){
+        this.id = number_of_packs;
+        number_of_packs++;
+        this.name = name;
+        this.age = age;
+    }
+
+    public boolean equals(Pack p){
+        return this.name.compareTo(p.name) == 0 && this.age == p.age;
+    }
+
+    public String toString(){
+        return String.format("Name : %s\nAge : %d\n", this.name, this.age);
+    }
+}
+ 1//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_08$ ls -R | grep "\.\/\|java"
+TestClass.java
+./myLib:
+MyMath.java
+Pack.java
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_08$ javac TestClass.java 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_08$ java TestClass 
+Name : Racteur
+Age : 19
+
+true false
+There are 3 created packs !!
+15.197600000000003
+15.197600000000003
+31
+30
+Strange : -39
+ 2#
+
+#5		COMPARAISON BETWEEN EXTERN, INNER AND ANONYMOUS CLASS
+
+CompareClasses.java : 0# 
+interface FormatName{
+    public String format();
+}
+
+class UseFormatName implements FormatName{
+    String name;
+    public UseFormatName(String name){
+        this.name = name;
+    }
+    public String format(){
+        return "Extern : [ " + this.name + " ];";
+    }
+}
+
+public class CompareClasses{
+    String name;
+    public CompareClasses(String name){
+        this.name = name;
+    }
+
+    class InnerUseFormatName implements FormatName{
+        public String format(){
+            return "Inner : [ " + CompareClasses.this.name + " ];";
+            // Or : return "Format : [ " + name + " ];";
+        }
+    }
+
+    public void run(){
+        FormatName extern = new UseFormatName(this.name);
+        System.out.println(extern.format());
+        FormatName inner = new InnerUseFormatName();
+        System.out.println(inner.format());
+        FormatName anonymous = new FormatName() { // This class is sugar for syntax because it's exactly the same thing than an inner class
+            @Override
+            public String format(){
+                return "Anonymous : [ " + CompareClasses.this.name + " ];";
+                // Or : return "Anonymous : [ " + name + " ];";
+            }
+        };
+        System.out.println(anonymous.format());
+    }
+
+    public static void main(String[] args) {
+        CompareClasses test = new CompareClasses("Racteur");
+        test.run();
+    }
+}
+ 0#
+
+In the console : 5# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_08$ javac CompareClasses.java 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_08$ java CompareClasses 
+Extern : [ Racteur ];
+Inner : [ Racteur ];
+Anonymous : [ Racteur ];
+ 5#
+
+#3 Note :
+#1 Even if the three class syntaxs are different, in fact the result is exactly the same !!
+
+#5		LAMBDA METHODS
+
+The lambda methods are a way to get smaller code and easier to read.
+A lambda method is converted in anonymous method.
+
+Lambda.java : 0# 
+import java.util.Comparator;
+
+interface DoSomething{
+    public void doIt();
+}
+
+interface DoSomethingElse{
+    public Object doIt(Object arg);
+}
+
+class Person{
+    String name;
+    int age;
+    public Person(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+}
+
+public class Lambda{
+    public static void main(String[] args) {
+        DoSomething print = () -> System.out.println("Yolo !!");
+        print.doIt();
+        DoSomethingElse concat = (str) -> {
+            return str + " CONCAT";
+        };
+        System.out.println(concat.doIt("Test !! "));
+        // Comparator is an interface
+        Comparator<Person> cmp = (thisPerson, otherPerson) -> thisPerson.name.equals(otherPerson.name) ? thisPerson.age - otherPerson.age : thisPerson.name.compareTo(otherPerson.name);
+        Person a = new Person("a", 0);
+        Person a1 = new Person("a", 1);
+        Person b = new Person("b", 0);
+        System.out.println(cmp.compare(a, a1) < 0);
+        System.out.println(cmp.compare(a, b) < 0);
+    }
+}
+ 0#
+
+In the console : 5# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_08$ javac Lambda.java 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_08$ java Lambda 
+Yolo !!
+Test !!  CONCAT
+true
+true
+ 5#

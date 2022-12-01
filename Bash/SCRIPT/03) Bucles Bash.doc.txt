@@ -1,0 +1,29 @@
+				BUCLE
+
+#1		CREATION OF A BUCLE
+
+#3	while, do and done
+This permits to re-execute a coding while a condition is available.
+Syntax :
+while [ condition ]
+do
+  coding;
+done
+
+#3	break
+This word permits to break a bucle.
+
+#3	continue
+This word permits to restart directly a bucle.
+
+By example : 2# 
+#!/bin/bash
+
+read -p "Are you stupid ? You have to response yes or no ... " msg
+
+while [ $msg != "yes" ]
+do
+  echo $msg
+  read -p "It isn't a correct answer... Say the truth please !! " msg
+done
+ 2#

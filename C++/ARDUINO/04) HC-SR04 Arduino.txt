@@ -1,0 +1,45 @@
+				HC_SR04 => ULTRASONOR CAPTOR
+
+#4		pulseIn()
+This function reads the value of the HC_SR04.
+The HC_SR04 used a trig pin and a echo pin.
+Parameters :
+par0 => Val of the pin who is the echo;
+par1 => HIGH or LOW;
+
+By example : 2# 
+int trig = 3, echo = 2;
+int readEcho;
+float dist;
+
+#define prt(myArg) Serial.print(myArg);
+
+void setup(void){
+  pinMode(trig, OUTPUT);
+  digitalWrite(trig, LOW);
+  pinMode(echo, INPUT);
+  Serial.begin(9600);
+  
+  return;
+}
+
+void loop(void){
+  digitalWrite(trig, HIGH);
+  delay(0.001); // One micro second !!
+  digitalWrite(trig, LOW);
+  
+  readEcho = pulseIn(echo, HIGH);
+  prt("readEcho : ");
+  prt(readEcho);
+  prt("\n");
+  dist = readEcho / 58;
+  dist /= 100;
+  prt("Distance in m : ");
+  prt(dist);
+  prt("\n");
+  
+  delay(1000);
+  
+  return;
+}
+ 2#

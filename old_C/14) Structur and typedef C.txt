@@ -1,0 +1,208 @@
+Script 40
+
+
+				TYPEDEF
+
+This method permits to define a command by a simple word for using
+the command without writting all the command and at the place
+writting only a 1 word.
+By example (Looking STRUCT's example.) :
+typedef struct nameBlock myBlock;
+myBlock newPeopleSecond = {3882, "HAY"};
+------------------------------------------------------------------
+		STRUCT
+
+This method creates a type of block who is the formule for making
+a profil with several informations. For introducing this syntax
+I can writte in block's early STRUCT and after the name.
+By example : struct nameBlock{ int yolo; char name[4]; };
+
+After that I can use this block for creating the profile. The new
+profile is created like an array.
+By example : struct nameBlock newPeople = {09877654321, "Joe"};
+
+For changing an information about a profile already created by
+the STRUCT I can use like in Javascript this method :
+nameProfile.sing.
+By example : newPeople.yolo = 3932; strcpy(newPeople.name,"Eoj");
+
+new1.c :
+#include <stdio.h>
+#include <string.h>
+//gcc new1.c -o test
+struct person{
+    signed char name[44];
+    int age;
+    int password;
+};
+
+typedef struct person yolo;
+
+void changePeople(yolo *p){
+    strcpy((*p).name , "Yolo");
+    p->age = 28998;
+    (*p).password = 0;
+}
+
+int main(void){
+    struct person people0 = {"Matt", 16, 4321};
+    yolo people1 = {"Joe", 2, 2329};
+    printf("NAME : %s && AGE : %d && PASSWORD : %d\n", people0.name, people0.age, people0.password);
+    printf("NAME : %s && AGE : %d && PASSWORD : %d\n", people1.name, people1.age, people1.password);
+    people0.age = 88;
+    strcpy(people1.name, people0.name);
+    printf("NAME : %s && AGE : %d && PASSWORD : %d\n", people0.name, people0.age, people0.password);
+    printf("NAME : %s && AGE : %d && PASSWORD : %d\n", people1.name, people1.age, people1.password);
+    
+    changePeople(&people1);
+    printf("NAME : %s && AGE : %d && PASSWORD : %d\n", people0.name, people0.age, people0.password);
+    printf("NAME : %s && AGE : %d && PASSWORD : %d\n", people1.name, people1.age, people1.password);
+    return 0;
+}
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+NAME : Matt && AGE : 16 && PASSWORD : 4321
+NAME : Joe && AGE : 2 && PASSWORD : 2329
+NAME : Matt && AGE : 88 && PASSWORD : 4321
+NAME : Matt && AGE : 2 && PASSWORD : 2329
+NAME : Matt && AGE : 88 && PASSWORD : 4321
+NAME : Yolo && AGE : 28998 && PASSWORD : 0
+
+------------------------------------------------------------------
+
+		ENUM
+
+This command permits to create ==> 2 <== booleens (or several) so one takes
+false's value and the second takes true's value.
+
+new1.c :
+#include <stdio.h>
+//gcc new1.c -o test
+enum bobol{
+    NAN,/*=0*/
+    OUAIS/*=1*/
+};
+
+int main(void){
+    enum bobol joe = OUAIS;
+    if(joe == OUAIS){
+        printf("JOE\n");
+    }
+    int yolo = OUAIS;
+    if(yolo == OUAIS){
+        printf("SALUT\n");
+    }
+    int yolo2 = 1;
+    if(yolo2 == OUAIS){
+        printf("SALUT2\n");
+    }
+    if(OUAIS == 1){
+        printf("OUAIS == 1 because it's like true;\n");
+    }
+    if(NAN == 0){
+        printf("NAN == 0 because it's like false;\n");
+    }
+    typedef enum bobol BOB;
+    BOB newThing = NAN;
+    if(newThing != OUAIS){
+        printf("THING != OUAIS");
+    }
+    return 0;
+};
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+JOE
+SALUT
+SALUT2
+OUAIS == 1 because it's like true;
+NAN == 0 because it's like false;
+THING != OUAIS
+
+++++++
+In fact the ENUM gives a number value who starts by 0 and it's order
+elements' places.
+
+new1.c :
+#include <stdio.h>
+//gcc new1.c -o test
+enum bobol{
+    NAN,/*=0*/
+    OUAIS,/*=1*/
+    YOLO,/*=2*/
+    SALUT/*=3*/
+};
+
+int main(void){
+printf("%d ", NAN);
+printf("%d ", OUAIS);
+printf("%d ", YOLO);
+printf("%d ", SALUT);
+    return 0;
+};
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+0 1 2 3
+
+If I define an ENUM the automatical lastID + 1 is taken by the last
+ENUM defined (term = µ).
+
+new1.c :
+#include <stdio.h>
+//gcc new1.c -o test
+enum bobol{
+    NAN,/*=0*/
+    OUAIS = 5,/*=5*/
+    YOLO,/*=6*/
+    SALUT/*=7*/
+};
+
+int main(void){
+printf("%d ", NAN);
+printf("%d ", OUAIS);
+printf("%d ", YOLO);
+printf("%d ", SALUT);
+    return 0;
+};
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+0 5 6 7
+------------------------------------------------------------------
+
+		UNION
+
+This methods permits to create a block who creates different profiles
+but these diffrent profiles have the even types of informations but
+these even types of informations lie in the even memory zone.
+
+new1.c :
+#include <stdio.h>
+//gcc new1.c -o test
+union evenZone{
+    int number0;
+    int number1;
+};
+
+int main(void){
+    union evenZone int0;
+    int0.number0 = 0;
+    int0.number1 = 1;
+    
+    union evenZone int1;
+    int1.number0 = 1;
+    int1.number1 = 0;
+    return 0;
+};
+
+Into CMD :
+Can't be said !!

@@ -1,0 +1,51 @@
+				TEXT
+
+#1		TITLE
+#3      \title{} and \maketitle
+This gives a title to the document.pdf.
+The second command permits to write the title.
+
+#3	\thanks{}
+This command permits to write an small title under
+the title.
+
+Ex : 2# 
+#3      \title{} and \maketitle
+\documentclass[a4paper, 14pt]{article}
+
+\usepackage{lettrine}
+\usepackage{xcolor}
+
+\title{Un test de Latex\thanks{My first Latex document !!}}
+\author{Racteur}
+\date{18/17/2021}
+
+\begin{document}
+
+\maketitle
+
+\end{document}
+ 2#
+
+#3	\section{} and \subsection{}
+These commands permits to create some named sections.
+A section cans contain text and subsections.
+Their parameter is the name of the section.
+
+#3	\label{}
+This creates an area of text (it is invisble on the document)
+that permits to contain somethings.
+Its argument is the name of this label.
+
+#3	\ref{}
+This references to an object. The parameter is the name of
+the object.
+
+#3	\pageref{}
+This references to a page. The parameter is the name of
+the page.
+
+#3	\textcolor{}
+#0 Package : xcolor
+This function colors a line of text and takes in parameter an
+english colour.

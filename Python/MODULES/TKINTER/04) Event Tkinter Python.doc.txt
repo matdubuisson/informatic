@@ -1,0 +1,27 @@
+				EVENT
+
+#4	WIN.bind()
+This functio takes two parameters :
+par0 => The event
+par1 => The executed function when the event is activated
+
+#5	events
+<character> 
+<a> => When the "a" input is activated
+<e> => When the "e" input is activated
+<...> => ...
+Or :
+<KeyPress-a> => When the "a" input is activated
+<KeyPress-e> => When the "e" input is activated
+
+When it releases the touch :
+<KeyRelease-a> => When the "a" input is activated
+<KeyRelease-e> => When the "e" input is activated
+
+Mouse :
+<Button-1> => left click
+<Button-2> => right click
+<Button-3> => middle click
+
+Window :
+<Configure> => When the dimensions are changed

@@ -1,0 +1,33 @@
+				TUPLE
+
+#1		CREATION
+If the tuple is empty :
+myTuple = ();
+If the tuple has only one value :
+myTuple = (4,);
+If the tuple has several values :
+myTuple = (14, 15, 16);
+
+#1		TAKE VALUE
+I can precise the position into brackets next to
+tuple'name.
+
+#1		UTILITY
+By example :
+(var0, var1) = (14, 16);
+
+I can return a tuple into a function.
+
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Python/EXAMPLE$ cat tuple.py 
+#coding:utf-8
+
+tuple = (323, "jfke", 1)
+print(tuple)
+print(tuple[1])
+print(len(tuple))
+racteur@racteurleader:~/runPC/Codage/Python/EXAMPLE$ python3.8 tuple.py 
+(323, 'jfke', 1)
+jfke
+3
+ 2#

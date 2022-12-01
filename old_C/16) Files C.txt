@@ -1,0 +1,493 @@
+Script 42
+
+				FILE
+
+WARNING of putting a condition about : if(myFile != NULL)
+Else I risk for having a bug if the file doesn't exist.
+
+Tip : Specially created for the files the formule : FILE .
+Example : FILE *myFile = fopen("Yolo.txt", "r");
+
+		FOPEN() AND FCLOSE()
+
+This function simply permits to open a file with a type mod like :
+r ==> The file has to exist and it's only the persual.
+w ==> A file who cans be only writting.
+a ==> Adding into file's end.
+r+ ==> Persual and writting but the file has to exist.
+w+ ==> Persual and writting AND deleting the contain !!
+a+ ==> Adding a persual or and a writting into file's end.
+
+INFO : For reading a binary file I need to add b after the mod's letter so :
+rb, wb, ab, rb+, wb+, ab+;
+
+The function is used like that :
+FILE *pointFile = fopen("file.extension", "mod");
+
+After that the function FOPEN is used I need to use the second function
+who is FCLOSE. It's IMPORTANT !!
+
+The function is used like that :
+fclose(pointFile);
+-------------------------------------------------------
+
+	THE FUNCTION WHO NEED FROM FOPEN() AND FCLOSE() !!
+
+						[READING SECTION]
+
+		FGETC()
+
+(%c for the characters !!)
+This function cans read only a character. In fact each character
+have an id. When I use once this function the id pointed for the
+research by this function makes : id += 1;
+
+For example, if I use this function on a file after if I use again
+this function on the even file. The first time this function reads
+the first character after it reads the second.
+
+new0.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+    //gcc new0.c -o test
+    FILE *myFile = fopen("Yolo.txt", "r");
+    int character = 0;
+    if(myFile != NULL){
+        for(int e = 0; e < 35; e++){
+            character = fgetc(myFile);
+            printf("%c", character);
+        }
+    }
+    fclose(myFile);
+    return 0;
+}
+
+Yolo.txt :
+Salut comment ca va ? Yolo !!
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new0.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+Salut comment ca va ? Yolo !!  
+
+(If I search too many characters therefore the character will be space " ";)
+
+But for stopping the persual in the good moment there is a solution.
+When the function arrives at the end of the file, the value is EOF a
+default variable who prevents from the end.
+
+new0.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+    //gcc new0.c -o test
+    FILE *myFile = fopen("Yolo.txt", "r");
+    int character = 0;
+    if(myFile != NULL){
+        while((character = fgetc(myFile)) != EOF){
+        printf("%c", character);
+        }
+    }
+    fclose(myFile);
+    return 0;
+}
+
+Yolo.txt :
+Salut comment ca va ? Yolo !!
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new0.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+Salut comment ca va ? Yolo !!
+
+(Without the space !!;)
+
+		FEOF()
+The last method is the function FEOF who checks if it's file's end.
+
+new0.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+    //gcc new0.c -o test
+    FILE *myFile = fopen("Yolo.txt", "r");
+    int character = 0;
+    if(myFile != NULL){
+        while(1){
+        character = fgetc(myFile);
+        if(feof(myFile)){
+            break;
+        }
+        printf("%c", character);
+        }
+    }
+    fclose(myFile);
+    return 0;
+}
+
+Yolo.txt :
+Salut comment ca va ? Yolo !!
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new0.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+Salut comment ca va ? Yolo !!
+-------------------------------------------------------
+
+		FGETS()
+
+This function cans take a character chain. Its formule is :
+fgets(chain, sizeChain, myFile);
+
+new0.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+    //gcc new0.c -o test
+    FILE *myFile = fopen("Yolo.txt", "r");
+    signed char myText[500];
+    if(myFile != NULL){
+        while(1){
+        if(feof(myFile)){
+            break;
+        }
+        fgets(myText, 200, myFile);
+        printf("%s", myText);
+        }
+    }
+    fclose(myFile);
+    return 0;
+}
+
+OR new0.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+    //gcc new0.c -o test
+    FILE *myFile = fopen("Yolo.txt", "r");
+    signed char myText[500];
+    if(myFile != NULL){
+        while(fgets(myText, 200, myFile) != NULL){
+        printf("%s", myText);
+        }
+    }
+    fclose(myFile);
+    return 0;
+}
+
+Yolo.txt :
+Salut comment ca va ? Yolo !!
+Hey coucou komant chava ?
+fegefygfedvu
+zufeufeufuhqiv
+fsdufhubsuhdhhid
+fsvdqhuqduhqduhduh
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new0.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+Salut comment ca va ? Yolo !!
+Hey coucou komant chava ?
+fegefygfedvu
+zufeufeufuhqiv
+fsdufhubsuhdhhid
+fsvdqhuqduhqduhduh
+
+-------------------------------------------------------
+
+		FSCANF()
+
+It's a function who scanninf a file, this functions takes different
+informations in a file in a special order.
+
+new0.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+    //gcc new0.c -o test
+    FILE *myFile = fopen("Yolo.txt", "r");
+    signed char pseudo[40];
+    int score = 0;
+    if(myFile != NULL){
+    while(1){
+        if(feof(myFile)){
+            break;
+        }
+        fscanf(myFile, "%s %d", pseudo, &score);
+    printf("Name : %s || Score : %d \n", pseudo, score);
+    }
+    }
+    return 0;
+}
+
+Yolo.txt :
+Racteur -14000
+Versuzox 47839
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new0.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+Name : Racteur || Score : -14000
+Name : Versuzox || Score : 47839
+
+-------------------------------------------------------
+
+*        FREAD()
+
+This function has the even job than FSCANF().
+It checks if the file is empty or not. If it
+is empty the function returnes 0 and if it's
+not the case that returnes 1.
+This looks in the end of the file.
+
+test0.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int mainInt, char **arrayMain){
+    printf("TEST\n");
+    FILE *myFile = fopen("memory.txt","r+");
+    int test = 14;
+    printf("%ld\n", fread(&test, sizeof(int), 1, myFile));
+    fclose(myFile);
+    return 0;
+}
+
+<CASE0>
+
+memory.txt (empty) :
+
+
+Into BASH :
+racteur@Racteur:~/Bureau/trainingInC$ gcc test0.c -o test
+racteur@Racteur:~/Bureau/trainingInC$ ./test
+TEST
+0
+
+<CASE1>
+
+memory.txt :
+!! oloY
+14
+15
+16
+Yolo !!
+
+Into BASH :
+racteur@Racteur:~/Bureau/trainingInC$ gcc test0.c -o test
+racteur@Racteur:~/Bureau/trainingInC$ ./test
+TEST
+1
+
+-------------------------------------------------------
+
+						[WRITTING SECTION]
+
+		FPUTC()
+
+This function writtes one character into the file.
+fputc(myFile, "informations' places placing by the %", variableWith%);
+
+new0.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+void takeInformation(signed char newCharacter[2], signed char newFileName[40]){
+    printf("Character : ");
+    scanf("%s", newCharacter);
+    FILE *myFile = fopen(newFileName, "w");
+    fputc(*newCharacter, myFile);
+    fclose(myFile);
+    printf("ADDING IN FILE : %s \n", newCharacter);
+}
+
+int main(void){
+    //gcc new0.c -o test
+    signed char character[2];
+    signed char fileName[40];
+    printf("New file :");
+    scanf("%s", fileName);
+    takeInformation(character, fileName);
+    printf("\nCHECK : %s", character);
+    return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new0.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+New file : Hey.html
+Character : H
+ADDING IN FILE : H
+
+CHECK : H
+
+Hey.html :
+H
+
+---------------------------------------------------------------
+
+		FPUTS()
+
+It's different from FPUTC() because FPUTS writtes a whole word.
+
+new0.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+#define SIZE 150
+#define sizeName 40
+
+void createFile(signed char newWord[SIZE], signed char newFileName[sizeName]){
+    scanf("%s", newWord);
+    printf("\nAfter that you can put the name file !! ");
+    scanf("%s", newFileName);
+    FILE *myFile = fopen(newFileName, "w");
+    fputs(newWord, myFile);
+    fclose(myFile);
+}
+
+int main(void){
+    //gcc new0.c -o test
+    signed char word[SIZE];
+    signed char fileName[sizeName];
+    printf("Writte your sentence : ");
+    createFile(word, fileName);
+    return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new0.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+Writte your sentence : Salut
+
+After that you can put the name file !! Salut.txt
+
+Salut.txt :
+Salut
+
+---------------------------------------------------------------
+
+		FPRINTF()
+
+This function permits to writte a whole word like FPUTS() but it
+cans writte several words in a precised order.
+Formule : fprintf(myFile, "placeByPourcent", allVariableDefinePourcents);
+
+new0.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+#define SIZE 150
+#define sizeName 40
+
+void createFile(signed char newSentence[SIZE], signed char newFileName[sizeName]){
+    scanf("%s", newSentence);
+    printf("\nAfter that you can put the name file !! ");
+    scanf("%s", newFileName);
+    FILE *myFile = fopen(newFileName, "w");
+    fprintf(myFile, "%s || The file ==> %s !!", newSentence, newFileName);
+    fclose(myFile);
+}
+
+int main(void){
+    //gcc new0.c -o test
+    signed char sentence[SIZE];
+    signed char fileName[sizeName];
+    printf("Writte your sentence : ");
+    createFile(sentence, fileName);
+    return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new0.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+Writte your sentence : Salut comment ca va ?
+
+After that you can put the name file !!
+C:\Users\ASUS\Desktop\learnC>test
+Writte your sentence : Yolo
+
+After that you can put the name file !! Yolo.txt
+
+Yolo.txt :
+Yolo || The file ==> Yolo.txt !!
+
+-----------------------------------------------------------------
+
+						[POSITION SECTION]
+		FTELL() AND FSEEK() AND REWIND()
+
+FTELL()  ==> This function permits to says the cursor position.
+Formule : ftell(myFile);
+FSEEK()  ==> Deplaces the cursor.
+Formule : fseek(myFile, deplacement, origin);
+	TYPES OF ORIGIN :
+	=> SEEK_SET : File's early.
+	=> SEEK_CUR : Courant position by the cursor.
+	=> SEEK_END : File's end.
+REWIND() ==> Redefines the cursor at its default position.
+Formule : rewind(myFile);
+
+new0.c :
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+    //gcc new0.c -o test
+    FILE *myFile = fopen("Yolo.txt", "w");
+    printf("POSITION %d\n", ftell(myFile));
+    printf("POSITION %d\n", ftell(myFile));
+    fseek(myFile, 5, SEEK_SET);
+    printf("POSITION %d\n", ftell(myFile));
+    printf("POSITION %d\n", ftell(myFile));
+    rewind(myFile);
+    printf("POSITION %d\n", ftell(myFile));
+    printf("POSITION %d\n", ftell(myFile));
+    fclose(myFile);
+    return 0;
+}
+
+Yolo.txt (clear) :
+
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new0.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+POSITION 0
+POSITION 0
+POSITION 5
+POSITION 5
+POSITION 0
+POSITION 0
+
+-----------------------------------------------------------------
+
+						[OTHER SECTION]
+Many functions who has to be used on a file
+when this file is closed.
+
+		RENAME()
+For renaming a file.
+Formule : rename(oldName, newName);
+
+		REMOVE()
+For deleting directly a file without happenning by the basket(=corbeille).
+Formule : remove(myFile);
+
+-----------------------------------------------------------------

@@ -1,0 +1,173 @@
+Script 30
+
+			CONDITION
+
+It's a little like in JavaScript for the conditions :
+
+==, !=, <, >, <=, >=
+
+== ) If equals.
+!= ) If doesn't equal.
+ ______________________________________________
+| BUT WARNING THERE IS NOT : ===, !==, !=== !! |
+
+-----------------------------------
+
+		NOT
+
+NOT( !
+
+Doc.c :
+#include <stdio.h>
+int main(void){
+int varTest0 = 0;
+int varTest1 = 1
+if(varTest0 !== 1){
+printf("OUAIP FOR TEST0 !!");
+}
+if(varTest1 !== 1){
+printf("OUAIP FOR TEST1 !!");
+}
+return 0;
+}
+
+Into CMD :
+OUAIP FOR TEST0 !!
+
+-----------------------------------
+
+		AND
+
+AND( &&
+
+Doc.c :
+#include <stdio.h>
+int main(void){
+int varTest0 = 0;
+int varTest1 = 1;
+if((varTest0 == 1) && (varTest1 == 1)){
+printf("YEP");
+}
+else{
+printf("NOP");
+}
+return 0;
+}
+
+Into CMD :
+NOP
+
+-----------------------------------
+
+		OR
+
+OR( ||
+
+Doc.c :
+#include <stdio.h>
+int main(void){
+int varTest0 = 0;
+int varTest1 = 1
+if((varTest0 == 1) || (varTest1 == 1)){
+printf("YEP");
+}
+else{
+printf("NOP");
+}
+return 0;
+}
+
+Into CMD :
+YEP
+
+===================================
+
+		SWITCH
+
+This method is used uniquely for the equalities, I can use four
+elements : switch(variableSelected){} | case(ifEqualsThat) : ; |
+break; | default : ;
+
+Doc.c :
+
+#include <stdio.h>
+int main(void){
+signed char varTest = 0;
+printf("You have to choose a number between 0 and 9 : ");
+scanf("%d", &varTest);
+switch(varTest){
+case (0): printf("It's an absorbent number !!");
+break;
+case (1): printf("Because it's the 1 I want to make the default !!");
+break;
+case (7): printf("JAMES BONT");
+break;
+default : printf("Probably that I have 1 or an other number from 0 and 7 !!");
+break;
+}
+return 0;
+}
+
+I can test the coding !!
+
+===================================
+
+		OTHER FORME OF PERSUAL
+
+Doc0.c :
+#include <stdio.h>
+int main(void){
+int varTest = 1;
+printf("The variable has to be equal at 0 or 1 ??");
+scanf("%d", &varTest);
+if(varTest == 1){
+printf("YEP");
+}
+else{
+printf("NOP");
+}
+return 0;
+}
+
+Doc1.c :
+#include <stdio.h>
+int main(void){
+int varTest = 1;
+printf("The variable has to be equal at 0 or 1 ??");
+scanf("%d", &varTest);
+(varTest == 1) ? printf("YEP"); : printf("NOP");
+return 0;
+}
+
+Doc0.c gives the even result than Doc1.c !!
+
+---------------------
+
+Doc0.c :
+#include <stdio.h>
+int main(void){
+int varTest = 1;
+printf("The variable has to be equal at 0 or 1 ??");
+scanf("%d", &varTest);
+if(varTest == 1){
+varTest = 0;
+}
+else{
+varTest = 1;
+}
+printf("Now the codding takes the opposite of varTest so : %d", varTest);
+return 0;
+}
+
+Doc0.c :
+#include <stdio.h>
+int main(void){
+int varTest = 1;
+printf("The variable has to be equal at 0 or 1 ??");
+scanf("%d", &varTest);
+varTest = (varTest == 1) ? 0 : 1;
+printf("Now the codding takes the opposite of varTest so : %d", varTest);
+return 0;
+}
+
+Doc0.c gives still the even result than Doc1.c !!

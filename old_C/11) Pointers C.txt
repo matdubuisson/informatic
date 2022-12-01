@@ -1,0 +1,345 @@
+Script 37
+
+				POINTERS
+
+INFO :
+		RESTRICT
+For saying at the compilator of optimising on a pointer.
+Syntax :
+int * restrict newVar = &var;
+
+========================================================
+
+		POINTER &
+This pointer permits to affich the memory adress from a variable.
+This method is used with PRINTF and %p.
+
+%p ==> Affiches variable's adress.
+
+		POINTER *
+This pointer takes a value from a variable thanks to an adress.
+
+By example in Doc.c :
+
+#include <stdio.h>
+
+void inverser_nombres(int *nombreA , int *nombreB){
+    int temporaire = 0;
+    temporaire = *nombreB;
+/*I always need to continue using the pointer * in this case.*/
+    *nombreB = *nombreA;
+    *nombreA = temporaire;
+}
+int main(void){
+    int nombreA = 1;
+    int nombreB = 0;
+    
+    printf("ADRESS : %p\n" , &nombreB);
+    printf("BEFORE : A = %d et B = %d\n", nombreA, nombreB);
+    inverser_nombres(&nombreA , &nombreB);
+    printf("AFTER : A = %d et B = %d\n", nombreA, nombreB);
+    return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>test
+ADRESS : 0061FF18
+BEFORE : A = 1 et B = 0
+AFTER : A = 0 et B = 1
+
+---------------------
+But there is too the method :
+var *pointer = &adress;
+
+By example in Doc.c :
+
+#include <stdio.h>
+
+void inverser_nombres(int *nombreA , int *nombreB){
+    int temporaire = 0;
+    temporaire = *nombreB;
+/*I always need to continue using the pointer * in this case.*/
+    *nombreB = *nombreA;
+    *nombreA = temporaire;
+}
+int main(void){
+    int nombreA = 1;
+    int nombreB = 0;
+
+	int *adressNombreA = &nombreA;
+	int *adressNombreB = &nombreB;
+
+    printf("ADRESS : %p\n" , &nombreB);
+    printf("BEFORE : A = %d et B = %d\n", nombreA, nombreB);
+    inverser_nombres(adressNombreA , adressNombreB);
+    printf("AFTER : A = %d et B = %d\n", nombreA, nombreB);
+    return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>test
+ADRESS : 0061FF18
+BEFORE : A = 1 et B = 0
+AFTER : A = 0 et B = 1
+====================================
+
+		POINTER IN A DOC.H
+
+When I create a STRUCT who keepes a espacially architectur if this STRUCT is
+defined in a DOC.H I can use this STRUCT in an other file. This pointer is used
+for defining a function or a variable. I permit to put a value in the even zone
+of memory than the good struct so that when I use the value I can use it with
+its good architectur and good working.
+
+By example :
+
+znew0.c :
+#include <stdio.h>
+#include <stdlib.h>
+#include "zhead.h"
+//gcc *.c -o test
+int main(){
+yolo createStruct = giveNULL();
+    createStruct = ADD(createStruct);
+    SHOW(createStruct);
+    free(createStruct);
+return 0;
+}
+
+------
+
+znew1.c :
+#include <stdio.h>
+#include <stdlib.h>
+#include "zhead.h"
+
+yolo giveNULL(void){
+return 0;
+}
+yolo ADD(yolo memory){
+    yolo newMemory;
+    newMemory = malloc(sizeof(*newMemory));
+    newMemory->myInt = 14;
+    return newMemory;
+}
+void SHOW(yolo memory){
+    yolo clone = memory;
+    printf("[ %d ]", memory->myInt);
+}
+
+------
+
+zhead.h :
+#ifndef HEAD_H
+#define HEAD_H
+
+typedef struct myStruct{
+	int myInt;
+}here, *yolo;
+
+yolo giveNULL(void);
+yolo ADD(yolo memory);
+void SHOW(yolo memory);
+
+#endif
+
+=======
+=======
+
+znew0.c :
+#include <stdio.h>
+#include <stdlib.h>
+#include "zhead.h"
+//gcc *.c -o test
+int main(){
+here *createStruct = giveNULL();
+    createStruct = ADD(createStruct);
+    SHOW(createStruct);
+    free(createStruct);
+return 0;
+}
+
+------
+
+znew1.c :
+#include <stdio.h>
+#include <stdlib.h>
+#include "zhead.h"
+
+here *giveNULL(void){
+return 0;
+}
+here *ADD(here *memory){
+    here *newMemory;
+    newMemory = malloc(sizeof(*newMemory));
+    newMemory->myInt = 14;
+    return newMemory;
+}
+void SHOW(here *memory){
+    here *clone = memory;
+    printf("[ %d ]", memory->myInt);
+}
+
+------
+
+zhead.h :
+#ifndef HEAD_H
+#define HEAD_H
+
+typedef struct myStruct{
+	int myInt;
+}here, *yolo;
+
+here *giveNULL(void);
+here *ADD(here *memory);
+void SHOW(here *memory);
+
+#endif
+
+======
+======
+
+znew0.c :
+#include <stdio.h>
+#include <stdlib.h>
+#include "zhead.h"
+//gcc *.c -o test
+int main(){
+struct myStruct *createStruct = giveNULL();
+    createStruct = ADD(createStruct);
+    SHOW(createStruct);
+    free(createStruct);
+return 0;
+}
+
+------
+
+znew1.c :
+#include <stdio.h>
+#include <stdlib.h>
+#include "zhead.h"
+
+struct myStruct *giveNULL(void){
+return 0;
+}
+struct myStruct *ADD(struct myStruct *memory){
+    struct myStruct *newMemory;
+    newMemory = malloc(sizeof(*newMemory));
+    newMemory->myInt = 14;
+    return newMemory;
+}
+void SHOW(struct myStruct *memory){
+    struct myStruct *clone = memory;
+    printf("[ %d ]", memory->myInt);
+}
+
+------
+
+zhead.h :
+#ifndef HEAD_H
+#define HEAD_H
+
+struct myStruct{
+	int myInt;
+};
+
+struct myStruct *giveNULL(void);
+struct myStruct *ADD(struct myStruct *memory);
+void SHOW(struct myStruct *memory);
+
+#endif
+
+======
+======
+
+For all into CMD :
+C:\Users\ASUS\Desktop\zLearNC>gcc *.c -o test
+
+C:\Users\ASUS\Desktop\zLearNC>test
+[ 14 ]
+
+Info :
+In this example :
+struct myStruct * = here * = yolo;
+
+==============================================================
+
+		3 METHODES FOR AFFICHING AN ARRAY
+
+test0.c :
+#include <stdio.h>
+#define SIZE 4
+//gcc test0.c -o test
+int main(void){
+    int array[SIZE] = {2,1,0};
+    for(int e = 0; e < SIZE; e++){
+        printf("[ %d ]\n", array[e]);
+    }
+    puts("==============================");
+    for(int e = 0; e < SIZE; e++){
+        printf("[ %d ]\n", *(array + e));
+    }
+    puts("==============================");
+    int *pointArray = array;
+    for(int e = 0; e < SIZE; e++){
+        printf("[ %d ]\n", *pointArray);
+        *pointArray++;
+    }
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\C>gcc test0.c -o test
+
+C:\Users\ASUS\Desktop\C>test
+[ 2 ]
+[ 1 ]
+[ 0 ]
+[ 0 ]
+==============================
+[ 2 ]
+[ 1 ]
+[ 0 ]
+[ 0 ]
+==============================
+[ 2 ]
+[ 1 ]
+[ 0 ]
+[ 0 ]
+
+==============================================================
+
+		WITH THE CHARACTER :
+By example :
+#include <stdio.h>
+
+void fct(int *test){
+*test = 13;
+}
+
+void charFct(signed char **test){
+signed char new[3] = "!!";
+*test = new;
+}
+
+int main(void){
+
+int a = 15;
+fct(&a);
+printf("%d", a);
+
+puts("");
+
+signed char *e = "test";
+charFct(&e);
+printf("%s", e);
+
+puts("");
+
+return 0;
+}
+
+Into the console :
+racteurleader@racteurleader:~$ gcc test.c -o te
+racteurleader@racteurleader:~$ ./te
+13
+!!

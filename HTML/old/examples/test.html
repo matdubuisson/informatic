@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Un formulaire simple</title>
+</head>
+<body>
+  <p>Encodez vos coordonnées</p>
+  <script type="python">
+  def test():
+    with open("test.txt", "w") as f:
+      f.write("Test !!")
+  </script>
+  <form method="get">
+    <label for="prenom">Prénom:</label><br>
+    <input type="text" id="prenom" name="prenom"><br>
+    <label for="nom">Nom:</label><br>
+    <input type="text" id="nom" name="nom">
+    <input type="submit" value="Inscription" onclick="exec('python3 test.py')">
+  </form>
+</body>
+</html>

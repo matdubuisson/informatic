@@ -1,0 +1,11 @@
+				IMAGES
+
+#0	<img src="">
+
+This solo tag permits to affich images on the web.
+There are four parameters :
+3# src="" 3# => Take the address of the image file or take
+the web link of an image;
+3# alt="" 3# => Write a small description for the image;
+3# width=100 3# => Shape the width;
+3# height=100 3# => Shape the height;

@@ -1,0 +1,30 @@
+				INPUT and OUTPUT
+
+#3	read
+This command reads a data input by the user.
+Option :
+-p => For writing a small message befoe taking the data;
+-s => This option permits to have an input as a password;
+
+#3	echo
+This command echos a data.
+Option :
+-n => For deleting the default "\n";
+
+By example : 2# 
+#!/bin/bash
+
+nbr=16
+
+echo $nbr
+
+read -p "What is your favorite number ? " nbr
+
+echo $nbr
+
+read -p "What is the length of your password ? " myLength
+
+read -p "What is your password ? " -s myPassword
+
+echo "\nYour password is $myPassword !!"
+ 2#

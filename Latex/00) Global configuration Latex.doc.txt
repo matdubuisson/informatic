@@ -1,0 +1,42 @@
+				GLOBAL CONFIGURATION
+
+#0 The default syntax of a command is \commande[options]{parameters}
+
+#3	\documentclass[]{}
+This command defines the class of a document.
+#5 Options
+There are different formats of page :
+1# a4paper   1# => This makes an A4 paper;
+1# xpt       1# => This permits to define the fontsize (ex : 14pt);
+1# twocolumn 1# => Presents the document on two columns;
+1# twoside   1# => Permits to define recto-verso pages;
+
+#5 Parameters
+There are different types of class :
+1# article 1# => For the short documents;
+1# report  1# => For the long documents;
+1# book    1# => For the book documents;
+1# letter  1# => For the letter documents;
+1# slides  1# => For the transparent documents;
+
+#3	\begin{} and \end{}
+These functions permit to start and stop the editing of
+the document. These take one parameter : #1 document
+that designes the document.
+
+#3	\usepackage[]{}
+This command permits to import several packages in the
+document to get a certain style.
+
+#1 Parameters
+#5 Options
+There are different types of class :
+1# babel 1# => This permits to define a type of syntax;
+5# french 5# => This is the french syntax;
+1# fontenc 1# => Defines the encodage of the fonts;
+5# T1 5# => The T1 standard encodage of Latex;
+1# inputenc 1# => Defines the input encodage;
+5# utf8 5# => The utf8 encodage for the inputs;
+1# lmodern 1# => Font-style Latin Modern
+1# microtype 1# => It's better;
+1# hyperred 1# => Improve the quality of the reading;

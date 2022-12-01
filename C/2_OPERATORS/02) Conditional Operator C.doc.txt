@@ -1,0 +1,70 @@
+				CONDITIONAL OPERATOR
+
+#1              CONDITIONAL OPERATORS
+#2      The operators
+There are six operators :
+3# a < b  3# => If a is smaller than b;
+3# a <= b 3# => If a is smaller than b or equal; 
+3# a > b  3# => If a is grander than b;
+3# a >= b 3# => If a is grander than b or equal;
+3# a == b 3# => If a equals b;
+3# a != b 3# => If a doesn't equal b;
+
+There two other operators that replace if(){} and else{} :
+3# ? 3# => 1# condition ? instruction 1# => This operator replaces
+the if(). If the condition is true then the instruction is executed;
+3# : 3# => 1# condition ? instruction : otherInstruction 1# => If
+the condition is false then the first instruction is skipped to let
+the execution of the second (here otherInstruction);
+Ex : 2// 
+include <stdio.h>
+
+int main(void){
+  printf("Do you like the appel ? Yes=y and no=n...\n");
+  signed char choice;
+  scanf("%1c", &choice);
+  // IF :
+  choice == 'y' ? printf("You like the appel !!\n") :
+  // ELSE IF :
+  choice == 'n' ? printf("You don't like the appel...\n") :
+  // ELSE :
+  printf("Sorry but it isn't a available response...\n");
+
+
+  return 0;
+}
+ 2//
+
+#2	Priorities
+In fact the fourth are in priority on the two last and all
+arithmetic operators are in priority on these. Else the
+compilator reads from the left to the right.
+Examples :
+[ 4 == 4 * 5 > -4 ] is the same thing than [ 4 == ( (4 * 5) > -4 ) ]
+[ 5 > 4 > 3 ] is the same thing than [ (5 > 4) > 3 ]
+[ 6 > 4 != 6 <= 10 ] is the same thing than [ (6 > 4) != (6 <= 10) ]
+
+#2	By example
+condition_operator.c : 2# 
+#include <stdio.h>
+
+int main(void){
+
+  int Boolean = (5 > 4); // = TRUE = 1
+  int Boolean2 = (5 != 5); // = FALSE = 0
+  printf("Boolean = %d; Boolean2 = %d\n", Boolean, Boolean2);
+
+  int a = 4 == 4 * 5 > -4; // Same thing than : 4 == ( (4 * 5) > -4 )
+  int b = 5 > 4 > 3; // Same thing than : (5 > 4) > 3;
+  int c = 6 > 4 != 6 <= 10; // Same thing than : (6 > 4) != (6 <= 10);
+  printf("a = %d; b = %d; c = %d\n", a, b, c);
+
+  return 0;
+}
+ 2#
+Into the console : 2# 
+racteur@racteurleader:~/informatic/C/OPERATOR/EXAMPLE$ gcc condition_operator.c -o prog
+racteur@racteurleader:~/informatic/C/OPERATOR/EXAMPLE$ ./prog 
+Boolean = 1; Boolean2 = 0
+a = 0; b = 0; c = 0
+ 2#

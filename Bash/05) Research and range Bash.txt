@@ -1,0 +1,93 @@
+				RESEARCH AND RANGE
+
+#1		RESEARCH SOME THINGS IN THE COMPUTER
+
+#3	whereis
+This command askes one paramter who is a reference to find some different
+addresses about the subject of reasearch.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ whereis gcc
+gcc: /usr/bin/gcc /usr/lib/gcc /usr/share/man/man1/gcc.1.gz
+ 2#
+
+#3	locate
+This command permits to search all the files where the name contains a
+certain chain of characters put in parameter.
+Example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ locate myLib
+/home/racteur/MY_LIB/myLib.h
+/home/racteur/MY_LIB/myLib_ARRAY_SIGNED_CHAR.c
+/home/racteur/MY_LIB/myLib_BINARY_INT.c
+/home/racteur/MY_LIB/myLib_FLOAT.c
+/home/racteur/MY_LIB/myLib_INT.c
+/home/racteur/MY_LIB/myLib_MATH_FLOAT.c
+/home/racteur/MY_LIB/myLib_MATH_INT.c
+/home/racteur/MY_LIB/myLib_SCANF.t
+/home/racteur/MY_LIB/myLib_SIGNED_CHAR.c
+/home/racteur/MY_LIB/myLib_math_INT.c.save
+/home/racteur/MY_LIB/SAVE/myLib_old.t
+/home/racteur/MY_LIB/SDL2/myLib_SDL2_DATA.c
+/home/racteur/MY_LIB/SDL2/myLib_SDL2_DRAW_2D.c
+/home/racteur/MY_LIB/SDL2/myLib_SDL2_DRAW_3D.c
+/home/racteur/MY_LIB/SDL2/myLib_SDL2_DRAW_3D.t
+/home/racteur/MY_LIB/SDL2/SAVE/myLib_SDL2_DRAW_3D.c
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ locate myLib | grep "\.h"
+/home/racteur/MY_LIB/myLib.h
+ 2#
+
+#3	find
+This command research a precised file.
+#0 Paying attention where this command is used !!
+Option :
+-name => This option permits to take a name.
+-type d => This says that the file is an folder.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ find -name *.h
+#0 racteur@racteurleader:~/runPC/Codage/Bash/F0$ cd
+racteur@racteurleader:~$ find -name *.h
+./Program/C/SIMPLE_SERV/USER_PROGRAM/user_data.h
+./Program/C/SIMPLE_SERV/SERVER_PROGRAM/server_data.h
+./Program/C/SIMPLE_SERV/WINDOWS_USER_PROGRAM/user_data.h
+./MY_LIB/myLib.h
+./Documents/TFE/myProject/myTool.h
+./Documents/TFE/SAVE/lastVersion/myProject/myTool.h
+./Documents/TFE/3DRunner/3DRunner.h
+./.local/lib/python3.8/site-packages/aiohttp/_find_header.h
+./.local/lib/python3.8/site-packages/multidict/_multilib/iter.h
+./.local/lib/python3.8/site-packages/multidict/_multilib/istr.h
+./.local/lib/python3.8/site-packages/multidict/_multilib/views.h
+./.local/lib/python3.8/site-packages/multidict/_multilib/pair_list.h
+./.local/lib/python3.8/site-packages/multidict/_multilib/dict.h
+./.local/lib/python3.8/site-packages/multidict/_multilib/defs.h
+./.local/share/Steam/ubuntu12_32/steam-runtime/usr/include/Cg/cg.h
+./.local/share/Steam/ubuntu12_32/steam-runtime/usr/include/Cg/cgGL.h
+^C
+#0 racteur@racteurleader:~$ find ~/MY_LIB/ -name *.h
+#0 /home/racteur/MY_LIB/myLib.h
+racteur@racteurleader:~$ find ~ -name "MY_LIB"
+/home/racteur/MY_LIB
+ 2#
+
+#3	grep
+This command permits to research some chains of character in files.
+When it's found, the command affiches all the lines where this word
+is found.
+Option :
+-n ==> Affiches the line where is the found information;
+-i ==> Permits to stop the differences between the majuscules and
+the minuscules;
+-E ==> All elements who contains the chain;
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l ~ > test.txt 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ grep "MY_LIB" test.txt 
+drwxrwxr-x  4 racteur racteur 4096 avril  4 18:21 MY_LIB 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ grep -n "MY_LIB" test.txt 
+6:drwxrwxr-x  4 racteur racteur 4096 avril  4 18:21 MY_LIB
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ grep "my_lib" test.txt 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ grep -i "my_lib" test.txt 
+drwxrwxr-x  4 racteur racteur 4096 avril  4 18:21 MY_LIB
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ grep -i "My_LiB" test.txt 
+drwxrwxr-x  4 racteur racteur 4096 avril  4 18:21 MY_LIB
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ grep -E h test.txt 
+drwxrwxr-x  3 racteur racteur 4096 mars   1 18:20 sketchbook
+ 2#

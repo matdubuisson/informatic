@@ -1,0 +1,18 @@
+				TRIGO
+
+#1      	IMPORTATION
+#0      import math
+This is a module that contains a grand number of attributes (variables
+and functions) about mathematical problem.
+
+#4	cos(), sin(), tg(), cotg()
+These are cosinus(), sinus(), tangente() and cotangente().
+Parameter : These function take in parameter a radian value;
+
+#4	acos(), asin(), atg(), acotg()
+These are arccosinus(), arcsinus(), arctangente() and arccotangente().
+Parameter : These function take in parameter a trigo value;
+
+#4	radians()
+This function converts degrees to radians. So it takes a degree value
+in parameter and returns the same in radian.

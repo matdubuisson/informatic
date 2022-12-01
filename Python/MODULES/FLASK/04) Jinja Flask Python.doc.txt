@@ -1,0 +1,153 @@
+				JINJA
+
+The static files are the additionnal files has images, css script and js script.
+
+For here, the directory is named static and all script CSS are registered inside.
+
+#1		IMPORT VARIABLES IN THE HTML
+#1		AND FOR JINJA LOOP
+
+The Jinja brackets :
+3# {%  %} 3# => Permits to write Jinja code in the html;
+3# {{  }} 3# => Permits to put the value of a Jinja variable in the html;
+#0 WARNING : If it's a list with dashes ' and ", it needs to add the parameter
+#0 safe as {{ jinja_var | safe }} in the case where jinja_var contains dashes
+
+The Jinja conditions :
+=> Only if : 5# 
+{% if var %} <!-- Check if the variable exists !! -->
+<p>This tag is created if the variable is created !!</p>
+{% endif %}
+ 5#
+=> If and else : 5# 
+{% if var %} <!-- Check if the variable exists !! -->
+<p>This tag is created if the variable is created !!</p>
+{% else %}
+<p>The variable doesn't exist ....</p>
+{% endif %}
+ 5#
+=> For loop in the case where lst is a python list : 5# 
+{% if lst %}
+{% for each in lst %}
+<p>Element : {{ each }}</p>
+{% endfor %}
+<p>The whole list is : {{ lst | safe }}</p> <!-- Without 'safe', if the list contains dashes the navigator will show an fatal error !! -->
+{% endif %}
+ 5#
+
+Lets start with an example :
+
+main.py : 3// 
+import flask as f
+
+app = f.Flask(__name__)
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+  if f.request.method == "POST":
+    return f.render_template("index.html", name_with_jinja="Racteur", numbers=list(range(10)))
+  else:
+    return f.render_template("index.html")
+
+app.run(host="127.0.0.1", port=15000, debug=True)
+ 3//
+
+templates/index.html : 1// 
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Static files</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  </head>
+  <body>
+
+    <p class="test">Style here !!</p>
+    <form method="post">
+      <label form="btn">Click for testing :</label>
+      <input type="submit" name="btn" value="Do a test !!">
+    </form>
+
+    {% if name_with_jinja %}
+    <p>The name is : {{ name_with_jinja }}</p>
+    {% else %}
+    <p>There isn't name....</p>
+    {% endif %}
+
+    {% if name_with_jinja %}
+    <p>The else isn't important !!</p>
+    {% endif %}
+
+    {% if numbers %}
+    {% for each in numbers %}
+    <p>New tag p has been created with the value : {{ each }} !!</p>
+    {% endfor %}
+    {% endif %}
+
+  </body>
+</html>
+ 1//
+
+static/style.css : 2// 
+.test{
+  color:red;
+}
+ 2//
+
+Into the console : 2# 
+python3 main.py
+ 2#
+
+On the web :
+=> 127.0.0.1:15000
+Test the web with clicking on the button !!
+
+#1		LINK A CSS FILE
+
+Lets start with an example :
+
+main.py : 3// 
+import flask as f
+
+app = f.Flask(__name__)
+
+@app.route("/")
+def index():
+  print("test")
+  return f.render_template("index.html")
+
+app.run(host="127.0.0.1", port=15000, debug=True)
+ 3//
+
+templates/index.html : 1// 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Static files</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <p class="test">Style here !!</p>
+  </body>
+</html>
+ 1//
+
+static/style.css : 2// 
+.test{
+  color:red;
+}
+ 2//
+
+Into the console : 2# 
+python3 main.py
+ 2#
+
+On the web :
+=> 127.0.0.1:15000
+There is a text with the red color !!
+
+#5		{{ url_for('static', filename='style.css') }}
+
+This is the formul to get the address for a css file. It is needed to have access at
+the css files.

@@ -1,0 +1,31 @@
+				BLOCK
+
+#1		GLOBAL AND LOCAL BLOCK
+
+#2	What is an instruction ?
+A instruction is a simple command of the language. It cans be an
+affectation, a calculus or some other things...
+Ex :
+unsigned int e = 14;
+printf("Yolo !!\n");
+struct a b;
+....
+
+#2	What is a block of instructions ?
+The block [ {} ] permits to contain some instructions only available
+for this block. By example : 2# 
+// global
+int a; // Available for the global, fct(), main() and blockOfMain
+void fct(void){
+  int b; // Only available for fct()
+}
+
+int main(void){
+  int c; // Available only for main() and blockOfMain
+  {
+    // Here is blockOfMain
+    int d; // Available only for blockOfMain
+  }
+  return 0;
+}
+ 2#

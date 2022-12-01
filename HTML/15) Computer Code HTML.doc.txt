@@ -1,0 +1,28 @@
+				COMPUTER CODE
+
+#0	<code></code>
+This tag permits to insert code on the web.
+
+#0	<var></var>
+Writes the variable name in mathematical shape.
+
+computer_code.html : 0# 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Racteur">
+</head>
+<body>
+    <p>If <var>x</var> == 4</p>
+    <pre><code>
+#include "stdio.h"
+ 
+unsigned int main(void){
+    printf("Yolo !!\n");
+    return 0;
+}
+    </code></pre>
+</body>
+</html>
+ 0#

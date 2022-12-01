@@ -1,0 +1,128 @@
+				PROCESS
+
+#1		GET PROCESS ID
+
+#4	getpid()
+Returns the id of the current process.
+
+#4	getppid()
+Returns the id of the current parent process.
+
+#1		CLONE PROCESS
+
+#4	fork()
+#0 Only for Linux !!
+This function clones the current process (main) to create an exact copy (child).
+All main variables are duplicated with the same values for the child but after
+the variables of main and child are independent.
+
+The functions returns a pid :
+==> If it's 0, it means that is the child process;
+==> If it isn't 0, it means that is the main process.
+This pid is the id of child process;
+
+#1		COMMUNICATION BETWEEN TWO PROCESSES
+
+#4	pipe()
+This function permits to create a pipe for communication between processes.
+Warning this pipe needs to be created before the division so for example
+function pipe() is always called before a fork().
+
+Parameter :
+par0 => An array of length = 2;
+
+The array receives two values :
+array[0] => The reader side (as the file descriptor stdin);
+array[1] => The writer side (as the file descriptor stdout);
+
+pid.c : 2// 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+#define size 30
+
+// pid type => pid_t (signed integer)
+
+void print_description(void){
+    static signed int pid, ppid;
+    pid = getpid(), ppid = getppid();
+    printf("This process is %d and his parent process (terminal process) is %d !!\n", pid, ppid);
+    return;
+}
+
+unsigned int main(void){
+
+    // These variables are duplicated in two independent parts by fork()
+    unsigned int i;
+    unsigned char *name;
+
+    printf("Main process :\n");
+    print_description();
+
+    signed int comm[2];
+    if(pipe(comm) == -1){
+        printf("PIPE ERROR !!\n");
+        return 1;
+    }
+    // 0 => Writing
+    // 1 => Reading
+
+    signed int pid = fork();
+    printf("Fork pid : %d\n", pid);
+    if(pid == -1){
+        printf("FORK ERROR !!\n");
+        return 2;
+    }
+
+    // Or if(pid), child can be reader or writer
+    if(!pid){ // Make a thread
+        name = malloc(sizeof(unsigned char) * size);
+        strncpy(name, "Yolo !!", size);
+        printf("Name of main => %s\n", name);
+
+        close(comm[0]);
+
+        for(i = 0; i < size; i++){
+            if(write(comm[1], (name + i), sizeof(unsigned char)) == -1){
+                printf("WRITE ERROR !!\n");
+                return 3;
+            }
+        }
+
+        printf("Child has sent !!\n");
+        free(name);
+    }
+    else{
+        name = malloc(sizeof(unsigned char) * size);
+        strncpy(name, "", size);
+
+        close(comm[1]);
+
+        for(i = 0; i < size; i++){
+            if(read(comm[0], (name + i), sizeof(unsigned char)) == -1){
+                printf("READ ERROR !!\n");
+                return 4;
+            }
+        }
+
+        printf("Main has received [%s] !!\n", name);
+        free(name);
+    }
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ gcc pid.c -o prog
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ ./prog 
+Main process :
+This process is 10712 and his parent process (terminal process) is 9264 !!
+Fork pid : 10713
+Fork pid : 0
+Name of main => Yolo !!
+Child has sent !!
+Main has received [Yolo !!] !!
+ 2//

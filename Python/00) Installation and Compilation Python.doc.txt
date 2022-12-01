@@ -1,0 +1,33 @@
+Script 75
+				INSTALLATION
+
+This is simply :
+#1 [ sudo apt-get install python3.8 ]
+
+For installing tkinter :
+#1 [ sudo apt-get install python3-tk ]
+
+For installing PIP :
+#1 [ sudo apt-get install python3-pip ]
+
+For installing discord.py :
+#1 [ python3.8 -m pip install -U discord.py ]
+
+For installing dotenv :
+#1 [ sudo apt-get install python3-dotenv ]
+
+For installing Pygame :
+#1 [ sudo apt-get install python3-pygame ]
+
+				COMPILATION
+
+The command cans change according to the version with python, python3
+and python3.8...
+The command takes in parameter the [ file.py ].
+Ex : 2# 
+racteur@racteurleader:~/runPC/Codage/Python$ cat test.py 
+#coding:utf-8
+print("Yolo !!")
+racteur@racteurleader:~/runPC/Codage/Python$ python3.8 test.py 
+Yolo !!
+ 2#

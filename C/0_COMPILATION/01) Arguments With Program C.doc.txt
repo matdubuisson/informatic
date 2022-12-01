@@ -1,0 +1,65 @@
+				ARGUMENTS WITH PROGRAM
+
+This is a way to create terminal command that askes some options.
+
+args.c : 2// 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void read_list(unsigned char **list);
+
+unsigned int main(unsigned char opt_c, unsigned char **opt){
+
+    read_list(opt);
+
+    return 0;
+}
+
+void read_list(unsigned char **list){
+    static unsigned int i;
+    i = 0;
+    while(*(list + i) != 0){
+        printf("%s\n", *(list + i));
+        i++;
+    }
+    return;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/0_COMPILATION/EXAMPLE$ gcc args.c -o prog
+racteur@rogy:~/Documents/informatic/C/0_COMPILATION/EXAMPLE$ ./prog 
+./prog
+racteur@rogy:~/Documents/informatic/C/0_COMPILATION/EXAMPLE$ ./prog test
+./prog
+test
+racteur@rogy:~/Documents/informatic/C/0_COMPILATION/EXAMPLE$ ./prog test salut yolo !! hey come
+./prog test salut yolo ./prog test hey come
+./prog
+test
+salut
+yolo
+./prog
+test
+hey
+come
+racteur@rogy:~/Documents/informatic/C/0_COMPILATION/EXAMPLE$ ./prog test salut yolo ./prog test hey come !! !1400
+./prog test salut yolo ./prog test hey come yo  ls
+./prog
+test
+salut
+yolo
+./prog
+test
+hey
+come
+yo
+ls
+racteur@rogy:~/Documents/informatic/C/0_COMPILATION/EXAMPLE$ ./prog a b "test test test " c
+./prog
+a
+b
+test test test 
+c
+ 2//

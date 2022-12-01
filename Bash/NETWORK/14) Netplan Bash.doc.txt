@@ -1,0 +1,89 @@
+Script 68
+                                NETPLAN
+
+#1 !! WARNING !! 0# 
+For using netplan on Ubuntu Budgie I create a second file
+next to the default network file who takes network-manager.
+I create a seconf file.yaml for doing my configuration.
+ 0#
+After that I can just make :
+[ sudo systemctl restart systemd-netword ]
+[ sudo netplan apply ]
+
+#1                GENERAL CONFIG
+File : #5 /etc/netplan
+The only file has like extension YAML
+a special language.
+This language workes by two spaces at each
+under option of an element :
+group0:
+  group0.0:
+    group0.0.0
+  group0.1: true
+    group.1.0: true
+    group0.1.1: false
+group1: test
+NETPLAN is a command who takes an other bit :
+0) [ netplan generate ] : For generating the system.
+1) [ netplan try ] : For trying the system.
+2) [ netplan apply ] : For appliying the system.
+3) [ netplan apply -d ] : For debbuging the system.
+
+RENDERER: The used system for the network.
+
+#1		ETHERNET CONFIG
+ENP3S0: A new ethernet reseau.
+DHPC4: For an old IP. µµµ.µµµ.µ.µµ
+DHPC6: For a young IP. µµµ.µµ.µµµ.µµµ
+ADDRESSES: For putting the IP :
+GATEWAY4: For having an old IP.
+GATEWAY6: For having a young IP.
+OPTIONAL: For saying if it's optional.
+      addresses:
+        - aaa.bbb.cc.dd
+      gateway4: AAA.BBB.CC.D
+PRINCIPAL SYNTAX :
+Example 0 :
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp3s0:
+      dhpc4: true
+
+NAMESEVERS : For associating an IP at a domain and by this command creating a DNS serv.
+SEARCH: Take an array for in the order associating the names at the IP of ADDRESSES who
+has too an array here.
+Example 1 :
+netword:
+  version: 2
+  renderer: networkd
+
+  ethernets:
+    enp3s0:
+      addresses:
+        - aaa.bbb.cc.dd
+      gateway4: AA.BB.CC.D
+      nameservers:
+        search: [test0, test1]
+        addresses: [IP0, IP1]
+
+#1		WIFI CONFIG
+ACCESS-POINTS : This command permits the connection between
+my computer and my box.
+PASSWORD: For writting the password.
+      acces-points:
+        wifiName:
+          password: testPassword
+       
+For getting the list of linked IP I can use the command :
+[ ip a ];
+Example 2 :
+network:
+  wifis:
+    wlp2s0b2:
+      addresses: [ aaa.bbb.cc.dd ]
+      gateway4: [ AAA.BBB.CC.DD ]
+      access-points:
+        wifi-example1614
+          password: myPassword

@@ -1,0 +1,111 @@
+				VARIABLES
+
+A variable of primitive type always contains a value otherwise a non-primitive type
+is a pointer on other(s) data(s) and then can have the value null.
+
+#1		PRIMITIVES TYPES
+
+#0 The name of a primitive type starts with a lower case !!
+
+DECLARER |   SIZE IN BYTES   |      VALUES
+===================================================================== 3# 
+byte 		1 byte 		Stores whole numbers from -128 to 127
+short 		2 bytes 	Stores whole numbers from -32,768 to 32,767
+int 		4 bytes 	Stores whole numbers from -2,147,483,648 to 2,147,483,647
+long 		8 bytes 	Stores whole numbers from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+float 		4 bytes 	Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits
+double 		8 bytes 	Stores fractional numbers. Sufficient for storing 15 decimal digits
+boolean 	1 bit 		Stores true or false values
+char 		2 bytes 	Stores a single character/letter or ASCII values
+ 3#
+
+PrimitivesTypes.java : 2// 
+public class PrimitiveTypes{
+    public static void main(String[] args){
+        /*
+            It's like in C !!
+        */
+        boolean flag = true;
+        int nbr = 14, nbr2 = 16;
+        float fnbr = 3.14f;
+        char letter = 'D', letter2 = 32;
+        System.out.println(flag + " " + !flag);
+        System.out.println(nbr + 16);
+        System.out.println(fnbr / 3);
+        System.out.println(letter + letter2 + letter);
+        // Multi-Variables :
+        int h;
+        h = nbr = nbr2 = 1;
+        System.out.println(h + nbr + nbr2);
+    }
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/1.0_VARIABLES/EXAMPLE$ javac PrimitiveTypes.java
+racteur@rogy:~/Documents/informatic/Java/1.0_VARIABLES/EXAMPLE$ java PrimitiveTypes 
+true false
+30
+1.0466667
+168racteur@rogy:~/Documents/informatic/Java/EXAMPLE_01$ javac Scopes.java 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_01$ java Scopes 
+14
+16
+30
+3
+3
+ 2#
+
+#1		NON-PRIMITIVE TYPES
+
+#0 The name of a non-primitive type starts with a upper case !!
+
+In fact, the non-primitives types are some objects. The syntax to create a new object is :
+#5 ObjectType varName = new ObjectType();
+
+NonPrimitivesTypes.java : 2// 
+public class NonPrimitivesTypes{ 
+    public static void main(String[] args){
+        String name = new String("Racteur");
+        System.out.println(name);
+    }                            
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_01$ javac NonPrimitivesTypes.java 
+racteur@rogy:~/Documents/informatic/Java/EXAMPLE_01$ java NonPrimitivesTypes 
+Racteur
+ 2#
+
+#1		SPECIAL DECLARERS
+
+#0 A variable can't be defined outside a variable !!
+Normal variables are normally declared inside function
+of class but it's possible to declare normal variables
+in the global body of the class.
+
+#3	final
+This keyword permits to make a variable unmodifiable.
+If the programmer tries to modify a final variable,
+the compilator will raise a compilation error !!
+
+#3	static
+This keyword means that the variable is only declared once and
+keep his value after each use. A static variables can't be defined
+inside a method but it's defined in the global body of the class.
+
+#1		PERMISSIONS DECLARERS
+
+#3	private, protected and public
+
+KEYWORD		| CLASS		| PACKAGE	| SUBCLASS (this pkg)	| SUBCLASS (other pkg)	| WORLD
+=================================================================================================================
+public		| V		| V		| V			| V			| V
+----------------|---------------|---------------|-----------------------|-----------------------|----------------
+protected	| V		| V		| V			| V			| X
+----------------|---------------|---------------|-----------------------|-----------------------|----------------
+ X		| V		| V		| V			| X			| X
+----------------|---------------|---------------|-----------------------|-----------------------|----------------
+private		| V		| X		| X			| X			| X
+----------------|---------------|---------------|-----------------------|-----------------------|----------------

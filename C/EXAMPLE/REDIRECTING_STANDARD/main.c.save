@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h> // system()
+#include <unistd.h> //
+#include <sys/wait.h>
+#include <fcntl.h>
+
+#define FILE_NAME "log.txt"
+#define FILE_PERM 0777
+
+int main(void){
+
+  int pid = fork();
+  if(pid == -1){
+    return 1;
+  }
+
+  if(pid == 0){
+    // CHILD
+    int f = open(FILE_NAME, O_WRONLY | O_CREAT, FILE_PERM);
+    if(f == -1){
+      return 2;
+    }
+
+    int f2 = dup2(f, 1);
+    printf("This message is in the log.txt !!\n");
+    int err = execlp("ls", "ls", "-l", NULL);
+    if(err == -1){
+      return 3;
+    }
+  }
+  else{
+    int err = wait(NULL);
+    if(err == -1){
+      return 4;
+    }
+    
+
+  return 0;
+}

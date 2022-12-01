@@ -1,0 +1,24 @@
+				SIZE
+
+#1              SIZE OPERATORS
+#2      Operator
+There is a single operator for telling about size :
+3# sizeof or sizeof() 3# => This returns the value of the
+size of a data. It's the number of bytes. There are two
+syntax with this operator :
+sizeof(data); // It isn't a function !!
+sizeof data;
+
+Ex : 2# 
+#include <stdio.h>
+
+int main(void){
+  int var = 6;
+  sizeof var; // Same than sizeof(var)
+  sizeof(int); // It's sizeof (first operator) plus "(int)" (second operator)
+  char Var = 14;
+  sizeof var + Var;
+
+  return 0;
+}
+ 2#

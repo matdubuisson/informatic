@@ -1,0 +1,60 @@
+				LIST
+
+#1		DECLARATION
+
+This is quite simple, syntax :
+list=( "e0" "e1" "e2" "..." )
+
+#1		ADDING
+
+By example : 2# 
+#!/bin/bash
+
+var=1308
+l=( "element0" "element1" true 14 $var )
+
+echo "Elements of l : ${l[*]}"
+echo "Indexs of l : ${!l[*]}"
+echo "Length of l : ${#l[*]}"
+
+echo "unset l[1]"
+unset l[1]
+
+echo "Elements of l : ${l[*]}"
+echo "Indexs of l : ${!l[*]}"
+
+echo "l[5]=\"New element\""
+l[5]="New element"
+
+echo "Elements of l : ${l[*]}"
+echo "Indexs of l : ${!l[*]}"
+
+##########################################
+
+l2=( "new_list" $l 16 )
+echo "l[2]=false"
+l[2]=false
+echo "L2 :"
+echo ${l2[*]}
+echo ${!l2[*]}
+
+l2[3]=(${l[*]}) # It's an error because a list cansn't be inside an other list !!
+ 2#
+
+Into the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Bash/SCRIPT/EXAMPLE$ bash list.bash 
+Elements of l : element0 element1 true 14 1308
+Indexs of l : 0 1 2 3 4
+Length of l : 5
+unset l[1]
+Elements of l : element0 true 14 1308
+Indexs of l : 0 2 3 4
+l[5]="New element"
+Elements of l : element0 true 14 1308 New element
+Indexs of l : 0 2 3 4 5
+l[2]=false
+L2 :
+new_list element0 16
+0 1 2
+list.bash: line 31: l2[3]: cannot assign list to array member
+ 2//

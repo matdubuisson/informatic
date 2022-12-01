@@ -1,0 +1,57 @@
+				PRINCIPAL ELEMENTS
+
+#2 Characters of the language C :
+The norm impose some basic characters (view de 200 first).
+1# \t 1# => Horizontal tabulation;
+1# \v 1# => Vertical tabulation;
+1# \f 1# => Jump of page;
+1# \a 1# => Alert;
+1# \b 1# => Return character;
+1# \r 1# => Return line;
+1# \n 1# => New line;
+
+#2 Trigraphs :
+This thing askes the option [ -trigraphs ] at the compilation.
+1# ??= 1# => #
+1# ??( 1# => [
+1# ??\ 1# => \
+1# ??) 1# => ]
+1# ??' 1# => ^
+1# ??< 1# => {
+1# ??! 1# => |
+1# ??> 1# => }
+1# ??- 1# => ~
+
+#2 Different keys in C :
+1# auto 1#
+1# break 1#
+1# case 1#
+1# char 1#
+1# const 1#
+1# continue 1#
+1# default 1#
+1# do 1#
+1# double 1#
+1# else 1#
+1# enum 1#
+1# extern 1#
+1# float 1#
+1# for 1#
+1# goto 1#
+1# if 1#
+1# int 1#
+1# long 1#
+1# register 1#
+1# return 1#
+1# short 1#
+1# signed 1#
+1# sizeof 1#
+1# static 1#
+1# struct 1#
+1# switch 1#
+1# typedef 1#
+1# union 1#
+1# unsigned 1#
+1# void 1#
+1# volatile 1#
+1# while 1#

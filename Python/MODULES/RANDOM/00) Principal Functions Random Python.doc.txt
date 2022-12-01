@@ -1,0 +1,48 @@
+				PRINCIPAL FUNCTIONS
+
+#0	Module : import random
+This module contains all things about the pseudo random generators.
+
+#4	random.random() or rnd.random()
+This function returns a random number between 0 and 1. It cans be called directly
+by the module or an object of type of class random.Random.
+Ex : 2# 
+import random as rd
+
+nbr = rd.Random()
+print(nbr.random()) # By an object of the module
+print(rd.random()) # Only by the module
+ 2#
+Into the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE$ py module_random.py 
+0.1472694745216483
+0.8310806681737688
+ 2//
+
+#5	rnd = random.Random()
+This function an object of type class random.Random.
+Ex : 2# 
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE$ cat module_random.py 
+import random as rd
+nbr = rd.Random()
+print(type(nbr))
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE$ py module_random.py 
+<class 'random.Random'>
+ 2#
+
+#4	rnd.randrange()
+This function takes a random number inside an defined array.
+Parameters :
+par0 => As range(), it's the start;
+par1 => As range(), it's the stop;
+par2 => As range(), it's the incrementation;
+Ex : 2// 
+import random as rd
+
+object = rd.Random()
+rnd_list = object.randrange(1, 10, 2) # It takes a random number in a 
+# list from 1 to 10 but the 2 does as range() for 1 + 2 = 3, 3 + 2 = 5
+# 5 + 2 = 7, 7 + 2 = 9. In fact, it takes a random odd number between
+# 1 and 10
+print(rnd_list)
+ 2//

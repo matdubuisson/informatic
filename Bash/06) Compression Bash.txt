@@ -1,0 +1,91 @@
+				COMPRESSION
+
+#3	tar
+This command permits to create an archive.
+Option : cf / zcf / xf / tf / vcf
+-f ==> For "file" who is the archive;
+-cf ==> For "create";
+  -vcf ==> This option is used to follow [ -c ] because it listes all
+  all the elements included in the archive. This permits to check;
+  -zcf ==> This option makes the archive in zip so as [ file.tar.gz ];
+  -jcf ==> This command creates an archive of type [ file.tar.bz2 ];
+-tf ==> For viewing the contain of an archive;
+-xf ==> This command permits to extract the files;
+  -zxf ==> This command permits to unzip a zipped archive;
+  -jxf ==> This command extract the files of a file.tar.bz2;
+  of an archive;
+-P ==> For archiving a folder;
+Parameter (after the options):
+par0 => The name of the archive;
+parX => All files who are includins into the archive;
+
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 68
+-rw-rw-r-- 1 racteur racteur   772 avril  7 11:34 myLib_ARRAY_SIGNED_CHAR.c
+-rw-rw-r-- 1 racteur racteur   904 avril  7 11:34 myLib_BINARY_INT.c
+-rwxrwxr-x 1 racteur racteur  1819 avril  7 11:34 myLib_FLOAT.c
+-rwxrwxr-x 1 racteur racteur  1933 avril  7 11:34 myLib_INT.c
+-rw-rw-r-- 1 racteur racteur  2947 avril  7 11:34 myLib_MATH_FLOAT.c
+-rwxrwxr-x 1 racteur racteur   133 avril  7 11:34 myLib_MATH_INT.c
+-rwxrwxr-x 1 racteur racteur  2187 avril  7 11:34 myLib_SIGNED_CHAR.c
+-rw-rw-r-- 1 racteur racteur     0 avril  7 10:28 myLog.log
+-rw-rw-r-- 1 racteur racteur  3412 avril  7 11:34 test3D.c
+-rw-rw-r-- 1 racteur racteur 30720 avril  7 11:35 testArchive
+-rw-rw-r-- 1 racteur racteur   817 avril  7 11:09 test.txt
+#0 racteur@racteurleader:~/runPC/Codage/Bash/F0$ tar -cf testArchive.tar *.c
+#0 racteur@racteurleader:~/runPC/Codage/Bash/F0$ tar -tf testArchive.tar 
+myLib_ARRAY_SIGNED_CHAR.c
+myLib_BINARY_INT.c
+myLib_FLOAT.c
+myLib_INT.c
+myLib_MATH_FLOAT.c
+myLib_MATH_INT.c
+myLib_SIGNED_CHAR.c
+test3D.c
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ rm *.c
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 36
+-rw-rw-r-- 1 racteur racteur     0 avril  7 10:28 myLog.log
+-rw-rw-r-- 1 racteur racteur 30720 avril  7 11:36 testArchive.tar
+-rw-rw-r-- 1 racteur racteur   817 avril  7 11:09 test.txt
+#0 racteur@racteurleader:~/runPC/Codage/Bash/F0$ tar -xf testArchive.tar 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 68
+-rw-rw-r-- 1 racteur racteur   772 avril  7 11:34 myLib_ARRAY_SIGNED_CHAR.c
+-rw-rw-r-- 1 racteur racteur   904 avril  7 11:34 myLib_BINARY_INT.c
+-rwxrwxr-x 1 racteur racteur  1819 avril  7 11:34 myLib_FLOAT.c
+-rwxrwxr-x 1 racteur racteur  1933 avril  7 11:34 myLib_INT.c
+-rw-rw-r-- 1 racteur racteur  2947 avril  7 11:34 myLib_MATH_FLOAT.c
+-rwxrwxr-x 1 racteur racteur   133 avril  7 11:34 myLib_MATH_INT.c
+-rwxrwxr-x 1 racteur racteur  2187 avril  7 11:34 myLib_SIGNED_CHAR.c
+-rw-rw-r-- 1 racteur racteur     0 avril  7 10:28 myLog.log
+-rw-rw-r-- 1 racteur racteur  3412 avril  7 11:34 test3D.c
+-rw-rw-r-- 1 racteur racteur 30720 avril  7 11:36 testArchive.tar
+-rw-rw-r-- 1 racteur racteur   817 avril  7 11:09 test.txt
+ 2#
+
+#3	zip
+This command permits to zipping several files in a file.zip.
+Option :
+This permits to choose the level of the compression between 0 and 9 :
+-0, -1, -2, -3, -4, -5, -6, -7, -8 and -9;
+Syntax : zip file.zip file.ext *.c ....
+
+#3	unzip
+This command permits to unzippig a file.zip.
+Syntax : unzip file.zip
+
+#3	gzip
+This command permits to zipping an archive. This gives a file.tar.gz.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F1$ ls -l
+total 44
+-rw-rw-r-- 1 racteur racteur 30720 avril  7 11:36 testArchive.tar
+-rw-rw-r-- 1 racteur racteur  9993 avril  7 11:44 test.zip
+racteur@racteurleader:~/runPC/Codage/Bash/F1$ gzip testArchive.tar 
+racteur@racteurleader:~/runPC/Codage/Bash/F1$ ls -l
+total 16
+-rw-rw-r-- 1 racteur racteur 3622 avril  7 11:36 testArchive.tar.gz
+-rw-rw-r-- 1 racteur racteur 9993 avril  7 11:44 test.zip
+ 2#

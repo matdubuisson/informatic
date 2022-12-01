@@ -1,0 +1,7 @@
+				MULTI-WINDOWS
+
+#4	Toplevel()
+This function with a thread permits to create a seconde window so a child-window.
+This function plays the same job than Tk() but for a child. This child-window
+doesn't need of mainloop() and quit(). When the main-window is closed, it
+automatically closes all child-windows.

@@ -1,0 +1,76 @@
+				FILE AND DIRECTORY
+
+#5			NORMAL FILES
+
+#1		CREATION : OPENING AND CLOSING
+
+#4	f = os.open("name", "mod")
+#0 import os
+This built-in function returns and object that runs a file to
+read of to write.
+Parameters :
+par0 => The name of the file;
+par1 => The mod of work :
+3# "w" 3# => This permits to delete the contain of a file to
+write the new contain;
+3# "a" 3# => This adds new contains to the end of a file;
+#0 This mod requires the existance of the file else it'll return an error !!
+3# "r" 3# => This permits to read the contain of the file;
+
+#4	f.close()
+#0 This function comes from os
+This simple method closes only the file. Pay attention to
+close the file always. 0# An error between an open() and a
+close() should cause a problem or even a damage at some datas !!
+ 0#
+
+#3	with AND as
+This method to code permits to open and to close a file with
+a single line of code. Syntax : 5# 
+with open("file_name", "mod") as f:
+  # do stuff with manager object => f
+  pass
+ 5#
+
+#1		REMOVING
+
+#4	os.remove("file_name")
+#0 import os
+This function of the module 0# os 0# permits to remove
+a file in the system.
+
+#1		WRITING AND ADDING
+
+#4	f.write("""string""")
+#0 This function comes from os
+This function writes a new chain of characters at the end
+of the already existing contain of the file. Several
+calling of this method write several times for example.
+Parameters :
+par0 => A string;
+
+#1		READING
+
+#4	contain = f.read()
+#0 This function comes from os
+This function reads the file and returns a string that is
+the contain of it. There aren't parameters.
+
+#5			BINARY FILES
+
+#5			DIRECTORIES
+
+#1		CREATION
+#4	os.mkdir("folder_name")
+#0 import os
+This function creates a folder.
+
+#1		REMOVING
+
+#4	os.rmdir("empty_folder")
+#0 import os
+This function removes an empty folder.
+
+#4	os.rmtree("full_folder")
+#0 import shutil
+This function removes a folder with a contain.

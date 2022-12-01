@@ -1,0 +1,90 @@
+				REDIRECTION AND CHAINING
+
+#1		EXECUTING SEVERAL COMMAND IN CHAIN
+
+#3	|
+#0 Paying attention to this as it's very important as symbol !!
+This character permits to chain different command.
+This tool permits to make a real chain of the command and affiches
+only the last result.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ history | grep "windows_gcc"
+ 1565  sudo mv /usr/bin/x86_64-w64-mingw32-gcc /usr/bin/windows_gcc
+ 1571  windows_gcc *.c ~/MY_LIB/*.c -o 0prog -lpthread
+ 1956  windows_gcc *.c ~/MY_LIB/*.c -o 2prog.exe -lpthread
+ 1960  windows_gcc *.c ~/MY_LIB/*.c -o 2prog.exe -lpthread
+ 2053  history | grep "windows_gcc"
+ 2#
+
+#3	&& and ||
+This executes the command in chain but this affiches the results also.
+&& ==> If the last command doesn't generate an error;
+|| ==> If the last command generates an error;
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ echd "g" && echo "test"
+bash: /usr/lib/command-not-found: /usr/bin/python3: bad interpreter: No such file or directory
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ echd "g" || echo "test"
+bash: /usr/lib/command-not-found: /usr/bin/python3: bad interpreter: No such file or directory
+test
+ 2#
+
+#1		WRITE A TRACE OF THE SHELL IN A FILE
+
+#3	>
+This command replaces the contain of a file by the result of a command.
+Syntax : ls -l > file.txt
+
+#3	>>
+This command writes the result of a command in the end of a file.
+Syntax : ls -l >> file.txt
+
+#3	2>
+This command replaces the contain of a file by the result of error.
+Syntax : ls -l 2> file.txt
+
+#3      2>>
+This command writes the result of a command in the end of a file.
+Syntax : ls -l 2>> file.txt
+
+#3	> + 2>&1
+This thing permits to affich the result even if it's an error. So this
+affiches each time like a [ > ].
+Syntax : ls -l > file.ext 2>&1
+
+#3      > + 2>>&1
+#0 It's in the end of the command !!
+This thing permits to affich the result even if it's an error. So this 
+affiches each time like a [ >> ].
+Syntax : ls -l >> file.ext 2>&1
+
+#3	<
+This symbol permits to give a file to a command for working.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ cat < test.txt 
+Yolo touch test.txt
+ 2#
+
+#3	<<
+It's same point that the last but this permits to chain different elements.
+I have to create a kind of key who permits to close the session who puts
+some informations.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ cat << myKeyForLeaving
+> Salut
+> Mec
+> Comment ça va ?
+> Test
+> Are you fine ??
+> Yolo !!
+> Hey
+> I try to improve my english for two reasons !!
+> myKeyForLeaving
+Salut
+Mec
+Comment ça va ?
+Test
+Are you fine ??
+Yolo !!
+Hey
+I try to improve my english for two reasons !!
+ 2#

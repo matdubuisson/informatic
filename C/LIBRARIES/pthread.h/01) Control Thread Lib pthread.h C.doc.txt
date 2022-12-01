@@ -1,0 +1,130 @@
+				CONTROL THREAD
+
+#1		INSIDE FROM THE THREAD
+
+#4      pthread_self()
+This function returns the thread id typed of (thread_t).
+It takes no parameters and it's called inside the function.
+
+#4	pthread_detach()
+When the main doesn't join the thread, the thread can detach
+itself. It takes its own thread id returned with pthread_self().
+Parameter : The thread id typed of thread_t;
+
+#1		OUTSIDE FROM THE THREAD
+
+#4	pthread_cancel()
+This function permits to cancel a thread.
+Parameter : The thread id typed of thread_t;
+
+#4	pthread_equal()
+Checks if two threads are the same.
+Parameters :
+par0 => The first thread id typed of thread_t;
+par1 => The second thread id typed of thread_t;
+
+control_thread.c : 2// 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+      
+#include <pthread.h>
+      
+#define number_of_threads 4
+      
+unsigned int global_id = -1;
+      
+void *thread_f(void *arg){
+    unsigned int id = (global_id += 1);
+    unsigned int i; // If static, all thread will share the same variable !!
+    pthread_t th_id = pthread_self();
+    pthread_detach(pthread_self());
+    for(i = 0; i < 7; i++){
+        printf("Thread %d : %ld\n", id, th_id);
+        usleep(1000000);
+    } 
+      
+    pthread_exit(NULL);
+}     
+      
+unsigned int main(void){
+      
+    unsigned int i;
+    pthread_t threads[number_of_threads];
+      
+    for(i = 0; i < number_of_threads; i++){
+        if(pthread_create((threads + i), NULL, thread_f, NULL)){ // Don't pass parameter
+            printf("Error to create thread %d !!\n", i);
+        }
+    } 
+      
+      
+    // No need to join because join attach thread to main versus detach that detach thread of main 
+    for(i = 0; i < number_of_threads; i++){
+        if(pthread_join(*(threads + i), NULL)){ // Don't receive thread return
+            printf("Error to join thread %d !!\n", i);
+        }
+    } 
+      
+      
+    usleep(2000000);
+    printf("Cancel thread 2....\n");
+    pthread_cancel(*(threads + 2));
+    usleep(1000000);
+    printf("Cancel thread 3....\n");
+    pthread_cancel(*(threads + 3));
+      
+    if(pthread_equal(*(threads + 0), *(threads + 1))){
+        printf("Thread 0 and thread 1 are equal !!\n");
+    } 
+    else{
+        printf("Thread 0 and thread 1 aren't equal !!\n");
+    } 
+      
+    if(pthread_equal(*(threads + 0), *(threads + 0))){
+        printf("Thread 0 and thread 0 are equal !!\n");
+    } 
+    else{
+        printf("Thread 0 and thread 0 aren't equal !!\n");
+    } 
+      
+    usleep(6000000); // If main is finished, all threads are finished !!
+      
+    return 0;
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/pthread.h/EXAMPLE$ gcc control_thread.c -o prog
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/pthread.h/EXAMPLE$ ./prog 
+Thread 0 : 139726549550656
+Thread 1 : 139726541157952
+Error to join thread 0 !!
+Error to join thread 1 !!
+Error to join thread 2 !!
+Error to join thread 3 !!
+Thread 2 : 139726532765248
+Thread 3 : 139726524372544
+Thread 0 : 139726549550656
+Thread 1 : 139726541157952
+Thread 2 : 139726532765248
+Thread 3 : 139726524372544
+Thread 0 : 139726549550656
+Thread 1 : 139726541157952
+Cancel thread 2....
+Thread 2 : 139726532765248
+Thread 3 : 139726524372544
+Thread 0 : 139726549550656
+Thread 1 : 139726541157952
+Thread 3 : 139726524372544
+Cancel thread 3....
+Thread 0 and thread 1 aren't equal !!
+Thread 0 and thread 0 are equal !!
+Thread 0 : 139726549550656
+Thread 1 : 139726541157952
+Thread 0 : 139726549550656
+Thread 1 : 139726541157952
+Thread 0 : 139726549550656
+Thread 1 : 139726541157952
+ 2#

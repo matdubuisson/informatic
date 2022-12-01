@@ -1,0 +1,130 @@
+				CHARACTER CHAIN
+
+#0 LOOK HERE : SOME PROPERTIES OF THE STRINGS ARE SIMILAR TO THE LISTS
+#0 SO IT'S GOOD TO LOOK IN THE SCRIPT FOR THE ARRAY (LIST)
+#0 It concerns all things as [x], [:b], [a:], [a:b]....
+
+#1		CONCATENATION OF STRING
+
+Explanation in example :
+"2" + "2" = "22"
+"Sal" + "ut" = "Salut"
+'Bonjour'
+hey = """Salut
+comment ça
+va ?"""
+three_fun = "fun" * 3 # = "funfunfun"
+
+#1		INDEXATION OF STRING
+
+#0 Go to view the script of the list about the ([]) !!
+
+#1		RETURNING OF MODIFIED CHAIN
+#4	s = myString.upper()
+This function changes all minuscules in majuscules.
+
+#4      s = myString.lower()
+This function changes all majuscules in minuscules.
+
+#4      s = myString.title()
+It ensures that the first letter is a majuscule.
+
+By example for the three last functions : 2# 
+>>> s = "Salut COmment Ca Va ?"
+>>> s = s.lower()
+>>> print(s)
+salut comment ca va ?
+>>> s = s .upper()
+>>> print(s)
+SALUT COMMENT CA VA ?
+>>> s = s .title()
+>>> print(s)
+Salut Comment Ca Va ?
+ 2#
+
+#4	list = myString.split()
+This function seperates a chain of character in a list
+of smaller chains of character. The function seperates
+by a " " by default but the function cans do with an
+other character. So it askes a character in parameter
+to split the function.
+Ex : 2# 
+>>> print(s.split())
+['Salut', 'commant', 'ça', 'va', '?']
+>>> print(s.split(" "))
+['Salut', 'commant', 'ça', 'va', '?']
+>>> print(s.split("a"))
+['S', 'lut comm', 'nt ç', ' v', ' ?']
+ 2#
+
+#4      myString.center()
+This function takes two parameters and permits to center a word.
+In fact, the first parameter is the number of spaces on the begin
+and the second is on the end.
+
+#4      myString.strip()
+This functions deletes each space on the begin and the end of the
+chain of characters.
+
+#1		ANALYZE OF STRING
+
+#4      myString.find()
+This function permits to find if the chain contains a certain
+other chain. If it's true the function returns 1 else -1.
+"Yolo !!".find("o ") # = 1
+"Yolo !!".find("test") # = -1
+This function cans take two other parameters :
+- The start of the research;
+- The stop of the research;
+Example : 2# 
+racteur@racteurleader:~/informatic/Python/EXAMPLE$ cat char.py
+#coding:utf-8
+chain = "abcdabadjdzhdadjafjvjfjzkdja"
+print(chain.find("a"))
+print(chain.find("a"))
+print(chain.find("a", 1, 5))
+index = 0
+A = chain.find("a")
+while A != -1:
+  print("a found to : "+str(A))
+  A = chain.find("a", A + 1)
+
+racteur@racteurleader:~/informatic/Python/EXAMPLE$ python3.8 char.py 
+0
+0
+4
+a found to : 0
+a found to : 4
+a found to : 6
+a found to : 13
+a found to : 16
+a found to : 27
+ 2#
+
+#4      myString.index()
+This function permits to find some sequence of characters into other
+chains of characters. The function returns the place (one sequence by
+research).
+
+#4      myString.replace()
+This function permits to replace a sequence by an other.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Python/EXAMPLE$ cat character.py 
+#coding:utf-8
+
+chain = "Yolo !! Hey ologramme Yolo command ça va ?"
+
+startSequence = 14
+stopSequence = 35
+
+print(chain.index("olo", startSequence, stopSequence))
+# Between the 14th character and the 35th there is a "olo" at the place 23 !!
+print(len(chain)) # = 42
+
+print(chain.replace("olo", "uku", 2))
+# It replaces the two first "olo" by two "uku" and it doesn't touch the third !!
+racteur@racteurleader:~/runPC/Codage/Python/EXAMPLE$ python3.8 character.py 
+23
+42
+Yuku !! Hey ukugramme Yolo command ça va ?
+ 2#

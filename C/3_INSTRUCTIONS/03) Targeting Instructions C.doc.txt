@@ -1,0 +1,66 @@
+#1		TARGETING INSTRUCTIONS
+
+#2	Description
+3# goto 3# => This keyword permits to deplace the "cursor of execution"
+to a target defined as : 5# 
+targetName: instructions;
+ 5#
+The instructions that was located after the goto tag won't be executed;
+
+target.c : 2// 
+#include <stdio.h>
+
+unsigned char main(unsigned char argc, unsigned char **argv){
+
+    unsigned int value = 0;
+
+    if(value != 0){
+        restart: {
+            printf("Restarting of the program !!\n");
+        };
+        if(value != 16){
+            win: {
+                printf("Game over : You have won !! Congratulation !!\n");
+                return 1;
+            };
+        }
+    }
+    
+    printf("Welcome in program : Tap 14 to win, tap 16 to restart !!\n");
+    while(1){
+        printf("Write number : ");
+        scanf("%d", &value);
+        switch(value){
+            case 14: 
+                goto win;
+                printf("Yolo !!\n"); // It'll be never executed !!
+            case 16:
+                goto restart;
+            default:
+                printf("Bad answer, re-attempt the game....\n");
+                break;
+        }
+    }   
+    
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@racteurleader:~/Documents/informatic/C/3_INSTRUCTIONS/EXAMPLE$ gcc target.c -o prog
+racteur@racteurleader:~/Documents/informatic/C/3_INSTRUCTIONS/EXAMPLE$ ./prog 
+Welcome in program : Tap 14 to win, tap 16 to restart !!
+Write number : 0
+Bad answer, re-attempt the game....
+Write number : 1
+Bad answer, re-attempt the game....
+Write number : 2
+Bad answer, re-attempt the game....
+Write number : 16
+Restarting of the program !!
+Welcome in program : Tap 14 to win, tap 16 to restart !!
+Write number : 2
+Bad answer, re-attempt the game....
+Write number : 14
+Game over : You have won !! Congratulation !!
+ 2//

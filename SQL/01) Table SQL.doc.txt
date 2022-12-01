@@ -1,0 +1,109 @@
+				TABLE
+
+The table is a pack of different datas.
+For example : 2# 
+CREATE TABLE animaux
+(
+  id INT PRIMARY KEY NOT NULL,
+  famille_id INT NOT NULL,
+  sexe TEXT NOT NULL,
+  presence INT NOT NULL,
+  apprivoise INT NOT NULL,
+  mort_ne INT NOT NULL,
+  decede INT NOT NULL,
+  FOREIGN KEY (famille_id) REFERENCES familles(id)
+);
+ 2#
+
+#1		CREATION
+
+It needs the key word "CREATE" followed by "TABLE" and finally
+the name to define a table. It's like a struct in C.
+Syntax : 5# 
+CREATE TABLE name(
+  -- Definitions of variables
+);
+ 5#
+
+#1		VARIABLES
+
+#5	SYNTAX
+The syntax to define a variable is : 2# 
+CREATE TABLE nameTab(
+ firstVar TYPE OTHER,
+ secondeVar TYPE OTHER,
+ lastVar TYPE OTHER -- No virgul here !!
+);
+ 2#
+
+#5	TYPES
+3# INT  3# => Define a integer variable;
+3# TEXT 3# => Define a string variable;
+
+#5	OTHERS
+After the type, it can add some other parameters :
+3# NULL     3# => Set the default value to 0;
+3# NOT NULL 3# => Set the default value to an other value than 0;
+
+#1		PRIMARY KEYS
+Each table can have only 1 primary key !! This is like an id that
+permits to address the variable or to create links between the
+different tables.
+
+#5	DEFINE PRIMARY KEY
+This is the manner to define a primary key for the table self.
+The key word are "PRIMARY KEY". The syntax is : 2# 
+CREATE TABLE nameTab(
+  nameKey TYPE PRIMARY KEY OTHER
+);
+ 2#
+
+#5	LINK FOREIGN KEY
+This is the manner to permits to a table to link to other tables
+with their primary key. The key words are "PRIMARY KEY ()",
+"FOREIGN KEY ()" and "REFERENCES nameOtherTab()".
+In these examples, it guesses that all tables are integers as
+primary keys and named id [ id INT PRIMARY KEY NOT NULL ].
+
+Explanation with an example : 2# 
+CREATE TABLE animal(
+  mother_id INT PRIMARY KEY NOT NULL -- id for animal
+);
+
+CREATE TABLE guineePig(
+  this_id INT PRIMARY KEY NOT NULL, -- Id for guinee pig
+  animal_id INT NOT NULL,
+  PRIMARY KEY(animal_id), -- Define this key as an other primary key
+  FOREIGN KEY (animal_id) REFERENCES animal(mother_id) -- Link to the mother primary key
+);
+ 2#
+
+An other example : 2# 
+CREATE TABLE animaux
+(
+  id INT PRIMARY KEY NOT NULL,
+  famille_id INT NOT NULL,
+  sexe TEXT NOT NULL,
+  presence INT NOT NULL,
+  apprivoise INT NOT NULL,
+  mort_ne INT NOT NULL,
+  decede INT NOT NULL,
+  FOREIGN KEY (famille_id) REFERENCES familles(id)
+);
+
+CREATE TABLE familles
+(
+  id INT PRIMARY KEY NOT NULL,
+  nom TEXT NOT NULL
+);
+
+CREATE TABLE velages
+(
+  id INT PRIMARY KEY NOT NULL,
+  mere_id INT NOT NULL,
+  pere_id INT NOT NULL,
+  date INT NOT NULL,
+  FOREIGN KEY (mere_id) REFERENCES animaux(id),
+  FOREIGN KEY (pere_id) REFERENCES animaux(id)
+);
+ 2#

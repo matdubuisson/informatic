@@ -1,0 +1,77 @@
+				HERITAGE
+
+The heritage in Python permits to give the public methods and public attributs
+of a class to an other (it's the same thing for the classmethod).
+#1 WARNING :
+#0 The private attributs and private methods can't be given !!
+
+#1		GIVING AN HERITAGE TO A CLASS
+
+In this small example, mother is the Mother class and daugther is
+the Daugther class. Daughter gets the public attributs and public
+methods of Mother. Ex : 2# 
+# There aren't pirvate elements as it doesn't work with the heritage !!
+class Mother:
+  def __init__(self, name):
+    self.name = name
+  def __str__(self):
+    return "Mother is {0}".format(self.name)
+
+class Daugther(Mother):
+  def get_sex(self):
+    return "Female"
+
+object = Daugther("Woman")
+
+print(object)
+print(object.get_sex())
+ 2#
+
+In the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/CLASS/EXAMPLE$ py heritage.py 
+Mother is Woman
+Female
+ 2//
+
+#1		USING SIMILAR METHODS OF THE MOTHER CLASS
+
+#4	super()
+#0 !! IMPORTANT !!
+The function super() permits to access at the elements of the mother class.
+
+Ex : 2# 
+# There aren't pirvate elements as it doesn't work with the heritage !!
+class Mother:
+  nbr = 14
+  @classmethod
+  def get_number(cls):
+    return cls.nbr
+  def __init__(self, name):
+    self.mother_name = name
+  def __str__(self):
+    return "Mother is {0}".format(self.mother_name)
+
+class Daugther(Mother):
+  def __init__(self, name, mother_name):
+    super().__init__(mother_name)
+    self.name = name
+  def __str__(self):
+    return "Daugther is {0}, it's a {1} and her ".format(self.name, self.get_sex()) + super().__str__()
+  def get_sex(self):
+    return "Female"
+
+object = Daugther("Fille", "Mere")
+
+print(object)
+print(object.get_sex())
+print(object.name, object.mother_name)
+print(Daugther.nbr, Daugther.get_number())
+ 2#
+
+In the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/CLASS/EXAMPLE$ py heritage.py 
+Daugther is Fille, it's a Female and her Mother is Mere
+Female
+Fille Mere
+14 14
+ 2//

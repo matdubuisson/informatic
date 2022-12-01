@@ -1,0 +1,48 @@
+				HTML SERVER
+
+This explains suimply how to create a small web server.
+
+#0 Library : import http.server
+
+#5	HTTPServer
+This variable is stocked in an other and permits to
+give the config of a http server.
+Syntax :
+Server = http.server.HTTPServer
+
+#5	CGIHTTPRequestHandler
+This variable returns the config of the handler for
+the http server. It needs to have the object
+[ cgi_directories ] full with the address of the
+folder that contains the web files. The address
+locates in an array.
+Syntax :
+handler = http.server.CGIHTTPRequestHandler
+handler.cgi_directories = ["addr"]
+
+After it needs to be actived with the variable of
+[ HTTPServer ] and the handler. It returns a contain
+in a variable.
+Syntax :
+myHttpServer = Server(("IP", PORT), handler)
+
+#4	serve_forever()
+This function permits to keep actived the http server
+that is returned in the final variable (myHttpServer).
+Syntax :
+myHttpServer.serve_forever()
+
+By example : 2# 
+import http.server
+
+PORT = 55555
+server_address = ("", PORT)
+
+server = http.server.HTTPServer
+handler = http.server.CGIHTTPRequestHandler
+handler.cgi_directories = ["/home/racteur/web/"]
+print("Serveur actif sur le port :", PORT)
+
+httpd = server(server_address, handler)
+httpd.serve_forever()
+ 2#

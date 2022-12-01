@@ -1,0 +1,42 @@
+[ Set ]
+=> Unordered
+=> Contains different elements
+=> Contains only one time each element
+Methods :
+Set()
+add()
+isEmpty()
+isIn()
+size()
+
+[ Bag ]
+=> As a set
+=> But it can contain several times the same element
+Methods :
+Bag()
+add()
+isEmpty()
+size()
+
+[ Queue ]
+
+Methods :
+Queue()
+enqueue()
+dequeue()
+isEmpty()
+size()
+
+[ Stack ]
+
+Methods :
+Stack()
+push()
+pop()
+isEmpty()
+size()
+
+#0 For linked datas :
+[ Node ]
+
+

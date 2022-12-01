@@ -1,0 +1,117 @@
+				SCRIPT : VARIABLE
+
+#1		CREATION OF A SCRIPT
+
+THe file takes the extention [ .sh ] and the first line is
+[ #!/bin/bash ].
+
+#3	bash
+This command is the launcher to start a bash script.
+Syntax : bash script.sh
+
+#1		DECLARATION
+
+The declaration of a variable is like uin Python but all the "declarer"
+characters need to be attached.
+Syntax :
+varName="value"
+newVar=3637
+
+#3	declare
+This word permits to declare a special variable who cans gather up the
+values of the parameters.
+Syntax : declare - myVar=val
+
+#5	parameter
+The parameters are input by the user then the execution of the program
+and there are different kind of parameter.
+Parameter :
+$# => Gives the number of parameters;
+$0 => Executable like by example sh;
+$1-$9 => Eight number parameters;
+${name} => A defined parameter;
+$$
+$*
+$@
+
+#1		STRING DECLARATION
+
+#3	' '
+The single dashs permits to declare a strict chain of character.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ cat file.sh 
+#!/bin/bash
+test="ls -l"
+echo 'It is just a string !! $test'
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ sh file.sh 
+It is just a string !! $test
+ 2#
+
+#3	" "
+The double dashes permits to write a string and taking the value
+of a variable.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ cat file.sh 
+#!/bin/bash
+test="ls -l"
+echo "It is just a string !! $test"
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ sh file.sh 
+It is just a string !! ls -l
+ 2#
+
+#3	` `
+These anti-dashes permtis to interprate the result of a command.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ cat file.sh 
+#!/bin/bash
+test=`ls -l`
+echo "RESULT OF THE COMMAND [ ls -l ] :"
+echo $test
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ bash file.sh 
+RESULT OF THE COMMAND [ ls -l ] :
+total 12 -rwxrwxrwx 1 racteur racteur 77 avril 10 10:35 file.sh -rw-rw-r-- 1 racteur racteur 0 avril 7 10:28 myLog.log -rw-rw-r-- 1 racteur racteur 823 avril 8 18:26 test.txt -rw-rw-r-- 1 racteur racteur 817 avril 8 18:19 test.txt~
+ 2#
+
+#1		UTILISATION
+
+#3	$
+The dollard is the symbol who permits to inform to the program that the
+value of a variable is asked. This symbol needs to be attached in front
+of his variable.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ cat file.sh 
+#!/bin/bash
+test=14
+echo test
+echo $test
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ sh file.sh 
+test
+14
+ 2#
+
+#1		PARAMETERS
+
+#3	$1-$9
+These default variables are the default parameters order by
+the nine first numbers.
+
+#3	shitf
+This command permits to move the place of the default
+parameters [ $1-$9 ].
+Syntax : shift nbr
+
+#1		OPERATIONS
+
+#3	$((operation))
+This permits to execute some operations of calculs.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ cat file.sh 
+#!/bin/bash
+test=$((14+5))
+echo $test
+txt=$((573+38))
+echo $txt
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ bash file.sh 
+19
+611
+ 2#

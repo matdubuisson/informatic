@@ -1,0 +1,81 @@
+				PACKAGES AND INSTALLATION
+
+#1		SEARCHING PACKAGES
+
+#3	apt-cache
+This command permits to search a list of packages with a parameter.
+Parameter :
+search => This parameter searches a list of packages;
+Syntax : apt-cache search listOfPackages
+
+#1		RUNNING THE PACKAGES
+
+#3	dpkg
+#0 dpkg = Debian PacKaGe; Looking the manual !!
+#0 This command runs only the packages and not the dependancies.
+This command permits to install and run packages helpful for logiciels.
+Option :
+-i => For installing a package [ .deb ]. The option askes in parameter
+the link of the file.deb;
+-r => For removing a package;
+-P => For removing the packages with the dependencies;
+--force-all --purge => For deleting the totality of the logicial contain;
+
+By example : 2# 
+
+ 2#
+
+#5	/etc/apt/sources.list
+This file contains different sources of packages of different applications;
+I can uncomment all the [ deb-src ] in comment.
+
+#3	apt-get
+This command permits to install some packages with their dependencies.
+Option :
+-f ==> For installing the dependencies if I install a program with dpkg;
+Parameter :
+install ==> For installing a logiciel. This askes as next parameter the
+name of the program;
+source ==> For installing the source codes of the logiciels;
+update ==> Permits to update the list of the dependencies;
+upgrade ==> This is the updating of the system;
+dist-upgrade ==> This is the updating of the system and it acceptes the
+installation of new packages by the updating;
+remove ==> For removing a list of installed packages;
+autoremove ==> For removing the package list with its dependencies;
+  --purge ==> This option permits to be sure about the destruction of
+  all the files of the package list;
+
+#3	apt
+Viewing manual.
+
+#3	aptitude
+Viewing manual.
+
+#1		RUNNING THE PPA
+
+#5	/etc/apt/sources.list.d
+This is the list of the ppa's.
+
+#0 PPA = Personal package archive
+#3	add-apt-repository ppa:<depot>
+This command permits to add new ppa who is the files for finding some
+elements with a [ apt-cache search txt ]. This is helpful when the
+depot isn't default so that there aren't the addresses by default.
+Parameter :
+ppa:<depot> ==> This takes the depot of the archives;
+
+#1		GETTING INFORMATIONS ABOUT A SERVER
+
+#5	/etc/hosts
+This file contains some informations on the computer's ip.
+
+#3	host
+Syntax : host ipOrDomaine
+
+#1		INSTALLATION OF FILES ON INTERNET
+
+#3	wget
+This command means [ web gets ] and it permits to get a file with
+a link.
+Syntax : wget /link

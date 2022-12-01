@@ -1,0 +1,35 @@
+				WEB PAGE
+
+The html language is shaped with tags. A tag has two parts :
+=> The first with all the parameters :
+<head>
+<p style="">
+=> The second that closes :
+</head>
+</p>
+
+#1		PRINCIPAL TAGS
+
+These are html, head and body with <!DOCTYPE html> at the begin of the page.
+Syntax : 5# 
+<!DOCTYPE html>
+<html>
+  <head> <!-- Takes the links of the other files and define the references (title) for the wed  -->
+  </head>
+  <body> <!-- Contains the web with the compenents -->
+  </body>
+</html>
+ 5#
+
+For example : 2# 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> A single title !! Yolo !! </title>
+  </head>
+
+  <body>
+    <p> A sentence !! </p>
+  </body>
+</html>
+ 2#

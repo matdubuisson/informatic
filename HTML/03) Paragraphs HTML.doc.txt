@@ -1,0 +1,54 @@
+				PARAGRAPHS
+
+#0	<p></p>
+Write a paragraph.
+Attributes : #3	style, title
+
+#0	<br>
+Print a break line ('\n') on the web.
+
+#0	<hr>
+Print an horizontal rule on the web.
+
+#0	<pre></pre>
+Write a paragraph and take all break-lines of the contain.
+
+For example : 5# 
+<p>Test
+Test
+Test</p> <!-- Write 1 line -->
+<pre>Test
+Test
+Test</pre> <!-- Write three lines -->
+ 5#
+
+paragraphs.html : 0# 
+<!DOCTYPE html>                  
+<html>                           
+<head>                           
+    <meta charset="utf-8">       
+    <meta name="author" content="Racteur">
+</head>                          
+<body>                           
+    <h1>Text with title :</h1>   
+    <p title="Test title p :">I have a title !!</p>
+    <h1>Other :</h1>             
+    <p style="color:blue">Blue text !!</p>
+    <p>pTest                     
+    pTest                        
+    pTest</p>                    
+                                 
+    <br><hr>                     
+                                 
+    <p>pTest<br>                 
+    pTest<br>                    
+    pTest<br></p>                
+                                 
+    <br><hr>                     
+                                 
+    <pre>preTest                 
+    preTest                      
+    preTest</pre>                
+</body>                          
+</html>
+ 0#

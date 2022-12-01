@@ -1,0 +1,71 @@
+				INSTALLATION AND SIMPLE EXECUTION
+
+#1		INSTALLATION
+
+There are two things to install :
+=> The python module flask;
+#2 sudo apt-get install python3-flask
+=> The virtual environment with this;
+#2 sudo apt-get install python3-venv
+
+#1		EXECUTION
+
+#5	CREATION OF THE FLASK SERVER
+
+In a certain folder : (For security : 2# mkdir flask_test && cd flask_test 2#)
+Create two diretories :
+=> rflask that contains __init__.py
+The file __init__.py : 2// 
+import os
+
+from flask import Flask
+
+
+def create_app(test_config=None):
+    # create and configure the app
+    app = Flask(__name__, instance_relative_config=True)
+    app.config.from_mapping(
+        SECRET_KEY='dev',
+        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+    )
+
+    if test_config is None:
+        # load the instance config, if it exists, when not testing
+        app.config.from_pyfile('config.py', silent=True)
+    else:
+        # load the test config if passed in
+        app.config.from_mapping(test_config)
+
+    # ensure the instance folder exists
+    try:
+        os.makedirs(app.instance_path)
+    except OSError:
+        pass
+
+    # a simple page that says hello
+    @app.route('/hello')
+    def hello():
+        return 'Hello, World!'
+
+    return app
+ 2//
+=> venv created with the command : #2 python3 -m venv venv
+
+#5	EXECUTION OF THE FLASK SERVER
+
+Create a bash file : 2# 
+#!/bin/bash
+export FLASK_APP=flaskr
+export FLASK_ENV=development
+flask run
+ 2#
+Or a batch file : 2# 
+set FLASK_APP=flaskr
+set FLASK_ENV=development
+flask run
+ 2#
+
+#5	OTHER EXECUTION
+
+#4	app.run(host="127.0.0.1", port=5000, debug=True)
+This method permits to execute the script with python !!

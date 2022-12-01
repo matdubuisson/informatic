@@ -1,0 +1,47 @@
+				COMPARAISON
+
+#4	strcmp(<chr0>, <chr1>)
+
+Returns an integer :
+Zero => The strings are equal;
+Negative value => chr0 is before chr1;
+Positive value => chr0 is after chr1;
+
+#4	strncmp(<chr0>, <chr1>, <size>)
+
+Same behavior but iit respects the limit 'size'.
+
+strcmp.c : 2// 
+#include <stdio.h>
+#include <string.h>
+
+#define size 40
+
+unsigned int main(void){
+
+    unsigned char string[size];
+    strncpy(string, "a b c d e", sizeof(unsigned char) * size);
+
+    if(strcmp(string, "a b c d e") == 0){
+        printf("Equal 0 !!\n");
+    }
+    else{
+        printf("Not equal 0 !!\n");
+    }
+
+    if(strncmp(string, "dosdosjo", sizeof(unsigned char) * size) == 0){
+        printf("Equal 1 !!\n");
+    }
+    else{
+        printf("Not equal 1 !!\n");
+    }
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/6_STRING/EXAMPLE$ gcc strcmp.c -o prog && ./prog 
+Equal 0 !!
+Not equal 1 !!
+ 2//

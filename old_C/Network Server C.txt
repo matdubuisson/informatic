@@ -1,0 +1,109 @@
+Script 114
+				NETWORK SERVER
+
+LIBRARIES :
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <arpa/inet.h>
+#include <fcntl.h> // Open function;
+#include <unistd.h> // Close function;
+
+		SOCKET() ==> Returns data in a [ int ];
+This function takes three parameters :
+par0 ==> AF_INET;
+par1 ==> SOCK_STREAM;
+par2 ==> 0;
+The returning of the function is stocked into
+a variable of type of#3 int.
+Syntax :
+int mySocketInt = socket(AF_INET, SOCK_STREAM, 0);
+
+=======================================================
+
+		STRUCT SOCKADDR_IN
+This structur permits to create the server who
+will be configurate by some other tools.
+Syntax :
+struct sockaddr_in myServ;
+
+		INET_ADDR()
+This function returns the address IP. Its parameter
+is the address in string.
+
+		HTONS()
+This function returns the PORT. Its parameter
+is the number in integer.
+
+#1	ATTRIBUTES
+
+3# [ myServ.sin_addr.s_addr ] 3# ==> These attributes
+take the IP by the function : inet_addr("127.0.0.1");
+
+3# [ myServ.sin_family ] 3# ==> This attribute takes
+the family type of the server.
+TYPE OF FAMILY :
+==> AF_INET;
+
+3# [ myServ.sin_port ] 3# ==> This attribute takes
+the PORT of the server by the function : htons(1400);
+
+=======================================================
+
+		BIND()
+This function applicates the server so startes this.
+This function takes 3 parameters :
+par0 ===> The socket of the server so
+the integer returned by SOCKET();
+par1 ===> (const struct sockaddr*)&myServ; WARNING : #0 sockaddr
+par2 ===> The size of myServ with SIZEOF();
+Syntax :2# 
+bind(mySocketInt, (const struct sockaddr*)&myServ, sizeof(myServ));
+ 2#
+		LISTEN()
+This function gives to the server the capacity
+of listenning other hosttes.
+PARAMETER :
+par0 ==> mySocketInt;
+par1 ==> Integer for saying the maximum
+listenning in an even time.
+Syntax :2# 
+listen(mySocketInt, µ);
+ 2#
+=======================================================
+
+		STRUCT SOCKADDR_IN
+This structur is again used for creating the listenning
+of the clients by the server.
+Syntax :
+struct sockaddr_in servListennesClient;
+
+		SOCKLENT_T		1# 
+This is a declarer of variable like type
+of size for the listenning the the clients.
+ 1#
+Syntax :
+socklen_t varNameLen = sizeof(servListennesClient);
+
+		ACCEPT() ==> Returns data in a [ int ];
+This function takes three parameters for permitting to
+receives a connection between [ server <=> client ].
+PARAMETER :
+par0 ==> Socket of the server;
+par1 ==> Indoor the brackettes A const struct created
+on SOCKADDR with the pointer on a address outdoor the
+brackettes of the servListennesClient;
+par2 ==> The address of the size of the servListennesClient
+of type #3 socklen_t;
+Syntax :
+int acceptation = accept(mySocketInt, (struct sockaddr *)&servListennesClient, &varNameLen);
+
+=======================================================
+
+		SERVER'S END
+	CLOSE() ==> Provided with the libraries.
+Syntax :
+close(acceptation);
+close(mySocketInt);
+

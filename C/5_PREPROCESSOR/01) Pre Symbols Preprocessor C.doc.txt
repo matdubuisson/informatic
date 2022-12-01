@@ -1,0 +1,65 @@
+				PRE SYMBOLS
+
+#1		DEFAULT DEFINED MACROS
+
+There are five special important macros in C :
+3# __LINE__ 3# => Return an integer that is number of the line where this macro is called;
+3# __FILE__ 3# => Return the name of the source file;
+3# __DATE__ 3# => Return the date of the compilation;
+3# __TIME__ 3# => Return the hour of the compilation;
+3# __STDC__ 3# => Return if the program respects ANSI convention;
+
+pre_symbols.c : 2// 
+#include <stdio.h>
+
+#define length_message 60
+#define print(message) printf("Line : %d\n    %-*s\n", __LINE__, length_message, message);
+
+unsigned char main(void){
+
+    print("Yolo !!")
+
+    print("This line : ")
+    printf("    ==> %d\n", __LINE__);
+
+    print("Compitation day : ")
+    print(__DATE__)
+    print("Compilation hour : ")
+    print(__TIME__)
+
+    print("Source file name : ")
+    print(__FILE__)
+
+    if(__STDC__){
+        print("According STDC, the program respects ANSI !!")
+    }
+    else{
+        print("According STDC, the program doesn't respect ANSI !!")
+    }
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ gcc pre_symbols.c -o prog && ./prog 
+Line : 8
+    Yolo !!                                                     
+Line : 10
+    This line :                                                 
+    ==> 11
+Line : 13
+    Compitation day :                                           
+Line : 14
+    Aug 26 2022                                                 
+Line : 15
+    Compilation hour :                                          
+Line : 16
+    09:50:00                                                    
+Line : 18
+    Source file name :                                          
+Line : 19
+    pre_symbols.c                                               
+Line : 22
+    According STDC, the program respects ANSI !!
+ 2//

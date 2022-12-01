@@ -1,0 +1,27 @@
+Script 49
+				MAIN
+
+MAIN is the function who permits to launch the code but it cans too
+when it launches the code taking two function arguments.
+The first argument it's a number who says the number of paramaters
+and the second is a double array who take all the parameters.
+
+By example :
+Doc.c :
+#include <stdio.h>
+
+int main(int numberOfParameters, char **allParameters){
+	printf("There are %d parameters in the execution !!");
+	int e = 0;
+	while(allParameters[e] != NULL){
+		printf("[ %s ]\n", allParameters[e]);
+		e++;
+	}
+}
+Into CMD :
+C:/Users/ASUS>gcc Doc.c -o test
+C:/Users/ASUS>test 1614 Yolo !!
+There are 3 elements in the execution !!
+[ 1614 ]
+[ Yolo ]
+[ !! ]

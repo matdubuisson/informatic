@@ -1,0 +1,36 @@
+				WINDOW
+
+For installing Pygame :
+#1 [ sudo apt-get install python3-pygame ]
+
+#0 Library : pygame
+
+#4	init()
+This function permits to create the window.
+It needs a "while" to keep the window on.
+
+#1		DISPLAY
+
+#5	display
+This key permits to manage the window.
+For getting the config of the window in
+a variable :
+width = 400; height = width
+WIN = display.set_mode((width, height))
+
+#4	display.Info()
+Gives some informations.
+
+#4	display.set_mode()
+This function permits to give a default size to the window.
+Parameters :
+par0 => TUPLE : (int(width), int(height)) 
+par1 => flags : 5# 
+FULLSCREEN, RESIZABLE, NOFRAME,
+DOUBLEBUF, HWSURFACE, OPENGL 5#
+#0 This function cans be racalled to change the size of the
+#0 window during the process !!
+
+#4	display.set_caption()
+This function takes a string in parameter and gives a name
+to the window.

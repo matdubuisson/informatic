@@ -1,0 +1,48 @@
+Script 78
+				CONDITION
+
+#1		BOOLEAN VALUES
+5# True  5# => Yes, True, On, 1;
+5# False 5# => No, False, Off, 0;
+
+#1		CONDITIONAL OPERATORS
+3# a == b     3# => If a equals b returns True else False;
+3# a != b     3# => If a is different of b returns True else False;
+3# a >= b     3# => If a is grander or same than b returns True or False;
+3# a <= b     3# => If a is smaller or same than b returns True or False;
+3# a < b      3# => If a is smaller than b returns True or False;
+3# a > b      3# => If a is grander than b returns True or False;
+3# not b      3# => It b is True returns False else False;
+3# a in b     3# => It a is present in b, returs True else False;
+Ex : 2# 
+>>> "a" in "Commant ça va ?"
+True
+>>> "va" in "Commant ça va ?"
+True
+>>> "ta" in "Commant ça va ?"
+False
+>>> "u" in "Commant ça va ?"
+False
+ 2#
+3# a not in b 3# => The opposite result with 'in';
+
+#1		SEQUENTIAL OPERATORS
+
+3# bool0 and bool1 3# => If bool0 and bool1 are True, returns True else False; 
+3# bool0 or bool1  3# => If bool0 is True of bool1 is True or the two are True,
+returns True else False;
+
+#1		CONDITIONAL PREFIXS
+
+#3	if
+This prefix permits to execute a block of instructions
+according to a condition so a boolean. It executes the
+intructions is the boolean is True.
+
+#3	elif
+If the last 'if' or 'elif' received a False, then this
+condition is evaluted as 'if'.
+
+#3	else
+If the last 'if' or 'elif' received a False, 'else'
+executes its block.

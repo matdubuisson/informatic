@@ -1,0 +1,92 @@
+Script 50
+				BOOLEEN
+
+There are 2 type of method for using the booleen :
+	==> A library.
+	==> An ENUM.
+
+--------------------------------------------------
+
+firstMethod.c
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
+//gcc test0.c -o test
+#define wordsSize 40
+#define numberOfPeople 11
+
+    typedef struct profil{
+        signed char name[wordsSize];
+        int age;
+        bool presence;
+    }profiles;
+
+int main(int intOfparameters, signed char *arrayOfParameters[wordsSize]){
+    profiles arrayOfPeople[numberOfPeople];
+    profiles perso0 = {"Yolo", 14, true};
+    profiles perso0 = {"Yolo", 14, false};
+    return 0;
+}
+
+====================================
+
+secondMethod.c :
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+typedef enum{
+	false,
+	true
+}bool;
+
+//gcc test0.c -o test
+#define wordsSize 40
+#define numberOfPeople 11
+
+    typedef struct profil{
+        signed char name[wordsSize];
+        int age;
+        bool presence;
+    }profiles;
+
+int main(int intOfparameters, signed char *arrayOfParameters[wordsSize]){
+    profiles arrayOfPeople[numberOfPeople];
+    profiles perso0 = {"Yolo", 14, true};
+    profiles perso0 = {"Yolo", 14, false};
+    return 0;
+}
+
+===================================================
+
+		? and :
+
+This method permits to give a response in rapport with the booleen.
+
+Formule ===> trueOrFalse ? responseByTrue : responseByFalse ;
+
+test0.c :
+#include <stdio.h>
+#include <string.h>
+//gcc test0.c -o test
+#define SIZE 11
+
+typedef enum{
+    false,
+    true
+}myBool;
+
+myBool main(void){
+    printf(true ? "VRAI\n" : "FAUX\n");
+    printf(false ? "VRAI\n" : "FAUX\n");
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\C>gcc test0.c -o test
+
+C:\Users\ASUS\Desktop\C>test
+VRAI
+FAUX

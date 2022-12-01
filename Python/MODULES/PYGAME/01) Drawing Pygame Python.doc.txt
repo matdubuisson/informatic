@@ -1,0 +1,60 @@
+				DRAWING
+
+#1		DISPLAY
+#0 window_config = display.set_mode((400, 400), RESIZABLE)
+
+#4	window_config.fill()
+This function permits to change the color of the background.
+
+#4	display.flip()
+This function updates the drawings.
+
+#1		DRAW
+#5	draw
+It's the key to draw.
+
+#4	draw.line()
+This function permits to draw a line.
+Parameters :
+par0 => window_config
+par1 => color
+par2 => First position : [ x0, y0 ]
+par3 => Second position : [ x1, y1 ]
+
+#4	draw.rect() and Rect()
+This function permits to create a rectangle.
+Parameters :
+par0 => window_config
+par1 => color
+par2 => rectangle config with Rect()
+Rect(x0, y0, x1, y1)
+par3 => width of the border
+
+By example : 2# 
+#coding:utf-8
+
+from pygame import *
+
+init()
+WIN = display.set_mode((400, 400), RESIZABLE)
+display.set_caption("Name of the window !!")
+
+
+color = (255, 255, 255)
+WIN.fill((0, 255, 0))
+
+draw.line(WIN, color, [10, 10], [100, 10])
+
+draw.rect(WIN, color, Rect(10, 20, 200, 100), 15)
+
+display.flip() 
+
+working = 1
+while working:
+  Event = event.get()
+  e = 0
+  while e < len(Event):
+    if Event[e].type == QUIT:
+      working = 0
+    e += 1
+ 2#

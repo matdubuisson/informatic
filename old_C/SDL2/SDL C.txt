@@ -1,0 +1,463 @@
+Script 118
+				SDL2
+
+		INSTALLATION
+#0 sudo apt-get install libsdl2-dev
+
+		COMPILATION
+#2 gcc test.c -o test $(sdl2-config --cflags --libs)
+
+==========================================
+
+		CHECK VERSION
+
+#1	SDL_version
+This is the key for creating the variable
+who'll take the version.
+
+#4	SDL_VERSION()
+Parameter :
+par0 ==> Address of the [ SDL_version ] var;
+
+#5	AFFICHING
+By example :
+printf("SDL [ %d-%d-%d ];\n", nbr.major, nbr.minor, nbr.patch);
+
+Coding :3# 
+#include <stdio.h>
+#include <SDL.h>
+
+int main(int main0, signed char **main1){
+  SDL_version nbr;
+  SDL_VERSION(&nbr);
+  printf("SDL [ %d-%d-%d ];\n", nbr.major, nbr.minor, nbr.patch);
+return 0;
+} 3#
+
+==========================================
+
+		INIT THE WINDOW
+
+#4	SDL_Init()
+This function inittes the window with the flag; 
+Parameter :
+par0 ==> Flag (Viewing the mémento !!);
+
+#4	SDL_Quit()
+This function closes the window without parameters;
+
+#4	SDL_Log()
+Parameter :
+par0 ==> Signed char with a [ %s ];
+par1 ==> #4 SDL_GetError();
+
+Coding :3# 
+#include <stdio.h>
+#include <stdlib.h>
+#include <SDL.h>
+
+int main(int main0, signed char **main1){
+
+  SDL_version nbr;
+  SDL_VERSION(&nbr);
+  printf("SDL [ %d-%d-%d ];\n", nbr.major, nbr.minor, nbr.patch);
+
+  if(SDL_Init(SDL_INIT_VIDEO) != 0){
+    SDL_Log("ERROR FROM SDL : %s;\n", SDL_GetError());
+    return -1;
+  }
+  
+  SDL_Quit();
+
+return 0;
+} 3#
+
+==========================================
+
+		WINDOW
+
+#1	SDL_Window
+This key create a variable with pointer;
+
+#4	SDL_CreateWindow()
+This function returns the value of the var
+with pointer of #1 SDL_Window.
+Parameter :
+par0 ==> String who is window's name;
+par1 ==> Position X or flag's mod;
+par2 ==> Position Y or flag's mod;
+par3 ==> Size Weight;
+par4 ==> Size Height;
+par5 ==> Flag for the affiching mod or 0;
+
+#4	SDL_Delay()
+For keeping the window openned.
+Parameter :
+par0 ==> Int for the millisecondes;
+
+#4	SDL_DestroyWindow()
+This function destroyes the window.
+Parameter :
+par0 ==> The variable who contains the
+window by #1 SDL_Window;
+
+Coding :3# 
+#include <stdio.h>
+#include <stdlib.h>
+#include <SDL.h>
+
+int main(int main0, signed char **main1){
+
+  SDL_version nbr;
+  SDL_VERSION(&nbr);
+  printf("SDL [ %d-%d-%d ];\n", nbr.major, nbr.minor, nbr.patch);
+
+  if(SDL_Init(SDL_INIT_VIDEO) != 0){
+    SDL_Log("ERROR FROM SDL : %s;\n", SDL_GetError());
+    return -1;
+  }
+
+  SDL_Window *WIN = 0;
+
+  WIN = SDL_CreateWindow("My Window in C !!", 100, 100, 400, 400, 0);
+
+  if(WIN == 0){
+    puts("Window not created !!");
+    return -1;
+  }
+
+  SDL_Delay(4000);
+
+  SDL_DestroyWindow(WIN);
+
+  SDL_Quit();
+
+return 0;
+} 3#
+
+==========================================
+
+		RENDERER
+
+#1	SLD_Render
+This key create renderer's variable with pointer.
+
+#4	SDL_CreateRenderer()
+This function returns the renderer !!
+Parameter :
+par0 ==> Variable of the window by #1 SDL_Window;
+par1 ==> Intinger value;
+par2 ==> Renderer's flag;
+
+#4	SDL_RendererPresent()
+For applicating the renderer.
+Parameter :
+par0 ==> Variable who contains the renderer;
+
+#4	SDL_RendererClear()
+For clearing the renderer.
+Parameter : 
+par0 ==> Variable who contains the renderer;
+
+#4	SDL_DestroyRenderer()
+This function destroys the renderer;
+Parameter :
+par0 ==> Variable who contains the renderer;
+
+Coding :3# 
+#include <stdio.h>
+#include <stdlib.h>
+#include <SDL.h>
+
+void errorSDL(void){
+  SDL_Log("SDL ERROR [ %s ];\n", SDL_GetError());
+  return;
+}
+
+int main(int main0, signed char **main1){
+
+  SDL_version nbr;
+  SDL_VERSION(&nbr);
+  printf("SDL [ %d-%d-%d ];\n", nbr.major, nbr.minor, nbr.patch);
+
+  if(SDL_Init(SDL_INIT_VIDEO) != 0){
+    errorSDL();
+    return -1;
+  }
+
+  SDL_Window *WIN = 0;
+
+  WIN = SDL_CreateWindow("My Window in C !!", 100, 100, 400, 400, 0);
+
+  if(WIN == 0){
+    errorSDL();
+    return -1;
+  }
+
+  SDL_Renderer *REND = 0;
+
+  REND = SDL_CreateRenderer(WIN, -1, SDL_RENDERER_SOFTWARE);
+
+  if(REND == 0){
+    errorSDL();
+    return -1;
+  }
+
+  SDL_RenderPresent(REND);
+
+  SDL_Delay(4000);
+
+  SDL_RenderClear(REND);
+  SDL_DestroyRenderer(REND);
+  SDL_DestroyWindow(WIN);
+  SDL_Quit();
+
+  return 0;
+} 3#
+
+==========================================
+
+		DRAWING
+
+#4      SDL_SetRenderDrawColor()
+This function changes the colour for the
+drawing of the elements.
+Parameter :
+par0 ==> Variable by #1 SDL_Renderer;
+par1 ==> Red's level;
+par2 ==> Blue's level;
+par3 ==> Green's level;
+par4 ==> Transparency's level;
+
+#4	SDL_RenderDrawPoint()
+Parameter :
+par0 ==> Var from #1 SDL_Renderer;
+par1 ==> X position;
+par2 ==> Y position;
+
+==========================================
+
+INFO :
+#1	SDL_Rect
+Key for creating the rectangle.
+
+		TEXTURE
+
+#1	SDL_Surface
+The key for creating the variable with pointer
+for a surface.
+
+#4	SDL_LoadBMP()
+Gives to the surface (variable with pointer) a
+BMP image.
+Parameter :
+par0 ==> The address of the BMP image like string;
+
+#1	SDL_Texture
+The key for creating the variable with pointer
+for a texture.
+
+#4	SDL_CreateTextureFromSurface()
+This function adds a surface to a renderer.
+Parameter :
+par0 ==> Renderer's variable;
+par1 ==> Surface's variable;
+
+#4	SDL_FreeSurface()
+This function frees the memory to the
+surface this is very important !!
+Parameter :
+par0 ==> Surface's variable;
+
+#4	SDL_QueryTexture()
+This function applicates the texture on the
+surface who lies on the renderer.
+Parameter :
+par0 ==> Texture's variable;
+par1 ==> 0;
+par2 ==> 0;
+par3 ==> Width in integer by varibale's address;
+par4 ==> Height in integer by varibale's address;
+
+#4	SDL_RenderCopy()
+Parameter :
+par0 ==> Renderer's variable;
+par1 ==> Texture's variable;
+par2 ==> 0;
+par3 ==> Address of the struture who takes
+the datas about the sizes;
+
+#4	SDL_DestroyTexture()
+This function destroies the texture.
+Parameter :
+par0 ==> Variable of the texture;
+
+By example :3# 
+#include <stdio.h>
+#include <stdlib.h>
+#include <SDL.h>
+
+void errorSDL(void){
+  SDL_Log("SDL ERROR [ %s ];\n", SDL_GetError());
+  return;
+}
+
+int main(int main0, signed char **main1){
+
+  SDL_version nbr;
+  SDL_VERSION(&nbr);
+  printf("SDL [ %d-%d-%d ];\n", nbr.major, nbr.minor, nbr.patch);
+
+  if(SDL_Init(SDL_INIT_VIDEO) != 0){
+    errorSDL();
+    return -1;
+  }
+
+  SDL_Window *WIN = 0;
+
+  WIN = SDL_CreateWindow("My Window in C !!", 100, 100, 400, 400, 0);
+
+  if(WIN == 0){
+    errorSDL();
+    return -1;
+  }
+
+  SDL_Renderer *REND = 0;
+
+  REND = SDL_CreateRenderer(WIN, -1, SDL_RENDERER_SOFTWARE);
+
+  if(REND == 0){
+    errorSDL();
+    return -1;
+  }
+
+  SDL_Surface *SURFACE = 0;
+  SURFACE = SDL_LoadBMP("BAB.bmp");
+  if(SURFACE == 0){
+    errorSDL();
+    return -1;
+  }
+
+  SDL_Texture *TEXTURE = 0;
+  TEXTURE = SDL_CreateTextureFromSurface(REND, SURFACE);
+  // Now the surface is useless !!
+
+  SDL_Rect RECT;
+  RECT.w = 10;
+  RECT.h = 10;
+  if(SDL_QueryTexture(TEXTURE, 0, 0, &RECT.w, &RECT.h) != 0){
+    errorSDL();
+    return -1;
+  }
+
+  if(SDL_RenderCopy(REND, TEXTURE, 0, &RECT) != 0){
+    errorSDL();
+    return -1;
+  }
+
+  SDL_RenderPresent(REND);
+
+  SDL_Delay(4000);
+
+  SDL_RenderClear(REND);
+  SDL_FreeSurface(SURFACE);
+  SDL_DestroyTexture(TEXTURE);
+  SDL_DestroyRenderer(REND);
+  SDL_DestroyWindow(WIN);
+  SDL_Quit();
+
+  return 0;
+} 3#
+
+==========================================
+
+		EVENT0
+
+#1	SDL_Event
+This is the key seated into the bucle.
+This key gives to a variable the group
+of events.
+
+#4	SDL_PollEvent()
+This function reads all events.
+Parameter :
+par0 ==> Variable's address of #1 SDL_Event;
+
+#0	Structure of SDL_Event
+#3 SWITCH IS HELPFUL !!
+TYPE :
+event.type
+
+By example :3# 
+#include <stdio.h>
+#include <stdlib.h>
+#include <SDL.h>
+
+int work = 1;
+
+void errorSDL(void){
+  SDL_Log("SDL ERROR [ %s ];\n", SDL_GetError());
+  return;
+}
+
+int main(int main0, signed char **main1){
+
+  SDL_version nbr;
+  SDL_VERSION(&nbr);
+  printf("SDL [ %d-%d-%d ];\n", nbr.major, nbr.minor, nbr.patch);
+
+  if(SDL_Init(SDL_INIT_VIDEO) != 0){
+    errorSDL();
+    return -1;
+  }
+
+  SDL_Window *WIN = 0;
+
+  WIN = SDL_CreateWindow("My Window in C !!", 100, 100, 400, 400, 0);
+
+  if(WIN == 0){
+    errorSDL();
+    return -1;
+  }
+
+  SDL_Renderer *REND = 0;
+
+  REND = SDL_CreateRenderer(WIN, -1, SDL_RENDERER_SOFTWARE);
+
+  if(REND == 0){
+    errorSDL();
+    return -1;
+  }
+
+  while(work){
+    SDL_Event event;
+    while(SDL_PollEvent(&event)){
+      switch(event.type){
+
+        case SDL_KEYDOWN:
+          switch(event.key.keysym.sym){
+            case SDLK_e:
+              puts("TEST");
+              break;
+            default:
+              break;
+          }
+          break;
+
+        case SDL_QUIT:
+          work = 0;
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  SDL_RenderPresent(REND);
+
+  SDL_DestroyRenderer(REND);
+  SDL_DestroyWindow(WIN);
+  SDL_Quit();
+
+  return 0;
+} 3#

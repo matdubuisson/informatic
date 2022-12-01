@@ -1,0 +1,97 @@
+				MOVE INSIDE
+
+#4	fseek()
+This function permits to move the cursor in the file
+in comparison to an origin. There are there different
+origins provided by stdio.h :
+3# SEEK_SET 3# => In relation to the begin;
+3# SEEK_CUR 3# => In relation to the current position;
+3# SEEK_END 3# => In relation to the end;
+
+fseek(f, 0, SEEK_SET) => Means the first character;
+fseek(f, -1, SEEK_END) => Means the last character;
+
+#4	ftell()
+It returns the position of the cursor in the file.
+It's like the position of character in a string but
+with one incremented. So : #5 index = ftell((FILE *) f) - 1;
+
+fseek.c : 2// 
+#include <stdio.h>
+ 
+#define fileName "test_fseek.txt"
+ 
+unsigned int main(void){
+ 
+    FILE *f;
+    unsigned char chr;
+ 
+    unsigned char *message = "abc\ndef\nghi\n";
+    fputs(message, f = fopen(fileName, "w"));
+    fclose(f);
+ 
+    // ftell() versus index it's : index = ftell() - 1
+ 
+    f = fopen(fileName, "r");
+ 
+    fseek(f, 0, SEEK_SET); // Go to begin;
+ 
+    fread(&chr, sizeof(unsigned char), 1, f);
+    printf("First character : %c\n", chr);
+    printf("Position : %ld\n", ftell(f));
+ 
+    fread(&chr, sizeof(unsigned char), 1, f);
+    printf("Second character : %c\n", chr);
+    printf("Position : %ld\n", ftell(f));
+ 
+    fseek(f, 0, SEEK_SET);
+    fread(&chr, sizeof(unsigned char), 1, f);
+    printf("First character : %c\n", chr);
+    printf("Position : %ld\n", ftell(f));
+ 
+    fseek(f, 2, SEEK_SET);
+    fread(&chr, sizeof(unsigned char), 1, f);
+    printf("Third character : %c\n", chr);
+    printf("Position : %ld\n", ftell(f));
+ 
+    fseek(f, -2, SEEK_END);
+    fread(&chr, sizeof(unsigned char), 1, f);
+    printf("Before last character : %c\n", chr);
+    printf("Position : %ld\n", ftell(f));
+ 
+    fseek(f, -1, SEEK_END); // Go to end;
+    fread(&chr, sizeof(unsigned char), 1, f);
+    printf("Last character : [%c]\n", chr);
+    printf("Position : %ld\n", ftell(f));
+ 
+    fseek(f, 0, SEEK_SET); // Go to begin;
+    fread(&chr, sizeof(unsigned char), 1, f);
+    printf("First character : %c\n", chr);
+    printf("Position : %ld\n", ftell(f));
+ 
+    // fseek(f, 0, SEEK_END); ==> It's the limit, no character at this position !!
+ 
+    fclose(f);
+ 
+    return 0;
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/C/1.6_FILE/EXAMPLE$ gcc fseek.c -o prog && ./prog 
+First character : a
+Position : 1
+Second character : b
+Position : 2
+First character : a
+Position : 1
+Third character : c
+Position : 3
+Before last character : i
+Position : 11
+Last character : [
+]
+Position : 12
+First character : a
+Position : 1
+ 2#

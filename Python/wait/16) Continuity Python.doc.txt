@@ -1,0 +1,118 @@
+				CONTINUITY
+
+The statement of contuinity permits to stop the process of a function
+of a loop.
+
+#3	break
+This term permits to stop a loop only (for or while).
+By example in break.py : 2// 
+#coding:utf-8
+
+var = ""
+while True:
+  print("Am I the best ?", end=" ")
+  var = str(input())
+
+  if var == "yes":
+    break # The break is only used for a loop !!
+  elif var == "no":
+    print("It isn't good to say a lying !!")
+  elif var == "maybe":
+    print("Only the truth is true...")
+  else:
+    print("You say a strange sentence !!")
+  print("")
+
+print("Cool I'm glad that you say the truth !!")
+ 2//
+Into the console : 2# 
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE$ py continuityStatement.py 
+Am I the best ? no
+It isn't good to say a lying !!
+
+Am I the best ? impossible
+You say a strange sentence !!
+
+Am I the best ? maybe
+Only the truth is true...
+
+Am I the best ? yes
+Cool I'm glad that you say the truth !!
+ 2#
+
+#3	return
+This term permits to stop a function and returns a value.
+By example in return.py : 2// 
+#coding:utf-8
+
+def giveFirstOddNumber():
+  for nbr in [14, 16, 58, 17, 39, 88]:
+    if nbr % 2 != 0:
+      return nbr
+
+result = giveFirstOddNumber()
+print("The first odd number is", result)
+ 2//
+Into the console : 2# 
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE$ py return.py 
+The first odd number is 17
+ 2#
+
+#3	continue
+This term permits to stop a loop where the continue is read and
+restart it. It breaks and after it restarts the loop.
+By example in continue.py : 2// 
+#coding:utf-8
+
+def playToTheGame():
+  print("You have done one party !!")
+
+start = 1
+var = ""
+while True:
+  print("Do you want to get an appel ?")
+  var = str(input("==> "))
+  if var == "yes":
+    print("Ok good, good lunch !!")
+    break
+  elif var == "no":
+    print("You have to taste my appel !! Are you sure ?")
+  elif var == "maybe":
+    print("I'm sure that is a yes !!")
+  else:
+    print("I don't understand your answer. I repeat the question....")
+    continue # This term permits to skip the following instructions of the loop
+
+  print("You haven't passed on the continue !!") # So here this intruction
+ 2//
+Into the console : 2# 
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE$ py continue.py 
+Do you want to get an appel ?
+==> no
+You have to taste my appel !! Are you sure ?
+You haven't passed on the continue !!
+Do you want to get an appel ?
+==> maybe
+I'm sure that is a yes !!
+You haven't passed on the continue !!
+Do you want to get an appel ?
+==> covsdjpsqds
+I don't understand your answer. I repeat the question....
+Do you want to get an appel ?
+==> ksoqdks
+I don't understand your answer. I repeat the question....
+Do you want to get an appel ?
+==> no
+You have to taste my appel !! Are you sure ?
+You haven't passed on the continue !!
+Do you want to get an appel ?
+==> maybe no
+I don't understand your answer. I repeat the question....
+Do you want to get an appel ?
+==> no
+You have to taste my appel !! Are you sure ?
+You haven't passed on the continue !!
+Do you want to get an appel ?
+==> yes
+Ok good, good lunch !!
+ 2#

@@ -1,0 +1,39 @@
+				UPDATE-RC.D
+
+This command permits to define a script of [ /etc/init.d/ ] in a executed
+script on the starting of the computer.
+
+#3	update-rc.d
+This command permits to add a bash script to the default execution on the
+starting of the machin. Its folder is [ /etc/init.d/ ] and it contains all
+the scripts that are executed in the starting.
+Parameters :
+  FIRST :
+    par0 => The name of the bash script
+    par1 => Defaults
+    #0 Look after the default syntax of the bash script
+
+#1		DEFAULT SYNTAX OF THE SCRIPT
+
+The command needs to have a certain syntax for the script.
+Ex : 2# 
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:          
+# Required-Start:    $time $local_fs $remote_fs
+# Required-Stop:     $time $local_fs $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: 
+# Description:   
+### END INIT INFO
+
+###################
+
+# My code !!
+
+###################
+
+exit 0
+ 2#

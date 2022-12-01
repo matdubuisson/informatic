@@ -1,0 +1,16 @@
+				OPERATORS
+
+#1		CONDITIONNAL OPERATORS
+
+3# == 3# => 
+3# != 3# => 
+3# <= 3# => 
+3# >= 3# => 
+3# < 3# => 
+3# > 3# => 
+
+#1		LOGIC OPERATORS
+
+3# NOT 3# => 
+3# AND 3# => 
+3# OR  3# => 

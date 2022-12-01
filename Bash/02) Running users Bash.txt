@@ -1,0 +1,70 @@
+				RUNNING USERS
+
+#1		GETTING USER INFORMATIONS
+
+I can get plenty of informations about the users for knowing it better
+and knowing the different users in the computer.
+This is in the file [ /etc/passwd ]
+Command : #5 cat /etc/passwd
+
+The file [ /etc/shadow ] contains different passwords.
+
+The file [ /etc/group ] is the file who indactes the group of each user.
+
+#1		RUNNING USERS
+
+#3	adduser
+This command permits to add a new user to the computer system.
+Example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash$ sudo adduser test
+Adding user `test' ...
+Adding new group `test' (1001) ...
+Adding new user `test' (1001) with group `test' ...
+Creating home directory `/home/test' ...
+Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for test
+Enter the new value, or press ENTER for the default
+	Full Name []: test 
+	Room Number []: test
+	Work Phone []: x
+	Home Phone []: x
+	Other []: x
+Is the information correct? [Y/n] y
+ 2#
+
+#3	deluser
+This command is used to delete an user from the computer system.
+Example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash$ sudo deluser test
+Removing user `test' ...
+Warning: group `test' has no more members.
+Done.
+ 2#
+
+#3	addgroup
+This command addes a group to the user system.
+
+#3	delgroup
+This command is used to delete a group to the user system.
+
+#1		BECOME USER
+
+#3      sudo
+This prefix is in front of a command. This permits to execute a command as 
+the root who has all the rights.
+
+#3	su
+This command permits to become an other user. This takes in parameter
+the name of the user (racteur, root) but if there aren't parameters
+the default parameter is root.
+Example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash$ sudo su
+root@racteurleader:/home/racteur/runPC/Codage/Bash# exit
+exit
+racteur@racteurleader:~/runPC/Codage/Bash$ sudo su root
+root@racteurleader:/home/racteur/runPC/Codage/Bash# exit
+exit
+ 2#

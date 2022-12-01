@@ -1,0 +1,212 @@
+Script 77
+				FUNCTIONS
+
+#1		DECLARATION OF AVOID FUNCTION
+
+#0 An avoid function doesn't return anything.
+#0 An fruitful function returns a value.
+
+#3	def
+This is the prefix that permits to define a function.
+IN fact, it is followed by a name either the name
+of the function that will permit to call the function
+(so using the function). After this name there are two
+brackets as 1# ( and ) 1# that contains the group of
+parameters of the function. So the syntax is : 3# 
+def name_of_function(parameters):
+  body_of_the_function
+ 3#
+
+#3	return
+This statement permits to a function to return a value as :
+[ return 14, return "Racteur", return e ] or cans do the same
+job than a break in the bucle as [ return ] without value
+When a function returns a value it's a 1# fruitful function 1#
+or if there isn't return statement or a return without value
+it's a 1# avoid function 1#. The return of an avoid function
+is the special value 5# None 5# !!
+
+#3      pass
+The pass statement is cool to test something. In fact, it permits to
+declare a function with nothing inside the body. Ex : 2# 
+def useless_function():
+  pass
+useless_function() # This doesn't do any process. It calls only the
+# function without instructions so it's useless !!
+ 2#
+
+For the next example, it avoids the parameters. This point
+recomes just after : 2# 
+def print_a_number():
+  print(14)
+
+def print_an_expression():
+  n = 5
+  h = 8
+  print(n + h * n ** h)
+  return 
+  # This dangerous code won't be never executed !!
+  for i in range(100000000):  
+    print("Yolo !!")
+
+def get_a_number():
+  return 16
+
+def get_an_expression():
+  return 4 * 6 + 9 // 5
+
+print_an_expression()
+for e in range(4):
+  print_a_number()
+print_an_expression()
+
+print(get_a_number())
+var = get_a_number()
+print(var)
+print(get_an_expression())
+
+print("==>", print_a_number())
+ 2#
+Inside the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE$ py functions.py 
+3125005
+14
+14
+14
+14
+3125005
+16
+16
+25
+==> None
+ 2//
+
+#1              SPECIFICATION OF FUNCTIONS
+
+This part of the script is the explanation of a habit of the programmers
+inside their python programs. It consists only to write important comment
+in the body of the function near the header of function.
+
+There are two important things :
+0# pre-condition  0# => This is the condition about the parameters in the
+point to have a correct work of the function;
+0# post-condition 0# => This is the explanation of the job of the function;
+
+Ex : 2# 
+def get_factorail_of(n=1):
+  """
+  pre: n > 0 ; n is an positive integer
+  post: It calculates the factorial of a positive integer number
+  """
+  product = 1
+  while n > 1:
+    product *= n
+    n -= 1
+  return n
+ 2#
+
+#1		PARAMETERS OF FUNCTIONS
+
+The functions cans have different parameters. There are several types of
+parameter : required parameters and optional parameters. A parameter is
+an asked data by the function and it cans be a integer, float, string,
+boolean, list, tuple or other data again....
+
+#5	REQUIRED PARAMETERS
+These parameters are required by the function when the program calls the
+function. If a required parameter is missed, then the program'll return
+an error at the moment of the calling of the function.
+
+The required parameters are declared as : 5# 
+def header_of_function(par0, par1, par2, ....):
+  pass
+ 5#
+
+#5	OPTIONAL PARAMETERS
+These parameters are optional by the function. In fact the developper isn't
+obligated to give a value to the function for the parameter. If it lets empty
+the calling for the parameter then the function'll take a default value.
+To applicate a default value to a parameter it's [ def name(par=default_value): ]
+thanks to an equal '=' with the default value.
+
+The required parameters are declared as : 5# 
+def header_of_function(par0=default_value0, par1=default_value0, par2, ....):
+  pass
+ 5#
+
+An example : 2# 
+# Avoid function with one required parameter
+def print_a_list(l):
+  print(l)
+
+# Avoid function with several required parameters
+def print_grander_number(a, b, c):
+  print("A =", a, "b =", b, "c =", c)
+  if a > b:
+    print(a)
+    return
+  if b > c:
+    print(b)
+    return
+  print(c)
+
+# Fruitful function with one required parameter
+def get_increment(n):
+  return n + 1
+
+# Avoid function with a optional parameter
+def print_a_number(n=14):
+  print(n)
+
+# Fruitful function with several optional parameters
+def count(a=0, b=1, c=2):
+  print("A =", a, "b =", b, "c =", c)
+  return a + b + c
+
+print_a_number(range(14))
+
+var = 14
+var = get_increment(var)
+print(get_increment(var))
+
+# get_increment() # => It'll return an error
+# print_grander_number(a, c) # => It's ll return
+# an error as there aren't quite enough parameters
+
+for A in range(3):
+  for B in range(3):
+    for C in range(3):
+      print_grander_number(A, B, C)
+
+print_a_number() # It'll print 14
+print_a_number(16)
+
+print(count(15)) # It'll be : 15 + 1 + 2 = 18
+ 2#
+
+#1		SEARCHED PARAMETERS
+
+Indeed the functions have to get an armful of parameters and the developper
+forget the good places for this or that parameter. So there is an other way
+to set a value to a precised parameter. In fact, it needs to precised what
+parameter receives the value in the callig of the function as : 5# 
+called_function(thisParameter=5, thisOtherParameter=-4, 5, ....)
+ 5#
+
+By example : 2# 
+def print_all_parameters(a=0, b=1, c=2, d=3, e=4, f=5, g=6, h=7):
+  print(a, b, c, d, e, f, g, h)
+
+print_all_parameters()
+print_all_parameters(e=2.7, h=["djdj", "fdz", "fk", 15, "t"])
+print_all_parameters(a=5, c="dhi", b=2, f="F")
+print_all_parameters(h=1, a="A", e=14)
+ 2#
+
+Into the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE$ py precised_parameters.py 
+0 1 2 3 4 5 6 7
+0 1 2 3 2.7 5 6 ['djdj', 'fdz', 'fk', 15, 't']
+5 2 dhi 3 4 F 6 7
+A 1 2 3 14 5 6 1
+ 2//

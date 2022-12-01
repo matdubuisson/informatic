@@ -1,0 +1,7 @@
+Salut comment ça va ?
+Hey !!
+My name is Racteur and I study computer science at the university of UCL !!
+Good bye !!
+
+Hello I want to add this part of text in copy_of_doc.txt
+thanks to the option of writing "a".

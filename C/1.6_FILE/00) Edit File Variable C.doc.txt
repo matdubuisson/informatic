@@ -1,0 +1,193 @@
+				EDIT
+
+#1		BASIC FILE FUNCTIONS
+
+#5	FILE *f
+It creates a variable 'f' that is a pointer to catch the return value of fopen().
+
+#4	fopen()
+This function permits to open a file.
+Parameters :
+par0 => The name of the file (char *);µ
+par1 => The edition mod (char *) :
+3# "w" 3# => Write string;
+3# "r" 3# => Read string;
+3# "a" 3# => Add string;
+3# "wb" 3# => Write binary;
+3# "rb" 3# => Read binary;
+3# "ab" 3# => Add binary;
+
+#4	fclose()
+This function closes the file.
+Parameter : The pointer that is typed of (FILE *);
+
+#0 WARNING : For the next functions, the changes can be applicated on the file
+#0 it closes the file. So if I uses fwrite(), the writing will be applicated on
+#0 the file uniquely after a fclose();
+
+#4	fwrite()
+This funcion writes a string in the file.
+Parameters :
+par0 => Address of the buffer;
+par1 => Size of one character;
+par2 => Number of character so the length;
+par3 => File stream (pointer FILE *);
+
+#4      fread()
+This funcion reads a string in the file.
+Parameters : 
+par0 => Address of the buffer;
+par1 => Size of one character;
+par2 => Number of character so the length;
+par3 => File stream (pointer FILE *);
+
+start_file.c : 2// 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define _fileName "test_file.txt"
+#define size 40
+
+void final(void){
+    printf("End of the program !!\n");
+    return;
+}
+
+void print_file(unsigned char *fileName);
+void write_arguments(unsigned char *fileName, unsigned int argc, unsigned char **argv);
+
+unsigned int main(unsigned int argc, unsigned char **argv){
+
+    atexit(final);
+
+    restart:
+    printf("Starting of the program !!\n");
+    printf("Clean file...\n");
+    fclose(fopen(_fileName, "w"));
+    printf("Done !!\n");
+
+    unsigned char cmd[size];
+    while(1){
+        loop_top:
+        printf("==> ");
+        strncpy(cmd, "", size);
+        scanf("%s", cmd);
+        if(!strncmp(cmd, "restart", size)){
+            goto restart;
+        }
+        if(!strncmp(cmd, "stop", size)){
+            exit(0);
+        }
+        if(!strncmp(cmd, "view", size)){
+            print_file(_fileName);
+            goto loop_top;
+        }
+        if(!strncmp(cmd, "param", size)){
+            write_arguments(_fileName, argc, argv);
+            goto loop_top;
+        }
+    }
+
+    return 0;
+}
+
+void print_file(unsigned char *fileName){
+    static unsigned char chr;
+    static unsigned long int nbr;
+    static FILE *f;
+    f = fopen(fileName, "r");
+    fseek(f, 0, SEEK_SET);
+    chr = 4;
+    while(1){
+        nbr = fread(&chr, sizeof(unsigned char), 1, f);
+        if(nbr == 0){
+            break;
+        }
+        printf("%c", chr);
+    }
+    fclose(f);
+    return;
+}
+
+void write_arguments(unsigned char *fileName, unsigned int argc, unsigned char **argv){
+    static unsigned int i;
+    static unsigned char chr = '\n';
+    static FILE *f;
+
+    f = fopen(fileName, "a");
+
+    fseek(f, 0, SEEK_END);
+    for(i = 0; i < argc; i++){
+        fwrite(*(argv + i), sizeof(unsigned char), strlen(*(argv + i)), f);
+        fwrite(&chr, sizeof(unsigned char), 1, f);
+    }
+
+    fclose(f);
+
+    return;
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/C/1.6_FILE/EXAMPLE$ gcc start_file.c -o prog
+racteur@rogy:~/Documents/informatic/C/1.6_FILE/EXAMPLE$ ./prog 
+Starting of the program !!
+Clean file...
+Done !!
+==> param
+==> view
+./prog
+==> stop
+End of the program !!
+racteur@rogy:~/Documents/informatic/C/1.6_FILE/EXAMPLE$ ./prog a b c d e f g h j k
+Starting of the program !!
+Clean file...
+Done !!
+==> view
+==> param
+==> view
+./prog
+a
+b
+c
+d
+e
+f
+g
+h
+j
+k
+==> restart
+Starting of the program !!
+Clean file...
+Done !!
+==> view
+==> param
+==> param
+==> view
+./prog
+a
+b
+c
+d
+e
+f
+g
+h
+j
+k
+./prog
+a
+b
+c
+d
+e
+f
+g
+h
+j
+k
+==> stop    
+End of the program !!
+ 2#

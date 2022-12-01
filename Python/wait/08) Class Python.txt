@@ -1,0 +1,60 @@
+				CLASS
+
+#3	class
+A [ class ] is a category of object where each objects have some
+attributs with a value.
+Syntax :
+class nameClass:
+  coding;
+var = nameClass(parameter);
+
+class nameClass:
+  def __init__(self): #[ __init__ ] is a constructor
+    coding;           # of objects. [ self ] is its var.
+
+#0 WARNING : [ __init__ ] doesn't take a RETURN !!
+
+#5	[ __init__ ] with [ self ]
+It permits to create some attributs like an object.
+These attributs are introduced by a point [ . ] and in next
+the name. This thing uses the default variable [ self ] that
+will contain the future datas.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Python/new/EXAMPLE$ cat class.py 
+#coding:utf-8
+class man:
+  def __init__(self, name, age, job, comment):
+    self.name = str(name)
+    self.age = int(age)
+    self.old = 0
+    if age > 60:
+      self.old = 1
+    self.job = job
+    self.note = str(comment)
+  def description(self):
+    print(self.name + " is " + str(self.age))
+    print("The job is " + self.job)
+    if self.old:
+      print("Old people !!")
+
+Joe = man("Joe", 17, "Chieur professionel", "TATAYOYO !!")
+
+Jerry = man("Jerry", 65, "Surgeon", "Good guy !!")
+
+Joe.description()
+print("===========================")
+
+Jerry.description()
+print("===========================")
+
+print("Note of Joe : " + Joe.note)
+racteur@racteurleader:~/runPC/Codage/Python/new/EXAMPLE$ python3.8 class.py 
+Joe is 17
+The job is Chieur professionel
+===========================
+Jerry is 65
+The job is Surgeon
+Old people !!
+===========================
+Note of Joe : TATAYOYO !!
+ 2#

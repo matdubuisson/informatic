@@ -1,0 +1,44 @@
+				MAIN FUNCTION
+
+The main is provided from none libraries. This is the default function that
+is automatically called by the execution of the program.
+
+There are two different shapes :
+3# int main(void) 3# => Normal shape;
+3# int main(int argc, char **argv) 3# => Normal shape able to receive command arguments;
+
+Main as a normal function can be recalled.
+
+main.c : 2// 
+#include <stdio.h>
+
+// The execution of the program does the first call of main() !!
+
+unsigned int main(unsigned int argc, unsigned char **argv){
+
+    static signed int i = 10;
+    printf("Message from main %d\n", i);
+    i -= 1;
+    if(i >= 0){
+        main(i, NULL);
+    }
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/7_ENVIRONMENT/EXAMPLE$ gcc main.c -o prog
+racteur@rogy:~/Documents/informatic/C/7_ENVIRONMENT/EXAMPLE$ ./prog 
+Message from main 10
+Message from main 9
+Message from main 8
+Message from main 7
+Message from main 6
+Message from main 5
+Message from main 4
+Message from main 3
+Message from main 2
+Message from main 1
+Message from main 0
+ 2//

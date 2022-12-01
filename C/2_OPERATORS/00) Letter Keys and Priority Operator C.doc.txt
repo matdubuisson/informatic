@@ -1,0 +1,8 @@
+				PRIORITY
+
+#1		LETTER KEYS
+3# e or E 3# => 4e2 => This is four with the exposant two;
+3# l or L 3# => 4l => This converts the number in long;
+3# u or U 3# => 4u => This converts the number in unsigned;
+
+#1		PRIORITY

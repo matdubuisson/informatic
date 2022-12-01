@@ -1,0 +1,66 @@
+				LISTS
+
+#0	<ul></ul> and <ol></ol> and <dl></dl>
+These three tags permit to generate different types of list.
+ul => Unordered list;
+ol => Ordered list. Can take attribute type="I" (roman letters order)
+of type="A" (arabian letters order) else it's numbers order by default;
+dl => Unordered list with discriptions;
+
+#0	<li></li>
+This tag permits to add a new choice in the lists ul and ol.
+
+#0	<dt></dt> and <dd></dd>
+The dt tag defines a new choice and the dd tag writes a description
+about this choice.
+
+lists.html : 0# 
+<!DOCTYPE html>
+<html> 
+<head> 
+    <meta charset="utf-8">
+    <meta name="author" content="Racteur">
+</head>
+<body> 
+    <ul>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    </ul>
+       
+    <br><hr><br>
+       
+    <ol>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    </ol>
+       
+    <br><hr><br>
+       
+    <ol type="A">
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    </ol>
+       
+    <br><hr><br>
+       
+    <ol type="I">
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    </ol>
+       
+    <br><hr><br>
+       
+    <dl>
+        <dt>=> Target 0</dt>
+        <dd>- This is target 0 !!</dd>
+        <dt>=> Target 1</dt>
+        <dd>- This is target 1 !!</dd>
+    </dl>
+       
+</body>
+</html>
+ 0#

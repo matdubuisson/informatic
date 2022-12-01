@@ -1,0 +1,141 @@
+				RUNNING FILES
+
+#1		TRAVELLING AND ADRESSAGE
+
+#3	cd
+This command permits to travel into the computer.
+Example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash$ cd 
+racteur@racteurleader:~$ cd /
+racteur@racteurleader:/$ cd ~/Desktop/
+racteur@racteurleader:~/Desktop$ cd servMap/
+racteur@racteurleader:~/Desktop/servMap$ cd ..
+racteur@racteurleader:~/Desktop$ cd ~/Program/C/SIMPLE_SERV/
+racteur@racteurleader:~/Program/C/SIMPLE_SERV$ cd
+racteur@racteurleader:~$
+ 2#
+#3	pwd
+This command returns a chain of character who is the address where I'm.
+Example : 2# 
+racteur@racteurleader:~$ pwd
+/home/racteur
+racteur@racteurleader:~$ cd runPC/Codage/Bash/
+racteur@racteurleader:~/runPC/Codage/Bash$ pwd
+/home/racteur/runPC/Codage/Bash
+racteur@racteurleader:~/runPC/Codage/Bash$ 
+ 2#
+#3	ls
+This command permits to make a list of a folder contain.
+Option :
+-l ==> Affiching cleaner in list mod;
+-a ==> #0 Affiching all files and hidden files;
+-R ==> This option permits to affich the contain of the folders;
+Example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F1$ ls
+eheyc.g
+racteur@racteurleader:~/runPC/Codage/Bash/F1$ ls -l
+total 0
+-rw-rw-r-- 1 racteur racteur 0 avril  6 15:15 eheyc.g
+racteur@racteurleader:~/runPC/Codage/Bash/F1$ ls -l ../F0
+total 0
+-rw-rw-r-- 1 racteur racteur 0 avril  6 15:15 dj.d
+-rw-rw-r-- 1 racteur racteur 0 avril  6 15:15 dyedu.jf
+racteur@racteurleader:~/runPC/Codage/Bash/F1$ ls ../F0/
+dj.d  dyedu.jf
+ 2#
+
+#1		FILE INFORMATIONS
+
+#3	file
+This command permits to get some informations about a file.
+Example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash$ file 01\)\ Running\ Files\ Bash.txt 
+01) Running Files Bash.txt: ASCII text
+racteur@racteurleader:~/runPC/Codage/Bash$ file ~/Program/C/SIMPLE_SERV/SERVER_PROGRAM/serverMain.c 
+/home/racteur/Program/C/SIMPLE_SERV/SERVER_PROGRAM/serverMain.c: C source, ASCII text
+ 2#
+
+#3	cat
+This command affiches the contain of a file.
+Syntax : cat file.ext
+
+#3	cut
+Viewing the manual.
+
+#3	diff
+Viewing the manual.
+
+#3	sort
+This command permits to mahe the same job that [ cat ] but
+[ sort ] trills (to trill = triller) the result.
+By default it's with the alphabet.
+Option :
+-R ==> Randow trilling;
+
+#1		RUN FILES
+
+#3	touch
+This command permits to create a file.
+Example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 0
+-rw-rw-r-- 1 racteur racteur 0 avril  6 15:15 dj.d
+-rw-rw-r-- 1 racteur racteur 0 avril  6 15:15 dyedu.jf
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ touch Yolo.txt "Hey djdhd.txt"
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ touch test.txt
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls
+ dj.d   dyedu.jf  'Hey djdhd.txt'   test.txt   Yolo.txt
+ 2#
+
+#3	cp
+This command creates a file asthe copy of an other.
+-r ==> If the copied file is a folder;
+Example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls ../F1/
+eheyc.g
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ cp ../F1/eheyc.g .
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ cd .
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 0
+-rw-rw-r-- 1 racteur racteur 0 avril  6 16:22 eheyc.g
+ 2#
+
+#5 * ==> This pointer pointes all the files !!
+
+#3	mv
+This command permits to move a file and renaming it.
+Example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l ../F1/
+total 0
+-rw-rw-r-- 1 racteur racteur 0 avril  6 15:15 eheyc.g
+-rw-rw-r-- 1 racteur racteur 0 avril  6 16:23 test.c
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 0
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ mv ../F1/eheyc.g .
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 0
+-rw-rw-r-- 1 racteur racteur 0 avril  6 15:15 eheyc.g
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ mv eheyc.g newName.newExtension
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls
+newName.newExtension
+ 2#
+
+#3	rm
+This command cans remove files.
+Option : 2# 
+-R ==> For removing a folder with its contains.
+Example :
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 0
+-rw-rw-r-- 1 racteur racteur 0 avril  6 15:15 newName.newExtension
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ rm newName.newExtension 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 0
+ 2#
+
+#3	mkdir
+This command creates a new folder.
+
+#3	rmdir
+This command removes an empty folder.
+#0 This workes only with an empty folder.

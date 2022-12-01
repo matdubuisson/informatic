@@ -1,0 +1,100 @@
+				CASTING
+
+#1              CASTING OPERATORS
+#2      Operators
+There are plenty of operators :
+3# (static unsigned int)    3# => Convert a data in [ static unsigned int ];
+3# (volatile signed double) 3# => Convert a data in [ volatile signed double ];
+3# (type)                   3# => Convert a data in [ type ];
+3# .... 3# => ...;
+
+In fact, the language C permits to make a new casting to a declared variable.
+By example, if e is type of (signed char) I can convert is type in (unsigned
+int) for that a cans have his value.
+Ex : 2# 
+int main(void){
+  signed char e = -5;
+  unsigned int a = (unsigned int) e;
+  return 0;
+}
+ 2#
+
+By example in casting.c : 2# 
+#include <stdio.h>
+
+#include "binary/__binary.h"
+
+//__printBinaryNumber
+
+int main(void){
+  unsigned char a;
+
+  signed char v0 = -14;
+  unsigned short v1 = 4000;
+  signed short v2 = -2000;
+
+  /* Conversion from a negative number to a positive :
+  In fact, the binary number is conserved with a small
+  modification. The negative number becomes positive and
+  adds to its value one. So :
+  readAsNegative(binNbr) => readAsPositive(binNbr + 1)
+  */
+  a = (unsigned char) v0;
+  printf("v0 = %d; sizeof(v0) = %ld\n", v0, sizeof(v0));
+  printf("v0 = "); __printBinaryNumber(v0, sizeof(v0));
+  printf("\n");
+  printf("a = %d; sizeof(a) = %ld\n", a, sizeof(a));
+  printf("a = "); __printBinaryNumber(a, sizeof(a));
+  printf(" (= v0 + 00000001)\n");
+
+  /* Conversion from a grander positive number to a smaller positive :
+  For this case, the smaller gets the eight first bits of the grander.
+  The type short has sixteen bits whereas the char has eight. The type
+  char gets only the eight first bits of the type short.
+  */
+  printf("\n=================\n");
+  a = (unsigned char) v1;
+  printf("v1 = %d; sizeof(v1) = %ld\n", v1, sizeof(v1));
+  printf("v1 = "); __printBinaryNumber(v1, sizeof(v1));
+  printf("\n");
+  printf("a = %d; sizeof(a) = %ld\n", a, sizeof(a));
+  printf("a = "); __printBinaryNumber(a, sizeof(a));
+  printf("\n");
+
+  /* Conversion form a grander negative number to a smaller positive number :
+  Here it uses the two viewed under cases therefore it's the two situations.
+  The type char cans take only the first eight bits as it's smaler and it adds
+  one its value because it's a converstion negative to positive.
+  */
+  printf("\n=================\n");
+  a = (unsigned char) v2;
+  printf("v2 = %d; sizeof(v2) = %ld\n", v2, sizeof(v2));
+  printf("v2 = "); __printBinaryNumber(v2, sizeof(v2));
+  printf("\n");
+  printf("a = %d; sizeof(a) = %ld\n", a, sizeof(a));
+  printf("a = "); __printBinaryNumber(a, sizeof(a));
+  printf("\n");
+
+  return 0;
+}
+ 2#
+
+Into the console : 2// 
+racteur@racteurleader:~/Documents/informatic/C/OPERATOR/EXAMPLE$ gcc casting.c binary/*.c -o prog && ./prog 
+v0 = -14; sizeof(v0) = 1
+v0 = 11110001
+a = 242; sizeof(a) = 1
+a = 11110010 (= v0 + 00000001)
+
+=================
+v1 = 4000; sizeof(v1) = 2
+v1 = 0000111110100000
+a = 160; sizeof(a) = 1
+a = 10100000
+
+=================
+v2 = -2000; sizeof(v2) = 2
+v2 = 1111100000101111
+a = 48; sizeof(a) = 1
+a = 00110000
+ 2//

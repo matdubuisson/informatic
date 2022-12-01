@@ -1,0 +1,253 @@
+Script 46
+				DOUBLE CHAINED LIST
+
+This method permits to make like the LIST method but there is more a BACK
+with the NEXT. Furthermore there is also a second STRUCT who takes a variable
+where its value equals the number of element and a pointer on the first element
+in the list and the last.
+
+By example :
+
+znew0.c :
+#include <stdio.h>
+#include "zhead.h"
+//gcc *.c -o test
+int main(void){
+    memoryList myListAtMe = giveListNULL();
+    memoryInfo myInfoAtMe = giveInfoNULL();
+
+showElements(myListAtMe , myInfoAtMe);
+
+    addLikeFirst(&myListAtMe, &myInfoAtMe, 0);
+    addLikeFirst(&myListAtMe, &myInfoAtMe, 1);
+    addLikeLast(&myListAtMe, &myInfoAtMe, 4);
+    addLikeFirst(&myListAtMe, &myInfoAtMe, 2);
+    addLikeLast(&myListAtMe, &myInfoAtMe, 3);
+    addLikeLast(&myListAtMe, &myInfoAtMe, 7);
+    addLikeLast(&myListAtMe, &myInfoAtMe, 9);
+    addLikeFirst(&myListAtMe, &myInfoAtMe, 11);
+    addLikeLast(&myListAtMe, &myInfoAtMe, 16);
+    addLikeFirst(&myListAtMe, &myInfoAtMe, 14);
+
+showElements(myListAtMe , myInfoAtMe);
+
+    popLikeLast(&myListAtMe, &myInfoAtMe);
+    popLikeFirst(&myListAtMe, &myInfoAtMe);
+
+showElements(myListAtMe , myInfoAtMe);
+
+    clear(&myListAtMe, &myInfoAtMe);
+
+showElements(myListAtMe, myInfoAtMe);
+
+    return 0;
+}
+
+===================================================
+
+znew1.c :
+#include <stdio.h>
+#include <stdlib.h>
+#include "zhead.h"
+
+memoryList giveListNULL(void){
+    return 0;
+}
+memoryInfo giveInfoNULL(void){
+    return 0;
+}
+myBool checkIfEmptyList(memoryList myList){
+    if(myList == 0){
+        return true;
+    }
+    if(myList != 0){
+        return false;
+    }
+}
+myBool checkIfEmptyInfo(memoryInfo myInfo){
+    if(myInfo == 0){
+        return true;
+    }
+    if(myInfo != 0){
+        return false;
+    }
+}
+void showElements(memoryList myList, memoryInfo myInfo){
+    if(checkIfEmptyList(myList)){
+        printf("\nSorry but the list is empty !!\n");
+        return;
+    }
+    printf("\nFIRST : ");
+    list *showList = myInfo->firstElement;
+    while(showList != 0){
+        printf("[ %d ] ", showList->myInt);
+        showList = showList->next;
+    }
+    printf(": LAST\n");
+    printf("SIZE : [ %d ]\n", myInfo->length);
+    printf("FIRST : [ %d ]\n", (myInfo->firstElement)->myInt);
+    printf("LAST : [ %d ]\n", (myInfo->lastElement)->myInt);
+}
+void addLikeFirst(memoryList *myList, memoryInfo *myInfo, int newInt){
+    list *newElement;
+    newElement = malloc(sizeof(*newElement));
+    info *newInfo;
+    newInfo = malloc(sizeof(*newInfo));
+    newElement->myInt = newInt;
+    if(checkIfEmptyList(*myList)){
+        newElement->next = 0;
+        newElement->back = 0;
+        *myList = newElement;
+        newInfo->length = 1;
+        newInfo->firstElement = newElement;
+        newInfo->lastElement = newElement;
+        *myInfo = newInfo;
+        return;
+    }
+    list *newBack = *myList;
+    while(newBack->back != 0){
+        newBack = newBack->back;
+    }
+    newBack->back = newElement;
+    newElement->back = 0;
+    newElement->next = newBack;
+    *myList = newElement;
+    info *cloneInfo = *myInfo;/*HERE*/
+    newInfo->firstElement = newElement;
+    newInfo->length = cloneInfo->length + 1;
+    newInfo->lastElement = cloneInfo->lastElement;
+    *myInfo = newInfo;
+}
+void addLikeLast(memoryList *myList, memoryInfo *myInfo, int newInt){
+    list *newElement;
+    newElement = malloc(sizeof(*newElement));
+    info *newInfo;
+    newInfo = malloc(sizeof(*newInfo));
+    newElement->myInt = newInt;
+    if(checkIfEmptyList(*myList)){
+        newElement->next = 0;
+        newElement->back = 0;
+        *myList = newElement;
+        newInfo->length = 1;
+        newInfo->firstElement = newElement;
+        newInfo->lastElement = newElement;
+        *myInfo = newInfo;
+        return;
+    }
+    list *newNext = *myList;
+    while(newNext->next != 0){
+        newNext = newNext->next;
+    }
+    newNext->next = newElement;
+    newElement->next = 0;
+    newElement->back = newNext;
+    *myList = newElement;
+    info *cloneInfo = *myInfo;
+    newInfo->length = cloneInfo->length + 1;
+    newInfo->firstElement = cloneInfo->firstElement;
+    newInfo->lastElement = newElement;
+    *myInfo = newInfo;
+}
+void popLikeFirst(memoryList *myList, memoryInfo *myInfo){
+    list *popElementInList;
+    popElementInList = malloc(sizeof(*popElementInList));
+    list *cloneList = *myList;
+    while(cloneList->back != 0){
+        cloneList = cloneList->back;
+    }
+    popElementInList = cloneList->next;
+    popElementInList->back = 0;
+    *myList = popElementInList;
+    info *changeInfo;
+    changeInfo = malloc(sizeof(*changeInfo));
+    info *cloneInfo = *myInfo;
+    changeInfo->length = cloneInfo->length - 1;
+    changeInfo->firstElement = popElementInList;
+    changeInfo->lastElement = cloneInfo->lastElement;
+    *myInfo = changeInfo;
+    free(cloneList);
+    free(cloneInfo);
+}
+void popLikeLast(memoryList *myList, memoryInfo *myInfo){
+    list *popElementInList;
+    popElementInList = malloc(sizeof(*popElementInList));
+    list *cloneList = *myList;
+    while(cloneList->next != 0){
+        cloneList = cloneList->next;
+    }
+    popElementInList = cloneList->back;
+    popElementInList->next = 0;
+    *myList = popElementInList;
+    info *changeInfo;
+    changeInfo = malloc(sizeof(*changeInfo));
+    info *cloneInfo = *myInfo;
+    changeInfo->length = cloneInfo->length - 1;
+    changeInfo->firstElement = cloneInfo->firstElement;
+    changeInfo->lastElement = popElementInList;
+    *myInfo = changeInfo;
+    free(cloneList);
+    free(cloneInfo);
+}
+void clear(memoryList *myList, memoryInfo *myInfo){
+    free(*myList);
+    free(*myInfo);
+    *myList = giveListNULL();
+    *myInfo = giveInfoNULL();
+}
+
+===================================================
+
+zhead.h :
+#ifndef ZHEAD_H
+#define ZHEAD_H
+
+typedef enum{
+    false,
+    true
+}myBool;
+
+typedef struct list{
+    int myInt;
+    struct list *next;
+    struct list *back;
+}list, *memoryList;
+
+typedef struct info{
+    int length;
+    struct list *firstElement;
+    struct list *lastElement;
+}info, *memoryInfo;
+
+memoryList giveListNULL(void);
+memoryInfo giveInfoNULL(void);
+myBool checkIfEmptyList(memoryList myList);
+myBool checkIfEmptyInfo(memoryInfo myInfo);
+void showElements(memoryList myList, memoryInfo myInfo);
+void addLikeFirst(memoryList *myList, memoryInfo *myInfo, int newInt);
+void addLikeLast(memoryList *myList, memoryInfo *myInfo, int newInt);
+void popLikeFirst(memoryList *myList, memoryInfo *myInfo);
+void popLikeLast(memoryList *myList, memoryInfo *myInfo);
+void clear(memoryList *myList, memoryInfo *myInfo);
+
+#endif
+
+===================================================
+
+Into CMD :
+C:\Users\ASUS\Desktop\zLearNC>gcc *.c -o test
+
+C:\Users\ASUS\Desktop\zLearNC>test
+
+Sorry but the list is empty !!
+
+FIRST : [ 14 ] [ 11 ] [ 2 ] [ 1 ] [ 0 ] [ 4 ] [ 3 ] [ 7 ] [ 9 ] [ 16 ] : LAST
+SIZE : [ 10 ]
+FIRST : [ 14 ]
+LAST : [ 16 ]
+
+FIRST : [ 11 ] [ 2 ] [ 1 ] [ 0 ] [ 4 ] [ 3 ] [ 7 ] [ 9 ] : LAST
+SIZE : [ 8 ]
+FIRST : [ 11 ]
+LAST : [ 9 ]
+
+Sorry but the list is empty !!

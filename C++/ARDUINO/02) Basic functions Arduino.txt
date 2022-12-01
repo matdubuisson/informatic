@@ -1,0 +1,106 @@
+Script 122
+				BASIC FUNCTIONS
+
+#1 Program's body :
+
+#4		setup()
+This function is executed just once in the program
+at the begin before let execute the function loop().
+
+#4		loop()
+This function waites that setup() is finished.
+
+#1 Running the digitals :
+
+#4		pinMode()
+This function gives to a pin a job who is either OUTPUT
+or INPUT.
+Parameters :
+Par0 = Position's number of the digital;
+Par1 = OUTPUT or INPUT;
+
+#4		digitalRead()
+This function reads if a digital is connected or not
+(or if it's HIGH or LOW). The function returns an
+integer response who is 0 or 1.
+Parameters :
+Par0 = Position's number of the digital;
+Par1 = HIGH (=1) or LOW (=0);
+
+#4		digitalWrite()
+This function defines the value of a digital. It gives
+to a digital the value HIGH or LOW.
+Parameters :
+Par0 = Position's number of the digital;
+Par1 = HIGH (=1) or LOW (=0);
+
+#1 Data's exchange between computer and Arduino :
+
+#4		analogRead()
+This function returns in integer the value of a pin sensor.
+Parameters :
+Par0 = The integer variable who contains the number of the
+tip sensor;
+
+#4		analogWrite()
+This function permits to define the intensity of the current
+at a pin. The intensity is noticed by an interval of integers
+who is between 0 and 255.
+Parameters :
+Par0 = The integer variable who contains the number of the
+tip sensor;
+Par1 = The intensity (0-255);
+
+#1 Serial :
+
+#5		Serial
+This is the struct who contains the running of the Serial
+console.
+
+#4		Serial.print()
+This function exactly workes the function print in python.
+
+#1 Timing :
+
+#4		delay()
+This functions permits to wait a precised time before
+executing the rest of the program. The time is noticed
+in millisecondes.
+Parameters :
+Par0 = Number of millisecondes;
+
+#4		millis()
+This function returns a integer number who is the passed
+time since program's early.
+There is not parameters.
+
+#1 Piezo :
+
+#4		tone()
+This function permits to produce a sound with a piezo.
+The value of the sounds is in Hertz [Hz].
+Parameters :
+par0 ==> The pin who aliments the piezo.
+par1 ==> The frequency of the sound.
+par3 ==> This parameters isn't obligatory but it's the
+delay of the sound.
+
+#4		noTone()
+This function permits to stop a tone of a piezo (baffle).
+Parameter :
+par0 ==> The pin who aliments the piezo.
+
+#1 Other :
+
+#4		map()
+This function permits to change the convention of interval
+of a data. It reput the data from an interval into a new
+interval. By example : [ DATA = 2 ] between [ MI0 = 0 ] 
+and [ MA0 = 4 ], if the new interval
+is between [ MI1 = 0 ] and [ MA1 = 8 ] DATA = 4.
+Parameters :
+Par0 ==> DATA;
+Par1 ==> MI0;
+Par2 ==> MI1;
+Par3 ==> MA0;
+Par4 ==> MA1;

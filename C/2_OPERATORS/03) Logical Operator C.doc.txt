@@ -1,0 +1,20 @@
+				LOGICAL OPERATOR
+
+#1              LOGICAL OPERATORS
+#2      The operators
+There are three operators :
+3# !a     3# => NOT : If a is null or (a == 0);
+3# a && b 3# => AND : If a and b aren't null or (a != 0) && (b != 0);
+3# a || b 3# => OR : If a or b isn't null or (a != 0) || (b != 0);
+
+#2	Priorities
+The operator is very important in the domein of the priorities.
+In fact, it is very in priority :
+[ !a * 2 == 4 ] ==> [ ( (a == 0) * 2 ) == 4 ]
+But for the two others the priority is after the arithmetic and
+conditional operators.
+[ !a != 4 && 2 * a == 6 ] ==> [ ( (a == 0) != 4 ) && ( (2 * a) == 6 ) ]
+Else if the operators have the same priority it's from the left to the
+right like this :
+[ a && b && c ] ==> [ (a && b) && c ]
+

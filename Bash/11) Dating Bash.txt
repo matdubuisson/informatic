@@ -1,0 +1,35 @@
+				DATING
+
+#1		AFFICHING THE DATE WITH THE HOURSE
+
+#3	date
+This command permits to affich the date.
+Parameter :
+"+ txt %format" => "+" for the message and %letter for the data of time;
+Sign :
+%A / %a => Abregate day;
+%B / %b => Abregate mouth;
+
+%d => Number of day;
+%m => Number of mouth;
+%Y / %y => Number of year;
+
+%H => Number of hourse;
+%M => Number of minute;
+%S => Number of second;
+
+%T => For the whole hourse;
+%F => For the whole date;
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ date "+Today it's the %d/%m/%y at %H:%M:%S"
+Today it's the 08/04/21 at 22:00:59
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ date "+ %T and %F"
+ 22:01:58 and 2021-04-08
+ 2#
+
+#3	at
+This command permits to program a serie of command to exectue at a precised time.
+Parameter : hourse:minute:second mouth/day/year
+
+#3	atq
+This command affiches the list of the programed [ at ].

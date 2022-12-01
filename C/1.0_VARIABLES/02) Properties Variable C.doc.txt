@@ -1,0 +1,117 @@
+				PROPERTIES
+
+#1		SIGNED OR NOT
+5# signed   5# => This permits to have a negative mid and a positive mid;
+5# unsigned 5# => This permits to get all the possibilities in positive;
+
+#1		PERMISSION
+5# auto 5# => By default all variables are automatic. I can do that I want
+with the variable;
+5# const 5# => The variable has a constant value that cansn't be redefine;
+5# volatile 5# => The variable cansn't be used in the optimisation action
+during the process. By example, a volatile variable isn't used inside a
+while() or a for();
+
+#1		LOCATION
+5# extern 5# => This prefix permits to create a global variable that cans
+be used in several files. In fact, I define by example [ extern char a ]
+inside the file.h and I can use this variable in file0.c and file1.c with
+[ char a ] redefines in the both files. If file0.c changes the value of
+the variable, file1.c receives the changement also. It's a global
+variable for several files;
+
+5# static 5# => This permits to define a local variable in a function and
+at each utilisation of the function, this function remembers of the last
+value of the variable; #0 This concerns location and remembering !!
+
+#1		LOCATION
+
+#3 IN CPU
+5# register 5# => This prefix permits to say to save the variable in the
+processor and not in the memory RAM;
+
+#3 IN RAM
+5# volatile 5# => The variable cansn't be used in the optimisation action
+during the process and it is stocked in the RAM;
+
+main.c : 2// 
+include <stdio.h>
+
+#include "head.h"
+
+char universalVariable = 0;
+
+void addOneToStaticVariable(void){
+  static char y = 1; // This variable is declared in the first utilisation
+  // and at each utilisation the function remembers of the last value of the variable
+  y++;
+  printf("Y = %d\n", y);
+  return;
+}
+
+int main(void){
+  const char cantBeModified = 5;
+  //cantBeModified = 4; // => It returns an error
+
+  volatile char e = 4; // Same thing than : char e = 4;
+  e = 6 + e;
+  printf("E = %d\n", e);
+  char o = 0;
+  for(int i=0; i<11; i++){
+    o = e + 1; // The value of e cansn't be added because the type volatile
+    // doesn't permit to do it
+  }
+
+  printf("O = %d\n", o);
+
+  printUniversalVariable();  
+  universalVariable = 14;
+  printUniversalVariable();
+
+  auto char h = 5; // Same thing than : char h = 5;
+  h = 7;
+
+  addOneToStaticVariable();
+//  printf("Y in main = %d\n", y); // => It's not correct
+  addOneToStaticVariable();
+
+  register char superVariable = 0; // This vatriable is saved in the processor
+  // Warning the number of this kind of variables is very limited and it cans
+  // disrupt the computer
+  return 0;
+}
+ 2//
+//1 ========================================
+otherFile.c : 2// 
+#include <stdio.h>
+
+#include "head.h"
+
+char universalVariable;
+
+void printUniversalVariable(void){
+  // this function is able to print an input value of main.c
+  printf("universalVariable = %d\n", universalVariable);
+  return;
+}
+ 2//
+//1 ========================================
+head.h : 2// 
+#ifndef HEAD_H
+#define HEAD_H
+
+extern char universalVariable;
+
+void printUniversalVariable(void);
+#endif
+ 2//
+//1 ========================================
+Into the console : 2# 
+racteur@racteurleader:~/informatic/C/EXAMPLE/prefixs$ gcc *.c -o prog && ./prog 
+E = 10
+O = 11
+universalVariable = 0
+universalVariable = 14
+Y = 2
+Y = 3
+ 2#

@@ -1,0 +1,28 @@
+				STYLES
+
+#1		STYLE ATTRIBUTE
+
+The style attribute is available on the most of the tags and
+permits to write CSS code that is directly applicated on the
+tag self.
+
+styles.html : 0# 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Racteur">
+</head>
+<body style="background-color:black;color:white">
+    <h1>Black and white</h1>
+    <p style="text-align:center;color:yellow">Yolo !!</p>
+</body>
+</html>
+ 0#
+
+#1		STYLE TAG
+
+#0	<style></style>
+In fact, the contain of the tag is a CSS code.
+
+#1		STYLE WITH CSS

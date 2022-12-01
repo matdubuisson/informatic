@@ -1,0 +1,51 @@
+				INSERTION AND DELETING
+
+#1		INSERTION
+
+This part is focused on the manner to create instances of the table.
+The key words are "INSERT INTO" and VALUES and the syntax is : 5# 
+CREATE TABLE nameTab(
+  id INT PRIMARY KEY NOT NULL,
+  age INT NULL
+);
+
+INSERT INTO nameTab(id, age) VALUES (21772100, 18);
+INSERT INTO nameTab(id, age) VALUES (21772101, 18);
+INSERT INTO nameTab(id, age) VALUES (21772102, 18);
+INSERT INTO nameTab(id, age) VALUES (21772103, 22);
+INSERT INTO nameTab(id, age) VALUES (21772104, 23);
+ 5#
+
+An insertion takes the name of the table with both brackets
+with inside the names of the variable of this table and after
+inside the second brackets, it's the value attributed to these
+variables.
+
+#1		DELETING
+
+The deleting uses different key words : DELETE, FROM and WHERE (optionnal).
+It permits to delete an inserted element. Syntax : 5# 
+DELETE elements FROM nameTab WHERE condition
+ 5#
+
+(See in example directory !!)
+For example : 2# 
+SELECT * FROM nameTab2;
+DELETE FROM nameTab2 WHERE job IN ("Joe", "Racteur"); -- DELETE FROM nameTab2; -- Delete all the base !!
+SELECT * FROM nameTab2;
+ 2#
+
+Result : 2// 
+============================
+(0, 'Joe')
+(1, 'Racteur')
+(2, 'Robot')
+(3, 'Joe')
+(4, 'Ralph')
+(5, 'Joe')
+============================
+============================
+(2, 'Robot')
+(4, 'Ralph')
+============================
+ 2//

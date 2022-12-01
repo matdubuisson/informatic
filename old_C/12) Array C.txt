@@ -1,0 +1,215 @@
+Script 38
+
+				ARRAY
+
+This method permits to create a grand variable who contants a suit of
+memory's case order by 0 ....
+With this method I don't need to use the pointer because varaible's name
+of the array takes already the memory's adress with *star. But if I save
+the array by an other variable I need to precise the adress who is
+understood [EX : int array[µ]; (int *yolo = array;) || (int yolo[] = array;)]
+
+For declaring an array I have to writte :
+int name[numberOfValue];
+
+The numberOfValue is a whole number who says the place that the array
+will take in the preprocessor (If I don't save the datas.). The first
+value will have the ID 0 and the end will have (numberOfValue - 1) if
+numberOfValue is different from 0.
+
+For example :
+------------------
+new0.c :
+#include <stdio.h>
+#include "memoryTest.h"
+#define SIZE 6/*This takes the character %0 interpreting by the computer.*/
+
+int main(void){    
+    int array[SIZE] = {4, 3, 2, 1, 0};
+    affichArray(array,SIZE);
+    printf("\n");
+    affichArray2(array,SIZE);
+    return 0;
+}
+------------------
+new1.c :
+#include <stdio.h>
+
+void affichArray(int *array , int arraySize){
+  int e;
+  for(e = 0; e < arraySize; e += 1){
+      printf("[%d]", array[e]);
+  }
+}
+void affichArray2(int array[] , int arraySize){
+  int e;
+  for(e = 0; e < arraySize; e += 1){
+      printf("[%d]", array[e]);
+  }
+}
+------------------
+memoryTest.h :
+#ifndef MEMORYTEST
+#define MEMORYTEST
+
+void affichArray(int *array , int arraySize);
+void affichArray2(int array[] , int arraySize);
+
+#endif
+------------------
+I execute in cmd :
+gcc *.c -o test
+test
+------------------
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc *.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+[4][3][2][1][0]
+[4][3][2][1][0]
+C:\Users\ASUS\Desktop\learnC>
+------------------
+
+For choosing a value into an array I can do this :
+
+array[µ]; || *(array + µ);
+
+Doc.c :
+#include <stdio.h>
+#define SIZE 5
+
+int main(void){
+    
+    int array[SIZE] = {4, 3, 2, 1, 0};
+    
+	*(array + 3) = 54;
+	array[0] = 62;
+    
+    return 0;
+}
+
+		AN ARRAY INTO AN OTHER ARRAY
+
+Doc.c :
+#include <stdio.h>
+#define SIZE 7
+//gcc new1.c -o test
+void *newArray(void){
+    /*If I want to return the array, this array needs to be static !!*/
+    static int yolo[SIZE][SIZE - 3] = {
+				{0, 1, 0}, 
+				{0, 1, 0}, 
+				{0, 1, 0}, 
+				{0, 1, 0}, 
+				{0, 1, 0}, 
+				{0, 1, 0}, 
+				{0, 1, 0}
+				       };
+     printf("\n==> %d\n", yolo[0][1]);
+    for(int a = 0; a < SIZE; a++){
+        for(int e = 0; e < (SIZE - 4); e++){
+            printf("%d.%d) [%d]\n", a, e, yolo[a][e]);
+        }
+    }
+    return yolo;
+}
+
+int main(void){
+
+    int *array = newArray();
+    for(int a = 0; a < SIZE; a++){
+        printf("%d) [%d]\n", a, array[a]);
+    }    
+
+    /*for(int a = 0; a < SIZE; a++){
+        for(int e = 0; e < (SIZE - 4); e++){
+            printf("%d.%d) [%d]\n", a, e, array[a][e]);
+        }
+    }*//*This coding is an error because when *array takes the values of
+	 yolo by the return intonewArray(); . Each cases are defined by
+	 the first value from every array in the array yolo. So when I say
+	 by example in function MAIN : array[0][1] The second ->[] doesn't
+	 exist. array[0] = 0 like yolo[0][0];*/
+
+    return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+
+==> 1
+0.0) [0]
+0.1) [1]
+0.2) [0]
+1.0) [0]
+1.1) [1]
+1.2) [0]
+2.0) [0]
+2.1) [1]
+2.2) [0]
+3.0) [0]
+3.1) [1]
+3.2) [0]
+4.0) [0]
+4.1) [1]
+4.2) [0]
+5.0) [0]
+5.1) [1]
+5.2) [0]
+6.0) [0]
+6.1) [1]
+6.2) [0]
+0) [0]
+1) [1]
+2) [0]
+3) [0]
+4) [0]
+5) [1]
+6) [0]
+
+----------------------------------------------------
+
+		ARRAY'S TYPE
+
+If I can say the type of each cases from the array I can precise the
+type and the place that will take.
+TYPE ===> numeric, alphanumeric and booleen.
+PLACE ===> If it's alphanumeric, an alpha numeric is too an array so
+I can precise the size.
+
+test0.c :
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+//gcc test0.c -o test
+#define wordsSize 40
+#define numberOfParameters 11
+
+int main(int intOfparameters, signed char *arrayOfParameters[wordsSize]){
+    printf("There are %d parameters !!\n", intOfparameters);
+    signed char arrayOfParametersSecond[numberOfParameters][wordsSize];
+
+    printf("====> %c <====\n", arrayOfParameters[5]);
+    int e = 0;
+    while(arrayOfParameters[e] != 0){
+        printf("%d) [ %s ]\n", e, arrayOfParameters[e]);
+        e += 1;
+    }
+    return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\C>gcc test0.c -o test
+
+C:\Users\ASUS\Desktop\C>test Joe Matt test Re test jxjd
+There are 7 parameters !!
+====> 0 <====
+0) [ test ]
+1) [ Joe ]
+2) [ Matt ]
+3) [ test ]
+4) [ Re ]
+5) [ test ]
+6) [ jxjd ]

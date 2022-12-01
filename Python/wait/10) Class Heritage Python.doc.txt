@@ -1,0 +1,78 @@
+				HERITAGE
+
+#1		CONCEPT OF THE HERITAGE
+In fact, this script explains how creating a program that uses heritage.
+An heritage is based on two classes... Mother class and daugther class.
+The daugther cans receive the properties and functions of the mother.
+
+Syntax :
+class mother():
+  def __init__(self):
+    self.nbr = 14
+  def motherFunction():
+    print("MOTHER")
+
+# The daugther has to mean her mother
+class daugther(mother):
+  def __init__(self):
+    mother.__init__(self) # The daugther inits the mother in her own init
+    self.var = "var"
+  def daugtherFunction():
+    print("DAUGTHER")
+
+DAUGTHER = daugther()
+MOTHER = mother()
+"""
+The daugther cans have access to the variables var and nbr
+and to the functions motherFunction() and daugtherFunction().
+The mother cans ONLY access to the variable nbr and the
+function daugtherFunction().
+"""
+
+#1		AN APPLICATION
+
+An example with heritage.py : 2# 
+#coding:utf-8
+
+class team():
+  def __init__(self, color):
+    self.team = str(color)
+
+class player(team):
+  def __init__(self, name="Anonymous", specy="Human", color="White"):
+    self.name = str(name)
+    self.specy = str(specy)
+    team.__init__(self, color)
+  def show_description(self):
+    print(self.name + " is a " + self.specy + " in the " + self.team + " team !!")
+
+joe = player("Joe", "PNJ", "Red")
+randomMan = player()
+
+joe.show_description()
+randomMan.show_description()
+
+if isinstance(joe, player):
+  print("The variable [ joe ] is a class from [ player ] !!")
+
+if isinstance(joe, team):
+  print("The variable [ joe ] is a class from [ team ] !!")
+
+if issubclass(player, team):
+  print("The class [ player ] is contained in the class [ team ] !!")
+
+if issubclass(player, team):
+  print("The class [ team ] is contained in the class [ player ] !!")
+else:
+  print("The class [ team ] isn't contained in the class [ player ] !!")
+ 2#
+
+Into the console : 2# 
+racteur@racteurleader:~/runPC/Codage/Python/EXAMPLE$ python3.8 heritage.py 
+Joe is a PNJ in the Red team !!
+Anonymous is a Human in the White team !!
+The variable [ joe ] is a class from [ player ] !!
+The variable [ joe ] is a class from [ team ] !!
+The class [ player ] is contained in the class [ team ] !!
+The class [ team ] is contained in the class [ player ] !!
+ 2#

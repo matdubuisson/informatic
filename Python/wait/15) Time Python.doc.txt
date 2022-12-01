@@ -1,0 +1,43 @@
+				TIME
+
+I need of the library : #2 [ import time ];
+
+#4	sleep()
+Is paramter is the int of second that the program
+has to wait to this function.
+By example : 2# 
+form time import *;
+print("TEST");
+sleep(2);
+print("2 seconds later .... TEST");
+ 2#
+#4	time()
+This function due to the convention sinds the
+first January at midnight is the counting of
+the time who has been done. I can recuperate
+the result with this function.
+By example : 2# 
+import time;
+print(time.time());
+ 2#
+
+#1		STRFTIME()
+
+#4	strftime()
+#3 Like date in Bash.
+Syntax :
+from time import *;
+myDate = time.strftime("PARAMETER");
+PARAMETER :
+1# %d 1# ===> Number day;
+1# %m 1# ===> Number month;
+1# %Y 1# ===> Years;
+1# %H 1# ===> Hourses;
+1# %I 1# ===> Minutes;
+1# %S 1# ===> Seconds;
+1# %p 1# ===> AM or PM;
+1# %A 1# ===> Name day;
+1# %a 1# ===> Small name day;
+1# %B 1# ===> Name month;
+1# %b 1# ===> Small name month;
+1# %Z 1# ===> Location;

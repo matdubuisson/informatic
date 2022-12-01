@@ -1,0 +1,54 @@
+				CONVERSION
+
+In fact this script shows the different possible conversion to make.
+By example if I addition an integer number with a float it'll give
+a float in result. The drawings are a [ with ] that cans be
+[ +, -, *, /, % ]. Before begining, if it cans help the conversion
+usually converts in the most complex type (float + int = float as
+float is the most complx).
+
+#1	SIMPLE CONVERSIONS
+3# 
+#2===================================================
+short with int => int
+
+#2===================================================
+int with long => long
+
+#2===================================================
+unsigned int with unsigned long => unsigned long
+
+#2===================================================
+int with double => double
+ 3#
+
+#1	CONVERSIONS WITH SIGNED AND UNSIGNED
+conversionSignedWithUnsigned.c : 2# 
+#include <stdio.h>
+
+int main(void){
+
+  signed int a = 2000;
+  unsigned int b = 10;
+  signed int sRes = a + b;
+  unsigned int usRes = a + b;
+
+  printf("sRes = %d\n", sRes);
+  printf("usRes = %d\n", usRes);
+
+//  usRes = (signed int) usRes; // The compilator does it itself !!
+  usRes -= 3000;
+
+  printf("usRes = %d\n", usRes);
+
+  return 0;
+}
+ 2#
+
+Into the console : 2// 
+racteur@racteurleader:~/informatic/C/EXAMPLE$ gcc conversionSignedWithUnsigned.c -o prog
+racteur@racteurleader:~/informatic/C/EXAMPLE$ ./prog 
+sRes = 2010
+usRes = 2010
+usRes = -990
+ 2//

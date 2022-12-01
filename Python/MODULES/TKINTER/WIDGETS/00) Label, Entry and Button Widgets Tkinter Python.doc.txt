@@ -1,0 +1,22 @@
+				LABEL
+
+#4      Label()
+varLabel = tkinter.Label(myWindow, text="Writte text into the window !!", font=("ubuntu", 14));
+Info : Writtes on one line.
+Parameters :
+3# first parameter 3# => The configuration of the window given by Tk();
+1# test 1# => Takes a string;
+1# textvariable 1# => Takes a variable text of StringVar();
+1# font 1# => Takes a tuple with the fontstyle and next the fontsize;
+
+#4	Button()
+varButton = tkinter.Button(myWindow, text="test", command=lambda: fct(arg0, arg1))
+Parameters :
+#3 The same parameters than label;
+1# command 1# => Takes the "name" of a function. It is executed when the user
+tap on the button;
+
+#4	Entry()
+varEntry = tkinter.Entry(myWindow, text="test", font=("arial", 16)-
+Parameters :
+#3 The same parameters than label;

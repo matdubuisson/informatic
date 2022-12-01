@@ -1,0 +1,85 @@
+				SEARCHING
+
+#1		SEARCH INDEX OF A SPECIFIED CHARACTER IN THE STRING
+
+#4	strchr(<str>, <chr>)
+
+This function returns the address of the first character equal to chr of the string str.
+If it doesn't find, it returns NULL.
+
+#4	strrchr(<str>, <chr>)
+
+Same behavior but it searches the last character.
+
+strchr.c : 2// 
+#include <stdio.h>
+#include <string.h>
+
+#define size 60
+
+unsigned int main(void){
+
+    unsigned char name[size];
+    strncpy(name, "Ceci A est un A test !! A Yolo !!", sizeof(unsigned char) * size);
+    printf("==> %s\n", name);
+
+
+    unsigned char *addr_first_A = strchr(name, 'A');
+    unsigned char *addr_last_A = strrchr(name, 'A');
+
+    printf("Index of the first A : %ld\n", addr_first_A - name);
+    printf("Index of the last A : %ld\n", addr_last_A - name);
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/6_STRING/EXAMPLE$ gcc strchr.c -o prog && ./prog 
+==> Ceci A est un A test !! A Yolo !!
+Index of the first A : 5
+Index of the last A : 24
+ 2//
+
+#1              SEARCH INDEX OF A SPECIFIED UNDER STRING IN THE STRING
+
+#4	strstr(<str0>, <str1>)
+
+Returns the address of the first character of the under string that appairs in the
+principal string else it returns NULL.
+
+strstr.c : 2// 
+#include <stdio.h>
+#include <string.h>
+
+unsigned int main(void){
+
+    unsigned char *sentence = "Bonjour je suis Charlie Chaplin !!";
+    unsigned char *string = "our j";
+    unsigned char *string2 = "racteur";
+
+    unsigned char *p;
+    if((p = strstr(sentence, string)) == NULL){
+        printf("String not found !!\n");
+    }
+    else{
+        printf("String found at index : %ld\n", p - sentence);
+    }
+
+    if((p = strstr(sentence, string2)) == NULL){
+        printf("String2 not found !!\n");
+    }
+    else{
+        printf("String2 found at index : %ld\n", p - sentence);
+    }
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/6_STRING/EXAMPLE$ gcc strstr.c -o prog
+racteur@rogy:~/Documents/informatic/C/6_STRING/EXAMPLE$ ./prog 
+String found at index : 4
+String2 not found !!
+ 2//

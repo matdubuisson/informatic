@@ -1,0 +1,55 @@
+				PRINT INSIDE
+
+#4	fprintf()
+This is as printf() but it takes in more at first parameter
+the file stream.
+Parameters :
+par0 => File stream (FILE *);
+par1 => Format (char *);
+par* => Potential parameters for the format;
+
+#4	fputs()
+This function puts a string in a file.
+Parameters :
+par0 => Address of string (first character);
+par1 => File stream;
+
+#4	fputc()
+This function puts one character in the file.
+Parameters :
+par0 => Integer that represents the character;
+par1 => File stream;
+
+fprintf.c : 2// z
+#include <stdio.h>
+              
+unsigned int main(void){
+              
+    float fn = 15.7;
+    signed int in = -1086;   
+    unsigned char *name = "Racteur";                                
+              
+    FILE *f = fopen("test_fprintf.txt", "w");                       
+              
+    fprintf(f, "fn = %f; in = [%*d]\nname = %s\n", fn, 40, in, name);
+              
+    fputs(name, f);
+    fputc('\n', f);
+    fputc('!', f);
+    fputc('\n', f);
+              
+    fclose(f);    
+              
+    return 0; 
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/C/1.6_FILE/EXAMPLE$ gcc fprintf.c -o prog
+racteur@rogy:~/Documents/informatic/C/1.6_FILE/EXAMPLE$ ./prog 
+racteur@rogy:~/Documents/informatic/C/1.6_FILE/EXAMPLE$ cat test_fprintf.txt 
+fn = 15.700000; in = [                                   -1086]
+name = Racteur
+Racteur
+!
+ 2#

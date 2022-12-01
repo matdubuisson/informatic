@@ -1,0 +1,106 @@
+#1		CREATION POINTER
+
+#2	Description
+
+3# &var 3# => Returns the address of the variable;
+3# *addr 3# => Access to the variable of the address;
+3# NULL == void *0 3# => This pointer points on nothing;
+3# void *univPt = &unTypedVar 3# => This pointer can point
+on any types of variables;
+
+pointer.c : 2// 
+#include <stdio.h>
+
+void increment_int_var(unsigned int *var){
+    (*var)++;
+    /*
+    Need brackets because (*var)++ != * (var++)
+    => In the first case, it accesses to the data and increments
+    the value
+    => In the second case, it increments the address and accesses
+    to the value
+    */
+    return;
+}
+
+void print_address_var(void *var){
+    // The pointer (void *) is an universal pointer that can
+    // point all types of variables
+    
+    //*var = 2; // This expression will be rejected because it isn't an appropriate
+    // use of the (void *) pointer
+
+    printf("Address : %p\n", var);
+
+    return;
+}
+
+unsigned char main(unsigned char argc, unsigned char **argv){
+
+    unsigned int count0 = 0;
+    float count1 = 0;
+
+    unsigned char i = 0;
+    for(i = 0; i < 10; i++){
+        increment_int_var(&count0);
+        printf("=> %d\n", count0);
+    }
+
+    for(i = 0, count0 = 0; i < 10; i++){
+        print_address_var(&count0);
+        print_address_var(&count1);
+    }
+
+    unsigned int *pointer_count0 = NULL; // This tag is present in stdio.h, stdlib.h and stddef.h. It's the equivalent of 0
+    // Or : unsigned int *pointer_count0 = 0;
+    pointer_count0 = &count0;
+
+    count0 = 0;
+    for(i = 0; i < 5; i++){
+        *pointer_count0 += 5; // Same than count0 += 5
+         printf("%d == %d\n", count0, *pointer_count0);
+    }
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@racteurtoshiba:~/Documents/informatic/C/1_VARIABLES/EXAMPLE$ gcc pointer.c -o prog
+racteur@racteurtoshiba:~/Documents/informatic/C/1_VARIABLES/EXAMPLE$ ./prog
+=> 1
+=> 2
+=> 3
+=> 4
+=> 5
+=> 6
+=> 7
+=> 8
+=> 9
+=> 10
+Address : 0x7ffe2ed5a7e8
+Address : 0x7ffe2ed5a7ec
+Address : 0x7ffe2ed5a7e8
+Address : 0x7ffe2ed5a7ec
+Address : 0x7ffe2ed5a7e8
+Address : 0x7ffe2ed5a7ec
+Address : 0x7ffe2ed5a7e8
+Address : 0x7ffe2ed5a7ec
+Address : 0x7ffe2ed5a7e8
+Address : 0x7ffe2ed5a7ec
+Address : 0x7ffe2ed5a7e8
+Address : 0x7ffe2ed5a7ec
+Address : 0x7ffe2ed5a7e8
+Address : 0x7ffe2ed5a7ec
+Address : 0x7ffe2ed5a7e8
+Address : 0x7ffe2ed5a7ec
+Address : 0x7ffe2ed5a7e8
+Address : 0x7ffe2ed5a7ec
+Address : 0x7ffe2ed5a7e8
+Address : 0x7ffe2ed5a7ec
+5 == 5
+10 == 10
+15 == 15
+20 == 20
+25 == 25
+ 2//

@@ -1,0 +1,53 @@
+				PERMISSIONS
+
+With a file there are three possible actions to work with the file :
+=> Executing #1 Value = 1
+=> Writing #1 Value = 2
+=> Reading #1 Value = 4
+
+If I do a [ ls -l ] I can view these characters on the file :
+4# 
+racteur@racteurleader:~/runPC/Codage/Bash$ ls -l
+total 128
+-rwxrwxr-x 1 racteur racteur 1059 mars   1 17:56 '00) First help Bash.txt'
+-rwxrwxr-x 1 racteur racteur 3669 mars   1 17:56 '01) Location Bash.txt'
+-rwxrwxr-x 1 racteur racteur 3740 mars   1 17:56 '02) File Bash.txt'
+-rwxrwxr-x 1 racteur racteur  983 mars   1 17:56 '03) Law Bash.txt'
+-rwxrwxr-x 1 racteur racteur 3799 mars   1 17:56 '04) Redirected Bash.txt'
+-rwxrwxr-x 1 racteur racteur 2377 mars   1 17:56 '05) Archive and Compression Bash.txt'
+-rwxrwxr-x 1 racteur racteur  253 mars   1 17:56 '06) Persual Bash.txt'
+ 4#
+#6 In fact, this shows the different operations that I can do with the file.
+
+#0	sudo
+This prefix is in front of a command. This permits to execute a command as
+the root who has all the rights.
+
+#1		RUNNING THE RIGHT ON A FILE
+
+#3	chmod
+This command permits to change the rules on a file.
+Option :
+-R ==> For changing the rules of all the folder files.
+Syntax : sudo chmod 777 *
+
+#3	chown
+This command permits to change the owner of a file.
+There two manner to use this :
+First syntax : sudo chown racteur file.ext
+#6 This changes the owner of the file.
+Second syntax : sudo chown racteur:racteurleader file.ext
+#6 This changes the owner and the spot computer of buiding of the file.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 0
+-rw-rw-r-- 1 racteur racteur 0 avril  7 09:55 Yolo.txt
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ sudo chown root Yolo.txt 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 0
+-rw-rw-r-- 1 root racteur 0 avril  7 09:55 Yolo.txt
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ sudo chown root:root Yolo.txt 
+racteur@racteurleader:~/runPC/Codage/Bash/F0$ ls -l
+total 0
+-rw-rw-r-- 1 root root 0 avril  7 09:55 Yolo.txt
+ 2#

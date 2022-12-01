@@ -1,0 +1,58 @@
+				TEMPLATES
+
+#0 Module : import flask as f
+
+#1		EXECUTE A TEMPLATE
+
+A template is a html file in the directory templates. This directory is
+saved in the current path ot the execution of the server.
+
+#4	f.render_template("")
+
+This function reads and return the shaped html wed.
+Parameters :
+par0 => The link of the file.html about the location inside templates directory;
+parx => A variable in the shape of nameVar=Value;
+parx+1 => Same thing, the number than we want;
+
+#0 When a variable is defined, it needs to have a seconde app.route();
+
+For example : 2# 
+import flask as f
+
+import config_base as conf
+import html_tools as htmlt
+import sql_tools as sqlt
+
+if __name__ != "__main__":
+    print("You aren't in the good directory. Please go in it !!")
+    exit()
+
+app = f.Flask(__name__)
+
+@app.route("/")
+@app.route("/<string:name>")
+def index(name=None):
+    return f.render_template("index.html", name=name)
+
+app.run(host="127.0.0.1", port=5000, debug=True)
+ 2#
+
+In the html : 3// 
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  {% if name %}
+  <p>This is {{ name }}</p>
+  {% else %}
+  <p> There isn't name </p>
+  {% endif %}
+</body>
+</html>
+ 3//
+
+Tests : 
+=> /127.0.0.1:5000/
+=> /127.0.0.1:5000/test

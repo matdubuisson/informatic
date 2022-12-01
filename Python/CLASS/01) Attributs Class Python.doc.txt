@@ -1,0 +1,127 @@
+				ATTRIBUTS
+
+There are two kinds of attributs : the private attributs and
+the public attributs !!
+
+There are two method to declare attributs also !!
+
+#1		DIFFERENT DECLARATIONS OF ATTRIBUTS
+
+#3 In this case, all the attributs will be public.
+
+A class cans declare either a attribut for an object (self.var = 0)
+or a simple attribut in the global scope of the class (var = 0)
+that is then common to all the instance of the class.
+
+At first, the first type of attribut needs to be call with the prefix
+5# self 5# as [ self.var ] when it workes in the class or to be call
+with the name of instance as [ instance.var ]. It needs to be declare
+with the same things : [ self.var = value ] or [ instance.var = value ]
+
+Secondly, the second type of attribut needs to call with the name of the
+class. If the name of the class is "Class" then the variable is called
+as [ Class.var ]. For declaring an attribut of this type, it needs to
+declare the variable inside the class scope like a local variable in
+a function.
+#0 And not inside a method so it'll be a simple local variable !!
+
+By example : 2# 
+class Test:
+  var = 0
+  fruit = "Apple"
+  def __init__(self):
+    self.nbr = 14
+    self.a = 0
+    for i in range(10):
+      self.a += 7
+  def print_class_variable(self):
+    print(Test.var, Test.fruit)
+
+instance = Test()
+print(instance.nbr, instance.a)
+instance.nbr = 16
+print(instance.nbr, instance.a)
+
+instance.print_class_variable()
+Test.var = 1308
+instance.print_class_variable()
+ 2#
+
+Into the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/CLASS/EXAMPLE$ py declare_attribut.py 
+14 70
+16 70
+0 Apple
+1308 Apple
+ 2//
+
+#3 Here in this case, all the attributs are some public attributs !!
+
+#1		PRIVATE ATTRIBUTS VERSUS PUBLIC ATTRIBUTS
+
+The manner to declare private attributs is exactly the same than the
+manner to declare the public attributs except that the name of the
+private attributs take two underscore in front.
+
+A private attribut cans be used outside of the class and these are
+reserved to the body of the function. But it exists methods to manage
+these private attributs.
+
+By example : 2# 
+class Test:
+  var = 0
+  __var2 = 0
+  def __init__(self):
+    self.nbr = 14
+    self.__nbr2 = 16
+    Test.__var2 += 1
+
+  def print_var2(self):
+    print(Test.__var2)
+
+  def get_nbr2(self):
+    return self.__nbr2
+
+  def set_nbr2(self, n=0):
+    self.__nbr2 = n
+
+instance = Test()
+
+print(Test.var, instance.nbr) # This line doesn't return errors
+
+try:
+  print(Test.__var2)
+except:
+  print("You can't print the private attribut [ Test.__var2 ]")
+
+try:
+  print(instance.__nbr2)
+except:
+  print("You can't print the private attribut [ instance.__nbr2 ]")
+
+# But there is an other manner to do it :
+instance.print_var2()
+
+print(instance.get_nbr2())
+
+instance.set_nbr2(1308)
+print(instance.get_nbr2())
+
+new_instance = Test()
+
+# Pay attention for the two line !!
+new_instance.print_var2()
+instance.print_var2()
+ 2#
+
+Into the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/CLASS/EXAMPLE$ py declare_attribut.py 
+0 14
+You can't print the private attribut [ Test.__var2 ]
+You can't print the private attribut [ instance.__nbr2 ]
+1
+16
+1308
+2
+2
+ 2//

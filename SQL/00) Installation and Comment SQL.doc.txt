@@ -1,0 +1,8 @@
+				INSTALLATION
+
+#1		INSTALLATION
+No needed installation !!
+
+#1		COMMENT
+Write two dashes and the text on the same line.
+#2 -- Comment !!

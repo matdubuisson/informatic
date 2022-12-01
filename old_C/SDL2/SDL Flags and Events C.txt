@@ -1,0 +1,91 @@
+Script 120
+				FLAGS AND EVENTS IN SDL
+6# 
+Functions' prototypes :
+
+int SDL_Init(Uint32 flags);
+int SDL_InitSubSystem(Uint32 flags);
+int SDL_AudioInit(const char* driver_name);
+int SDL_VideoInit(const char* driver_name);
+
+SDL_Window* SDL_CreateWindow(const char* title, 
+int x, int y, int w, int h, Uint32 flags);
+
+void SDL_Quit(void);
+void SDL_QuitSubSystem(Uint32 flags);
+void SDL_AudioQuit(void);
+void SDL_VideoQuit(void);
+
+void SDL_Log(const char* format);
+const char* SDL_GetError(void);
+
+void SDL_Delay(Uint32 ms);
+ 6#
+2# 
+#3 FLAGS FOR INITTING :
+SDL_INIT_EVERYTHING      |   Loads all systemes of the computer;
+SDL_INIT_AUDIO           |   Loads the systemes for running the sound;
+SDL_INIT_VIDEO           |   Loads the systemes for running the video;
+SDL_INIT_EVENTS          |   Loads the systemes for the evenments;
+SDL_INIT_JOYSTICK        |   Charge le système du joystick + événements.
+SDL_INIT_GAMECONTROLLER  |   Charge le système du pad + joystick.
+SDL_INIT_HAPTIC          |   Charge le système Haptic (vibrations).
+SDL_INIT_NOPARACHUTE     |   Désactive la gestion des signaux fatals.
+
+#3 FLAGS FOR WINDOW'S POSITION :
+
+
+ 2#
+_____________________________________________________________________________
+SDL_Event                 | Device   | Explanation;
+=============================================================================
+SDL_WindowEvent           | window   | window event data;
+=============================================================================
+SDL_KeyboardEvent         | key      | keyboard event data;
+=============================================================================
+SDL_TextEditingEvent      | edit     | text editing event data;
+=============================================================================
+SDL_TextInputEvent        | text     | text input event data;
+=============================================================================
+SDL_MouseMotionEvent      | motion   | mouse motion event data;
+=============================================================================
+SDL_MouseButtonEvent      | button   | mouse button event data;
+=============================================================================
+SDL_MouseWheelEvent       | wheel    | mouse wheel event data;
+=============================================================================
+SDL_JoyAxisEvent          | jaxis    | joystick axis event data;
+=============================================================================
+SDL_JoyBallEvent          | jball    | joystick ball event data;
+=============================================================================
+SDL_JoyHatEvent           | jhat     | joystick hat event data;
+=============================================================================
+SDL_JoyButtonEvent        | jbutton  | joystick button event data;
+=============================================================================
+SDL_JoyDeviceEvent        | jdevice  | joystick device event data;
+=============================================================================
+SDL_ControllerAxisEvent   | caxis    | game controller axis event data;
+=============================================================================
+SDL_ControllerButtonEvent | cbutton  | game controller button event data;
+=============================================================================
+SDL_ControllerDeviceEvent | cdevice  | game controller device event data;
+=============================================================================
+SDL_AudioDeviceEvent      | adevice  | audio device event data(>= SDL 2.0.4);
+=============================================================================
+SDL_QuitEvent             | quit     | quit request event data;
+=============================================================================
+SDL_UserEvent             | user     | custom event data;
+=============================================================================
+SDL_SysWMEvent            | syswm    | system dependent window event data;
+=============================================================================
+SDL_TouchFingerEvent      | tfinger  | touch finger event data;
+=============================================================================
+SDL_MultiGestureEvent     | mgesture | multi finger gesture data;
+=============================================================================
+SDL_DollarGestureEvent    | dgesture | multi finger gesture data;
+=============================================================================
+SDL_DropEvent             | drop     | drag and drop event data;
+=============================================================================
+
+
+KEYCODE :
+https://wiki.libsdl.org/SDL_Keycode

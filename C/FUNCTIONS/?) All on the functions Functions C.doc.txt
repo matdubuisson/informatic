@@ -1,0 +1,117 @@
+				FUNCTIONS
+
+#1		CREATION OF A FUNCTION
+In the language C, there is two manner to create his own function, only one is there.
+In first time, it needs to respect a certain syntax of function : 5# 
+valueDeclarer functionName(arguments){
+  //coding
+  returning
+}
+ 5#
+So there are :
+5# valueDeclarer 5# => It's the declaration as : 1# int, long int, unsigned char,
+char, float, void... 1#
+5# functionName 5# => It's the name of the function so for activating the function
+it's simply : 2# functionName(arguments) 2# or 2# functionName() 2# if the
+valueDeclarer is #1 void
+5# arguments 5# => This is the group of arguments so look these small examples : 2# 
+(arguments) = (int nbr, char *str) or (unsigned char **arrayOfArray) or (void *structure)
+or ... If there aren't arguments then : (arguments) = (void) 2#
+5# //coding 5# => It's the code
+5# returning 5# => It's a data returned by the function. If the valueDeclarer is 1# 
+void 1# it's just [ return; ] or nothing else it's [ return data; ] where
+data is type of valueDeclarer; For getting the returned data a variable has to
+equal the declaration of the function (it's not an obligation) : 2# var = fct(agrs); 2#
+
+By example : 2// 
+#include <stdio.h>
+
+void welcome(void){
+  printf("Welcome in the program !!\n");
+  //return;
+}
+
+unsigned long int fct(unsigned char smallNumber){
+  return smallNumber * smallNumber * 7777777;
+}
+
+int main(void){
+
+  welcome();
+  unsigned long int var = fct(250);
+  printf("%ld\n", var);
+
+  return 0;
+}
+ 2//
+
+Into the console : 1// 
+racteur@racteurleader:~/Documents/lib_C/thread$ gcc test.c -o prog
+racteur@racteurleader:~/Documents/lib_C/thread$ ./prog 
+Welcome in the program !!
+779758052
+ 1//
+
+#1		FUNCTION IN ARGUMENT
+There is a method to pass a function as argument to an other function.
+The syntax is : 5# 
+int fct(valueDeclarer (*pointerName)(arguments), argumentsOfThisFunction){
+  functionName(argumentsOfThisFunction); // LOOK HERE
+  return 0;
+}
+ 5#
+
+5# argumentsOfThisFunction 5# => In fact, it's exacttly like arguments but
+it's for the function that takes the other in parameter
+
+There best explanation is this example : 2// 
+#include <stdio.h>
+#include <limits.h>
+
+long int fct(int smallNumber){
+  long int nbr = 0;
+  for(int e = 0; e < smallNumber; e++){
+    nbr += INT_MAX / 2;
+  }
+  printf("NBR = %d => %ld\n", smallNumber, nbr);
+  return nbr;
+}
+
+int activationOfFct(long int (*FCT)(int smallNumber), int nbr){
+  long int value = FCT(nbr);
+  if(value > INT_MAX){
+    printf("Sorry but the number cansn't be returned as it's too grand !!\n");
+    return -1;
+  }
+  // Else :
+  return value;
+} 
+
+int main(void){
+  int var = activationOfFct(fct, 1);
+  if(var == -1){
+    printf("Error detected in var during the first attempt...\n");
+  }
+  printf("%d\n", var);
+  var = 0;
+  var = activationOfFct(fct, 4);
+  if(var == -1){
+    printf("Error detected in var during the second attempt...\n");
+  }
+  printf("%d\n", var); 
+  return 0;
+}
+ 2//
+
+Into the console : 1// 
+racteur@racteurleader:~/Documents/lib_C/thread$ gcc test.c -o prog
+racteur@racteurleader:~/Documents/lib_C/thread$ ./prog 
+9223372036854775807
+2147483647
+NBR = 1 => 1073741823
+1073741823
+NBR = 3 => 3221225469
+Sorry but the number cansn't be returned as it's too grand !!
+Error detected in var during the second attempt...
+-1
+ 1//

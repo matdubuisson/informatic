@@ -1,0 +1,121 @@
+				CONDITIONS
+
+#1		CHECKING IF IT'S DEFINED
+
+Key words :
+5# #ifdef <macro_name> 5# => Check if the macro exist;
+5# #ifndef <macro_name> 5# => Check if the macro doesn't exist;
+5# #else and #endif 5# => Necessary to create a condition;
+
+Syntax : 5// 
+#ifdef macro
+    //code
+#else
+    //code2
+#endif
+
+#ifdef macro2
+    //code3
+#endif
+ 5//
+
+PI.h : 1// 
+#define PI 3.14
+ 1//
+
+conditions.c : 2// 
+#include <stdio.h>
+//#include "PI.h"
+
+unsigned char main(void){
+
+    #ifdef __FILE__
+        printf("The macro __FILE__ is defined !!\n");
+    #else
+        printf("The macro __FILE__ isn't defined !!\n");
+    #endif
+
+    #ifndef J_EXISTE_PO
+        printf("The macro J_EXISTE_PO isn't defined !!\n");
+    #endif
+
+    #ifndef PI
+        #define PI 2.27
+    #else
+        printf("The macro PI is already defined !!\n");
+    #endif
+
+    printf("PI = %f\n", PI);
+
+    return 0;
+}
+ 2//
+
+In the console (include PI.h commented) : 2// 
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ gcc conditions.c -o prog
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ ./prog 
+The macro __FILE__ is defined !!
+The macro J_EXISTE_PO isn't defined !!
+PI = 2.270000
+ 2//
+
+In the console (include PI.h UNcommented) : 2// 
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ gcc conditions.c -o prog && ./prog 
+The macro __FILE__ is defined !!
+The macro J_EXISTE_PO isn't defined !!
+The macro PI is already defined !!
+PI = 3.140000
+ 2//
+
+#1		CHECKING OTHER THINGS
+
+In fact, with the preprocessor we can create condition as normal C conditions (read by the
+compilator) but these conditions can only work on macro value or real datas (as 1, 4, 'a')
+and not C variable values (preprocessor work before compilator).
+
+Additionnal key words :
+5# #if condition 5# => For all informations about conditions seeing the condition chapter;
+5# #if defined(<macro_name>) 5# => Permit to include an equivalent of #ifdef in a developped
+condition. Ex : 2# #if define(VALUE) || VALUE >= 4 && VALUE != 7 2#
+
+The syntax is the same because #if has always need of #endif and can work by pair with #else.
+
+PI.h : 1// 
+#define PI 3.14
+ 1//
+
+conditions2.c : 2// 
+#include <stdio.h>
+#include "PI.h"
+
+//#define VALUE 14
+#define VALUE 16
+
+unsigned char main(void){
+
+    #if VALUE == 14 || defined(PI)
+        printf("Condition 0 !!\n");
+    #else
+        printf("VALUE != 14 and PI isn't defined. Change VALUE or include PI.h !!\n");
+    #endif
+
+    #if VALUE == 16
+        printf("Condition 1 !!\n");
+    #endif
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ gcc conditions2.c -o prog && ./prog # Not include PI.h and VALUE = 14
+Condition 0 !!
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ gcc conditions2.c -o prog && ./prog # Not include PI.h and VALUE = 16
+VALUE != 14 and PI isn't defined. Change VALUE or include PI.h !!
+Condition 1 !!
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ gcc conditions2.c -o prog && ./prog # Include PI.h and VALUE = 14
+Condition 0 !!
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ gcc conditions2.c -o prog && ./prog # Include PI.h and VALUE = 16
+Condition 0 !!
+Condition 1 !!
+ 2//

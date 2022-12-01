@@ -1,0 +1,28 @@
+Script 125
+				COLOR
+
+METHOD FOR BASH :
+This method only workes with Bash.
+
+These are the different colors :
+
+#define WHITE    "\033[1;29m"
+#define BLACK    "\033[1;30m"
+#define RED      "\033[1;31m"
+#define GREEN    "\033[1;32m"
+#define YELLOW   "\033[1;33m"
+#define BLUE     "\033[1;34m"
+#define PURPLE   "\033[1;35m"
+#define CYAN     "\033[1;36m"
+#define GREY     "\033[1;37m"
+
+For changing the darkness I can change a special
+number showing by the symbol [ nbr ] :
+
+#define RED "\033[nbr;31m"
+
+For activating a color, I need to make a printf()
+with the color code like by example :
+
+#define RED      "\033[1;31m"
+printf(RED);

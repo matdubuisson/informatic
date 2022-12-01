@@ -1,0 +1,39 @@
+				CHARACTER
+
+#1		CHANGEMENT ON A CHAIN OF CHARACTERS
+
+#3	${}
+This syntax permits to make some changements to a chain.
+At first, this takes a variable and after the type of
+changement and finally the location.
+Syntax :
+${varX[loc]}
+var = variable; X = kind of changement; loc = character(s) to locate
+By examples : 2# 
+racteur@racteurleader:~/Desktop$ cat test.bash 
+#!/bin/bash
+
+cmd='ls -l sdshsijdfj sDjidjJ ddkD zsk'
+
+echo ${cmd^}
+echo ${cmd^^[s]}
+echo ${cmd,[J]} # This should have two virgule [ ,, ] as the
+# changement has been useless.
+echo ${cmd,,[D, J]}
+
+racteur@racteurleader:~/Desktop$ bash test.bash 
+Ls -l sdshsijdfj sDjidjJ ddkD zsk
+lS -l SdShSijdfj SDjidjJ ddkD zSk
+ls -l sdshsijdfj sDjidjJ ddkD zsk
+ls -l sdshsijdfj sdjidjj ddkd zsk
+ 2#
+
+#5	The kinds of changement
+[ , ] => First character of the chain in minuscule
+[ ,, ] => All the characters after activation
+in minuscule
+[ ^ ] => First character of te chain in majuscule
+[ ^^ ] => All the characters after activation
+in majuscule
+
+#4 IT IS NOT FINISHED LOOK THE END OF THE VIDEO PLEASE !!

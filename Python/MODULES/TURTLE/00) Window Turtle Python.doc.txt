@@ -1,0 +1,10 @@
+				WINDOW
+
+#4	wn = Screen()
+This function returns the configuration of the window into a variable.
+
+#4	wn.bgcolor()
+This function gives a coloe to the background of the window.
+
+#4	wn.mainloop()
+This function has no arguments and keeps the window opened.

@@ -1,0 +1,18 @@
+				DATAS MANAGING WITH OS.PATH
+
+#1		FILES AND DIRECTORIES
+
+#5	CONDITIONS
+
+#4	os.path.exists()
+It takes an address in parameter and it returns true if the specified
+file or directory exists else it returns false.
+
+#4	os.path.isfile()
+It returns a boolean to tell if a data is a file.
+
+#4      os.path.isdir()
+It returns a boolean to tell if a data is a directory.
+
+#4      os.path.islink()
+It returns a boolean to tell if a data is a link.

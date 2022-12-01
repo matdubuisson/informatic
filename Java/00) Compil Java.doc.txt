@@ -1,0 +1,39 @@
+				COMPIL
+
+#3	javac
+This command permits to compil a File.java and converts it in byte code.
+It creates a File.class.
+
+#3	java
+This command permits to execute a File.class.
+
+#0 Convention :
+All methods and variables names start with a lower character.
+All class and file names start with a upper character.
+When a name contains several words, each word are separated with
+upper case as : 5# 
+varName
+superMethodName
+ClassName
+FileNameCool
+ 5#
+
+#0 WARNING : It's always one class by file and each class has the name of its
+#0 file without the extension !!
+Main.java : 2// 
+public class Main{
+    public static void main(String[] args){
+        System.out.println("Yolo !!");
+    }
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Java/0_COMPILATION/EXAMPLE$ ls
+Main.java
+racteur@rogy:~/Documents/informatic/Java/0_COMPILATION/EXAMPLE$ javac Main.java 
+racteur@rogy:~/Documents/informatic/Java/0_COMPILATION/EXAMPLE$ ls
+Main.class  Main.java
+racteur@rogy:~/Documents/informatic/Java/0_COMPILATION/EXAMPLE$ java Main 
+Yolo !!
+ 2#

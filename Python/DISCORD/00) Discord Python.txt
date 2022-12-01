@@ -1,0 +1,55 @@
+Script 104
+				DISCORD
+
+For DONTEV :
+#1 sudo apt-get install python3-dotenv
+
+Default Coding :
+# bot.py
+import os
+
+import discord
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
+
+client = discord.Client()
+
+@client.event
+async def on_ready():
+    print(f'{client.user} has connected to Discord!')
+
+client.run(TOKEN)
+
+===========================================
+
+@client.event ===> For adding a new type of event !!
+
+async def newEvent(parameter):
+NEWEVENT :
+on_ready
+
+on_member_join ===> Parameter : member;
+await member.create_dm()
+await member.dm_channel.send("strSentToNewMember")
+
+on_message ===> Parameter : msg ==> ("str" = msg.content);
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    brooklyn_99_quotes = [
+        'I\'m the human form of the 💯 emoji.',
+        'Bingpot!',
+        (
+            'Cool. Cool cool cool cool cool cool cool, '
+            'no doubt no doubt no doubt no doubt.'
+        ),
+    ]
+
+    if message.content == '99!':
+        response = random.choice(brooklyn_99_quotes)
+        await message.channel.send(response)

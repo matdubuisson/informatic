@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Racteur">
+</head>
+<body>
+    <form method="post">
+        <label name="username">What is your name ?</label><br>
+        <input name="username" type="text"><br><br>
+
+        <label name="usercode">What is your code ?</label><br>
+        <input name="usercode" type="number" min=0 max=6><br><br>
+
+        <label name="cars">What is your favorite car ?</label><br>
+        <select name="cars">
+            <option value="volvo">Volvo</option>
+            <option value="bmw">BMW</option>
+        </select><br><br>
+
+        <label name="sexe">What is your sexe ?</label><br>
+        <label name="sexe">M : </label>
+        <input name="sexe" type="radio" value="M"><br>
+        <label name="sexe">F : </label>
+        <input name="sexe" type="radio" value="F"><br><br>
+
+        <label name="comment">A comment ?</label><br>
+        <textarea name="comment">Wrire your comment here !!</textarea><br><br>
+
+        <input type="submit" value="Submit my datas !!">
+    </form>
+
+    <form>
+        <input type="text" maxlength=5><br>
+        <input type="text" placeholder="TEST TEST"><br>
+        <input type="text" disabled><br>
+        <input type="text" value="default text" readonly><br>
+    </form>
+</body>
+</html>

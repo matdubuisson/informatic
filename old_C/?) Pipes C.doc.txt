@@ -1,0 +1,48 @@
+				PIPES
+
+PIPE = TUYAU
+
+This script explains the communication between several processus.
+The value of a pipe is 4096 so PIPE_BUF in <limits.h>.
+
+#1	COMPILATION
+Syntax :
+gcc pipe.c -o prog -pipe
+
+#4	fork()
+This function permits to divide a process in two process so
+child-process and main process. The function returns an id
+and if(id == 0) it's the child and if(id != 0) it's main.
+Syntax :
+int id = fork();
+if(id == 0)
+  printf("It's the child !!\n");
+if(id != 0)
+  printf("It's the main !!\n");
+
+#4	pipe()
+This function creates a tub that permits the communication between
+two processus. The pipe needs to be created before launching the
+two processusses.
+Parameters :
+par0 => An array as [ int p[2] ]. After it uses p[0] to manage the tub;
+
+#4	read()
+This function permits to be the reader of a pipe.
+Parameters :
+par0 => 0# p[0] 0# so variable of the pipe;
+par1 => The chain of character that receives the data;
+par2 => The number of character that is asked to read
+into the pipe;
+
+#4	write()
+This function permits to be the writer of a pipe.
+Parameters :
+par0 => 0# p[1] 0# so variable of the pipe;
+par1 => The chain of character that receives the data;
+par2 => The number of character that is asked to write
+into the pipe;
+
+#4	close()
+close(p[0]) => Closing of the reader;
+close(p[1]) => Closing of the writer;

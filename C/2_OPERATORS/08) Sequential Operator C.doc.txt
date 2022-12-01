@@ -1,0 +1,57 @@
+				SEQUENTIAL
+
+#1              SEQUENTIAL OPERATORS
+#2      Operators
+There are two operators :
+3# , 3# => This permits to define an other thing on a same following;
+3# ; 3# => This permits to pass to an other instruction;
+
+By example :
+sequentialOperator.c : 2// 
+#include <stdio.h>
+
+int main(void){
+
+  unsigned char a = 9, b = 5, c = 7; // OR : int a = 9; int b = 5; int c = 7;
+  a = 19, b = 15, c = 17; // a = 19; b = 15; c = 17;
+
+  for(int e = 0; e < 5; e++){
+    printf("E = %d\n", e);
+  }
+  // Same than :
+  for(int e = 0; e < 5; e++){
+    printf("E = %d\n", e);
+  }
+
+  b++, c -= 3;
+  a = 0;
+  unsigned char working = 1;
+  while((a < 9 ? a += 2 : working--) && (working ? 1 : 0)){
+    printf("A = %d\n", a);
+  }
+
+  printf("End of the program ...\n");
+
+  return 0;
+}
+ 2//
+
+Into the console : 2# 
+racteur@racteurleader:~/Documents/informatic/C/OPERATOR/EXAMPLE$ gcc sequentialOperator.c -o prog && ./prog 
+E = 0
+E = 1
+E = 2
+E = 3
+E = 4
+E = 0
+E = 1
+E = 2
+E = 3
+E = 4
+A = 2
+A = 4
+A = 6
+A = 8
+A = 10
+End of the program ...
+ 2#

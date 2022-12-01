@@ -1,0 +1,94 @@
+Script 34
+
+				MODULAR PROGRAMATION
+
+		EXTERN
+This word permits to take during the compilation a function
+into an other file :
+file0.c :
+extern void test(void);
+void main(void){
+  test();
+}
+
+file1.c :
+#include <stdio.h>
+void test(void){
+  printf("TEST\n");
+}
+
+Into the console :
+racteurleader@racteurleader:~/Desktop/testC$ gcc *.c -o test
+racteurleader@racteurleader:~/Desktop/testC$ ./test
+TEST
+racteurleader@racteurleader:~/Desktop/testC$ 
+
+==================================================================
+
+		DOCUMENT.H
+
+This type file is used in C, C++ and Java. This file takes the prototype
+of C functions or Java by example. The function is defined in an other file
+but the doc.h permits to link two file C or Java. In brief this takes the
+prototype.
+
+For example :
+
+Doc0.c :
+#include <stdio.h>
+#include "Doc.h";
+/*I need to use the "" for my propre file and not <> !!*/
+int main(void){
+salut();
+return 0;
+}
+
+Doc1.c :
+#include <stdio.h>
+
+int salut(void){
+printf("SALUT !!");
+return 1;
+}
+
+Doc.h :
+int salut(void);
+
+In CMD :
+SALUT !!
+
+===========================================================
+
+		A TIP
+
+For eviting that a document doesn't stop to search a other
+file by an #INCLUDE there is a method for saying at the
+document searchs just a time the document and after that
+executes when even the document.
+
+For example :
+Doc.h :
+#ifndef NAMEINGRANDCHARACTE_TEST
+#define YOLO_H
+
+#endif
+
+===========================================================
+
+		STATIC
+
+This syntax permits to define a global variable by static for
+saying that the variable has to be used in each files !!
+
+Doc.c :
+
+static int test_yolo = 0;
+
+newDoc.c :
+
+#include "Doc.c"
+
+int main(void){
+printf("%d", test_yolo);
+return 0;
+}

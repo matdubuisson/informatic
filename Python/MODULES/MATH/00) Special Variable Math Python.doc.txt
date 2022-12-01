@@ -1,0 +1,10 @@
+				SPECIAL VARIABLE
+
+#1	IMPORTATION
+#0	import math
+This is a module that contains a grand number of attributes (variables
+and functions) about mathematical problem.
+
+The variables :
+3# pi 3# => This is pi;
+3# e  3# => This is e;

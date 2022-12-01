@@ -1,0 +1,120 @@
+				BUILT-IN SCOPE
+
+#1		BUILT-IN SCOPE
+
+This special scope has different functions as print() and input().
+This is the module that hasn't to be imported by the developper.
+
+#1		INPUT AND OUTPUT
+
+#4	print()
+This function is the output to print datas on the display.
+Parameters :
+parx => Several datas or strings seperated by virgules;
+end => This parameter contains the last printed string;
+sep => This parameter contains the string to seperate;
+flush => It it's True, the affiching is done for each character
+and doesn't wait the end or a "\n" to affich;
+the different data to print seperated by virgules;
+Ex : 2# 
+>>> print("Salut", 14, "Racteur", [14, 16], sep="_", end="\n============\n")
+Salut_14_Racteur_[14, 16]
+============
+ 2#
+
+#4	input()
+This function is the input to get a data by the keyboard.
+Parameters :
+par0 => A string that is a text message printed before to
+ask the data;
+#0 By default the function returns a string !!
+Ex : 2# 
+>>> type(input("Test : "))
+Test : Yolo !!
+<class 'str'>
+>>> print(int(input("Square of : ")) ** 2)
+Square of : 4
+16
+ 2#
+
+#1		WORKING WITH LIST
+
+#4	range()
+This function permits to generate some list. It's very helpful
+for the "for" loop.
+Parameters :
+optional par0 => It depends on the case, if there is only one parameter
+so par0 is par1 else it's the first integer of the list;
+required par1 => It's the last integer of the list until the function
+goes;
+optional par2 => This parameter changes the incrementation, by default
+it's one;
+Ex : 2# 
+>>> print(list(range(4, 16, 2)))
+[4, 6, 8, 10, 12, 14]
+ 2#
+#0 This function is a promise because it works only when the job
+#0 is needed.
+#1 By example : 1// 
+>>> r = range(10)
+>>> r
+range(0, 10)
+>>> list(r)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> for each in r:
+...   print(each)
+... 
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+ 1//
+
+#4	list()
+Converts a result (of range() by example) in list.
+Ex : 2# 
+>>> var = range(5)
+>>> print(var)
+range(0, 5)
+>>> var = list(var)
+>>> print(var)
+[0, 1, 2, 3, 4]
+ 2#
+
+#4	tuple()
+Same story than list() but it returns a tuple.
+
+#4	len()
+This function is very important in Python as it permits to get the
+length of a list or a string (in fact a string is a list).
+Ex : 2# 
+>>> len("Salut !!")
+8
+>>> len([0, 1, 2, 3, 4, 5, 6, 7, "Yolo !!"])
+9
+ 2#
+
+#1		CASTING OF DATAS
+
+#4      int()
+This function takes in parameters a data and returns
+the same data in the integer type.
+
+#4      float()
+This function takes in parameters a data and returns
+the same data in the floating type.
+
+#4      bool()
+This function takes in parameters a data and returns
+the same data in the boolean type.
+
+#4      str()
+This function takes in parameters a data and returns
+the same data in the string type.
+

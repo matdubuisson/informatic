@@ -1,0 +1,112 @@
+				SCAN INSIDE
+
+#4	fscanf()
+This function scans a line delimited with '\n' in a file.
+Parameters :
+par0 => File stream (FILE *);
+par1 => Format (char *);
+par* => Usefull parameters for the format;
+
+#4	fgets()
+This function gets a delimited string in the file.
+Parameters :
+par0 => Address of the buffer;
+par1 => Length so the number of characters;
+par2 => File stream (FILE *);
+
+#4	fgetc()
+Gets one character in the file.
+Parameter : File Stream;
+
+fscanf.c : 2// 
+#include <stdio.h>
+ 
+#define size 50
+ 
+unsigned int main(void){
+ 
+    unsigned char line[size];
+    unsigned int i;
+ 
+    puts("======================");
+ 
+    FILE *f = fopen("test_fscanf.txt", "r");
+ 
+    for(i = 0; i < 6; i++){
+        fscanf(f, "%s", line);
+        printf("%s\n", line);
+    }
+ 
+    fclose(f);
+ 
+    puts("======================");
+ 
+    f = fopen("test_fscanf.txt", "r");
+ 
+    printf("fgets() takes the asked size except it reads a '\n'");
+    for(i = 0; i < 14; i++){
+        printf("String with %d characters : ", i);
+        fgets(line, i, f);
+        printf("[%s]\n", line);
+    }
+ 
+    fclose(f);
+ 
+    puts("======================");
+ 
+    f = fopen("test_fscanf.txt", "r");
+ 
+    printf("Print the file :\n");
+    unsigned char chr = 0;
+    goto here;
+    do{
+        printf("%c", chr);
+        here:
+        chr = fgetc(f);
+    }while(!feof(f));
+ 
+    fclose(f);
+ 
+    return 0;
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/C/1.6_FILE/EXAMPLE$ gcc fscanf.c -o prog && ./prog 
+======================
+Salut
+comment
+ca
+va
+?
+Ce
+======================
+fgets() takes the asked size except it reads a '
+'String with 0 characters : [Ce]
+String with 1 characters : []
+String with 2 characters : [S]
+String with 3 characters : [al]
+String with 4 characters : [ut ]
+String with 5 characters : [comm]
+String with 6 characters : [ent c]
+String with 7 characters : [a va ?]
+String with 8 characters : [
+]
+String with 9 characters : [Ce ci es]
+String with 10 characters : [t un test]
+String with 11 characters : [ Yolo !!
+]
+String with 12 characters : [aa
+]
+String with 13 characters : [bb
+]
+======================
+Print the file :
+Salut comment ca va ?
+Ce ci est un test Yolo !!
+aa
+bb
+cc
+dd
+ee
+ 2#

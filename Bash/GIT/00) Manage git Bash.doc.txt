@@ -1,0 +1,243 @@
+				GIT
+
+This logicial permits to create a file manager when a work is done
+in group. The point of this is to help the different developper to
+have a better organization to help the workload.
+
+#1		INSTALLATION
+
+Debian/Ubuntu :
+//2 sudo apt-get install git-all
+
+#1		CREATION OF THE ACCOUNT
+
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+#1		CREATION OF THE GIT
+
+The git is a folder of files that are the project. This git folder
+doesn't contain other folders !!
+
+#3	git init
+This command inits a git inside a directory.
+Ex : 2# 
+racteur@racteurleader:~$ mkdir test_git
+racteur@racteurleader:~$ cd test_git/
+racteur@racteurleader:~/test_git$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/racteur/test_git/.git/
+ 2#
+
+#1		MANAGING OF THE INDEX
+
+#3	git add <file>
+This command permits to add one or several files in the index.
+
+#3	git reset <file>
+This command permits to reset one or several file of the index.
+
+#3	git rm <file>
+This command permits to reset one or several file of the index
+and it removes the files on the computer !!
+1# WARNING : 1# #0 This removes files !!
+
+#3	git status
+This command permits to get the status of the index. All usefull
+informations about the index.
+
+Ex : 2# 
+#1 racteur@racteurleader:~/test_git$ echo "Yolo !!" > f0.txt
+echo "Yolo git init" > f0.txt
+#1 racteur@racteurleader:~/test_git$ echo "Hey !!" > f1.txt
+echo "Hey echo "Yolo git init" > f0.txt" > f1.txt
+#1 racteur@racteurleader:~/test_git$ cat f0.txt 
+Yolo git init
+#1 racteur@racteurleader:~/test_git$ cat f1.txt 
+Hey echo Yolo git init > f0.txt
+#1 racteur@racteurleader:~/test_git$ git add f0.txt f1.txt 
+#1 racteur@racteurleader:~/test_git$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   f0.txt
+	new file:   f1.txt
+
+#1 racteur@racteurleader:~/test_git$ git reset f1.txt
+#1 racteur@racteurleader:~/test_git$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   f0.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	f1.txt
+
+#1 racteur@racteurleader:~/test_git$ echo "TXT" > f2.txt
+#1 racteur@racteurleader:~/test_git$ ls
+f0.txt  f1.txt  f2.txt
+racteur@racteurleader:~/test_git$ git add f2.txt 
+racteur@racteurleader:~/test_git$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   f0.txt
+	new file:   f2.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	f1.txt
+
+#1 racteur@racteurleader:~/test_git$ git rm f2.txt 
+error: the following file has changes staged in the index:
+    f2.txt
+(use --cached to keep the file, or -f to force removal)
+#1 racteur@racteurleader:~/test_git$ ls
+f0.txt  f1.txt  f2.txt
+#1 racteur@racteurleader:~/test_git$ git status
+On branch master
+
+No commi
+
+ts yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   f0.txt
+	new file:   f2.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	f1.txt
+ 2#
+
+#1		CREATION OF THE COMMIT
+
+The commit is the saving of the different files of the git.
+The git cans have several commits and all commits are ranged
+and dated.
+
+#3	git commit -m "Description of the commit"
+THis command permits to create a commit with a description.
+
+#3	git log
+This command gives some informations about the commits.
+
+#3	git diff <commits_id>
+This command tells about the difference between the specified
+commits.
+The parameters <commits_id> : It cans be the whole ids are only
+some bits of the first characters of the ids.
+
+Ex : 2# 
+#1 racteur@racteurleader:~/test_git$ git commit -m "last_saving"
+[master (root-commit) b90dca8] last_saving
+ 2 files changed, 2 insertions(+)
+ create mode 100644 f0.txt
+ create mode 100644 f2.txt
+#1 racteur@racteurleader:~/test_git$ git log
+commit b90dca83a10d14426c1ee8b7121ab1323a7cfb2e (HEAD -> master)
+https://bitbucket.org/account/admin/app-passwordsAuthor: Mattéo Dubuisson <matteo.dubuisson@student.uclouvain.be>
+Date:   Mon Nov 8 12:02:19 2021 +0100
+
+    last_saving
+#1 racteur@racteurleader:~/test_git$ git add f1.txt 
+#1 racteur@racteurleader:~/test_git$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   f1.txt
+
+#1 racteur@racteurleader:~/test_git$ git commit -m "after_last_commit"
+[master 225b8e4] after_last_commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 f1.txt
+#1 racteur@racteurleader:~/test_git$ git log
+commit 225b8e40ab6fe541951b5e8a3ccee8210c4ead18 (HEAD -> master)
+Author: Mattéo Dubuisson <matteo.dubuisson@student.uclouvain.be>
+Date:   Mon Nov 8 12:03:08 2021 +0100
+
+    after_last_commit
+
+commit b90dca83a10d14426c1ee8b7121ab1323a7cfb2e
+Author: Mattéo Dubuisson <matteo.dubuisson@student.uclouvain.be>
+Date:   Mon Nov 8 12:02:19 2021 +0100
+
+    last_saving
+#1 racteur@racteurleader:~/test_git$ git diff 225b b90d
+diff --git a/f1.txt b/f1.txt
+deleted file mode 100644
+index b945cfc..0000000
+--- a/f1.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-Hey echo Yolo git init > f0.txt
+ 2#
+
+#1		MANAGING OF THE SERVER FOR GIT
+
+#3	git clone
+This command permits to download an existing git folder on
+the local computer (not on the server).
+Ex : 2# 
+racteur@racteurleader:~/Documents/unif/LINFO1001/Informatic_project_3/github$ git clone https://github.com/matdubuisson/Projet_informatique_3
+Cloning into 'Projet_informatique_3'...
+Username for 'https://github.com': matdubuisson
+Password for 'https://matdubuisson@github.com': 
+remote: Enumerating objects: 18, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 18 (delta 4), reused 13 (delta 1), pack-reused 0
+Receiving objects: 100% (18/18), done.
+Resolving deltas: 100% (4/4), done.
+ 2#
+
+#3	git push
+#0 Use git clone before
+This permits to export an update on the server.
+Ex : 2# 
+racteur@racteurleader:~/Documents/unif/LINFO1001/Informatic_project_3/github/Projet_informatique_3$ cat ../../token.txt 
+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
+racteur@racteurleader:~/Documents/unif/LINFO1001/Informatic_project_3/github/Projet_informatique_3$ git push
+Username for 'https://github.com': matdubuisson
+Password for 'https://matdubuisson@github.com': 
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 226 bytes | 226.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/matdubuisson/Projet_informatique_3
+   b91b827..7c7571c  main -> main
+ 2#
+
+#3	git pull
+This permits to import the last update from the server.
+Ex : 2# 
+Faire un fichier variables_raspberry.py
+contenant l'ensemble des varaibles
+importantes aux différents fichiers.
+
+Nommage de fichier :
+<name>_raspberry.py
+ 2#

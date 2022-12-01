@@ -1,0 +1,26 @@
+				EXECUTE SQL FILE
+
+#0 import sqlite3 as sq
+
+#5	CONFIGURE A CONNECTION
+
+#4	conn = sq.connect("file.sqlite")
+This function creates a new file.sqlite that is the connection between
+the python program and the sql data base and returns the configuration
+of this connection.
+Parameter :
+par0 => The name of the new sqlite file;
+
+#4	curs = conn.cursor()
+This method permits to generate a cursor to manage the data base.
+
+#4	curs.execute("-- sql code")
+This method of the cursor permits to execute a sql code for the data base.
+Parameter :
+par0 => A string that is the contain of the sql program;
+
+#4	conn.commit()
+At the end, this method permits to execute the encoded actions.
+
+#4	conn.close()
+At the end, after the conn.commit() this line closes the connection.

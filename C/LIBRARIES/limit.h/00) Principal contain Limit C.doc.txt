@@ -1,0 +1,26 @@
+				LIMITS
+
+Library : #0 <limits.h>
+
+This head file contains the different constantes thanks to [ #define ].
+
+#3	CHAR
+1# CHAR_BIT   1# => Bits number for one character
+1# SCHAR_MIN  1# => Smallest value for a 5# signed char 5# number
+1# SCHAR_MAX  1# => Grandest value for a 5# signed char 5# number
+1# UCHAR_MAX  1# => Grandest value for a 5# unsigned char 5# number
+1# CHAR_MIN   1# => Smallest value for a simple 5# char 5# number
+1# CHAR_MAX   1# => Grandest value for a simple 5# char 5# number
+
+1# MB_LEN_MAX 1# => Maximal number of bytes (B) in a multi-bytes character
+
+#3	INT
+1# SHRT_MIN   1# => Smallest value for a 5# short int 5# number
+1# SHRT_MAX   1# => Grandest value for a 5# short int 5# number
+1# USHRT_MAX  1# => Grandest value for a 5# unsigned short int 5# number
+1# INT_MIN    1# => Smallest value for a 5# int 5# number
+1# INT_MAX    1# => Grandest value for a 5# int 5# number
+1# UINT_MAX   1# => Grandest value for a 5# unsigned int 5# number
+1# LONG_MIN   1# => Smallest value for a 5# long int 5# number
+1# LONG_MAX   1# => Grandest value for a 5# long int 5# number
+1# ULONG_MAX  1# => Grandest value for a 5# unsigned long int 5# number

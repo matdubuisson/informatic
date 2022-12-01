@@ -1,0 +1,28 @@
+				FORMATTING
+
+Different text formats :
+0# <strong></strong> 0# => Set the text in bolt;
+0# <em></em> 0# => Set the text in italic;
+0# <mark></mark> 0# => Set a mark (fluo) on the text;
+0# <del></del> 0# => Set a deleting rule on the text;
+0# <sub></sub> 0# => Set the text in sub;
+
+formatting.html : 0# 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Racteur">
+</head>
+<body>
+    <pre>
+        <strong>Strong text !!</strong>
+        <em>Italic text !!</em>
+        <mark>Mark text !!</mark>
+        <del>Del text !!</del>
+        a<sub>Sub Text</sub>a
+        Normal Text !!
+    </pre>
+</body>
+</html>
+ 0#

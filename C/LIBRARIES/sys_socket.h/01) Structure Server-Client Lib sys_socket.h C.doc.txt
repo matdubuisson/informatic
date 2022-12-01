@@ -1,0 +1,81 @@
+				STRUCTURE SERVER-CLIENT
+
+#1		COMMON SIDE
+
+macro.h : 2// 
+#ifndef _MACRO
+#define _MACRO
+
+#define _IP "127.0.0.1"
+#define _PORT 40002
+#define _SIZE 10  
+#define _EMPTY -1
+#define _BUFFER_LENGHT 40
+#define _EXIT_COMMAND "exit"
+#define _FAILURE_LIMIT 5
+#define _FAILURE_U_DELAY 1000000
+#define _END_U_DELAY 3000000
+
+#endif
+ 2//
+
+#1		SERVER SIDE
+
+// GLOBAL VARIABLES
+// fd = File Descriptor
+working => Flag to tell the system that is on or off;
+socket_fd => Contains server socket fd;
+clients_socket_fd[] => Contains all clients sockets_fd;
+
+send_to_all_clients(buffer){
+    This function reads all values of clients_socket_fd[];
+    Sends buffer at clients_socket_fd[i] if isn't _EMPTY;
+}
+
+recver(index){ // Thread
+    This function receives all message from clients_socket_fd[index];
+    Adopts a defensize behaviour in case of connection problems;
+}
+
+accepter(){ // Thread
+    At first and once, this function sets all values of clients_socket_fd[] to _EMPTY;
+    Next, it accepts all new clients if there are still free places in clients_socket_fd[].
+    This new client is inited with recver();
+}
+
+finish_main(){
+    Prints end message at the end of the process;
+}
+
+main(){
+    At first, makes all server configurations and sets the targeted address;
+    Secondly, starts accepter();
+    Endly, starts the admin console of the server. In case of _EXIT_COMMAND it tells all clients
+    about server shutdwon and after shutdowns the server;
+}
+
+#1		CLIENT SIDE
+
+working => Flag to tell the system that is on or off;
+socket_fd => Contains socket fd;
+
+sender(socket_fd){ // Thread
+    This function is a small terminal that permits at the user to write and send message to the server;
+    Adopts a defensize behaviour in case of connection problems;
+    If the _EXIT_COMMAND is entered, it tells the serveur about the exiting and shutdowns this client;
+}
+
+recver(socket_fd){
+    This function receives all message from the server;
+    Adopts a defensize behaviour in case of connection problems;
+}
+
+finish_main(){ 
+    Prints end message at the end of the process;
+}
+
+main(){
+    At first, makes connection configurations and sets the targeted address;
+    Next, starts sender() and recver();
+    While is working doing nothing else shutdowns this client;
+}

@@ -1,0 +1,122 @@
+				OPERATION
+
+#1		ARITHMETIC OPERATORS
+#3	[ a + b ]
+It is used for calculs and addition of string.
+This is an additon of a with b : 2# 
+>>> 4 + 6
+10
+>>> "Salut" + " comment ça va ?"
+'Salut comment ça va ?'
+ 2#
+
+#3	[ a - b ]
+This is a substraction of b in a : 2# 
+>>> 4 - 6
+-2
+ 2#
+
+#3      [ a * b ]
+It is used for calculus and replication of strings.
+This is a multiplication of a with b : 2# 
+>>> 4 * 6
+24
+>>> 4 * "a"
+'aaaa'
+>>> "fun " * 4
+'fun fun fun fun '
+ 2#
+
+#3      [ a / b ]
+This is a division of a on b : 2# 
+>>> 4 / 6
+0.6666666666666666
+>>> 7/9
+0.7777777777777778
+>>> 9/9
+1.0
+ 2#
+
+#3      [ a ** b ]
+This is a exponent b : 2# 
+
+ 2#
+
+#3      [ a // b ]
+This is a division of a by b and returns the smaller integer
+of the response : 2# 
+>>> 4 // 6
+0
+>>> 25 // 6
+4
+>>> 99 // 10
+9
+ 2#
+
+#3      [ a % b ]
+This is a modulo so the rest of the division of a by b : 2# 
+>>> 4 % 5
+4
+>>> 24 % 7
+3
+ 2#
+
+#1		CONDITIONNAL OPERATORS
+
+#3      [ a == b ]
+If a equals b
+
+#3      [ a != b ]
+If a is different than b
+
+#3      [ a > b ]
+If a is grander than b
+
+#3      [ a < b ]
+If a is smaller than b
+
+#3      [ a =< b ]
+If a is smaller than b of equals b
+
+#3      [ a => b ]
+If a is grander than b or equals b
+
+#1		LOGICAL OPERATORS
+
+#3      [ not ]
+True => False
+False => True
+
+#3      [ and ]
+False + False => False
+False + True => False
+True + False => False
+True + True => True
+
+#3      [ or ]
+False + False => False
+False + True => True
+True + False => True
+True + True => True
+
+#1		SEQUENTIAL OPERATORS
+
+#3	[ , ]
+This permits to chain some same instructions or exange some values
+between variables : 2# 
+>>> a = 4
+>>> b = 6
+#0 >>> a,b = b,a
+>>> print(a)
+6
+>>> print(b)
+4
+>>> c = 1
+>>> d = 2
+>>> e = 3
+>>> c,d,e = e,c,d
+>>> print(c, d, e)
+3 1 2
+ 2#
+
+#3	[ ; ]

@@ -1,0 +1,54 @@
+				FORM AND INPUTS
+
+#0	<form method=""></form>
+
+This tag creates an area to exchange informations with the user.
+Parameters :
+5# method 5# : It takes the name of a special method to send datas
+to the server;
+=> 3# post 3# : 
+=> 3# get  3# : 
+
+#0	<label for=""></label>
+
+This widget sets a label to an input.
+Parameter :
+5# for 5# => Takes the id of the input;
+
+#0	<input type="">
+
+This solo tag permits to create an input as an entry or a button.
+Parameters :
+5# type  5# :
+=> 3# text   3# : Define an entry;
+=> 3# submit 3# : Define a button;
+=> 3# data   3# : Define a date entry;
+5# id    5# : (Universal tag.) It gives an id to the widget;
+5# name  5# : It gives a simple name to the tag;
+5# value 5# : Gives a value to the input;
+
+For example : 2# 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf_8">
+    <meta name="author" content="Racteur">
+    <meta name="keywords" content="racteur, drive">
+    <meta name="description" content="Small drive to save my files !!">
+
+    <title>Racteur's drive</title>
+  </head>
+  <body>
+
+    <h1>Test :</h1>
+    <form method="post">
+      <label for="name">Name :</label><br>
+      <input type="text" id="name" name="name"><br>
+      <label for="noma">Noma :</label><br>
+      <input type="text" id="noma" name="noma"><br>
+      <input type="submit" value="Submit now !!"><br>
+    </form>
+
+  </body>
+</html>
+ 2#

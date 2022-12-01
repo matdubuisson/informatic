@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Static files</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  </head>
+  <body>
+
+    <p class="test">Style here !!</p>
+    <form method="post">
+      <label form="btn">Click for testing :</label>
+      <input type="submit" name="btn" value="Do a test !!">
+    </form>
+
+    {% if name_with_jinja %}
+    <p>The name is : {{ name_with_jinja }}</p>
+    {% else %}
+    <p>There isn't name...</p>
+    {% endif %}
+
+    {% if name_with_jinja %}
+    <p>The else isn't important !!</p>
+    {% endif %}
+
+    {% if numbers %}
+    {% for each in numbers %}
+    <p>New tag p has been created with the value : {{ each }} !!</p>
+    {% endfor %}
+    {% endif %}
+
+  </body>
+</html>

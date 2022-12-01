@@ -1,0 +1,173 @@
+Script 48 
+				GRAPH
+
+This the method for creating a graph where each values can be linking at an
+other by a way.
+By example :
+                                  [ 2 ]
+      [ 4 ] ======= [ 6 ]          | |
+       | |
+      [ 5 ] ======= [ 3 ] ======= [ 0 ]
+                                   | |
+                                  [ 1 ]
+
+file0.c :
+#include <stdio.h>
+#include "head.h"
+//gcc *.c -o test
+int main(void){
+    infoGraph graph = createGraph(7, true);
+/*Begins at 0 so 7 elements = 0,1,2,3,4,5,6;*/
+
+    createLink(graph, 0, 1);
+    createLink(graph, 0, 2);
+    createLink(graph, 3, 0);
+    createLink(graph, 3, 5);
+    createLink(graph, 5, 4);
+    createLink(graph, 6, 4);
+
+    showGraph(graph);
+
+    deleteGraph(graph);
+    return 0;
+}
+
+================================================
+
+file1.c :
+#include <stdio.h>
+#include <stdlib.h>
+#include "head.h"
+
+/*
+[ -> ] ==> If I point on an other file.
+[ . ] ==> If I'm in the even file.
+*/
+myBool checkIfEmpty(infoGraph myGraph){
+    if(myGraph == 0){
+        return true;
+    }
+    if(myGraph != 0){
+        return false;
+    }
+}
+infoGraph createGraph(int defineNumberOfBegin, myBool defineOrientaition){
+    infoGraph newGraph;
+    newGraph = malloc(sizeof(infoGraph));
+    if(newGraph == 0){
+        printf("ERROR : Sorry a problem is arrived with the allocation so the graph equals NULL !!\n");
+        return 0;
+    }
+    newGraph->numberOfBegin = defineNumberOfBegin;
+    newGraph->orientation = defineOrientaition;
+    newGraph->arrayOfBegin = malloc(defineNumberOfBegin * sizeof(infoGraph));
+/*    if(newGraph->arrayOfBegin == 0){
+        printf("ERROR : Sorry but there is nothing in the arrayOfBegin so the graph equals NULL !!\n");
+        return 0;
+    }*/
+    for(int a = 0; a < newGraph->numberOfBegin; a++){
+        newGraph->arrayOfBegin[a].beginLine = 0;
+    }
+    return newGraph;
+}
+void deleteGraph(infoGraph myGraph){
+    if(myGraph == 0){
+        printf("ALERT : The graph has already deleted or it has never had a value !!\n");
+        return;
+    }
+    if(myGraph->arrayOfBegin != 0){
+    for(int e = 0; e < myGraph->numberOfBegin; e++){
+        while(myGraph->arrayOfBegin[e].beginLine != 0){
+        nodeList varTime = myGraph->arrayOfBegin[e].beginLine;
+        myGraph->arrayOfBegin[e].beginLine = (myGraph->arrayOfBegin[e].beginLine)->next;
+            free(varTime);
+        }
+    }
+    free(myGraph->arrayOfBegin);
+    }
+        free(myGraph);
+}
+nodeList makeNewElement(int newInt){
+    nodeList NEW;
+    NEW = malloc(sizeof(nodeListNoPointed));
+    NEW->intCase = newInt;
+    NEW->next = 0; /*Provisoire !!*/
+    return NEW;
+}
+void createLink(infoGraph myGraph, int source, int direction){
+    nodeList selectElement = makeNewElement(direction);
+    selectElement->next = myGraph->arrayOfBegin[source].beginLine;
+    myGraph->arrayOfBegin[source].beginLine = selectElement;
+    if(myGraph->orientation == 1){
+    selectElement = makeNewElement(source);
+    selectElement->next = myGraph->arrayOfBegin[direction].beginLine;
+    myGraph->arrayOfBegin[direction].beginLine = selectElement;
+    }
+}
+infoGraph showGraph(infoGraph myGraph){
+    for(int e = 0; e < myGraph->numberOfBegin; e++){
+        nodeList selectElement = myGraph->arrayOfBegin[e].beginLine;
+        printf("[ %d ] : ", e);
+        while(selectElement != 0){
+            printf("(%d), ", selectElement->intCase);
+            selectElement = selectElement->next;
+        }
+        printf("NULL (END)\n");
+    }
+}
+
+================================================
+
+head.h :
+#ifndef HEAD_H
+#define HEAD_H
+
+typedef enum{
+    false,
+    true
+}myBool;
+
+typedef struct nodeList{
+    int intCase;
+    struct nodeList *next;
+}nodeListNoPointed, *nodeList;
+
+typedef struct lineWithItsBegin{
+    struct nodeList *beginLine;
+}lineWithItsBeginNoPointed, *lineWithItsBegin;
+
+typedef struct allBeginAndInfoOnGraph{
+    myBool orientation;
+    int numberOfBegin;
+    lineWithItsBegin arrayOfBegin;
+}allBeginAndInfoOnGraphNoPointed, *infoGraph;
+
+infoGraph createGraph(int defineNumberOfBegin, myBool defineOrientaition);
+void deleteGraph(infoGraph myGraph);
+myBool checkIfEmpty(infoGraph myGraph);
+void createLink(infoGraph myGraph, int source, int direction);
+infoGraph showGraph(infoGraph myGraph);
+
+#endif
+
+================================================
+
+Into CMD :
+C:\Users\ASUS\Desktop\GraphC>gcc *.c -o test
+
+C:\Users\ASUS\Desktop\GraphC>test
+[ 0 ] : (3), (2), (1), NULL (END)
+[ 1 ] : (0), NULL (END)
+[ 2 ] : (0), NULL (END)
+[ 3 ] : (5), (0), NULL (END)
+[ 4 ] : (6), (5), NULL (END)
+[ 5 ] : (4), (3), NULL (END)
+[ 6 ] : (4), NULL (END)
+
+And the example :
+                                  [ 2 ]
+      [ 4 ] ======= [ 6 ]          | |
+       | |
+      [ 5 ] ======= [ 3 ] ======= [ 0 ]
+                                   | |
+                                  [ 1 ]

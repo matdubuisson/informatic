@@ -1,0 +1,389 @@
+				INPUT (STDIN=0)
+
+#1		PRINCIPAL INPUT FUNCTIONS
+
+#4	getchar()
+#0 EOF = -1 (Precision)
+This function reads the buffor to return the next character (no matter what is the character).
+No parameters !!
+
+getchar.c : 1// 
+#include <stdio.h>
+
+#define size 30
+
+unsigned char main(void){
+
+    unsigned char i;
+    unsigned char name[size];
+    for(i = 0; i < size; i++){
+        *(name + i) = 0;
+    }
+    printf("What is your name ? ");
+    unsigned char chr = 0;
+    i = 0;
+    do{
+        chr = getchar();
+        *(name + i) = chr;
+        i++;
+    }while(chr != 10);
+
+    printf("==> %s", name);
+
+    return 0;
+}
+ 1//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/4.0_IO/EXAMPLE$ gcc getchar.c -o prog && ./prog 
+What is your name ? Matteo Dubuisson
+==> Matteo Dubuisson
+ 2//
+
+#4	scanf()
+
+#5 Formats code :
+3# %c 3# => For one single characteur;
+3# %d 3# => For an integer;
+3# %f 3# => For a float;
+3# %s 3# => For a chain of characters;
+0# %[] 0# => Read only characters included in the list;
+0# %n 0# => Return the number of scaned characters;
+0# %*[] 0# => Don't read while you don't see a character not included in the list;
+0# %*[^] 0# => Opposite behavior otherwise of the previous;
+#0 Special formats are on scan2.c and scan3.c !!
+
+scan.c : 2// 
+#include <stdio.h>
+
+unsigned char main(void){
+    
+    unsigned int number_of_variable_assignments;
+    signed int a, b, c;
+    printf("What a ? "); scanf("%d" ,&a);
+    printf("%d\n", a);
+    for(unsigned char i = 0; i < 3; i++){
+        // Multi scan
+        printf("What are a, b and c ? "); scanf("%d %d %d", &a, &b, &c);
+        printf("%d %d %d\n", a, b, c);
+    }
+    
+    unsigned char chr; unsigned int nbr, count;
+    for(unsigned char i = 0; i < 3; i++){
+        // Mix scan with %c%d
+        printf("What are chr and nbr ? "); count = scanf("%c%d", &chr, &nbr);
+        if(count){
+            printf("nbr = %d; chr = [%c]\n", nbr, chr);
+        }
+        else{
+            while(getchar() != 10);
+        }
+    }
+
+
+    for(unsigned char i = 0; i < 3; i++){
+        // Mix scan %d%c
+        printf("What are nbr and chr ? "); count = scanf("%d%c", &nbr, &chr);
+        if(count){
+            printf("nbr = %d; chr = [%c]\n", nbr, chr);
+        }
+        else{
+            while(getchar() != 10);
+            printf("Warning, error : Pay attention with this scan when you enter integer with character. Don't let any spaces between both !!\nSee page 391 of my manual !!\n");
+        }
+    }
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/4.0_IO/EXAMPLE$ gcc scan.c -o prog && ./prog 
+What a ? 14
+14
+What are a, b and c ? 1 2 3
+1 2 3
+What are a, b and c ? 14 16
+15
+14 16 15
+What are a, b and c ? 78
+152
+0
+78 152 0
+What are chr and nbr ? c  14
+nbr = 4096; chr = [
+]
+What are chr and nbr ? nbr = 14; chr = [c]
+What are chr and nbr ? c14
+nbr = 14; chr = [
+]
+What are nbr and chr ? Warning, error : Pay attention with this scan when you enter integer with character. Don't let any spaces between both !!
+See page 391 of my manual !!
+What are nbr and chr ? 16f
+nbr = 16; chr = [f]
+What are nbr and chr ? 17 j
+nbr = 17; chr = [ ]
+ 2//
+
+#3 ###########################
+
+scan2.c : 2// 
+#include <stdio.h>
+
+void clean_buffer(void){
+    // When it limits scans, it's cool to clean sometimes the buffer !!
+    while(getchar() != 10);
+}
+
+unsigned char main(void){
+
+    // Limit scan
+    unsigned int nbr;
+    scanf("%4d", &nbr); printf("==> %d\n", nbr);
+    clean_buffer();
+    // Not allowed :
+    //scanf("%*d", 4, &nbr); printf("==> %d\n", nbr);
+
+    unsigned char name[15];
+    scanf("%14s", name); printf("%s\n", name);
+    clean_buffer();
+    for(unsigned int i = 0; i < 15; i++){
+        *(name + i) = 0; // name[i] = 0;
+    }
+    scanf("%4s", name); printf("%s\n", name);
+    clean_buffer();
+
+    // Make separator for scan
+    unsigned char chr; unsigned char str[20]; unsigned int intn;
+    scanf("%c|%s %d", &chr, str, &intn);
+    printf("=> %c\n==> %s\n===> %d\n", chr, str, intn);
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/4.0_IO/EXAMPLE$ gcc scan2.c -o prog && ./prog 
+1234567890
+==> 1234
+Victor-Emmanuel
+Victor-Emmanue
+Victor-Emmanuel
+Vict
+h|racteur 14
+=> h
+==> racteur
+===> 14
+ 2//
+
+#3 ###########################
+
+scan3.c : 2// 
+#include <stdio.h>
+
+#define size 30
+
+void clear_buffer(void){
+    while(getchar() != 10);
+    return;
+}
+
+void clear_string(unsigned char *string){
+    for(unsigned char i = 0; i < size; i++){
+        *(string + i) = 0;
+    }
+    return;
+}
+
+unsigned char main(void){
+
+    unsigned char i;
+    unsigned char phone_number[size];
+
+    // Force to include only some characters
+    printf("Write your phonenumber : ");
+    for(i = 0; i < 2; i++){
+        scanf("%[0123456789]", phone_number);
+        printf("==> %s\n", phone_number);
+        // clear_buffer() avoids problem
+        // clear_string() avoids perpetual auto scanf. Try to uncomment it
+        clear_buffer(); clear_string(phone_number);
+    }
+
+
+    // Don't scan while you don't see a character NOT IN the list
+    printf("Write your phonenumber (part2) : ");
+    for(i = 0; i < 2; i++){
+        scanf("%*[0123456789]%s", phone_number);
+        printf("==> %s\n", phone_number);
+        // clear_buffer() avoids problem
+        // clear_string() avoids perpetual auto scanf. Try to uncomment it
+        clear_buffer(); clear_string(phone_number);
+    }
+
+    // Don't scan while you don't see a character IN the list
+    printf("Write your phonenumber (part3) : ");
+    for(i = 0; i < 2; i++){
+        scanf("%*[^0123456789]%s", phone_number);
+        printf("==> %s\n", phone_number);
+        // clear_buffer() avoids problem
+        // clear_string() avoids perpetual auto scanf. Try to uncomment it
+        clear_buffer(); clear_string(phone_number);
+    }
+
+    // Get the number of scaned characters
+    unsigned number_of_scaned_characters = 0;
+    printf("======================\n");
+    for(i = 0; i < 2; i++){
+        scanf("%[0123456789]%n", phone_number, &number_of_scaned_characters);
+        printf("%d scaned characters ==> %s\n", number_of_scaned_characters, phone_number);
+        clear_buffer(); clear_string(phone_number);
+    }
+
+    // Limit the scan
+    printf("======================\n");
+    for(i = 0; i < 2; i++){
+        scanf("%4[0123456789]%n", phone_number, &number_of_scaned_characters);
+        printf("%d scaned characters ==> %s\n", number_of_scaned_characters, phone_number);
+        clear_buffer(); clear_string(phone_number);
+    }
+
+    // Limit the scan
+    unsigned char first_character;
+    printf("======================\n");
+    for(i = 0; i < 2; i++){
+        scanf("%*[0123456789]%c", &first_character);
+        printf("==> %c\n", first_character);
+        clear_buffer(); clear_string(phone_number);
+    }
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/4.0_IO/EXAMPLE$ gcc scan3.c -o prog && ./prog 
+Write your phonenumber : 0468382912
+==> 0468382912
+ahzduh17dkd
+==> 
+Write your phonenumber (part2) : aa234
+==> 
+32728zeddqdq
+==> zeddqdq
+Write your phonenumber (part3) : zuzueuz2323
+==> 2323
+2332zsdsd
+==> 
+======================
+012345678
+9 scaned characters ==> 012345678
+232388923293893230210180
+24 scaned characters ==> 232388923293893230210180
+======================
+092302308082808abcdef
+4 scaned characters ==> 0923
+0103101031
+4 scaned characters ==> 0103
+======================
+0109112931abcde4384
+==> a
+z3f6
+==> a
+ 2//
+
+#0 ==============================================================================
+
+#1		DEFENSIVE SCAN
+
+#5 With defensive part
+
+defensive_scan.c : 2// 
+#include <stdio.h>
+
+unsigned char main(void){
+
+    unsigned int number, count;
+    do{
+        printf("Number : ");
+        count = scanf("%d", &number); // int(input())
+        if(count){
+            printf("!Number = %d\n", !number);
+            printf("Number**2 = %d\n", number * number);
+        }
+        else{
+            // Defensive part
+            while(getchar() != 10); // while getchar() != '\n'
+        }
+        printf("Count = %d\n", count);
+    }while(number); // while number != 0
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/4.0_IO/EXAMPLE$ gcc defensive_scan.c -o prog && ./prog 
+Number : 14
+!Number = 0
+Number**2 = 196
+Count = 1
+Number : 1
+!Number = 0
+Number**2 = 1
+Count = 1
+Number : a
+Count = 0
+Number : b
+Count = 0
+Number : c
+Count = 0
+Number : 0
+!Number = 1
+Number**2 = 0
+Count = 1
+ 2//
+
+#5 Without the defensive part
+
+#0 Create a perpetual bad scanf() and create infinite loop !!
+
+Take the code of defensive_scan.c and comment the line of the defensive part
+
+As result, in the console when it tries to put char : 2// 
+racteur@rogy:~/Documents/informatic/C/4.0_IO/EXAMPLE$ gcc defensive_scan.c -o prog && ./prog 
+Number : 14
+!Number = 0
+Number**2 = 196
+Count = 1
+Number : 1
+!Number = 0
+Number**2 = 1
+Count = 1
+Number : 0
+!Number = 1
+Number**2 = 0
+Count = 1
+racteur@rogy:~/Documents/informatic/C/4.0_IO/EXAMPLE$ gcc defensive_scan.c -o prog && ./prog 
+Number : 4
+!Number = 0
+Number**2 = 16
+Count = 1
+Number : a
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+Number : Count = 0
+^C
+ 2//

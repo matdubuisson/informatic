@@ -1,0 +1,71 @@
+				TESTING
+
+#1		RAISING OF ERRORS
+
+#3	assert
+This key word permits to write some test.
+Syntax : 5# 
+assert waited_boolean, "Raised error !!"
+ 5#
+In fact, we can write a condition that we think to get
+if the test is success else the program'll be interupted
+by a raised error of this assert. So assert raises an error
+when the result is False else it hasn't effects.
+
+#3	raise
+This keyword of Python permits to raise a personalised error.
+There is one function for each types of error as NameError(),
+ZeroDivisionError(), IndexError()... And these function take
+a parameter that is a text message to print on the screen when
+the error occurs. By example : 2# 
+raise ZeroDivisionZero("!! Tu peux pas diviser par zero !!")
+ 2#
+
+#1		TESTING
+
+#3	try
+This prefix permits to try a bit of code. If an error occurs
+during the process, the program'll stop only the block of
+the [ try ].
+
+#3	except , except errorName
+This prefix permits to execute a block of code only if the
+previous [ try ] has had an occured error.
+An [ except ] needs to have a [ try ] but a
+[ try ] cans have several [ except ].
+
+#3	finally
+This prefix permits to execute a code after [ try ] and
+[ except ] no matter what if the [ try ] had an occured error
+or not.
+
+For example : 2# 
+fileName = input("What is the file to read ? ")
+try:
+  if fileName == "testing.py":
+    raise NameError("This name is reserved to the program !!")
+  with open(fileName, "r") as f:
+    print(f.read())
+except FileNotFoundError:
+  print("The file doesn't exist or it is in an other directory !!")
+except:
+  print("This except is activated because you have input testing.py !!")
+finally:
+  print("Finally I'm always executed !!")
+ 2#
+
+Into the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE/testing$ py testing.py 
+What is the file to read ? errors.py
+raise ZeroDivisionError("Test !!")
+
+Finally I'm always executed !!
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE/testing$ py testing.py 
+What is the file to read ? zat'g
+The file doesn't exist or it is in an other directory !!
+Finally I'm always executed !!
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE/testing$ py testing.py 
+What is the file to read ? testing.py
+This except is activated because you have input testing.py !!
+Finally I'm always executed !!
+ 2//

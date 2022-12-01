@@ -1,0 +1,70 @@
+Script 109
+				PYGAME4 EVENT
+
+		GETTING THE EVENTES
+
+	TYPE
+This is the key for having the type of the event.
+
+Method :
+for oneEvent in pygame.event.get():
+  if oneEvent.type == GOODEVENT:
+    print(oneEvent)
+
+		LIST OF EVENT
+
+QUIT ===> When the program is quitted.
+ACTIVEEVENT
+
+KEYDOWN ===> If the touch of the keyboard is pressed.
+KEYUP ===> If the touch of the keyboard is NOT pressed.
+Syntax :
+if oneEvent.type == KEYUP:
+  if oneEvent.key == k_UP:
+    pass
+  if oneEvent.key == K_DOWN:
+    pass
+if oneEvent.type == KEYDOWN:
+  if oneEvent.key == k_UP:
+    pass
+  if oneEvent.key == K_DOWN:
+    pass
+#2 Seeing the list !!
+
+MOUSEMOTION ===> For the position of the cursor.
+Syntax :
+if oneEvent.type == MOUSEMOTION:
+  print("Possition of cursor = " + str(oneEvent.pos) + ";")
+
+MOUSEBUTTONUP
+MOUSEBUTTONDOWN
+JOYAXISMOTION
+JOYBALLMOTION
+JOYHATMOTION
+JOYBUTTONUP
+JOYBUTTONDOWN
+
+VIDEORESIZE ===> About the sizes of the window.
+The [ oneEvent ] has two option :
+oneEvent.h ===> For the height.
+oneEvent.w ===> For the width.
+
+VIDEOEXPOSE
+
+USEREVENT ===> EVENT INTO THE CONDING FOR THE JUST CHRONOS.
+                SET_TIMER()
+Workes with the key TIME. This function makes an
+USEREVENT with a time.
+Parameter :
+par0 ===> USEREVENT
+par1 ===> µ in milliSecondes.
+Syntax :
+import pygame
+pygame.time.set_timer(pygame.USEREVENT, 1000)
+work = 1
+while work:
+  for oneEvent in event.get():
+    if oneEvent.type == QUIT:
+      work = 0
+    if oneEvent.type == USEREVENT:
+      print("Yolo");

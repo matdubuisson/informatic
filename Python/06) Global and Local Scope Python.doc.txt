@@ -1,0 +1,62 @@
+				GLOBAL AND LOCAL SCOPE
+
+#1		GLOBAL SCOPE
+
+There are different global. It cans be the global of the main file
+or an other module. All the elements of the global cans have access
+to the different attributes (variables or functions) of this global
+scope.
+
+#3	global
+This prefix permits to write a global variable inside a function.
+
+By example : 2# 
+Global_var = 14
+
+def get_Global_var():
+  return Global_var
+
+def set_Global_var(n):
+  global Global_var
+  Global_var = n
+
+print(Global_var)
+print(get_Global_var())
+set_Global_var(16)
+print(Global_var)
+ 2#
+
+Into the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE$ py global_scope.py 
+14
+14
+16
+ 2//
+
+#1		LOCAL SCOPE
+
+A local variable of a module or a function is only usable for
+the local environment. A variable declared inside a function
+can be used only inside this function. Warningthat a local
+variable cans take the same name than a global variable then 
+the function cansn't read still the global variable but it uses
+a local variable with the same name than a global variable.
+
+By example : 2# 
+var = 14
+
+def get_value():
+  var = 16 
+  return var
+
+print(var)
+print(get_value())
+print(var)
+ 2#
+
+Into the console : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/EXAMPLE$ py local_scope.py 
+14
+16
+14
+ 2//

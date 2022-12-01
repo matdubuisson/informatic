@@ -1,0 +1,13 @@
+Script 117
+				INSTALLATION
+
+Simply because I'm on Bash !!
+#1 sudo apt-get install arduino
+
+				COMPILATION
+
+I have to install a command with :
+#1 sudo apt-get install avrdude
+
+Command :
+avr-gcc -c -g -Os -w -fdata-sections -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO=22 -I /home/folder -o wiring.o /home/file.c

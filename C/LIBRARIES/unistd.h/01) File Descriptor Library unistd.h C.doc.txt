@@ -1,0 +1,365 @@
+				FILE DESCRIPTOR
+
+Index :
+#1 read and write
+#1 scan and print
+#1 redirection
+
+#1		READ AND WRITE WITH FILE DESCRIPTOR
+
+#4	open()
+#0 From fcntl.h
+Generate a file descriptor.
+
+Parameters :
+par0 => The name of the file;
+par1 => The flags;
+
+Return : The file descriptor;
+
+#5 Flags :
+3# 
+O_CREAT : Create file;
+O_WRONLY : Write only file;
+O_RDONLY : Read only file;
+O_RDWR : Read and write file;
+O_APPEND : Write to the end of the file;
+0_TRUNC : Empty file before writing;
+ 3#
+
+#4	close()
+Close a file descriptor.
+
+Parameter :
+par0 => The file descriptor;
+
+#4	read()
+Read in a file descriptor.
+
+Parameters :
+par0 => File descriptor;
+par1 => The address of a character (can be a single character or the begin of a string);
+par2 => The number of read characters;
+
+Return : -1 in case of error;
+
+#4      write()
+Write in a file descriptor.
+
+Parameters : 
+par0 => File descriptor;
+par1 => The address of a character (can be a single character or the begin of a string);
+par2 => The number of read characters;
+
+Return : -1 in case of error;
+
+#4      lseek()
+This function permits to deplace the cursor at a specied line.
+
+Parameters :
+par0 => The file descriptor;
+par1 => The index of the character of the line (if it wants to
+go the first character, the second or the last);
+par2 => Key word where to start the moving of par1;
+Keywords :
+5# SEEK_SET 5# => Go to the begin;
+5# SEEK_CUR 5# => Go to the current position;
+5# SEEK_END 5# => Go to the end;
+
+file.c : 2// 
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+/*
+| => Combine action
+O_CREAT : Create file
+O_WRONLY : Write only file
+O_RDONLY : Read only file
+O_RDWR : Read and write file
+*/
+
+#define size 30
+
+unsigned int main(unsigned int argc, unsigned char **argv){
+
+    unsigned int i, fd;
+
+    fd = open("test.txt", O_CREAT | O_WRONLY); // From fcntl.h
+
+    unsigned char name[size];
+    strncpy(name, "This is a smart string !!", size);
+    for(i = 0; i < size; i++){
+        write(fd, (name + i), 1); // Write one character each time in the file
+    }
+
+    close(fd);
+
+    fd = open("test.txt", O_RDONLY);
+
+    unsigned char name2[size];
+    strncpy(name2, "", size);
+    for(i = 0; i < size; i++){
+        read(fd, (name2 + i), 1); // Read one character each time in the file
+    }
+
+    close(fd);
+
+    // strcmp returns 0 when both are equal
+    if(!strncmp(name, name2, size)){
+        printf("The two strings are equal !!\n");
+    }
+    else{
+        printf("The strings are different....\n'%s' != '%s'\n", name, name2);
+    }
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ gcc file.c -o prog
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ ./prog 
+The two strings are equal !!
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ cat test.txt 
+This is a smart string !!racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ 
+ 2//
+
+#1		SCAN AND PRINT WITH FILE DESCRIPTOR
+
+io.c : 2// 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+#ifndef STDIN
+    #define STDIN 0
+#endif
+#ifndef STDOUT
+    #define STDOUT 1
+#endif
+#ifndef STDERR
+    #define STDERR 2
+#endif
+
+#define size 40
+
+void print_word(unsigned char *word){
+    static unsigned int i;
+    for(i = 0; i < size; i++){
+        if(write(STDOUT, (word + i), sizeof(unsigned char)) == -1){
+            printf("ERROR WITH WRITE !!\n");
+        }
+        // Equivalent of :
+        //putchar(*(word + i));
+    }
+    putchar(10);
+    return;
+}
+
+void scan_word(unsigned char *word){
+    static unsigned int i;
+    static unsigned char chr;
+    for(i = 0; i < size; i++){
+        if(read(STDIN, &chr, sizeof(unsigned char)) == -1){
+            printf("ERROR WITH READ !!\n");
+        }
+        // Equivalent of :
+        //chr = getchar();
+        if(chr == 10){
+            break;
+        }
+        else{
+            *(word + i) = chr;
+        }
+    }
+    return;
+}
+
+unsigned int main(void){
+
+    unsigned char word[size];
+    strncpy(word, "", size);
+    printf("Write your word : \n");
+    scan_word(word);
+    printf("Your word : \n");
+    print_word(word);
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ gcc io.c -o prog
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ ./prog 
+Write your word : 
+Ce ci est un test test restest. Yolo !!
+Your word : 
+Ce ci est un test test restest. Yolo !!
+ 2//
+
+#0 =====================================================================================
+
+#1		DUPLICATION AND REDIRECTION OF FILE DESCRIPTOR
+
+#4	dup()
+Duplicates the file descriptor.
+Parameter :
+par0 => Old file descriptor to be duplicated;
+
+Return a clone of the file descriptor.
+#0 It isn't a pointer but it has the same offset.
+
+dup.c : 2// 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+#define STDIN 0
+#define STDOUT 1
+
+#define size 100
+
+signed int write_file(signed int fd, unsigned char *line){
+    static unsigned int i;
+    for(i = 0; i < strnlen(line, size); i++){
+        if(write(fd, (line + i), 1) == -1){
+            printf("Error with writing !!\n");
+            return -1;
+        }
+    }
+    return 0;
+}
+
+signed int read_file(signed int fd, unsigned char *line, unsigned int count){
+    static unsigned int i;
+    static unsigned char chr;
+    i = 0;
+    while(i < count){
+        if(read(fd, &chr, 1) == -1){
+            printf("Error with reading !!\n");
+            return -1;
+        }
+        if(chr <= 0){
+            break;
+        }
+        *(line + i) = chr;
+        i++;
+    }
+    return 0;
+}
+
+unsigned int main(void){
+
+    signed int fd = open("file.txt", O_CREAT | O_RDWR);
+
+    unsigned char *line = malloc(sizeof(unsigned char) * size), *line2 = malloc(sizeof(unsigned char) * size);
+
+    strncpy(line, "This is a context line to test it !!\nDo you copy that ?\n", size);
+    write_file(fd, line);
+
+    close(fd); fd = open("file.txt", O_CREAT | O_RDWR);
+
+    unsigned int length = strnlen(line, size);
+
+    strncpy(line2, "", size);
+    read_file(fd, line2, length);
+    printf("Line2 = %s\n", line2);
+
+    signed int fd2 = dup(fd);
+
+    lseek(fd, 0, SEEK_SET); // Change seek for fd and fd2;
+
+    strncpy(line, "", size);
+    printf("==> [%s]\n", line);
+    read_file(fd2, line, length);
+    printf("==> [%s]\n", line);
+
+    close(fd); // Close fd but fd2 is always opened !!
+
+    lseek(fd2, 0, SEEK_SET);
+
+    strncpy(line, "", size);
+    printf("==> [%s]\n", line);
+    read_file(fd2, line, length);
+    printf("==> [%s]\n", line);
+
+    close(fd2);
+
+    free(line); free(line2);
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ gcc dup.c -o prog && ./prog 
+Line2 = This is a context line to test it !!
+Do you copy that ?
+
+==> []
+==> [This is a context line to test it !!
+Do you copy that ?
+]
+==> []
+==> [This is a context line to test it !!
+Do you copy that ?
+]
+ 2//
+
+#4	dup2()
+Redirectes a file descriptor to an other.
+
+Parameters :
+par0 => The targeted file descriptor;
+par1 => The file descriptor that is redirected on the target;
+
+dup2.c : 2// 
+#include <stdio.h> 
+#include <string.h>
+#include <unistd.h>
+#include <fcntl.h> // For open()                    
+                   
+#define STDIN 0    
+#define STDOUT 1   
+#define STDERR 2   
+                   
+unsigned int main(void){     
+                   
+    // Open a file :    
+    signed int fd = open("test_dup2.txt", O_CREAT | O_RDWR);
+                   
+    printf("This line !!\n");  
+                   
+    if(dup2(fd, STDOUT) == -1){ 
+        printf("Error with the redirection of stdout in test_dup2.txt !!\n");
+        return -1; 
+    }              
+                   
+    unsigned char *name = "Retest with string !!\n";     
+    write(1, name, sizeof(unsigned char) * strlen(name));
+    puts("Test\n");
+    printf("This line !!\n");
+    printf("Yolo !!\n");
+                   
+    close(fd);     
+                   
+    return 0;      
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ gcc dup2.c -o prog
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ ./prog 
+This line !!
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/unistd.h/EXAMPLE$ cat test_dup2.txt 
+Retest with string !!
+Test
+
+This line !!
+Yolo !!
+ 2//

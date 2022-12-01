@@ -1,0 +1,153 @@
+Script 79
+				BUCLE
+
+#1		WHILE LOOP
+
+#3	while
+This word takes a condition and whereas the condition
+satyes good the while re-executes always its conding.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Python/new$ cat test.py 
+#coding:utf-8
+
+nbr = 0
+while nbr < 10:
+  nbr += 1
+  print(nbr)
+
+chain = str("")
+while chain != 'yes':
+  chain = str(input("Am I the best ? "))
+racteur@racteurleader:~/runPC/Codage/Python/new$ python3.8 test.py 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Am I the best ? nen
+Am I the best ? fin
+Am I the best ? chez
+Am I the best ? pas tu penses quoi ?
+Am I the best ? nen 
+Am I the best ? yes
+ 2#
+
+#1		FOR LOOP
+
+#3	for
+The for loop in python is quite enough different from the
+other languages of programation. In fact the syntax and the
+using are different.
+The syntax is : 5# 
+for element in list:
+  instructions and expressions
+ 5#
+This bucle uses two conditionnal operators [ in ] and [ not in ].
+By example : 2# 
+for each in range(10):
+  print(each)
+for char in ["a", "b", "c"]:
+  print(char)
+ 2#
+
+#3	short for
+#0 This part is very important as it's more complex than the
+#0 normal for loop.
+This pattern (manner to code in programmation) permits to write
+a for loop on a single line. This manner to code returns a list
+By example : 2# 
+for each in range(5):
+  print(each)
+
+print("====================")
+
+[ print(each) for each in range(5) ] # Same thing
+
+print("====================")
+
+[ print(each) for each in range(5) if each != 3 ]
+ 2#
+Into the console : 1// 
+0
+1
+2
+3
+4
+====================
+0
+1
+2
+3
+4
+====================
+0
+1
+2
+4
+ 1//
+
+Into the console again : 1// 
+>>> [ print(i) for i in range(10) ]
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+[None, None, None, None, None, None, None, None, None, None]
+>>> [ i for i in range(10) ]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> [ i for i in range(10) if i % 2 == 0 ]
+[0, 2, 4, 6, 8]
+>>> [ i for i in range(10) if i % 2 == 0 and i != 0 ]
+[2, 4, 6, 8]
+ 1//
+
+But the problem is that this form cansn't have plenty of instructions
+so there is a solution with it : 2# 
+def changeValue(Each):
+  Each += 1
+  Each *= 4
+  Each **= 3
+  print(Each)
+  return Each
+
+l = list(range(10))
+[ changeValue(each) for each in l if each != 3 ]
+ 2#
+Into the console : 1// 
+64
+512
+1728
+8000
+13824
+21952
+32768
+46656
+64000
+ 1//
+
+But it cans permit to win place in the program like by example : 2# 
+def double_stuff(l):
+  n_l = []
+  for val in l:
+    element = val * 2
+    n_l.append(element)
+  return n_l
+
+# TO :
+def double_stuff(l):
+  return [ var * 2 for val in l ]
+
+l = [0, 1, 2]
+l2 = double_stuff(l)
+ 2#

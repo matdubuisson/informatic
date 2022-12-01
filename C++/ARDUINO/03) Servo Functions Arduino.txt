@@ -1,0 +1,17 @@
+Script 123
+				SERVO FUNCTIONS
+
+#1		Servo
+This is the struct who contains all the properties.
+The library is included by : #include <Servo.h>
+
+#4		Servo.attach()
+This function permits to attach a pin sensor to this Servo.
+Parameters :
+Par0 ==> The number of the sensor pin;
+
+#4		Servo.write()
+This function permits to configurate the angle of the
+Servo. It cans use the function map.
+Parameters :
+Par0 ==> Angle between 0 and 359;

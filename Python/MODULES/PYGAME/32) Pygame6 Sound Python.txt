@@ -1,0 +1,66 @@
+Script 111
+				PYGAME6 SOUND
+
+
+		MIXER
+This is the key for including the sounds.
+
+		SOUND() AND PLAY()
+The function SOUND() takes the key MIXER, it
+defines a sound into a variable.
+The function PLAY() permits to start the sound.
+Syntax :
+mySound = pygame.mixer.Sound("addressAudio.ext")
+mySound.play(µ, µ, µ)
+FOR PLAY() :
+par0 ===> Number of repeatition.
+par1 ===> Time of persual in the audio.
+par2 ===> Time fo that the sound arrives to 100% of the volume.
+
+		STOP()
+Stoppes the sound.
+Syntax :
+mySound.stop()
+
+		PAUSE() AND UNPAUSE()
+For putting the audio in pause with PAUSE()
+and the revers is UNPAUSE().
+Syntax :
+mySound.pause()
+sleep(2)
+mySound.unpause()
+
+		FADEOUT()
+Stoppes the FADEIN (not a function) after
+the milliSecondes precised.
+
+		SET_VOLUME() AND GET_VOLUME()
+For choosing the volume of the audio.
+For the parameter of type µ :
+0% = 0;
+100% = 1;
+Syntax :
+mySound.set_volume(µ)
+The other function returnes just the value.
+
+		GET_LENGHT()
+Syntax :
+print(mySound.get_length())
+
+		REWIND()
+For going at the begin of the persual.
+Syntax :
+mySound.rewind()
+
+=================================
+
+                LOAD()
+For loading a file. The LOAD erases the last
+LOAD if it existes.
+
+                MUSIC
+This modul permits to charge some different
+sound on :
+pygame.mixer.music.load("addressAudio.ext")
+pygame.mixer.music.play()
+# All audios in music is executed.

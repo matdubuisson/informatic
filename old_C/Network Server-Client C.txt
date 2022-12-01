@@ -1,0 +1,32 @@
+Script 116
+				NETWORK SERVER-CLIENT
+
+#3 ATTENTION :
+0# 
+#1 SOCKSERV :
+int sockServ = socket(....);
+#1 SOCKUSER :
+int sockUser = accept(....);
+ 0#
+
+		SEND()
+This function permits to send a data.
+This takes four parameters :
+par0 ==> Intiger variable who contains the socket;
+#3 (For the client it's sockServ and for the server it's sockUser;)
+par1 ==> Address of the data;
+par2 ==> sizeof(data);
+par3 ==> 0;
+Syntax :
+send(mySock, &data, sizeof(data), 0);
+
+		RECV()
+This function permits to receive a data.
+This takes four parameters :
+par0 ==> Intiger variable who contains the socket;
+#3 (For the client it's sockServ and for the server it's sockUser;)
+par1 ==> Address of the data;
+par2 ==> sizeof(data);
+par3 ==> 0;
+Syntax :
+recv(mySock, &data, sizeof(data), 0);

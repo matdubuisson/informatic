@@ -1,0 +1,15 @@
+				FILE EDITOR
+
+#1		EDITING A FILE
+
+#3	nano
+This is the default editor of GNU in lines of command.
+Option :
+-B => This option permits to do a saving of the file;
+-l => Affiching of the lines;
+-L => This option permits to remove the "\n" in the end;
+-m => For using the cursor;
+-T nbr => This option permits to define the size of the tabulation;
+
+#5	/usr/share/nano
+This folder contains the configurations of nano for the syntax coloration.

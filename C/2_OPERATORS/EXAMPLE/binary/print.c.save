@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+#define OFF 48
+#define ON 49
+
+int exposant(int nbr, int exp)
+
+unsigned char *__printBinaryIntergerNumber(signed int nbr){
+  unsigned char bits[9];
+  
+  int NEGATIVE = 0;
+  if(nbr < 0){
+    nbr *= -1;
+    NEGATIVE = 1;
+  }
+  int cp = nbr, e = 0;
+  while(nbr >= 0){
+    e = 0;
+    do{
+      cp = nbr;
+      cp -= 2E(e);
+      e++;
+    }while(cp >= 0);
+    if(e >= 0){
+      nbr -= 2E(e - 1);
+      bits[e - 1] = ON;
+    }
+  }
+
+  return bits;
+}

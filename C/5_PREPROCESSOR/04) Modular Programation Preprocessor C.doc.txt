@@ -1,0 +1,159 @@
+				MODULA PROGRAMATION
+
+#1		LIBRARY DESCRIPTION
+
+#5	Preprocessor key word
+
+3# #include "file_name" 3# => Include the code of on other C file;
+3# #include <file_name> 3# => For C libraries;
+
+A library is normally built with two files, one header and a C file.
+
+#0 C file
+The C file is just a normal C file but there isn't main function.
+mp_lib.c : 2// 
+#include <stdio.h>
+
+void print_word0(void){
+    printf("Word 0 !!\n");
+    return;
+}
+
+void print_word1(void){
+    printf("Word 1 !!\n");
+    return;
+}
+
+void increment(unsigned int *nbr){
+    *nbr += 1;
+    return;
+}
+ 2//
+
+#0 H file
+The H file is a manual for the compilator. Thanks to this file, the
+compilator can inform details to the user about erros (file location,
+functions arguments, etc) else the compilator will say only there is
+an error. For the grand project it's very important.
+
+The header file has a minimal body consitued of three preprocessor
+commands.
+mp_lib.h : 2// 
+// In the point to avoid that the compilator includes several times (and creates problems)
+// it's usefull these three preprocessor commands
+#ifndef MP_LIB
+#define MP_LIB
+///////////////////////////
+
+#define VALUE 14
+
+void print_word0(void);
+void increment(unsigned int *nbr);
+
+///////////////////////////
+#endif
+ 2//
+
+It's allowed to define some things in a header file as a C file but
+it's better to be limited to put only prototype and macros.
+
+#1		SIMPLE INCLUDE
+
+This isn't a good way but it's possible.
+In this case the debbugage is well but it's better to create an header when even.
+
+use_mp_lib.c : 2// 
+#include <stdio.h>
+
+#include "mp_lib.c"
+
+unsigned char main(void){
+
+    print_word0();
+    print_word1();
+
+    unsigned int var = 4;
+    increment(&var);
+    printf("Var = %d\n", var);
+
+    float var2 = 4.0;
+    increment(&var2); // Incorrect
+    printf("Var2 = %f\n", var2); 
+
+    return 0;
+}
+
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE/MP_LIB$ gcc use_mp_lib.c -o prog
+use_mp_lib.c: In function ‘main’:
+use_mp_lib.c:15:15: warning: passing argument 1 of ‘increment’ from incompatible pointer type [-Wincompatible-pointer-types]
+   15 |     increment(&var2); // Incorrect
+      |               ^~~~~
+      |               |
+      |               float *
+In file included from use_mp_lib.c:3:
+mp_lib.c:13:30: note: expected ‘unsigned int *’ but argument is of type ‘float *’
+   13 | void increment(unsigned int *nbr){
+      |                ~~~~~~~~~~~~~~^~~
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE/MP_LIB$ ./prog 
+Word 0 !!
+Word 1 !!
+Var = 5
+Var2 = 4.000000
+ 2//
+
+#1		HEADER INCLUDE
+
+use_mp_lib.c : 2// 
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE/MP_LIB$ cat use_mp_lib.c 
+#include <stdio.h>
+
+#include "mp_lib.h"
+
+unsigned char main(void){
+
+    print_word0();
+    print_word1(); // Targeted line
+
+    unsigned int var = 4;
+    increment(&var);
+    printf("Var = %d\n", var);
+
+    float var2 = 4.0;
+    increment(&var2); // Incorrect
+    printf("Var2 = %f\n", var2); 
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE/MP_LIB$ gcc *.c -o prog
+use_mp_lib.c: In function ‘main’:
+use_mp_lib.c:8:5: warning: implicit declaration of function ‘print_word1’; did you mean ‘print_word0’? [-Wimplicit-function-declaration]
+    8 |     print_word1();
+      |     ^~~~~~~~~~~
+      |     print_word0
+use_mp_lib.c:15:15: warning: passing argument 1 of ‘increment’ from incompatible pointer type [-Wincompatible-pointer-types]
+   15 |     increment(&var2); // Incorrect
+      |               ^~~~~
+      |               |
+      |               float *
+In file included from use_mp_lib.c:3:
+mp_lib.h:10:30: note: expected ‘unsigned int *’ but argument is of type ‘float *’
+   10 | void increment(unsigned int *nbr);
+      |                ~~~~~~~~~~~~~~^~~
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE/MP_LIB$ ./prog 
+Word 0 !!
+Word 1 !!
+Var = 5
+Var2 = 4.000000
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE/MP_LIB$ # Delete error and comment targeted line
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE/MP_LIB$ gcc *.c -o prog
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE/MP_LIB$ ./prog 
+Word 0 !!
+Var = 5
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE/MP_LIB$ 
+ 2//

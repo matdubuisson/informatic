@@ -1,0 +1,64 @@
+Script 106
+				PYGAME1 FORM
+
+		FILL()
+This function permits to attribute a color at an element.
+Syntax :
+color = (0, 0, 0)
+WIN.fill(color)
+
+#1		FLIP()
+Workes with the key DISPLAY. This function does the
+update of the window.
+
+		DRAW
+
+		LINE()
+Takes the key DRAW.
+Syntax :
+draw.line(WIN, color, [x, y], [x, y], border)
+
+==============================================
+#3		RECT() and RECT()
+Takes the key DRAW.
+THERE ARE : #1 Rect() and rect()
+Syntax :
+form = Rect(intX, intY, intWidth, intHeight)
+draw.rect(WIN, color, form, border)
+
+For changing the values of Rect() there are :
+form.x ===> For the X.
+form.y ===> For the Y.
+from.width ===> For the width.
+from.height ===> For the height.
+
+==============================================
+
+		CIRCLE()
+Workes with the key DRAW.
+Syntax :
+#[x, y] = Position of center.
+draw.circle(WIN, color, [x, y], intRayon, border)
+
+		POLYGON()
+THis function permits to create some grand form.
+Workes still with DRAW.
+Syntax :
+#I can put again more positions !!
+positions = [(x, y), (x, y), (x, y), (x, y)]
+draw.polygone(WIN, color, positions, border)
+
+=============================================
+
+		!! METHOD HELPFUL !!
+
+		COPY()
+This function returnes a copy of an element.
+Syntax :
+form.copy() = newCopy
+
+		COLLIDERECT()
+For detecting the collition between the different element.
+Syntax :
+myRect0.colliderect(myRect1)
+#When there is collition the function returnes 1;

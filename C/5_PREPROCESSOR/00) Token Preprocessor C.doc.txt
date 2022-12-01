@@ -1,0 +1,53 @@
+				TOKEN
+
+#1		TOKEN '#'
+
+This token permits two things :
+=> Writing a preprocessor code;
+ex : #include <> | #define var 4 | #error This is an error !!
+=> Asking to get the name of an argument and not the value;
+ex : #define print(x) printf("The variable " #x " is %d !!\n", x)
+==> print(var=4) : The variable var=4 is 4 !!
+
+#1		TOKEN '##'
+
+Both create a new token to concat charcaters :
+ex : #define test a ## b ## c // Gives abc
+
+#5	EXAMPLE
+
+token.c : 2// 
+#include <stdio.h>
+#    include <stdlib.h>
+
+// Here, #x is the name of argument and x is the value of this argument;
+// So print(z=4) ==> #x = z=4 and x = 4
+#define print(x) printf("The variable " #x " is %d !!\n", x)
+
+#define test a ## b ## c
+#define concat(a, b) a ## b
+
+unsigned char main(void){
+
+    unsigned int z;
+    print(z = 4);
+    print(z);
+
+    unsigned int abc = 15;
+    printf("==> %d\n", test);
+
+    unsigned int x, y, xy;
+    concat(x, y) = 4; // Same than : xy = 4;
+    print(xy);
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ gcc token.c -o prog && ./prog 
+The variable z = 4 is 4 !!
+The variable z is 4 !!
+==> 15
+The variable xy is 4 !!
+ 2//

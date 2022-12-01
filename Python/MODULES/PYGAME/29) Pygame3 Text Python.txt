@@ -1,0 +1,34 @@
+Script 108
+				PYGAME3 TEXT
+
+		FONT
+This is the key for introducing the characters.
+
+		GET_FONTS()
+This function permits to return the list of the
+type of polices installed on my computer.
+Syntax :
+print(pygame.font.get_fonts())
+
+		SYSFONT()
+This function permits to define the police.
+Syntax :
+FONT = SysFont(str("police"), int(sizePolice), bool(boldOrNot), bool(italicOrNot))
+For adding a parameter into outdoor :
+==> set_blod()
+==> set_italic()
+==> set_underline()
+
+		RENDER()
+This function creates the text by SYSFONT().
+Syntax :
+FONT = font.SysFont("arial", 40, true, false)
+TEXT = FONT.render("Yolo !!", bool(lotOfPixelsOrNot), color)
+
+#1		BLIT()
+This function puts a surface on an other.
+It takes two parameters :
+par0 ===> Surface choosed;
+par1 ===> Position ([x, y]);
+
+RAPPEL : #3 display.flip() # For updating !!

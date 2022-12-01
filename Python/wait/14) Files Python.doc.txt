@@ -1,0 +1,81 @@
+				FILES
+
+#1		THE DIFFERENT MODS OF OPENING
+Different mods for running a file :
+1# r  1# ===> Only persual.
+1# w  1# ===> Deletes the contain for replacing by an other.
+1# a  1# ===> Adds much contain at the end.
+1# x  1# ===> Persual and writting.
+1# r+ 1# ===> Writting and persual into an even file.
+
+#1		MANAGE FILE
+myFile = open("addressFile", "mod") ===> For openning the file.
+myFile.close() ===> For closing a file.
+	[ OR ]
+with open("addressFile", "mod") as myFile:
+  coding();
+
+#1		PERSUAL
+4# myFile.read()      4# ===> Reads all the document.
+4# myFile.readline()  4# ===> Reads one line and passes at
+the other.
+4# myFile.readlines() 4# ===> Reads the rest of the document.
+
+#1		WRITTING
+4# myFile.write("characterChainWritten") 4# ===> Writtes these
+character into the file.
+
+==============================================================
+
+#1		PICKLE
+This method permits to put a Python data into a binary file.
+#1 File0.py ===> Creates the data and puttes this into joe.data;
+#1 File1.py ===> Takes the data into joe.data;
+#1 Joe.data ===> Contains the data;
+
+File0.txt : 2// 
+#coding:utf-8;
+
+import pickle;
+
+class mob:
+  def __init__(self, name, type):
+    self.name = name;
+    self.type = type;
+  def show(self):
+    print(str(self.name) + " is a " + str(self.type) + " !!");
+
+joe = mob("Joe", "strangePNJ");
+joe.show();
+
+with open("Joe.data", "wb") as fileJoe:
+  makeFile = pickle.Pickler(fileJoe);
+  makeFile.dump(joe);
+ 2//
+Into the console : 2# 
+racteurleader@racteurleader:~/runPC/Codage/Python$ python3.8 test.py 
+Joe is a strangePNJ !!
+ 2#
+
+File1.txt : 2// 
+#coding:utf-8;
+
+import pickle;
+
+class mob:
+  def __init__(self, name, type):
+    self.name = name;
+    self.type = type;
+  def show(self):
+    print(str(self.name) + " is a " + str(self.type) + " !!");
+
+with open("joe.data", "rb") as fileJoe:
+  makeFile = pickle.Unpickler(fileJoe);
+  joe = makeFile.load();
+
+joe.show();
+ 2//
+Into the console : 2# 
+racteurleader@racteurleader:~/runPC/Codage/Python$ python3.8 test.py
+Joe is a strangePNJ !!
+ 2#

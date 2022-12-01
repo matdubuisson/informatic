@@ -1,0 +1,27 @@
+				MODULAR PROGRAMATION
+
+#3	import
+This syntax permits to include the coding of an other [ file.py ].
+The prefix asks only the name of the file without the extension.
+For using a function of an external file the function needs to
+reference to its file as [ importedFile.fct() ]
+Ex : 2# 
+import tool # from tool.py
+import tkinter # from tkinter.py
+tool.yolo()
+tkinter.tkinter_function()
+ 2#
+
+#3	from , as
+These two words permits to change the work of [ import ].
+as => Permits to change the reference;
+from => Permits to import one or several functions of a
+file so there isn't need of the reference after it;
+Ex : 2# 
+form tool import yolo
+import tkinter as tk
+from tatayoyo import *
+yolo() # from tool.py
+tk.tkinter_function() # from tkinter.py
+powa(); Ibisibou(); gg() # from tatayoyo.py
+ 2#

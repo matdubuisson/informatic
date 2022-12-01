@@ -1,0 +1,35 @@
+				QUOTATIONS
+
+#0	<q></q>
+This tag permits to put the text between dashes.
+
+#0	<blockquote cite="www.web_site.ext"></blockquote>
+This tag permits to write a quotation on the web.
+
+#0	<abbr title="Hidden definition">HD</abbr>
+This tag permits to show the hidden message when the mouse
+of the user is on the contain (here "HD").
+
+quotations.html : 0# 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Racteur">
+</head>
+<body>
+    <p>I'm <q>Racteur</q> !!</p>
+
+    <br><hr>
+
+    <blockquote cite="www.google.com">
+    Google is a very big firme !!
+    </blockquote>
+
+    <br><hr>
+
+    <p>What is <abbr title="This is the favorite message of Ibisibou">TATA YOYO</abbr> ?!</p>
+
+</body>
+</html>
+ 0#

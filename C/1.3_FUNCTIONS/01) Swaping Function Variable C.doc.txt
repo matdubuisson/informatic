@@ -1,0 +1,50 @@
+#1		SWAPING
+
+#2	Description
+
+3# * 3# => See pointer chapter;
+3# & 3# => See pointer chapter;
+==> See casting chaoter;
+
+swaping.c : 2// 
+#include <stdio.h>
+
+void swap0(signed int *a, signed int *b){
+    signed int c = *a;
+    *a = *b;
+    *b = c;
+    return;
+}
+
+// ONLY IN C++ :
+/*
+void swap1(signed int & a, signed int & b){
+    signed int c = a;
+    a = b;
+    b = c;
+    return;
+}
+*/
+
+unsigned char main(unsigned char argc, unsigned char **argv){
+
+    void swap0(signed int *, signed int *);
+    //void swap1(signed int &, signed int &);
+
+    signed int x = 16, y = 14;
+    printf("%d <=> %d\n", x, y);
+    swap0(&x, &y);
+    printf("%d <=> %d\n", x, y);
+    //swap1(x, y);
+    //printf("%d <=> %d\n", x, y);
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@racteurtoshiba:~/Documents/informatic/C/1.3_FUNCTIONS/EXAMPLE$ gcc swaping.c -o prog
+racteur@racteurtoshiba:~/Documents/informatic/C/1.3_FUNCTIONS/EXAMPLE$ ./prog 
+16 <=> 14
+14 <=> 16
+ 2//

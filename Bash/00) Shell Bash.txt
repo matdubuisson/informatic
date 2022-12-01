@@ -1,0 +1,36 @@
+				SHELL
+
+#3	echo
+This command permits to affich a simple chain of character.
+Option :
+-e => This option deletes the automatic "\n" at the end.
+Example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash$ echo "hey salut"
+hey salut
+racteur@racteurleader:~/runPC/Codage/Bash$ echo Yolo !!
+echo Yolo echo "hey salut"
+Yolo echo hey salut
+racteur@racteurleader:~/runPC/Codage/Bash$ echo Yolo \!\!
+Yolo !!
+racteur@racteurleader:~/runPC/Codage/Bash$
+ 2#
+#3	clear
+This command clears the shell.
+
+#3	exit
+This command permits to stop the connection with a server or closing
+simply a shell.
+
+#3	history
+This command affiches the history of the put command into the shell.
+Option :
+-wc ==> Removes the contain of the history;
+
+#3	!!
+This small command permits to re-execute the last command.
+I can write also this : [ !14 ]
+By example, this executes the 14th command in th history.
+
+#3	man
+This command permits to affich the manual of a command.
+Syntax : man cmd

@@ -1,0 +1,67 @@
+Script 105
+				PYGAME0 WINDOW
+
+Name of library : pygame;
+
+		INIT()
+This functions permits to init the program.
+This function is used alone and without
+variable and parameters.
+
+		DISPLAY
+This is the key for working on the display.
+
+		SET_MODE()
+Permits to add a new mod at the window :
+MOD :
+Parameter0 ===> Tuple with 2 values for
+the sizes of the window.
+Parameter1 :
+FULLSCREEN
+RESIZABLE
+OPENGL
+HWSURFACE
+DOUBLEBUF
+NOFRAME ===> For retiring the default control bar.
+RESIZABLE ===> For changing the size of the window
+with the cursor.
+
+INFO : For taking several option into par1 I can make :
+WIN = display.set_mode(par0, OPTION | OPTION | OPTION)
+
+		SET_CAPTION()
+Workes with the key DISPLAY. This for adding a title
+on the program next to the icon.
+
+		DISPLAY
+This key takes the function SET_MODE.
+This creates the window.
+Syntax :
+#3 WIN = display.set_mode(par0, par1)
+
+		INFO
+A key for having several informations on
+about the window with the syntax :
+print(display.Info)
+
+		EVENT
+This key contains the different event of
+the window.
+With the function GET() I can get the
+function the event. On this I can add
+the key TYPE for getting one event.
+Syntax :
+from pygame import *
+init()
+sizes = (µ, µ)
+WIN = display.set_mode(sizes)
+while 1:
+  for oneEvent in event.get():
+    if oneEvent.type == EVENT:
+      pass #So coding !!
+----
+EVENT :
+QUIT ===> When I quit the program.
+
+		TYPE
+For getting just one event.

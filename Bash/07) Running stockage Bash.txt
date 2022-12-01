@@ -1,0 +1,61 @@
+				RUNNING STOCKAGE
+
+#1		GETTING SOME INFORMATIONS ABOUT THE PLACES IN MEMORY
+
+#3	du
+This command gives the place in stockage that takes the folder.
+Option :
+-a ==> Indicates for the files also;
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash$ du F1/
+92	F1/
+racteur@racteurleader:~/runPC/Codage/Bash$ du -a F1/
+12	F1/z
+4	F1/myLib_MATH_INT.c
+4	F1/hay.tar.gz
+4	F1/myLib_MATH_FLOAT.c
+4	F1/testArchive.tar.gz
+4	F1/myLib_SIGNED_CHAR.c
+4	F1/myLib_ARRAY_SIGNED_CHAR.c
+4	F1/myLib_BINARY_INT.c
+4	F1/test3D.c
+12	F1/test.zip
+12	F1/reTest.tar
+4	F1/myLib_INT.c
+12	F1/newTest.tar
+4	F1/myLib_FLOAT.c
+92	F1/
+ 2#
+
+#1		GETTING THE IDENTIFIANTS OF THE peripheral (AND THE COMPUTER)
+
+#3	blkid
+This command gives the identifiants of my computer and the connected peripherals.
+
+#5	/etc/fstab
+This is a static file who contains several informations on the identifiant of
+the computer.
+
+#5	/etc/mtab
+This file contains the lines of the mountings.
+
+#1		GETTING THE KEY FOR ACCESSING TO THE peripheral
+#0 PERIPHERAL = PÉRIPHÉRIQUE
+#3	fdisk
+This command gives plenty of informations.
+Option :
+-l ==> Gives the list of the peripheral and their utilities;
+Syntax : sudo fdisk -l
+
+#3	mount and umount
+The first command mountes a peripheral in an folder.
+It gives two parameters :
+par0 => The way of the output (viewing [ sudo fdisk -l ]);
+par1 => The folder who will permit to access to the contain
+of the peripheral;
+The second command takes just the first parameters to
+unmount the peripheral.
+By example : 2# 
+racteur@racteurleader:~/runPC/Codage/Bash/F1$ sudo mount /dev/sdb1/ ~/USB/
+racteur@racteurleader:~/runPC/Codage/Bash/F1$ sudo umount /dev/sdb1/
+ 2#

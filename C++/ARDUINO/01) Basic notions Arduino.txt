@@ -1,0 +1,28 @@
+Script 121
+				BASIC NOTIONS
+
+#2 TRANSFORMATOR :
+#1 TRANSDUCER :
+Term who designes a thing who changes an form of energy
+in an other.
+#1 SENSOR :
+A thing who changes a form of energy in electrical energy.
+#1 ACTUATOR :
+A transducer who converte electrical energy in an other.
+#1 PIN SENSOR :
+A door who cans be OUTPUT or INPUT.
+
+#2 CURRENT :
+#0 OUTPUT TO INPUT. Current out for in.
+
+#1 INPUT :
+The entry of the current. If it's HIGH, this means that the
+the pin receives a current and if it's LOW, it's that there
+is not tension.
+#1 OUTPUT :
+The exit of the current. If it's HIGH, this gives a current
+and if it's LOW, this doesn't give a current.
+
+#2 PINS :
+
+#1 VIN : 7-12 volts !!

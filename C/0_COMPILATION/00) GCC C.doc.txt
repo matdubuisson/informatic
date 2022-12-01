@@ -1,0 +1,64 @@
+				GCC
+
+#1		COMPILATION EXPLANATION
+
+There are four steps :
+#2	0) PREPROCESSING #3 option : -E
+5# It purifies the source code :
+=> Removes all comments;
+=> Includes all H files;
+=> Handles all compilation commands (ex : #define)
+ 5#
+
+#2	1) COMPILING #3 option : -S
+5# It translates the C code in assembly code;
+=> ASM code is a file.s;
+ 5#
+
+#2	2) ASSEMBLING #3 option : -c
+5# It translates the assembly code in binary code;
+=> Binary code is generally a file.o;
+ 5#
+
+#2	3) LINKING #3 option : -o
+5# Assembles all files.o and searches the external functions and
+variables (ex : from <unistd.h>) and makes an executable;
+ 5#
+
+#1		COMPILATION WITH GCC
+
+#3	gcc
+This is the compilator of the language C.
+Parameters :
+- The name of the source code in C [ file.c ];
+
+Principal Options :
+0# -W 0# => Take all the warnings as errors and so stop the compilation;
+0# -E 0# => Prints the result of the preprocessing step of the C code;
+//2 gcc -E yolo.c > yolo.log
+0# -S 0# => Translates C code to assembly code. It is the result
+of the compiling step;
+//2 gcc -S yolo.c # The file will be named yolo.s
+0# -c 0# => Translates C code to binary code. It is the result
+of the assembling step;
+//2 gcc -c yolo.c # The file will be named yolo.o
+0# -o 0# => Makes an executable. There are different ways to do
+it. Either it straight compils the files.c or it assembles
+files.o;
+2// 
+racteur@racteurleader:~$ gcc yolo.c -o prog
+racteur@racteurleader:~$ ./prog 
+Yolo !!
+racteur@racteurleader:~$ gcc -c yolo.c
+racteur@racteurleader:~$ gcc yolo.o -o prog # The yolo.o has been created with the precedent command
+racteur@racteurleader:~$ ./prog 
+Yolo !!
+ 2//
+
+Other Options :
+-v => Gives some informations about the version of gcc;
+-x => Precises the compiled languages;
+
+Options For Libraries :
+-lpthread => Includes the fonctionnality of the threads;
+-trigraphs => Includes the trigraphs;

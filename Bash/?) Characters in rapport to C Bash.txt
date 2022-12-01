@@ -1,0 +1,18 @@
+				CHARACTERS
+
+#1		VARIABLES
+
+$? => Returns the last returned code of the last program;
+  0 = True;
+  1 = False;
+$! => Returns the process code of the last command;
+$$ => Gives the number of processus;
+$# => Returns the number of parameters;
+$* => Affiches all the parameters;
+$@ => Like $*;
+
+#1		CHARACTERS
+
+	C	BASH
+
+	\n	^

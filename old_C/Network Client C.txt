@@ -1,0 +1,64 @@
+Script 115
+				NETWORK CLIENT
+
+LIBRARIES :
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <arpa/inet.h>
+#include <fcntl.h> // Open function;
+#include <unistd.h> // Close function;
+
+                SOCKET() ==> Returns data in a [ int ];
+This function takes three parameters :
+par0 ==> AF_INET;
+par1 ==> SOCK_STREAM;
+par2 ==> 0;
+The returning of the function is stocked into
+a variable of type of#3 int.
+Syntax :
+int mySocketInt = socket(AF_INET, SOCK_STREAM, 0);
+
+=======================================================
+
+                STRUCT SOCKADDR_IN
+This structure permits to create the server who
+will be configurate by some other tools.
+Syntax :
+struct sockaddr_in myServ;
+
+                INET_ADDR()
+This function returns the address IP. Its parameter
+is the address in string.
+
+                HTONS()
+This function returns the PORT. Its parameter
+is the number in integer.
+
+#1      ATTRIBUTES
+
+3# [ myServ.sin_addr.s_addr ] 3# ==> These attributes
+take the IP by the function : inet_addr("127.0.0.1");
+
+3# [ myServ.sin_family ] 3# ==> This attribute takes
+the family type of the server.
+TYPE OF FAMILY :
+==> AF_INET;
+
+3# [ myServ.sin_port ] 3# ==> This attribute takes
+the PORT of the server by the function : htons(1400);
+
+=======================================================
+
+		CONNECT()
+This function permits to connect the user to the server.
+This function takes three parameters :
+par0 ==> mySocketInt;
+par1 ==> A constante structur of type sockaddr with
+pointer the all in brackets next to the structur of
+sockaddr_in's address;
+par2 ==> sizeof(structDefinedOfSockAddr_in);
+Syntax :
+connect(mySocketInt, (const struct sockaddr*)&structDefinedOfSockAddr_in, sizeof(structDefinedOfSockAddr_in));
+

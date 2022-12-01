@@ -1,0 +1,59 @@
+				METHOD POST
+
+#0 import flask as f
+
+0# Tip : For app.route("") : 0# 3# method=["GET", "POST"] 3#
+#5 Permits to allow the method post and get !!
+
+#1		DETECT A POST EVENT AND GET THE INPUT OF THE FORM
+
+#5	f.request
+This object of the module flask permits to detect the event of a post and
+change the behavior of the web at this time.
+Attributes :
+3# f.request.method 3# => Contains "POST" or "GET" or an other string according to
+the used method;
+3# f.request.form   3# => Contains a dictionary with all the submitted informations.
+The key is the 0# name 0# of the entry and not the id;
+
+For example :
+
+doc.html : 3// 
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Test post !!</title>
+
+</head>
+<body>
+
+  <form method="post">
+    <label for="post_name">Set a name :</label><br>
+    <input type="text" id="post_name" name="post_name_for_python"><br>
+    <input type="submit" value="Submit the post !!"><br>
+  </form>
+
+</body>
+</html>
+ 3//
+
+doc.py : 2// 
+import flask as f
+
+app = f.Flask(__name__)
+
+@app.route("/test_post/", methods=["GET", "POST"])
+def test_post():
+  if f.request.method == "POST":
+    # Needs to put an str() on the f.request.form["key"] else it returns an error !!
+    return "This post : {0}<br>{1}<br>".format(str(f.request.form["post_name_for_python"]), f.request.form) # Id of the post
+  else:
+    s = 0
+    with open("flaskr/test_post.html") as file:
+      s = file.read()
+    return s
+
+with app.test_request_context():
+  print("==>", f.url_for("test_post"))
+ 2//

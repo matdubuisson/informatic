@@ -1,0 +1,6 @@
+				TIMER
+
+#4	sleep()
+This function permits to stop the process during a certain delay.
+Parameter :
+par0 => Time in secondes;

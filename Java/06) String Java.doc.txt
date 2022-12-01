@@ -1,0 +1,86 @@
+				STRING
+
+#1		GETTING
+
+#4 Static methods
+#5 Non static methods
+
+#5	String str = new String("contain");
+This is the way to create a new string in Java.
+
+#5      String.valueOf(value)
+This method converts a number to string.
+
+#4	str.length()
+This method returns the length of the string.
+
+#4	str.toString()
+Convert in string but it's useless.
+
+#4	str.charAt((int) index)
+This method permits to get a character from the string at the
+targetted index. It returns the character as a (char).
+
+#4	str.codePointAt((int) index)
+Returns an integer that is the value of the character at the 
+targetted index.
+
+#4	str.indexOf((char) character)
+It returns the index of the first occurence of character.
+
+#2 Check ReadString.java
+
+#1		SETTING
+
+#5	String.format((String) format, ...)
+This function is the equivalent of printf() in C.
+
+#4	str.toLowerCase() and str.toUpperCase()
+The first returns a string with only lower characters and
+the second returns a string with only upper characters.
+
+#4	str.concat((String) other)
+It's a concation of str with other.
+Equivalent : str = str + other;
+
+#4	str.replace((char) c0, (char) c1)
+It replaces all characeters c0 with characters c1 in the string.
+It returns the result.
+
+#4	str.copyValueOf((char[]), (int) firstIndex, (int) lastIndex)
+This method converts a chain of characters in string.
+
+#2 Check WriteString.java
+
+#1		COMPARING
+
+#4	str.compareTo((String) str2)
+This function returns an integer :
+If 0 : str == str2;
+If < 0 : str < str2;
+If > 0 : str > str2;
+
+#4	str.compareToIgnoreCase((String) str2)
+Same thing but it considers an upper character equal
+to its dedicated lower character.
+
+#4	str.equals((String) str2)
+This function true if the strings are equals else it returns false.
+
+#4	str.contains((String) sequence)
+This function returns the index of the begin of the first occurence of
+the sequence in str.
+
+#4	str.isEmpty()
+This function returns true if str == "" else it returns false.
+
+#1		CUTTING
+
+#4	str.substring((int) startIndex, (int) stopIndex)
+This method returns the substring from startIndex to stopIndex.
+
+#4	str.split((String) str2)
+This method returns a string array (String[]) that contains all parts
+delimited by str2.
+
+#2 Check CuttingString.java

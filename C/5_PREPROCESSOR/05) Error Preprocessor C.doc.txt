@@ -1,0 +1,32 @@
+				ERROR
+
+#5	Preprocessor key word
+3# #error <error_text> 3# => Permit to stop the compilation and raise an error;
+
+error.c : 2// 
+#include <stdio.h>
+
+#define TEST
+#ifndef TEST
+    #error Never executed !!
+#endif
+
+#error This is an error !!
+
+unsigned char main(void){
+
+    printf("Yolo !!\n");
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ rm prog 
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ gcc error.c -o prog
+error.c:3:2: error: #error This is an error !!
+    3 | #error This is an error !!
+      |  ^~~~~
+racteur@rogy:~/Documents/informatic/C/5_PREPROCESSOR/EXAMPLE$ ./prog
+bash: ./prog: No such file or directory
+ 2//

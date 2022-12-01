@@ -1,0 +1,27 @@
+				IMAGES
+
+#0	<img>
+This tag permits to display a image (jpg, png, gif, jpeg, ....) on the web.
+Attributes :
+3# src 3# => Takes the link of the image;
+3# width 3# => Sets the width in pixel;
+3# height 3# => Sets the height in pixel;
+3# alt 3# => Contains a message that is printed when the image isn't found;
+3# style 3# => ....;
+
+images.html : 0# 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Racteur">
+</head>
+<body>
+    <img src="cow0.jpeg" width=600 height=400 alt="Never printed">
+    <br>
+    <img src="cow0.jpeg" style="width:600px;height:400px">
+    <br>
+    <img src="nothing.ext" alt="Image not found....">
+</body>
+</html>
+ 0#

@@ -1,0 +1,15 @@
+				SOURCE CODE SERVER-CLIENT
+
+#0 Go to see in EXAMPLE to view it !!
+
+#1		COMMON SIDE
+
+#3 ==> macro.h
+
+#1		SERVER SIDE
+
+#3 ==> server.c
+
+#1		CLIENT SIDE
+
+#3 ==> client.c

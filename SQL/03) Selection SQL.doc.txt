@@ -1,0 +1,21 @@
+				SELECTION
+
+This part permits to create a selection of inserted instance of
+tables. The key words are SELECT, FROM and WHERE.
+Syntax : 5# 
+SELECT elements FROM nameTab;
+SELECT elements FROM nameTab WHERE condition;
+ 5#
+
+Whit this method, it can create some list of specified elements
+from tables. It selects the variables from the table and it
+optionally searchs a certain type of data if the "where" is added.
+
+For examples : 2# 
+SELECT id, job FROM nameTab2;
+SELECT job FROM nameTab2;
+SELECT job, id FROM nameTab2;
+SELECT * FROM nameTab2 WHERE job IN ("Joe", "Racteur");
+SELECT * FROM nameTab2 WHERE job NOT IN ("Joe", "Racteur");
+SELECT * FROM nameTab2 WHERE job == "Joe" OR job == "Racteur";
+ 2#

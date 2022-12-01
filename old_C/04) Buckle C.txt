@@ -1,0 +1,43 @@
+Script 31
+
+				BUCKLE
+
+This method permits to create some buckles !!
+
+		WHILE
+
+The WHILE is the checking for execting a coding while
+WHILE's condition is always true !!
+
+Doc.c :
+#include <stdio.h>
+int main(void){
+int a = 0;
+while(a <= 21){
+a += 2;
+printf("%d", a);
+}
+return 0;
+}
+
+Into CMD :
+24681012141618202224
+
+-----------------------------------------------------
+
+		FOR
+
+The FOR is the command for definiting a variable into
+a buckle's function.
+
+Doc.c :
+#include <stdio.h>
+int main(void){
+for(int e = 0; e <= 11; e++){
+printf("%d", e);
+}
+return 0;
+}
+
+Into CMD :
+01234567891011

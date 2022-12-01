@@ -1,0 +1,143 @@
+				CREATE APPLICATION AND ROUTING
+
+#0 Module : flask
+
+#1		CREATE APPLICATION
+
+#5	app = flask.Flask()
+It's the class that returns an application in a variable.
+Parameters :
+par0 => The name of the current module. The variable
+__name__ is appropriated for that;
+
+#1              ROUTING APPLICATION
+
+#4	@app.route()
+This special method followed by a function, defines a link
+that should be associated at the function. So when the user
+writes the link in the browser, it activates this associated
+function. Syntax : 5# 
+import flask as f
+app = f.Flask(__name__)
+@app.route("/yolo") # Link : 127.0.0.1:5000/yolo
+def yolo():
+  return "<p>Yolo !!</p>"
+ 5#
+And the function returns a chain of character read as a html
+file in the browser.
+Parameters :
+par0 => The address to link the page;
+parx => 3# method=["GET", "POST"] 3# Permits to allow the method post and get;
+
+For example : 2# 
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return 'Index Page'
+
+@app.route('/hello')
+def hello():
+    return 'Hello, World'
+ 2#
+
+#0	INVOLVE SOME TYPES OF DATA
+
+There are 5 types of data to involve :
+3# string 3#
+3# path   3# => As string with slashes;
+3# int    3#
+3# float  3#
+3# uuid   3# => ?;
+
+For example : 2# 
+import flask as f
+
+print("Application name :", __name__)
+app = f.Flask(__name__)
+
+@app.route("/word/<string:word>")
+def show_word(word):
+  return str(word)
+
+@app.route("/link/<path:link>") # As string but shows with slashes
+def show_link(link):
+  return str(link)
+
+@app.route("/number/<int:number>")
+def show_number(number):
+#  return int(number) => NO IT RETURNS AN ERROR
+  return str(number)
+ 2#
+
+Writes in the text input of the browser :
+=> http://127.0.0.1:5000/word/salut
+=> http://127.0.0.1:5000/link/addr/addr/i/j
+=> http://127.0.0.1:5000/number/14
+
+#0	WRITE A SLASH OR NOT AT THE END OF A WEB SERVER
+
+It depends on the method route() of app.
+For example : 2# 
+import flask as f
+
+print("Application name :", __name__)
+app = f.Flask(__name__)
+
+@app.route('/projects/')
+def projects():
+    return 'The project page'
+
+@app.route('/about')
+def about():
+    return 'The about page'
+ 2#
+
+If it writes in the brwoser :
+=> http://127.0.0.1:5000/projects/
+===> print The project page
+=> http://127.0.0.1:5000/projects
+===> redirect to (with slash) http://127.0.0.1:5000/projects/
+=> http://127.0.0.1:5000/about
+===> print The about page
+=> http://127.0.0.1:5000/about/
+===> raise error 404
+
+#0	TEST URLS
+
+#4	app.test_request_context() and url_for()
+
+This method with this function permit to test the different url in context.
+It avoids to have to use the browser for it.
+For example : 2# 
+app = f.Flask(__name__)
+
+@app.route('/projects/')
+def projects():
+    return 'The project page'
+
+@app.route('/about')
+def about():
+    return 'The about page'
+
+@app.route("/word/<string:word>")
+def show_word(word):
+  return str(word)
+
+with app.test_request_context():
+  print("==>", f.url_for("projects"))
+  print("==>", f.url_for("projects", next="/"))
+  print("==>", f.url_for("about"))
+  print("==>", f.url_for("about", next="/"))
+  print("==>", f.url_for("show_word", word="test"))
+ 2#
+
+Into the console : 2// 
+==> /projects/
+==> /projects/?next=%2F
+==> /about
+==> /about?next=%2F
+==> /word/test
+ 2//
+

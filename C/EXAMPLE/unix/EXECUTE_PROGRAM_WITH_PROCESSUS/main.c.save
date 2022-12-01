@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main(unsigned char argc, unsigned char **argv){
+
+  printf("Starting...\n");
+
+/*
+  execlp("./cmd", "./cmd", "option", "parameter", NULL);
+  printf("The end of the program isn't executed !!\n");
+*/
+
+  short int id = fork();
+
+  if(id == 0){
+    execlp("./cmd", "./cmd", "option", "parameter", "a", "b", "cdef", NULL);
+    printf("Yolo !!\n"); // It isn't executed
+    usleep(1000000); // It isn't executed
+  }
+  else{
+    wait(NULL);
+    printf("Stopping...\n");
+  }
+
+  return 0;
+}

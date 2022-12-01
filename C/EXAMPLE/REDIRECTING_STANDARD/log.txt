@@ -1,0 +1,6 @@
+total 52
+-rwxrwxr-x 1 racteur racteur   281 Jul 15 22:35 log.txt
+-rw-rw-r-- 1 racteur racteur   748 Jul 15 22:37 main.c
+-rwxrwxr-x 1 racteur racteur 16952 Jul 15 22:37 prog
+-rwxrwxr-x 1 racteur racteur 16960 Jul 15 21:43 test
+-rw-rw-r-- 1 racteur racteur   519 Jul 15 21:43 test.c

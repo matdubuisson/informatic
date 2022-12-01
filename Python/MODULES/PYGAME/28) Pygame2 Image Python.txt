@@ -1,0 +1,33 @@
+Script 107
+				PYGAME2 IMAGE
+
+INFO : display.flip() ===> For updating.
+INFO : Color is a tuple like #1 (µ, µ, µ);
+
+		IMAGE
+This is the key for working on
+a file PNG or JPG or GIF.
+
+		LOAD()
+Workes with the key IMAGE.
+This function takes in parameters
+the address in string of an image.
+Syntax :
+IMG = image.load("address")
+
+		CONVERT()
+This function convertes the image so
+optimises the affiching.
+Syntax :
+IMG = image.load("address")
+IMG.convert()
+
+		SET_COLORKEY()
+This function searchs each pixel who have a
+precised color and deletes this pixel from
+the image.
+Syntax :
+purWhite = (255, 255, 255)
+IMG = image.load("address")
+IMG.convert()
+IMG.set_colorkey(purWhite)

@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+#define size 30
+
+// pid type => pid_t (signed integer)
+
+void print_description(void){
+    static signed int pid, ppid;
+    pid = getpid(), ppid = getppid();
+    printf("This process is %d and his parent process (terminal process) is %d !!\n", pid, ppid);
+    return;
+}
+
+unsigned int main(void){
+
+    // These variables are duplicated in two independent parts by fork()
+    unsigned int i;
+    unsigned char *name;
+
+    printf("Main process :\n");
+    print_description();
+
+    signed int comm[2];
+    if(pipe(comm) == -1){
+        printf("PIPE ERROR !!\n");
+        return 1;
+    }
+    // 0 => Writing
+    // 1 => Reading
+
+    signed int pid = fork();
+    printf("Fork pid : %d\n", pid);
+    if(pid == -1){
+        printf("FORK ERROR !!\n");
+        return 2;
+    }
+
+    // Or if(pid), child can be reader or writer
+    if(!pid){ // Make a thread
+        name = malloc(sizeof(unsigned char) * size);
+        strncpy(name, "Yolo !!", size);
+        printf("Name of main => %s\n", name);
+
+        close(comm[0]);
+
+        for(i = 0; i < size; i++){
+            if(write(comm[1], (name + i), sizeof(unsigned char)) == -1){
+                printf("WRITE ERROR !!\n");
+                return 3;
+            }
+        }
+
+        printf("Child has sent !!\n");
+        free(name);
+    }
+    else{
+        name = malloc(sizeof(unsigned char) * size);
+        strncpy(name, "", size);
+
+        close(comm[1]);
+
+        for(i = 0; i < size; i++){
+            if(read(comm[0], (name + i), sizeof(unsigned char)) == -1){
+                printf("READ ERROR !!\n");
+                return 4;
+            }
+        }
+
+        printf("Main has received [%s] !!\n", name);
+        free(name);
+    }
+
+    return 0;
+}

@@ -1,0 +1,57 @@
+				COVERAGE
+
+This tool makes the same work than unittest but it produces the result
+in a graphical interface to check the result.
+
+#1		INSTALLATION
+
+Tap this command :
+#2 sudo apt-get install python3-coverage
+
+#1		TEST A PYTHON CODE
+
+If it has the python script : 2# 
+import unittest
+
+def my_max(l):
+  """
+  @pre: l is a list of integer numbers
+  @post: return the highest integer number of the list
+  """
+  m = None
+  for each in l:
+    if m == None:
+      m = each
+    else:
+      if each > m:
+        m = each
+  return m
+
+class TestMyMax(unittest.TestCase):
+  def setUp(self):
+    self.l = [ 7, 8, 0, 1, 9 ] # 9
+    self.l2 = [ 5, 16, 11, 14, -4 ] # 16
+    self.l3 = [ 0, -1, -14 ] # 0
+    self.l4 = [] # None
+
+  def test_my_max(self):
+    self.assertEqual(my_max(self.l), 9)
+    self.assertEqual(my_max(self.l2), 16)
+    self.assertEqual(my_max(self.l3), 0)
+    self.assertEqual(my_max(self.l4), None)
+
+if __name__ == "__main__":
+  unittest.main(verbosity=2)
+ 2#
+
+The test is done as : 2// 
+racteur@racteurleader:~/Documents/informatic/Python/MODULES/UNITTEST/EXAMPLE$ python3 -m coverage run ex0.py
+test_my_max (__main__.TestMyMax) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+racteur@racteurleader:~/Documents/informatic/Python/MODULES/UNITTEST/EXAMPLE$ python3 -m coverage html
+racteur@racteurleader:~/Documents/informatic/Python/MODULES/UNITTEST/EXAMPLE$ firefox htmlcov/index.html 
+ 2//

@@ -1,0 +1,79 @@
+				ATTRIBUTS AND METHODS
+
+In the class, the attributs are as the variables of a scope.
+In the class, the methods are as the functions of a scope.
+
+#1		BASIC CLASS
+
+#5	class
+This key word permits to define a class with a name.
+Syntax : 2# 
+class Name:
+  pass
+# Or :
+class Name(mother_class): # It is explained in an other script
+  pass
+ 2#
+Later it permits to create an instance of this class with
+the syntax of : 2# 
+instance = Name()
+ 2#
+
+#5	self
+In the previous example above, instance is a pointer that permits
+to act with the object. When it works inside the object the key
+word that permits to an object tap into its own contain is #5 self.
+This key word permits to define attributs and to provide methods
+with attibuts or other methods.
+
+#0	__init__(self)
+This method permits to do a workload when the instance of the class
+is created. This is a method of a class.
+
+#1	Attributs
+This is quite simple. In fact, it consists to define kinds of variables
+in the class with this manner : self.name_of_variable
+The key word (self) means that this variable is declared only inside
+the class and is available for an instance of this class.
+For calling an attribut : 2// 
+class Name:
+  def __init__(self):
+    self.id = 14
+instance = Name()
+id = instance.id
+ 2//
+#1	Methods
+A method is a function inside a class definition that has the key
+word 5# self 5# as first parameter. For calling a method, it's : 2// 
+class Name:
+  def method(self):
+    pass
+  def method(self, args):
+    pass
+instance = Name()
+instance.method()
+instance.method(args)
+=> Instance is the first parameter (self)
+=> The method could have no parameters else args is the other
+parameters after the first (self)
+ 2//
+
+By example : 2# 
+>>> class Name:
+...   def __init__(self, id, NAME):
+...     self.id = id
+...     self.name = NAME
+...   def prt0(self):
+...     print(self.id, self.name)
+...   def prt1(self, thing):
+...     print(self.name, thing)
+... 
+>>> instance = Name(14, "Joe")
+>>> instance.prt0()
+14 Joe
+>>> instance.id = 16
+>>> instance.prt0()
+16 Joe
+>>> instance.prt1("Yolo !!")
+Joe Yolo !!
+ 2#

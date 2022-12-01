@@ -1,0 +1,60 @@
+racteur@rogy:~/Documents/informatic/C/1.6_FILE/EXAMPLE$ gcc start_file.c -o prog
+racteur@rogy:~/Documents/informatic/C/1.6_FILE/EXAMPLE$ ./prog 
+Starting of the program !!
+Clean file...
+Done !!
+==> param
+==> view
+./prog
+==> stop
+End of the program !!
+racteur@rogy:~/Documents/informatic/C/1.6_FILE/EXAMPLE$ ./prog a b c d e f g h j k
+Starting of the program !!
+Clean file...
+Done !!
+==> view
+==> param
+==> view
+./prog
+a
+b
+c
+d
+e
+f
+g
+h
+j
+k
+==> restart
+Starting of the program !!
+Clean file...
+Done !!
+==> view
+==> param
+==> param
+==> view
+./prog
+a
+b
+c
+d
+e
+f
+g
+h
+j
+k
+./prog
+a
+b
+c
+d
+e
+f
+g
+h
+j
+k
+==> stop    
+End of the program !!

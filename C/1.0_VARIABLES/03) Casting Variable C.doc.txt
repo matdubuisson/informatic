@@ -1,0 +1,20 @@
+				CASTING
+
+#0 View in the point to get more informations : OPERATOR
+
+#1      CASTING
+In the language C it's possible to change a type of data in an other
+type of data.
+By example : 2# 
+#include <stdio.h>
+
+int main(void){
+  short int e = (signed char) 'T';
+  printf("E = %d\n", e);
+
+  int a = 3, b = 4;
+  float f = (float)a * (float)b;
+
+  return 0;
+}
+ 2#

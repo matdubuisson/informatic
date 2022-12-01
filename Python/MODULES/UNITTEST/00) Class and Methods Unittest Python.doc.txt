@@ -1,0 +1,72 @@
+				CLASS AND METHODS
+
+#1		CREATE AND USE A TEST
+
+#0 Modules : unittest
+
+This modules permits to create a class that gets a mother class from unittest.
+It's unittest.TestCase(). The function unittest.main() permits to activate the
+testing code. Then look this example : 2# 
+import unittest
+
+def my_max(l):
+  """
+  @pre: l is a list of integer numbers
+  @post: return the highest integer number of the list
+  """
+  m = None
+  for each in l:
+    if m == None:
+      m = each
+    else:
+      if each > m:
+        m = each
+  return m
+
+class TestMyMax(unittest.TestCase):
+  def setUp(self):
+    self.l = [ 7, 8, 0, 1, 9 ] # 9
+    self.l2 = [ 5, 16, 11, 14, -4 ] # 16
+    self.l3 = [ 0, -1, -14 ] # 0
+    self.l4 = [] # None
+
+  def test_my_max(self):
+    self.assertEqual(my_max(self.l), 9)
+    self.assertEqual(my_max(self.l2), 16)
+    self.assertEqual(my_max(self.l3), 0)
+    self.assertEqual(my_max(self.l4), None)
+
+if __name__ == "__main__":
+  unittest.main(verbosity=2)
+ 2#
+
+
+
+In the example above this sentence, it uses the method self.assertEqual() form the
+class unittest.TestCase(). There are several methods :
+3# assertEqual(a, b) 3# ==> If a equals b
+3# assertNotEqual(a, b) 3# ==> If a doesn't equal b
+3# assertTrue(x) 3# ==> If x equals True
+3# assertFalse(x) 3# ==> If x equals False
+3# assertIs(a, b) 3# ==> If a points on the same data than b
+3# assertIsNot(a, b) 3# ==> If a doesn't point on the same data than b
+3# assertIsNone(x) 3# ==> If x is None
+3# assertIsNotNone(x) 3# ==> If x isn't None
+3# assertIn(a, b) 3# ==> If a is in b
+3# assertNotIn(a, b) 3# ==> If a isn't in b
+3# assertIsInstance(a, b) 3# ==> If a is instance of b
+3# assertNotIsInstance(a, b) 3# ==> If a isn't instance of b
+3# assertAlmostEqual(a, b) 3# ==> If a is almost equal than b
+3# assertNotAlmostEqual(a, b) 3# ==> If a isn't almost equal than b
+3# assertGreater(a, b) 3# ==> If a is greater than b
+3# assertGreaterEqual(a, b) 3# ==> If a is greater than b or equal
+3# assertLess(a, b) 3# ==> If a is less than b
+3# assertLessEqual(a, b) 3# ==> If a is less than b or a equal b
+
+#1		SPECIAL METHODS
+
+#4	setUp(self)
+This method is executed at the begining of each test.
+
+#4	tearDown(self)
+This method is executed at the ending of each test.

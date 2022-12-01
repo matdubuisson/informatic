@@ -1,0 +1,14 @@
+				SCREEN
+
+This command permits to keep some windows even if these are closed on
+the graphic interface.
+
+#3		screen
+Option :
+-S nameOfSession => Permits to create a session;
+-r nameOfSession => Permits to open a created session;
+-ls => Lists the created screens (it shows the processus
+and the name of the screen);
+-d => Permits to detach a session;
+-x => Permits to use a screen already used by an other user;
+#0 Attention it's a single controled terminal by 2 users !!

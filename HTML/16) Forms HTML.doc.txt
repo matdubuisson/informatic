@@ -1,0 +1,79 @@
+				FORMS
+
+This section is about how to create datas input space that is called form.
+
+#0	<form></form>
+This tag creates the form area.
+Attributes :
+3# method 3# => Can set a method associated at this form (ex : post);
+3# action 3# => ?;
+
+#0	<label></label>
+This tag adds an associated description to an input. It needs to have
+the same name than the targeted input.
+Attributes :
+3# for 3# => The name of an input;
+
+#0	<input>
+This tag permits to create a new input.
+Attributes :
+3# type="" 3# => text (maxlength), password, number (min="" + max=""),
+radio & submit & button (value="");
+3# value="" 3# => Set a default value to the input;
+3# placeholder="" 3# => It displays this text in the input if
+the contain of the input is empty;
+3# disabled 3# => Makes the input disabled;
+3# readonly 3# => Makes the input on readonly;
+
+#0	<select></select> with <option></option>
+The <select> tag creates a new selection and the <option> tag creates
+an option in the selection.
+The option can take a value and the selection can take a name,
+these are the attributes.
+
+#0	<textarea></textarea>
+This tag permits to create a text area. It can take a name and
+
+
+forms.html : 0# 
+<!DOCTYPE html>
+<html>         
+<head>         
+    <meta charset="utf-8">
+    <meta name="author" content="Racteur">
+</head>        
+<body>         
+    <form method="post">
+        <label name="username">What is your name ?</label><br>
+        <input name="username" type="text"><br><br>
+               
+        <label name="usercode">What is your code ?</label><br>
+        <input name="usercode" type="number" min=0 max=6><br><br>
+               
+        <label name="cars">What is your favorite car ?</label><br>
+        <select name="cars">
+            <option value="volvo">Volvo</option>
+            <option value="bmw">BMW</option>
+        </select><br><br>
+               
+        <label name="sexe">What is your sexe ?</label><br>
+        <label name="sexe">M : </label>
+        <input name="sexe" type="radio" value="M"><br>
+        <label name="sexe">F : </label>
+        <input name="sexe" type="radio" value="F"><br><br>
+               
+        <label name="comment">A comment ?</label><br>
+        <textarea name="comment">Wrire your comment here !!</textarea><br><br>
+               
+        <input type="submit" value="Submit my datas !!">
+    </form>    
+               
+    <form>     
+        <input type="text" maxlength=5><br>
+        <input type="text" placeholder="TEST TEST"><br>
+        <input type="text" disabled><br>
+        <input type="text" value="default text" readonly><br>
+    </form>    
+</body>        
+</html>
+ 0#

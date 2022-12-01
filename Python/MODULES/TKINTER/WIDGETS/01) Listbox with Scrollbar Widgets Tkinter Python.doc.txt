@@ -1,0 +1,20 @@
+				LISTBOX AND SCROLLBAR
+
+#4	sb = Scrollbar()
+This widget draws a scrollbar that permits to explore a listbox for example.
+Parameters:
+3# first parameter 3# => The configuration of the window given by Tk();
+
+#4	lb = Listbox()
+This widget permits to draw a frame with different elements inside.
+Parameters :
+3# first parameter 3# => The configuration of the window given by Tk();
+1# yscrollcommand 1# => Takes the prototype of the method sb.set of
+an instance of Scrollbar;
+
+#4	lb.insert()
+This method of the Listbox class permits to insert a new element in
+the list of the box.
+Parameters :
+par0 => Position of the element; (number of tk.END)
+par1 => New element;

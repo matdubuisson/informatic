@@ -1,0 +1,276 @@
+Script 39
+
+				CHARACTER CHAIN
+
+There are a few conditions for creating a character chain.
+When I create a character chain in fact I create an array.
+For the declaration it's like an array but I can let the
+new array without the number who says the size because the
+new array for the character chaines is automaticaly adapted.
+
+The new array who is a character chain needs to be declared
+by CHAR or SIGNED CHAR.
+
+For noticing the size of the chain I need to understand the
+number of character and more one (+1) for "/0" who finishes
+the array. But this character is interpreted by compilator.
+
+WARNING : The array next to the other WARNING permits to
+separate the memory box from word1 and the memory box from
+word2 else there is a problem. This new array simply separates
+these two memory boxes.
+
+An other thing when I writte an array with some characters
+I NEED TO USE UNIQUELY THE ==> '' <== because that doesn't
+work with the "" !!
+
+Doc.c :
+#include <stdio.h>
+//gcc Doc.c -o test
+#define SIZE 6
+
+int main(void){
+
+signed char word0[SIZE] = "Salut";                  /*SIZE = 6;*/
+signed char word1[] = "Salut";                     /*SIZE = 6;*/
+    int space[5] = {0,1,2,3,4}; /*WARNING*/
+signed char word2[] = {'S','e','l','u','l'};      /*SIZE = 6;*/
+signed char word3[SIZE] = {'S','e','l','u','l'}; /*SIZE = 6;*/
+
+printf("WORD0 : %s !!\n", word0);
+printf("WORD1 : %s !!\n", word1);
+printf("WORD2 : %s !!\n", word2);
+printf("WORD : %s !!\n", word3);
+
+return 0;
+}
+
+Into CMD :
+
+C:\Users\ASUS\Desktop\learnC>gcc Doc.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+WORD0 : Salut !!
+WORD1 : Salut !!
+WORD2 : Selul !!
+WORD : Selul !!
+
+=================================================
+
+				<STRING.H>
+
+		STRCPY()
+
+This command permits to replace chain's value by an other.
+
+new1.c :
+#include <stdio.h>
+#include <string.h>
+//gcc new1.c -o test
+#define SIZE 6
+
+int main(void){
+signed char name[] = "Matt";
+signed char newName[44];
+    printf("%s\n", name);
+    scanf("%s", newName);
+    strcpy(name, newName);
+    printf("%s", name);
+return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o newTest
+
+C:\Users\ASUS\Desktop\learnC>newTest
+Matt
+Joe
+Joe
+
+		STRCPY_S
+
+Even formule but the different thing is that I can precise the size
+for the copy :
+
+#define sizeName µ
+strcpy_s(name, sizeName, newName);
+
+----------------------------------------------------------
+
+		STRLEN()
+
+This command permits to know chain's size.
+
+new1.c :
+#include <stdio.h>
+#include <string.h>
+//gcc new1.c -o test
+#define SIZE 6
+
+int main(void){
+signed char name[5] = "Matt";
+int length = strlen(name);
+    printf("%d", length);
+return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+4
+
+----------------------------------------------------------
+
+		STRCMP()
+
+This command is the solution for comparing two character chaines
+about the ORDER from the ALPHABET.
+
+new1.c :
+#include <stdio.h>
+#include <string.h>
+//gcc new1.c -o test
+#define SIZE 6
+
+int main(void){
+signed char word0[71];
+signed char word1[71];
+printf("\nMot1 :\n");
+scanf("%s", word0);
+printf("\nMot2 :\n");
+scanf("%s", word1);
+int valueForComparation = strcmp(word1,word0);
+/*Checkes if word1 in the alphabet is above than word0.
+The comparation is about word1 here because it is on the
+left like the first element.
+If word0 == word1 in the alphabet the function returnes e == 0.
+If word0 > word1 in the alphabet the function returnes e > 0.
+If word0 < word1 in the alphabet the function returnes e < 0.*/
+if(valueForComparation == 0){
+    printf("The 2 words are indentical !!");
+}
+if(valueForComparation < 0){
+    printf("Word0['%s'] is grander than Word1['%s'] !!", word0, word1);
+}
+if(valueForComparation > 0){
+    printf("Word0['%s'] is smaller than Word1['%s'] !!", word0, word1);
+}
+return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+
+Mot1 :
+Matt
+
+Mot2 :
+Thomas
+Word0['Matt'] is smaller than Word1['Thomas'] !!
+C:\Users\ASUS\Desktop\learnC>test
+
+Mot1 :
+Thomas
+
+Mot2 :
+Matt
+Word0['Thomas'] is grander than Word1['Matt'] !!
+C:\Users\ASUS\Desktop\learnC>test
+
+Mot1 :
+Joe
+
+Mot2 :
+Joe
+The 2 words are indentical !!
+
+----------------------------------------------------------
+
+		STRCAT()
+
+This command put a chain against an other for creating a new.
+
+new1.c :
+#include <stdio.h>
+#include <string.h>
+//gcc new1.c -o test
+#define SIZE 6
+
+int main(void){
+signed char word0[] = "Yolo";
+signed char word1[] = " !!";
+/*GIVES AN ERROR ====>*//*signed char newWord[] = strcat(word0 , word1);*/
+    printf("%s",strcat(word0,word1));
+return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+Yolo !!
+
+----------------------------------------------------------
+
+		STRSTR()
+
+This command permits to search a chain in an other like
+the include in JavaScript !! This command is used with
+a condition who comarates with the NULL in grand characters.
+
+new1.c :
+#include <stdio.h>
+#include <string.h>
+//gcc new1.c -o test
+#define SIZE 6
+
+int main(void){
+signed char word0[40];
+    scanf("%s", word0);
+if(strstr(word0, "Yolo") != NULL){
+    printf("YEP !!");
+}
+else{
+    printf("NOP !!");
+}
+
+return 0;
+}
+
+Into CMD :
+C:\Users\ASUS\Desktop\learnC>gcc new1.c -o test
+
+C:\Users\ASUS\Desktop\learnC>test
+slaut
+NOP !!
+C:\Users\ASUS\Desktop\learnC>test
+salutYoloJoe
+YEP !!
+
+----------------------------------------------------------
+
+		SPRINTF()
+
+This command permits to writte in a character chain.
+
+new1.c :
+#include <stdio.h>
+#include <string.h>
+
+int main(void){
+    signed char yolo[50];
+    sprintf(yolo, "SALUT !!", 3);
+    printf("%s",yolo);
+    
+    signed char yolo2[] = " SALUT ";
+    printf("%s",yolo2);
+/*Here the function deletes the last datas for putting the news !!*/
+    printf(yolo2, "!! BONJOUR", 3);
+    printf("%s",yolo2);
+    return 0;
+}
+
+=================================================

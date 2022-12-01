@@ -1,0 +1,82 @@
+Script 96
+				TKINTER WINDOW
+
+INFO : The function mainloop() works with the function by Thread !!
+
+For the installation :
+#2 sudo apt-get install python3-tk
+
+All the things (windows, buttons, inputs, checkboxs...)
+are called widget.
+
+#0 Library : import Tkinter
+
+#1		Run the opening of a window
+
+#4	Tk()
+This function permits to put the config of the principal
+window in a variable. There aren't parameters.
+Ex :
+WIN = Tkinter.Tk()
+
+#0 The function that are contained in the config of the window.
+
+#4	mainloop()
+This functions keeps the window open while the user doesn't
+click on close (X). The function is contained in the config
+of the window.
+Ex :
+WIN.mainloop()
+
+#4	quit()
+This functions closes the window. The function is contained
+in the config of the window.
+Ex :
+WIN = Tkinter.Tk()
+WIN.mainloop()
+WIN.quit()
+
+#1		Run the properties of a window
+
+#4	title()
+This function simply gives a title to the window.
+Ex :
+WIN.title("Yolo !!")
+
+#4	minsize() and maxsize()
+The both takes as parameters in first the width and in last
+the height.
+Ex :
+WIN.minsize(400, 400)
+WIN.maxsize(600, 600)
+
+#4	geometry()
+This functions included in the config of the window, permits
+to define the size and the position of the window on the display
+at the starting.
+Ex :
+WIN.geometry("100x100+100+100")
+# In fact it's widthxheight+left+top either XSxYS+X+Y !!
+
+#4	resizable()
+This function has two parameters, width and height.
+The two arguments take 0 or 1. 0 means that the
+dimension cans not be resizabled and 1 the opposite case.
+Ex :
+WIN.resizable(width=0, height=1)
+
+#5	winfo_height() and winfo_width() and update_idletasks()
+These two functions return the dimensions of the window.
+The function update_idletasks() updates the information
+of the window.
+Syntax :
+WIN.update_idletasks()
+val = WIN.winfo_height()
+newVal = WIN.winfo_width()
+
+5# 
+>>> tk.Tk().winfo_screenheight()
+1080
+>>> tk.Tk().winfo_screenwidth()
+1920
+ 5#

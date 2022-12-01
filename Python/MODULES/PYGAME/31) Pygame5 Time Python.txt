@@ -1,0 +1,58 @@
+Script 110
+				PYGAME5 TIME
+
+		TIME
+The key for including the time.
+
+		GET_TICKS()
+Workes with the key TIME this function
+permits to have the time happenned sinds
+the openning of the window.
+Syntax :
+import pygame
+print(pygame.time.get_ticks()) # ===> RESULT in milliSeconds;
+
+		WAIT()
+Workes with the key TIME and with the milliSeconds.
+Syntax :
+import pygame
+time = µ
+pygame.time.wait(time)
+
+		DELAY()
+This is like WAIT() but DELAY() takes is better but takes
+more memory.
+
+		CLOCK() AND TICK()
+This function takes the key TIME and returnes the hourse.
+This method waites a certain time before doing an action.
+This method adaptes the time for the computer. On a bad
+computer quite strength or a computer very swift the time
+will be quite the same.
+
+Syntax :
+import pygame
+myClock = pygame.time.Clock()
+myClock.tick(µ)
+# µ ===> The number of milliseconde happenned.
+
+		CLOCK() AND GET_FPS()
+For having the FPS :
+print(str(time.Clock().get_fps()) + " FPS !!")
+
+		SET_TIMER()
+Workes with the key TIME. This function makes an
+USEREVENT with a time.
+Parameter :
+par0 ===> USEREVENT
+par1 ===> µ in milliSecondes.
+Syntax :
+import pygame
+pygame.time.set_timer(pygame.USEREVENT, 1000)
+work = 1
+while work:
+  for oneEvent in event.get():
+    if oneEvent.type == QUIT:
+      work = 0
+    if oneEvent.type == USEREVENT:
+      print("Yolo");

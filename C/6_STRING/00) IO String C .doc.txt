@@ -1,0 +1,45 @@
+				INPUT / OUTPUT
+
+#4	fputc(), puts(), fputs()
+#4	fgetc(), fgets()
+
+io_str.c : 2// 
+#include <stdio.h>
+#include <string.h>
+
+#define size 40
+
+unsigned int main(void){
+
+    unsigned char name[size];
+    strcpy(name, "Racteur");
+
+    // There are getchar() and putchar(), see IO chapter
+
+    // Output :
+    puts(name);
+    fputs(name, stdout);
+    fputc(10, stdout); // Same function than putc()
+
+    // Input :
+    unsigned int chr = fgetc(stdin); // Same function than getc()
+    while(getchar() != 10); // Clear buffer
+    printf("==> %c, %d\n", chr, chr);
+    // gets(name); // This function has been removed since C11
+    fgets(name, size, stdin);
+    printf("Name => %s\n", name);
+
+    return 0;
+}
+ 2//
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/6_STRING/EXAMPLE$ gcc io_str.c -o prog && ./prog 
+Racteur
+Racteur
+a
+==> a, 97
+Yolo !!
+Name => Yolo !!
+ 2//
+

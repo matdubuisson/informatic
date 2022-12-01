@@ -1,0 +1,88 @@
+				PROGRAM AND ARGUMENTS
+
+#1		LAUNCH A BASH PROGRAM
+
+#4	bash
+
+This command permits either to start a bash session or to start bash script.
+
+Console : 2# 
+racteur@rogy:~/Documents/informatic/Bash/SCRIPT/EXAMPLE$ bash
+racteur@rogy:~/Documents/informatic/Bash/SCRIPT/EXAMPLE$ exit
+exit
+racteur@rogy:~/Documents/informatic/Bash/SCRIPT/EXAMPLE$ cat yolo.bash 
+#!/bin/bash
+echo "Yolo !!"
+racteur@rogy:~/Documents/informatic/Bash/SCRIPT/EXAMPLE$ bash yolo.bash 
+Yolo !!
+ 2#
+
+#1		GET ARGUMENTS AT SCRIPT EXECUTION
+
+#4	shift
+As argument, it takes a positive integer that is the step of decallage
+for the arguments between 1 and 9. The argument at the index 0 doesn't
+move.
+
+#5	$@
+This token gives the list of all arguments.
+
+#5      $1-$9
+These tokens are the default parameters order by
+the nine first numbers.
+
+program.bash : 2// 
+#!/bin/bash
+
+for each in $@; do
+    echo $each
+done
+
+if [[ $9 != "" ]]; then
+    echo "First $0; Second : $1; Third : $2; ....; Last (9) : $9"
+    shift 3 
+    echo "First $0; Second : $1; Third : $2; ....; Last (9) : $9"
+else
+     echo "First $0; Second : $1; Third : $2; ...."
+fi
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/Bash/SCRIPT/EXAMPLE$ bash program.bash a2 b3 c hgfh4d cinq six set oui
+a2
+b3
+c
+hgfh4d
+cinq
+six
+set
+oui
+First program.bash; Second : a2; Third : b3; ....
+racteur@rogy:~/Documents/informatic/Bash/SCRIPT/EXAMPLE$ bash program.bash a2 b3 c hgfh4d cinq six set oui +neuf
+a2
+b3
+c
+hgfh4d
+cinq
+six
+set
+oui
++neuf
+First program.bash; Second : a2; Third : b3; ....; Last (9) : +neuf
+First program.bash; Second : hgfh4d; Third : cinq; ....; Last (9) : 
+racteur@rogy:~/Documents/informatic/Bash/SCRIPT/EXAMPLE$ bash program.bash a2 b3 c hgfh4d cinq six set oui +neuf dix a11 duz
+a2
+b3
+c
+hgfh4d
+cinq
+six
+set
+oui
++neuf
+dix
+a11
+duz
+First program.bash; Second : a2; Third : b3; ....; Last (9) : +neuf
+First program.bash; Second : hgfh4d; Third : cinq; ....; Last (9) : duz
+ 2#

@@ -1,0 +1,10 @@
+				INSTALLATION
+
+Command :
+#1 sudo apt-get install python3-rpi.gpio
+
+If there is the error : #0 Not running on a RPi !!
+Try these two commands : 2# 
+sudo chown root:$USER /dev/gpiomem
+sudo chmod g+rw /dev/gpiomem
+ 2#

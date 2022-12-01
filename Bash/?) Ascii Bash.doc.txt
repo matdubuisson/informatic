@@ -1,0 +1,7 @@
+Script 126
+				ASCII
+
+This is a command for getting the list of the array of the ascii.
+
+INSTALLATION :
+#1 sudo apt-get install ascii

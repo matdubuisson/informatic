@@ -1,0 +1,85 @@
+				VARIABLES
+
+1# 
+===========================================================
+================ [ VARIABLES OF WIDGETS ] =================
+===========================================================
+ 1#
+
+#0 The four next functions don't take parameters !!
+
+#4      StringVar()
+Returns the config of a string variable.
+
+#4      IntVar()
+Returns the config of a integer variable.
+
+#4      DoubleVar()
+Returns the config of a double variable.
+
+#4      BooleanVar()
+Returns the config of a boolean variable.
+
+#1      textvariable
+This parameter permits to attach a string var to a widget.
+
+#1	variable
+This paramter permits to attach an other variable to a widget.
+
+#4	set()
+This function permits to set/change the value of a widget variable
+and it takes the new value in parameter.
+Ex :
+myStringVar.set("Yolo !!")
+
+#4	get()
+This function permits to change get the value of a widget variable
+and it doesn't take parameters.
+Ex :
+chain = myStringVar.get()
+
+#4	trace()
+This function permits to execute a function when a variable is
+changed.
+Syntax :
+var = trace("w", fct)
+
+Final example : 2# 
+#coding:utf-8
+
+from tkinter import *
+
+WIN = Tk()
+
+WIN.title("Console of racteurserver !!")
+WIN.minsize(400, 400); WIN.maxsize(800, 800)
+WIN.geometry("400x400+100+100"); WIN.resizable(width=1, height=1)
+
+#################################################################
+
+chain = StringVar()
+
+labelChain = StringVar()
+
+def test():
+  labelChain.set(chain.get())
+  print(chain.get())
+
+BTN = Button(WIN, text="BTN", command=test)
+
+ENTRY = Entry(WIN, textvariable=chain)
+
+LABEL = Label(WIN, textvariable=chain)
+LABEL2 = Label(WIN, textvariable=labelChain)
+
+BTN.pack()
+ENTRY.pack()
+LABEL.pack()
+LABEL2.pack()
+
+#################################################################
+
+mainloop()
+
+quit()
+ 2#

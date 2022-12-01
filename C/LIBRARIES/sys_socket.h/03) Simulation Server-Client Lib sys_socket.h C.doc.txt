@@ -1,0 +1,98 @@
+				SIMULATION SERVER-CLIENT
+
+#1		SERVER SIDE
+
+In the console : 0// 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/sys_socket.h/EXAMPLE$ gcc server.c -o aserver 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/sys_socket.h/EXAMPLE$ ./aserver 
+cmd_format => %39s
+==> (ACCEPTER) New client at index : 0
+Exiting of client 0
+(ACCEPTER) New client at index : 0
+Exiting of client 0
+(ACCEPTER) New client at index : 0
+(ACCEPTER) New client at index : 1
+Client at index 1 has sent : a
+Client at index 0 has sent : b
+Client at index 0 has sent : bbb
+Client at index 1 has sent : aaaa
+Exiting of client 0
+Client at index 1 has sent : aaaaaaaaaa
+(ACCEPTER) New client at index : 0
+Client at index 0 has sent : Je
+Client at index 0 has sent : vais
+Client at index 0 has sent : crash
+Attempt 0 : Wait response from client 0...
+Attempt 1 : Wait response from client 0...
+Attempt 2 : Wait response from client 0...
+Attempt 3 : Wait response from client 0...
+Attempt 4 : Wait response from client 0...
+Failure : Disconnection with client 0 !!
+Client at index 1 has sent : Snif
+exit
+Ask to exit...
+All clients prevented !!
+Attempt 0 : Wait response from client 1...
+
+=========================
+Closing of the program...
+=========================
+ 0//
+
+#1		CLIENT SIDE
+
+#2	TERMINAL 0
+
+In the console : 2// 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/sys_socket.h/EXAMPLE$ gcc client.c -o bclient 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/sys_socket.h/EXAMPLE$ ./bclient 
+==> exit
+Attempt 0 (RECV) : Wait the server responses...
+
+=========================
+Closing of the program...
+=========================
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/sys_socket.h/EXAMPLE$ ./bclient 
+==> From server => a
+b
+==> From server => b
+bbb
+==> From server => bbb
+From server => aaaa
+exit
+Attempt 0 (RECV) : Wait the server responses...
+    
+=========================
+Closing of the program...
+=========================
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/sys_socket.h/EXAMPLE$ ./bclient 
+==> Je vais crash
+==> ==> ==> From server => Je
+From server => vais
+From server => crash
+^C
+ 2//
+
+#3	TERMINAL 1
+
+In the console : 3// 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/sys_socket.h/EXAMPLE$ ./bclient 
+==> a
+==> From server => a
+From server => b
+From server => bbb
+aaaa
+==> From server => aaaa
+aaaaaaaaaa
+==> From server => aaaaaaaaaa
+From server => Je
+From server => vais
+From server => crash
+Snif
+==> From server => Snif
+The server has shutdown...
+
+=========================
+Closing of the program...
+=========================
+ 3//

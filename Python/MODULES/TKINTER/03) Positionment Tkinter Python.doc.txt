@@ -1,0 +1,67 @@
+				POSITIONMENT
+
+#4	 Frame() and LabelFrame()
+The frame with tkinter permits to deplace a group of element.
+In fact it's as a window inside an other.
+Ex : 2# 
+#coding:utf-8
+
+from tkinter import *
+
+WIN = Tk()
+
+WIN.title("Console of racteurserver !!")
+WIN.minsize(400, 400); WIN.maxsize(800, 800)
+WIN.geometry("400x400+100+100"); WIN.resizable(width=1, height=1)
+
+#################################################################
+
+def test():
+  print("Yolo !!")
+
+principalFrame = LabelFrame(WIN, text="title", borderwidth=10)
+principalFrame.pack()
+
+BTN = Button(principalFrame, text="BTN", command=test)
+BTN.pack()
+
+LABEL = Label(WIN, text="Under the frame !!")
+LABEL.pack()
+
+#################################################################
+
+print("DISPLAY : WIDTH = " + str(WIN.winfo_screenwidth()) + " AND HEIGHT = " + str(WIN.winfo>
+
+mainloop()
+
+quit()
+ 2#
+
+#4	pack()
+This function places the elements.
+Parameters :
+1# expand 1# => Boolean that permits to place a widget in the mid of the
+left place;
+1# side="str" 1# => "left" or "right" or "top" or "bottom" so places on a side;
+1# fill="str" 1# => "x" or "y" or "both" (both permits to take all the width);
+1# padx=µ     1# => It's the marge on the x axe;
+1# ipadx=µ    1# => Intern;
+1# pady=µ     1# => It's the marge on the y axe;
+1# ipady=µ    1# => Intern;
+
+#4	grid()
+This function places the elements in a grid.
+Parameters :
+1# row=µ        1# => Permits to place in a row;
+1# rowspan=µ    1# => Allow access until an other row;
+1# column=µ     1# => Permits to place in a column;
+1# columnspan=µ 1# => Allow access until an other column;
+1# sticky="str" 1# => n = north, s = south, o = ouest, e = est;
+
+#4	place()
+This function places by the positions !!
+Syntax :
+WIDGET.place(x=µ, y=µ, width=µ, height=µ)
+
+#4	destroy()
+THis function permits to destroy the widget.

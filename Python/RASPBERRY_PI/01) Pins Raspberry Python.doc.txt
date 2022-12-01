@@ -1,0 +1,68 @@
+				PINS
+
+Bibrary : #0 import Rpi.GPIO
+
+#4	setmode()
+This function permits to change the mode of the managing
+of the pins. The mod can be BCM.
+
+#4	setwarnings()
+This function permits to skip the warnings that can stop
+the program. In fact, it takes a boolean and if it's null
+all pins in the code are used without problemes else it's
+one, if a program already uses a pin, the current program
+cansn't use also this pin.
+
+#4	setup()
+This function permits to define a pin as output or input.
+If it's a input :
+setup(inputPin, IN)
+Else :
+setup(outputPin, OUT)
+
+#4	input()
+This function takes in parameter the id of the pin and
+returns one if there is electricity else it returns null
+if there isn't electricity.
+
+#4	output()
+This function permits to open or close and output. It
+takes two parameters. The first is the pin and the second
+the state so LOW or HIGH.
+
+#4	cleanup()
+This function in the end of the program permits to clean
+all done changes during the process.
+
+By example : 2# 
+#coding:utf-8
+
+import RPi.GPIO as GPIO
+from time import sleep
+from threading import *
+
+Output = 17; Input = 20
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(0)
+GPIO.setup(Output, GPIO.OUT)
+GPIO.setup(Input, GPIO.IN)
+
+def listenInput():
+  while 1:
+    sleep(0.1)
+    if GPIO.input(Input):
+      print("The button is pressed !!")
+    else:
+      print("The button isn't pressed !!")
+
+th = Thread(target=listenInput)
+th.start()
+
+while 1:
+  GPIO.output(Output, GPIO.HIGH)
+  sleep(3)
+  GPIO.output(Output, GPIO.LOW)
+  sleep(3)
+
+GPIO.cleanup()
+ 2#

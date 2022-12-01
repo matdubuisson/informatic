@@ -1,0 +1,135 @@
+				CREATE THREAD
+
+#5	General thread function
+void *fct(void *arg){
+    return 0;
+}
+
+#0	pthread_t
+This is the type of a thread variable.
+
+#0 WARNING : Tip : Create all threads and after join all threads.
+#4	pthread_create()
+This function permits to init a thread variable.
+Parameters :
+par0 => The address of the thread variable;
+par1 => ? For the time put NULL;
+par2 => The name of the thread function;
+par3 => The address of the argument (no matter what the type of the data);
+
+#4	pthread_join()
+This function permits to start the thread.
+Parameters :
+par0 => The thread variable (not the address);
+par1 => The address of the variable (void *) that receives the returned
+value of the thread;
+
+#4	pthread_exit()
+This function finishes a thread and returns the argument that is an address.
+Parameter : The address of the returned variable (data);
+
+create_thread.c : 2// 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <pthread.h>
+// pthread_t => signed long int
+#define sp() printf("Parent-Process : %d; Process : %d\n", getppid(), getpid())
+#define size 40
+#define thread_number 3
+ 
+unsigned int count = 0;
+ 
+struct pack{
+    pthread_t th;
+    unsigned char message[size];
+    unsigned int nbr;
+};
+ 
+void *thread_f(void *arg){ // This shape is essential for the working of pthread
+    struct pack *pck; // This step is usefull because the function can't get directly
+    pck = arg;        // elements on the pointer arg. The pck helps to manage it !!
+    unsigned char *name; // No static here !!
+    unsigned int *i;
+ 
+    name = (*pck).message;
+    i = &(*pck).nbr;
+    for(*i = 0; *i < 4; (*i)++){
+        printf("%s => ", name); sp();
+        usleep(500000);
+    }
+    *i = (count += 2);
+    printf("From %s addres of i=%d : %p\n", name, *i, &i);
+    printf("Address of &(*pck).nbr : %p\n", &(*pck).nbr);
+    pthread_exit(i);
+    // Or : return i;
+}
+ 
+unsigned int main(void){
+ 
+    unsigned int i;
+    void *rts[thread_number];
+    struct pack packs[thread_number];
+ 
+    printf("Main process :\n");
+    sp();
+ 
+    for(i = 0; i < thread_number; i++){
+        sprintf( (*(packs + i)).message , "Thread[%d]", i);
+        // If it doesn't want to get parameters : replace (packs + i) by NULL !!
+        if(pthread_create( &(*(packs + i)).th , NULL, thread_f, (packs + i))){
+            printf("Error to create the thread %d !!\n", i);
+        }
+    }
+ 
+    for(i = 0; i < thread_number; i++){
+        if(pthread_join( (*(packs + i)).th , (rts + i))){
+            printf("Error to join the thread %d !!\n", i);
+        }
+    }
+ 
+    printf("All threads are done !!\n");
+ 
+    unsigned int *p;
+    for(i = 0; i < thread_number; i++){
+        printf("From thread %d, returned address is : %p\n", i, *(rts + i));
+        p = *(rts + i);
+        printf("Value at this address => %d\n", *p);
+    }
+ 
+    return 0;
+}
+ 2//
+
+In the console : 2# 
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/pthread.h/EXAMPLE$ gcc create_thread.c -o prog
+racteur@rogy:~/Documents/informatic/C/LIBRARIES/pthread.h/EXAMPLE$ ./prog 
+Main process :
+Parent-Process : 5226; Process : 8342
+Thread[0] => Parent-Process : 5226; Process : 8342
+Thread[1] => Parent-Process : 5226; Process : 8342
+Thread[2] => Parent-Process : 5226; Process : 8342
+Thread[0] => Thread[1] => Parent-Process : 5226; Process : 8342
+Parent-Process : 5226; Process : 8342
+Thread[2] => Parent-Process : 5226; Process : 8342
+Thread[1] => Thread[2] => Parent-Process : 5226; Process : 8342
+Parent-Process : 5226; Process : 8342
+Thread[0] => Parent-Process : 5226; Process : 8342
+Thread[1] => Parent-Process : 5226; Process : 8342
+Thread[2] => Thread[0] => Parent-Process : 5226; Process : 8342
+Parent-Process : 5226; Process : 8342
+From Thread[1] addres of i=2 : 0x7ffb3cfbee20
+Address of &(*pck).nbr : 0x7fff38abbb28
+From Thread[0] addres of i=4 : 0x7ffb3d7bfe20
+Address of &(*pck).nbr : 0x7fff38abbaf0
+From Thread[2] addres of i=6 : 0x7ffb3c7bde20
+Address of &(*pck).nbr : 0x7fff38abbb60
+All threads are done !!
+From thread 0, returned address is : 0x7fff38abbaf0
+Value at this address => 4
+From thread 1, returned address is : 0x7fff38abbb28
+Value at this address => 2
+From thread 2, returned address is : 0x7fff38abbb60
+Value at this address => 6
+ 2#

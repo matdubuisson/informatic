@@ -1,0 +1,47 @@
+				DRAWING
+
+#1		CREATE TURTLE TYPE OF CLASS
+
+#4	tt = Turtle()
+This function returns the configuration of the turtle into
+the variable and this is type of class.
+
+#1		METHODS OF THE TURTLE
+
+#4	tt.shape()
+This function gives a shape to the turtle. There is a list of shapes :
+"arrow", "blank", "circle", "classic", "square", "triangle" and "turtle"
+
+In fact it modifies the attribute shape of the turtle.
+
+#4	tt.color()
+This function defines the color of the turtle. It takes a color as "blue"
+and it cans take an additionnal precision as "hotblue".
+
+#4	tt.forward() >< tt.backward()
+This function permits to deplace the turtle of x pixels. Its opposite is
+[ tt.backward() ] but if x is negative in the [ tt.forward(-x) = tt.backward(x) ]
+
+#4	tt.left() >< tt.right()
+This function permits to rotate the turtle on the window. The thing is the
+same than above. [ tt.left(x) = tt.right(-x) ]
+
+#4	tt.penup() >< tt.pendown()
+These two methods permit to draw or not. When it's pen down, if the turtle
+deplaces itself, it lets a draw on the window but it isn't the case with
+pen up.
+
+#4	tt.heading()
+Get the angle of direction of the turtle.
+
+#4 	tt.setheading()
+Set a direction of look to the turtle.
+
+#4	tt.stamp()
+This function permits to let a stamp (so a draw of the turtle) on the window.
+
+#4	tt.speed()
+This permits to attribute a speed to the turtle. It goes from 0 to 10 !!
+
+#4	tt.write()
+This function permits to write a chain of characters on the window.

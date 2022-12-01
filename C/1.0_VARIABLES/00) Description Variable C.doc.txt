@@ -1,0 +1,58 @@
+				DESCRIPTION
+
+#2 Three types of variables :
+Static variable => Gets its value before the execution of the program
+and loses only after the end of the execution.
+
+Automatical variable => Variable that created for one action during
+the execution and deleted at the end of the instruction (ex :
+variable in a function).
+
+Registred variable => Variable present in the processor.
+VS Volatile variable => In the Random Access Memory.
+
+#5      HEXADECIMAL
+This type of persual permits to read quickly a binary code.
+One letter of number seems to four bits : 1// 
+0000 => 0 | 1000 => 8
+0001 => 1 | 1001 => 9
+0010 => 2 | 1010 => A
+0011 => 3 | 1011 => B
+0100 => 4 | 1100 => C
+0101 => 5 | 1101 => D
+0110 => 6 | 1110 => E
+0111 => 7 | 1111 => F
+ 1//
+
+#1		DECLARATION
+In fact, it cans declare several variable on only one line and change
+several variables on only one line also.
+Ex : 2# 
+int e = 0, a = 4;
+e = a = 6;
+ 2#
+
+It cans change the value of a variable and on the same line use this
+variable with its new value to make an operation.
+Ex : 2# 
+e = 14 + (a = 2);
+ 2#
+
+Small example : 2# 
+racteur@racteurleader:~/informatic/C/EXAMPLE/OPERATORS$ cat affectation.c 
+#include <stdio.h>
+
+int main(void){
+  int e = 0, a = 4;
+  e = a = 6;
+  printf("e = a = 6 : e = %d and a = %d\n", e, a);
+
+  e = 14 + (a = 2);
+  printf("e = 14 + (a = 2) : e = %d and a = %d\n", e, a);
+
+  return 0;
+}
+racteur@racteurleader:~/informatic/C/EXAMPLE/OPERATORS$ gcc affectation.c -o prog && ./prog 
+e = a = 6 : e = 6 and a = 6
+e = 14 + (a = 2) : e = 16 and a = 2
+ 2#

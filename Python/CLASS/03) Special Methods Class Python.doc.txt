@@ -1,0 +1,24 @@
+				SPECIAL METHODS
+
+#1		SPECIAL METHODS
+
+#0	__init__()
+#3 About the initiation of the instance
+This class is called when an instance of the class is created.
+
+#0	__str__()
+#3 About the printing of the instance
+This class is called when an instance is printed.
+
+#0	__eq__()
+#3 About the comparaison of the instance with the operator [ == ]
+Ex : 2# 
+def __eq__(self, other):
+  return self.attrbut = other.attribut
+ 2#
+
+At first, when this method isn't written in the class, by default
+this method is : 2# 
+def __eq__(self, other):
+  return self is other
+ 2#

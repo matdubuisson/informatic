@@ -1,0 +1,125 @@
+				WIDGETS
+
+#0 The widgets are the different elements of a page.
+
+INFO :
+For having the result of parameter in a function :
+fct.cget("nameOfParameter")
+For changing it :
+fct.config(nameOfParameter=value)
+
+#5 This script tells about the creation of elements on the window.
+
+#4	pack() and the syntax of a element
+A function (here named FCT) makes a precised element and returns
+the config in a variable. In the config is included the function
+[ pack() ] that permits to attach the widget on the window.
+
+Parameters for FCT :
+ELEMENT = FCT(WIN, parametersOfElements....)
+
+Ex : 2# 
+#coding:utf-8
+from tkinter import *
+
+WIN = Tk()
+WIN.title("Console of racteurserver !!")
+WIN.minsize(400, 400); WIN.maxsize(800, 800)
+WIN.geometry("400x400+100+100"); WIN.resizable(width=1, height=1)
+
+ELEMENT = FCT(WIN, parametersOfElements....)
+ELEMENT.pack()
+
+mainloop()
+quit()
+ 2#
+
+1# 
+===========================================================
+================ [ PARAMETERS OF ELEMENTS ] ===============
+===========================================================
+ 1#
+
+#5 AVAILIBILITY
+
+#5 All
+text="chain"
+height=int
+width=int
+
+#0 textvariable=var
+
+#5 CheckButton()
+offvalue=val  => Value of the widget if it isn't clicked
+onvalue=val   => Value of the widget if it's clicked
+
+1# 
+===========================================================
+================ [ FUNCTIONS OF ELEMENTS ] ================
+===========================================================
+ 1#
+
+#4	Label()
+varLabel = tkinter.Label(myWindow, text="Writte text into the window !!");
+Info : Writtes on one line.
+Par :
+text="chain\n"
+
+#4	Message()
+varMessage = tkinter.Message(myWindow, text="Yolo !!");
+Info : Writtes on several lines.
+Par :
+text="chain\n"
+
+#4	Entry()
+varEntry = tkinter.Entry(myWindow);
+width=int
+show="*" => Permits to hide the input chain
+(exportselection=0)
+
+#4	Button()
+varButton = tkinter.Button(myWindow, text="test", command="functionName");
+width=int
+text="chain"
+command=fonctioName
+
+#4	Checkbutton()
+varCheckbutton = tkinter.Checkbutton(myWindow, text="", onvalue=µ, offvalue=µ);
+Par :
+text="chain"
+offvalue=val  => Value of the widget if it isn't clicked
+onvalue=val   => Value of the widget if it's clicked
+
+#4	Radiobutton()
+varRadiobutton = tkinter.Radiobutton(myWindow, text="", value=µ);
+value=int => In a environment this permits to check only one of
+the different propositions;
+
+#4	Scale()
+varScale = tkinter.Scale(myWindow, from_=µ, to=µ, tickinterval=µ);
+from_=int  => Defines size;
+to=int     => Defines size;
+(tickinterval=int)
+
+#4	Spinbox()
+varSpinbox = tkinter.Spinbox(myWindow, from_=µ, to=µ);
+from_=int  => Defines size;
+to=int     => Defines size;
+(tickinterval=int)
+
+#4	Listbox() with insert()
+varListBox = tkinter.Listbox(WIN)
+varListBox.insert(0, "Firstly")
+varListBox.insert(1, "This")
+varListBox.insert(2, "That")
+varListBox.insert(3, "Lastly")
+
+#4	ScrollBar()
+varScrollbar = Scrollbar(myWindow, command=myCanvas.yview)
+
+#4	Text()
+This permits to create an environment to manage text.
+#4		widgetText.get("0.0", "end")
+This function returns the contain of the widget.
+#4		widgetText.insert("0.0") or "end"
+This function permits to insert text in the widget.

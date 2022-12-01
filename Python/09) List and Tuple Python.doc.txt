@@ -1,0 +1,243 @@
+				LIST AND TUPLE
+
+#5		TUPLE
+In fact, in certain way the tuple is the same thing than a list
+but there is a difference although. An element of a tuple cansn't
+be modified. This thing provides of the fact that a tuple takes
+only the minimal memory place to be storaged whereas a list takes
+more than asked in the point to be able to add or remove datas
+during the changes of the list.
+
+Obviously the tuples haven't the same methods of the list as
+[ sort(), reverse(), extend(), ... ] because the tuple cansn't
+be modified.
+
+Finally the notation is different also :
+#5 LIST = [0, 1, 2, 3]
+#5 TUPLE = (0, 1, 2, 3)
+#5 print(LIST[0]) # Ok
+#5 print(TUPLE[0]) # Ok
+#5 LIST[0] = 4 # Ok
+#5 TUPLE[0] = 4 # No it returns an error !!
+
+#5		LIST
+#1	CREATE AN ARRAY
+For creating a list very two method :
+list0 = list();
+#OR
+list1 = [];
+CONTAIN : [];
+
+For including some elements into the list :
+list = ["Yolo !!", 14, "?!", 16];
+CONTAIN : ["Yolo !!", 14, "?!", 16];
+
+For putting the default configuration several time :
+list =  [14, 16] * 3;
+CONTAIN : [14, 16, 14, 16, 14, 16];
+
+#1	INDEXATION OF ARRAY
+#0 For it, index is an interger number that indexs the array
+#3	[nbr]
+This permits to get an element at the place nbr in the array.
+It goes from 0 to len(array) and the syntax the following here : 2// 
+array = [4, "nbr", -14, "Yolo !!", 16, 17]
+element_1 = array[1] # = "nbr"
+last_element = array[len(array)] # = array[5] = 17
+ 2//
+
+#3	[a:b]
+This syntax permits to get several elements of an array so a part of
+the array : a is the index of start and b is the stop. All elements
+from index a until index b - 1 are included in the new array.
+array = [0, 1, 2, 3, 4, 5]
+n = array[1, 4] # = [1, 2, 3]
+Ex : 2// 
+python3
+>>> array = ["a", "b", 14, "Yolo !!", 16, 17, "i"]
+>>> new_array = array[4:6]
+>>> print(new_array)
+[16, 17]
+>>> new_array = array[1:len(array)]
+>>> print(new_array)
+['b', 14, 'Yolo !!', 16, 17, 'i']
+>>> new_array = array[1:6]
+>>> print(new_array)
+['b', 14, 'Yolo !!', 16, 17]
+ 2//
+
+#3	[a:]
+Same thing, it starts to a until len(array) - 1 !!
+
+#3	[:b]
+Same thing, it starts to null until b - 1 !!
+
+#1		METHODS OF ARRAY
+
+#5	CREATING : CLONE AND ALIAS
+
+#4	new_l = list() OR new_l = []
+This function permits to create and return an new list.
+It cans convert certain special element in list. Ex : 2# 
+>>> l = list()
+>>> l
+[]
+>>> l = []
+>>> l
+[]
+>>> l = list(range(10))
+>>> l
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+ 2#
+
+This function has an other important property. In fact, it
+cans take a list in parameter and returns the same list that
+is a new 1# clone 1# of the first. It permits to avoid the alias.
+By example : 2# 
+>>> l = list(range(5))
+>>> l
+[0, 1, 2, 3, 4]
+>>> l2 = l # l2 is an alias of l as it points on the same datas in memory
+>>> l2
+[0, 1, 2, 3, 4]
+>>> l2[0] = 14
+>>> l
+[14, 1, 2, 3, 4]
+>>> l3 = list(l) # Thanks to the function list, l3 receives a clone of l
+>>> l3
+[14, 1, 2, 3, 4]
+>>> l3[len(l3)-1] = 16
+>>> l3
+[14, 1, 2, 3, 16]
+>>> l
+[14, 1, 2, 3, 4]
+>>> # It hasn't changed l because l3 isn't an alias of l
+ 2#
+
+#5	ADDING AND REMOVING
+
+#4	array.append()
+This function permits to add an element in the end of
+the list. The single parameter is the new data to add.
+Ex : 2# 
+>>> l = [0, 1, 2]
+>>> l.append(14)
+>>> l
+[0, 1, 2, 14]
+>>> l.append(16)
+>>> l
+[0, 1, 2, 14, 16]
+>>> l.append("Yolo !!")
+>>> l
+[0, 1, 2, 14, 16, 'Yolo !!']
+ 2#
+
+#4	array.insert()
+This function does the same job than 4# array.append() 4#
+but it permits to choose where the element is placed in
+the list. It takes two parameters, firstly the index
+and secondly the new data. Ex : 2# 
+>>> l = [0, 1, 2]
+>>> l.insert(1, "e")
+>>> l
+[0, 'e', 1, 2]
+>>> l.insert(len(l), "end") # Same thing than l.append("end")
+>>> l
+[0, 'e', 1, 2, 'end']
+>>> l.insert(-2, "u")
+>>> l
+[0, 'e', 1, 'u', 2, 'end']
+ 2#
+
+#4	array.extend()
+This function permits to glue an array to an other.
+Its single parameters is the list to extend. Ex : 2# 
+>>> l = [0, 1, 2]
+>>> l2 = ["a", "b", "c"]
+>>> l.extend(l2)
+>>> l
+[0, 1, 2, 'a', 'b', 'c']
+>>> l2.extend(l)
+>>> l2
+['a', 'b', 'c', 0, 1, 2, 'a', 'b', 'c']
+ 2#
+
+#4	array.remove()
+This function permits to remove a precised element of a list.
+Its single parameter is the removed data. It removes the first
+data of the list that equals the parameter. Ex : 2# 
+>>> l = list(range(20))
+>>> l
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+>>> l.remove(5)
+>>> l
+[0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+>>> l.remove(l[1])
+>>> l
+[0, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+>>> l.append(18)
+>>> 
+>>> l.append(18)
+>>> l.remove(18)
+>>> l
+[0, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 18, 18]
+>>> l.remove(18)
+>>> l
+[0, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 18]
+>>> l.remove(18)
+ 2#
+
+#5	ORGANIZATION
+
+#4	array.reverse()
+This function permits to reverse all the elements of the list.
+Ex : 2# 
+>>> l = list(range(10))
+>>> l
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> l.reverse()
+>>> l
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+ 2#
+
+#4	array.sort()
+This function ranges the elements in the good positions.
+Ex : 2# 
+>>> l = [4, 5, 17, 93, 7, -4, 8, -1, 0, 14, 16, 89]
+>>> l.sort()
+>>> l
+[-4, -1, 0, 4, 5, 7, 8, 14, 16, 17, 89, 93]
+>>> l = ["b", "h", "A", "B", "q", "a", "e", "u", "x"]
+>>> l.sort()
+>>> l
+['A', 'B', 'a', 'b', 'e', 'h', 'q', 'u', 'x']
+ 2#
+
+#5	COUNTING AND ANALIZE
+
+#4	len()
+It's a built-in function but this functions cans calculate
+the length of a string as of a list. Ex : 2# 
+>>> l = list(range(10))
+>>> l
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> len(l)
+10
+2#
+
+#4	array.count()
+THis function permits to counts the number of time a value
+is present inside the array. Ex : 2# 
+>>> l = "a b c d e f g a b c d e a e e e a o u"
+>>> l = l.split(" ")
+>>> print(l.count("e"))
+5
+>>> print(l.count("a"))
+4
+>>> print(l.count("b"))
+2
+>>> print(l.count("o"))
+1
+>>> print(l.count("w"))
+0
+ 2#

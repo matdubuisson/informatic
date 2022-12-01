@@ -1,0 +1,14 @@
+				TAGS AND ATTRIBUTES
+
+In html, a normal tag is defined as the shape of :
+<name all_attributes>contain</name>
+But sometimes it's different :
+<name all_attributes>
+
+The attributes permit to define some properties to the tag.
+
+For example : 0# 
+<p>This is a message !!</p>
+<p title="My title">This is a message !!</p>
+<p style="color:blue" title="My title">This is a message !!</p>
+ 0#
